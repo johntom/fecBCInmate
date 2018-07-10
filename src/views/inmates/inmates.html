@@ -1,5 +1,26 @@
-<template>
+<!-- <template>
   <h1>Hello World</h1>
-  inmates: ${inmates[0]}
+  inmates: ${inmates[0]} -->
 </template>
-    
+    <require from="./blur-image"></require>
+
+  <section class="au-animate">
+    <h2>${heading}</h2>
+    <div class="row au-stagger">
+      <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="inmate of inmate">
+        <div class="card">
+        <!-- inmate: {
+lastname: "UPSHAW",
+firstname: "TERRANCE",
+gender: "M",
+ss: "058-41-4412",
+DOB: "2018-06-19T16:46:14.973Z"
+}, -->
+          <div class="content">
+            <p class="name">${inmate.inmate.lastname}, ${inmate.inmate.firstname}</p>
+            <p><a target="_blank" class="btn btn-default" href.bind="inmate.id">Contact</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
