@@ -3,11 +3,11 @@ import { HttpClient } from 'aurelia-fetch-client';
 
 @inject(HttpClient)
 export class Inmates {
-  heading = 'X Imates';
+  heading = 'BC Inmates';
   inmates = [];
 
   constructor(http) {
-    console.log('in c')
+    //console.log('in c')
     http.configure(config => {
       config
         .useStandardConfiguration()
