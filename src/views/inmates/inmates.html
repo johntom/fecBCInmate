@@ -1,7 +1,7 @@
 
 <template>
     <!-- <require from="./blur-image"></require> -->
-<require from="./date-format"></require>
+<!-- <require from="./date-format"></require>| dateFormat -->
   
   <section class="au-animate">
     <h2>${heading}</h2>
@@ -11,7 +11,7 @@
 
           <div class="content">
             <p class="name">${inmate.inmate.lastname}, ${inmate.inmate.firstname}</p>
-             <p class="name">gender:${inmate.inmate.gender} ss:${inmate.inmate.ss} dob:${inmate.inmate.DOB  | dateFormat } </p>
+             <p class="name">gender:${inmate.inmate.gender} ss:${inmate.inmate.ss} dob:${inmate.inmate.DOB   } </p>
             <p><a target="_blank" class="btn btn-default" href.bind="inmate.id">Contact</a></p>
           </div>
         </div>
