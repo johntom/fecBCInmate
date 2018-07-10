@@ -1,14 +1,14 @@
 import { Router } from 'aurelia-router';
 import { inject } from 'aurelia-dependency-injection';
 import { EventAggregator } from 'aurelia-event-aggregator';
-
+import { ApplicationService } from '../../services/application-service';
 // import { ApiService } from '../../utils/servicesApi';
 // import { ApplicationService } from '../../services/application-service';
 // import { MyDataService } from "../../services/my-data-service";
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
-@inject(Router,EventAggregator)
+@inject(Router,EventAggregator,ApplicationService)
 
 export class DataForm {
   heading = 'DataAddForm HEADER...';
@@ -26,7 +26,7 @@ export class DataForm {
   selectedProduct = { id: 1, name: 'CPU' };
 
   //constructor(router, api, appService, dataService, eventAggregator, dialogService) {
-   constructor(router , eventAggregator) {
+   constructor(router , eventAggregator,appService) {
     // this.api = api;
     // this.appService = appService;
     this.inv = '';
@@ -36,6 +36,7 @@ export class DataForm {
     this.inscoAdjusters = []
     this.inscoAddresses = []
     this.router = router;
+      this.appService = appService;
     // this.dialogService = dialogService
     // this.inscontactMatcher = {}
     // this.skippromt = false
@@ -75,7 +76,7 @@ export class DataForm {
 
 
       } else {
-         console.log('this.recordId ', this.recordId);
+         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
         //// } else {

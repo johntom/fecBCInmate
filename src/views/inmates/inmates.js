@@ -1,12 +1,13 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
-
-@inject(HttpClient)
+import { Router } from 'aurelia-router';
+import { ApplicationService } from '../../services/application-service';
+@inject( HttpClient ,Router,ApplicationService)
 export class Inmates {
   heading = 'BC Inmates';
   inmates = [];
 
-  constructor(http) {
+  constructor(http,router,appService) {
     //console.log('in c')
     http.configure(config => {
       config
@@ -16,6 +17,8 @@ export class Inmates {
     });
 
     this.http = http;
+     this.router = router;
+     this.appService = appService;
   }
 
   activate() {
@@ -29,8 +32,8 @@ export class Inmates {
   openrecord(row) {
  console.log('row', row);
     let rt2 = '#/inmates/data/' + row.id; //CLAIM_ID;
-    // this.appService.justaddedtabname=rt2
-    // console.log('rt2', rt2);
+    
+      this.appService.currentRecord = row;
     this.router.navigate(rt2);// `#/inventory/${path}`);
   }
 
