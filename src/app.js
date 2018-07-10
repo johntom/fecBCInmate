@@ -9,9 +9,7 @@ export class App {
       {"route": "child-router", "name": "child-router", "moduleId": PLATFORM.moduleName("./child-router"), "nav": true, "title": "Child Router"},
       {"route": "combo-box", "name": "combo-box", "moduleId": PLATFORM.moduleName("./views/combo-box/combo-box"), "nav": true, "title": "ComboBox"},
       {"route": "grid", "name": "grid", "moduleId": PLATFORM.moduleName("./views/grid/grid"), "nav": true, "title": "Grid"},
-      {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates"), "nav": true, "title": "Inmates"},
-      {"route": "claims", "name": "claims", "moduleId": PLATFORM.moduleName("./views/claims"), "nav": true, "title": "Claims"}
-   
+      {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates"), "nav": true, "title": "Inmates"}
     ]);
 
     this.router = router;
