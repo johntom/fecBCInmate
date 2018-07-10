@@ -2,8 +2,8 @@ import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 
 @inject(HttpClient)
-export class Claims {
-  heading = 'X Claims';
+export class Imates {
+  heading = 'X Imates';
   users = [];
 
   constructor(http) {
