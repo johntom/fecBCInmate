@@ -22,7 +22,7 @@ export class Inmates {
        console.log('in c')
     return this.http.fetch('v1/inmate')// /1')// users')
       .then(response => response.json())
-      .then(inmates => this.inmates = inmates);
+      .then(inmates => this.inmates = inmates.data);
       console.log('inmates ',this.inmates)
   }
 }
