@@ -21,14 +21,15 @@ export class DataForm {
     { id: 2, name: 'Memory' },
   ];
 
-  productMatcher = (a, b) => a.id === b.id;
+  // productMatcher = (a, b) => a.id === b.id;
 
-  selectedProduct = { id: 1, name: 'CPU' };
+  // selectedProduct = { id: 1, name: 'CPU' };
 
   //constructor(router, api, appService, dataService, eventAggregator, dialogService) {
    constructor(router , eventAggregator,appService) {
     // this.api = api;
     // this.appService = appService;
+      console.log('DataForm')
     this.inv = '';
     // this.dataService = dataService;
     this.eventAggregator = eventAggregator;
@@ -45,7 +46,7 @@ export class DataForm {
   }
 
   activate(params, routeConfig) {
-  
+    console.log('activate')
     if (params.id) {
       this.recordId = params.id;
 
@@ -76,6 +77,7 @@ export class DataForm {
 
 
       } else {
+        console.log('activate2')
          console.log('this.recordId ', this.recordId, this.appService.currentRecord);
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
