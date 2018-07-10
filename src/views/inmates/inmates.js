@@ -27,9 +27,10 @@ export class Inmates {
   }
 
   openrecord(row) {
+ console.log('row', row);
     let rt2 = '#/inmates/data/' + row.id; //CLAIM_ID;
     // this.appService.justaddedtabname=rt2
-    // console.log('search-results:details', rt2);
+    // console.log('rt2', rt2);
     this.router.navigate(rt2);// `#/inventory/${path}`);
   }
 

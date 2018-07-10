@@ -12,7 +12,9 @@
           <div class="content">
             <p class="name">${inmate.inmate.lastname}, ${inmate.inmate.firstname}</p>
              <p class="name">gender:${inmate.inmate.gender} ss:${inmate.inmate.ss} dob:${inmate.inmate.DOB | dateFormat  } </p>
-            <p><a target="_blank" class="btn btn-default" href.bind="inmate.id">Records</a></p>
+            <!-- <p><a target="_blank" class="btn btn-default" click.delegate="openrecord(inmate)">Records</a></p> -->
+          <p><button class="btn btn-default" click.delegate="openrecord(inmate)">Records</button></p>
+          
           </div>
         </div>
       </div>
