@@ -4,9 +4,10 @@ import { HttpClient } from 'aurelia-fetch-client';
 @inject(HttpClient)
 export class Inmates {
   heading = 'X Imates';
-  users = [];
+  inmates = [];
 
   constructor(http) {
+    console.log('in c')
     http.configure(config => {
       config
         .useStandardConfiguration()
@@ -18,6 +19,7 @@ export class Inmates {
   }
 
   activate() {
+       console.log('in c')
     return this.http.fetch('v1/inmate')// /1')// users')
       .then(response => response.json())
       .then(inmates => this.inmates = inmates);
