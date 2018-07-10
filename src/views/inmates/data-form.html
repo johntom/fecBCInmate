@@ -1,0 +1,44 @@
+<template>
+
+	<script language="JavaScript">
+		window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        return "You have attempted to leave this page. Are you sure?";
+    }
+	</script>
+	<require from="./flex.css"></require>
+	<section class="full-height flex-column-1 au-animate ignore">
+		<div class="flex-row-none section-header">
+			${heading} Add
+		</div>
+		<div class="flex-column-1 overflow-y-auto">
+			<form ref="inmate" class="flex-column-1">
+
+				<div class="flex-row-none">
+					<div class="form-group flex-column-1">
+						<div class="Rtable Rtable--2cols">
+							<div class="Rtable-cell-30 Rtable-cell--green">
+								<strong> id</strong>
+							</div>
+							<div class="Rtable-cell-70 Rtable-cell--green">
+								<input type="text" id="id" class="form-control input-sm" value.bind="currentItem.id">
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="flex-column-none section-footer">
+				<span>&nbsp;&nbsp;	
+          	<button class="btn btn-sm btn-danger" click.delegate="saveinmate(0)">
+							Save &amp; Stay
+					</button>
+					
+		      <button class="btn btn-sm btn-danger" click.delegate="requestclose()">
+                 Close
+          </button>
+        </span>
+			</div>
+		</div>
+	</section>
+</template>

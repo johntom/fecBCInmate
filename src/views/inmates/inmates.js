@@ -25,4 +25,13 @@ export class Inmates {
       .then(inmates => this.inmates = inmates.data);
       console.log('inmates ',this.inmates)
   }
+
+  openrecord(row) {
+     let rt2 = '#/inmates/data/' + row.id; //CLAIM_ID;
+    // this.appService.justaddedtabname=rt2
+    // console.log('search-results:details', rt2);
+    this.router.navigate(rt2);// `#/inventory/${path}`);
+
+
+
 }
