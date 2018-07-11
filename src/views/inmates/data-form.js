@@ -8,7 +8,7 @@ import { ApplicationService } from '../../services/application-service';
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
-@inject(Router,EventAggregator,ApplicationService)
+@inject(Router,ApplicationService)
 
 export class DataForm {
   heading = 'DataAddForm HEADER...';
@@ -26,13 +26,13 @@ export class DataForm {
   // selectedProduct = { id: 1, name: 'CPU' };
 
   //constructor(router, api, appService, dataService, eventAggregator, dialogService) {
-   constructor(router , eventAggregator,appService) {
+   constructor(router , appService) {
     // this.api = api;
     // this.appService = appService;
       console.log('DataForm')
     this.inv = '';
     // this.dataService = dataService;
-    this.eventAggregator = eventAggregator;
+   // this.eventAggregator = eventAggregator;
     this.createEventListeners();
     this.inscoAdjusters = []
     this.inscoAddresses = []
