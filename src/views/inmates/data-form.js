@@ -9,7 +9,7 @@ import { ApplicationService } from '../../services/application-service';
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
-@inject(Router,ApplicationService)
+@inject(Router, ApplicationService)
 
 export class DataForm {
   heading = 'DataAddForm HEADER...';
@@ -27,27 +27,27 @@ export class DataForm {
   // selectedProduct = { id: 1, name: 'CPU' };
 
   //constructor(router, api, appService, dataService, eventAggregator, dialogService) {
-   constructor(router , appService) {
+  constructor(router, appService) {
     // this.api = api;
     // this.appService = appService;
-      console.log('DataForm')
+    console.log('DataForm')
     this.inv = '';
     // this.dataService = dataService;
-   // this.eventAggregator = eventAggregator;
-   // this.createEventListeners();
+    // this.eventAggregator = eventAggregator;
+    // this.createEventListeners();
     this.inscoAdjusters = []
     this.inscoAddresses = []
     this.router = router;
-      this.appService = appService;
+    this.appService = appService;
     // this.dialogService = dialogService
     // this.inscontactMatcher = {}
     // this.skippromt = false
     // this.navaway = false
-  
+
   }
 
   activate(params, routeConfig) {
-    console.log('activate',params)
+    console.log('activate', params)
     if (params.id) {
       this.recordId = params.id;
 
@@ -79,11 +79,13 @@ export class DataForm {
 
       } else {
         console.log('activate2')
-         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
-      
-      this.currentRecord = this.appService.currentRecord
-      //document.getElementById("test").appendChild(renderjson(example));
-     // this.test.appendChild(renderjson(this.currentRecord));
+        console.log('this.recordId ', this.recordId, this.appService.currentRecord);
+
+        this.currentRecord = this.appService.currentRecord
+        console.log(' this.currentRecord ', this.currentRecord.booking.services);
+
+        //document.getElementById("test").appendChild(renderjson(example));
+        // this.test.appendChild(renderjson(this.currentRecord));
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
         //// } else {
@@ -93,20 +95,20 @@ export class DataForm {
         //   let claim = jsonRes.data
         //   this.appService.currentClaim = claim[0];
         //   this.appService.currentItem = claim[0];
-        
+
         //   this.currentItem = this.appService.currentItem
 
         //   this.currentItem.xdesc = claim[0].LossDescription//DESCRIPTION
 
         //   console.log('claim[0] ', this.currentItem.LossDescription, claim[0]);
-         
+
 
         //   this.currentItem.isDirty = () => {
         //     let tf = this.comparedata()
         //     let revtf
         //     tf === true ? revtf = false : revtf = true
         //     return revtf
-         
+
         //   };
         //   this.currentItem.reset = () => {
         //     //   this.appService.originalrec = this.currentItem;
@@ -119,14 +121,14 @@ export class DataForm {
         //   this.appService.originalrec = JSON.parse(JSON.stringify(this.currentItem))// inv[0]));
         //   this.appService.testrec = claim[0];
         //   console.log('copy this.appService.originalrec ', this.appService.originalrec);
-         
+
         //   if (claim[0].adjusters !== undefined && claim[0].adjusters.length > 0) {
         //     let aid = claim[0].adjusters.findIndex(x => x.TYPE === "Primary")
         //     this.currentItem.primaryAdjuster = claim[0].adjusters[aid].ADJUSTER_NAME;
         //     this.appService.originalrec.primaryAdjuster = this.currentItem.primaryAdjuster
         //   }
         //   let insco = this.appService.InsurancecompanyList
-          
+
         //   let serviceinsco = this.appService.currentClaim.insco.INSURANCE_COMPANY_ID * 1
         //   if (serviceinsco !== undefined) {
         //     let aid = insco.findIndex(x => x.INSURANCE_COMPANY_ID === serviceinsco)
@@ -215,8 +217,8 @@ export class DataForm {
   //   )
 
   // }
- 
- 
+
+
   // showModal(fieldname) {
 
   //   // alert('fieldname' + fieldname, this.appService.currentClaim.DESCRIPTION) currentClaim
