@@ -1,6 +1,6 @@
 <template>
 	<require from="./date-format"></require>
-<script type="text/javascript" src="renderjson.js"></script>
+	<script type="text/javascript" src="renderjson.js"></script>
 	<script language="JavaScript">
 		window.onbeforeunload = confirmExit;
     function confirmExit() {
@@ -9,11 +9,13 @@
 	</script>
 	<require from="./flex.css"></require>
 	<section class="full-height flex-column-1 au-animate ignore">
-    <div ref="test"></div>
 
 		<div class="flex-row-none section-header">
 			${heading} Add-
+      
 		</div>
+    		<div ref="test"></div>
+
 		<div class="flex-column-1 overflow-y-auto">
 			<form ref="inmate" class="flex-column-1">
 
@@ -139,16 +141,16 @@
 									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 
 								</td>
-<!--  new table -->
-	<h2>
-										<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
-										<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
-											<i class="fa fa-plus"></i> Add Services
-										</a>
-									</h2>
+								<!--  new table -->
+								<h2>
+									<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
+									<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+										<i class="fa fa-plus"></i> Add Services
+									</a>
+								</h2>
 
 
-<!--  end new table -->
+								<!--  end new table -->
 
 
 
