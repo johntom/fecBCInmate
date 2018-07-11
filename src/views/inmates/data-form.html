@@ -8,6 +8,11 @@
         return "You have attempted to leave this page. Are you sure?";
     }
 	</script>
+  <script>
+    document.getElementById("test").appendChild(
+        renderjson({ hello: [1,2,3,4], there: { a:1, b:2, c:["hello", null] } })
+    );
+</script>
 	<require from="./flex.css"></require>
 	<section class="full-height flex-column-1 au-animate ignore">
 
