@@ -116,7 +116,10 @@ async function receiveMessage(event) {
   // Do we trust the sender of this message?
   const origins = [
     'http://localhost:9000',
-    'https://frontendcreator.com'
+    'http://frontendcreator.com',
+    'http://www.frontendcreator.com',
+    'https://frontendcreator.com',
+    'https://www.frontendcreator.com'
   ];
   if (!origins.includes(event.origin)) return;
 
