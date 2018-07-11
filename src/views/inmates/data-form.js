@@ -46,7 +46,7 @@ export class DataForm {
   }
 
   activate(params, routeConfig) {
-    console.log('activate')
+    console.log('activate',params)
     if (params.id) {
       this.recordId = params.id;
 

@@ -11,6 +11,7 @@ export class App {
       {"route": "grid", "name": "grid", "moduleId": PLATFORM.moduleName("./views/grid/grid"), "nav": true, "title": "Grid"},
       {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates"), "nav": true, "title": "Inmates"},
       {"route": "inmatesdata", "name": "inmatesdata", "moduleId": PLATFORM.moduleName("./views/inmates/data-form"), "nav": false, "title": "InmatesData"},
+      {"route": "inmates/:id", "name": "inmates-data-form", "moduleId": PLATFORM.moduleName("./views/inmates/data-form"), "nav": false, "title": "InmatesData"},
      
      // {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates-section"), "nav": true, "title": "Inmates"},
       
