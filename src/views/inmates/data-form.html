@@ -137,7 +137,7 @@
 
 								</td>
 	<h2>
-						<i class="fa fa-folder-open"></i> Booking (${appService.currentRecord.services.length})
+						<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
 						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
 							<i class="fa fa-plus"></i> Add Services
 						</a>
@@ -146,16 +146,13 @@
 						<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking.services; cols: ['bookingDate','classification']">
 							<tr>
 								<tr>
-									<th class="header">bookingDate
+									<th class="header">serviceDateFrom
 									</th>
-									<th class="header">classification
+									<th class="header">serviceProvided
 									</th>
-									<th class="header">bookingNo
+									<th class="header">serviceType
 									</th>
-									<th class="header">prisonerId
-									</th>
-									<th class="header">sentencingDate
-									</th>
+								
 									<th class="header">Cmd
 
 									</th>
@@ -167,7 +164,7 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td></td>
+								
 							</tr>
 						</tfoot>
 						<tbody>
@@ -183,11 +180,15 @@
 								</td>
 
 								<td width="325px">
-									<span show.bind="!service.edit">${service}</span>
+									<span show.bind="!service.edit">${serviceType}</span>
 
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="service">									</td>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType">									</td>
 								</td>
-								<td width="225px">
+									<td width="225px">
+									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+
+								</td>
 								
 <!-- services: [
 {
