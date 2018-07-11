@@ -104,93 +104,98 @@
 								<td></td>
 								<td></td>
 								<td></td>
-							</tr>
+
 						</tfoot>
-						<tbody>
-							<tr repeat.for="booking of appService.currentRecord.booking" with.bind="booking">
-								<td width="125px">
-									<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
-								</td>
-								<td width="325px">
-									<span show.bind="!booking.edit">${classification}</span>
+						<tr>
+							<tbody>
+								<tr repeat.for="booking of appService.currentRecord.booking" with.bind="booking">
+									<td width="125px">
+										<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
+										<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
+									</td>
+									<td width="325px">
+										<span show.bind="!booking.edit">${classification}</span>
 
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">									</td>
-								</td>
+										<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">										</td>
+									</td>
 
-								<td width="325px">
-									<span show.bind="!booking.edit">${bookingNo}</span>
+									<td width="325px">
+										<span show.bind="!booking.edit">${bookingNo}</span>
 
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">									</td>
-								</td>
-								<td width="225px">
-									<span show.bind="!booking.edit">${prisonerId}</span>
-
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId">									</td>
-								<td width="125px">
-									<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
-								</td>
-								<td width="225px">
-									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
-									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
-
-								</td>
-	<h2>
-						<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
-						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
-							<i class="fa fa-plus"></i> Add Services
-						</a>
-					</h2>
-					<table class="table-condensed table">
-						<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking.services; cols: ['bookingDate','classification']">
-							<tr>
-								<tr>
-									<th class="header">serviceDateFrom
-									</th>
-									<th class="header">serviceProvided
-									</th>
-									<th class="header">serviceType
-									</th>
-								
-									<th class="header">Cmd
-
-									</th>
-								</tr>
-						</thead>
-						<tfoot>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								
-							</tr>
-						</tfoot>
-						<tbody>
-							<tr repeat.for="service of appService.currentRecord.booking.services" with.bind="service">
-								<td width="125px">
-									<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">
-								</td>
-								<td width="325px">
-									<span show.bind="!service.edit">${serviceProvided}</span>
-
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">									</td>
-								</td>
-
-								<td width="325px">
-									<span show.bind="!service.edit">${serviceType}</span>
-
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType">									</td>
-								</td>
+										<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">										</td>
+									</td>
 									<td width="225px">
-									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
-									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+										<span show.bind="!booking.edit">${prisonerId}</span>
 
-								</td>
-								
-<!-- services: [
+										<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId">										</td>
+									<td width="125px">
+										<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
+										<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
+									</td>
+									<td width="225px">
+										<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+										<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+
+									</td>
+
+			<tr>
+
+
+									<h2>
+										<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
+										<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+											<i class="fa fa-plus"></i> Add Services
+										</a>
+									</h2>
+									<table class="table-condensed table">
+										<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking.services; cols: ['bookingDate','classification']">
+											<tr>
+												<tr>
+													<th class="header">serviceDateFrom
+													</th>
+													<th class="header">serviceProvided
+													</th>
+													<th class="header">serviceType
+													</th>
+
+													<th class="header">Cmd
+
+													</th>
+												</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+
+											</tr>
+										</tfoot>
+										<tbody>
+											<tr repeat.for="service of appService.currentRecord.booking.services" with.bind="service">
+												<td width="125px">
+													<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
+													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">
+												</td>
+												<td width="325px">
+													<span show.bind="!service.edit">${serviceProvided}</span>
+
+													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">													</td>
+												</td>
+
+												<td width="325px">
+													<span show.bind="!service.edit">${serviceType}</span>
+
+													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType">													</td>
+												</td>
+												<td width="225px">
+													<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+													<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+
+												</td>
+
+												<!-- services: [
 {
 serviceProvided: "*B",
 serviceType: "*D",
@@ -203,12 +208,12 @@ designatedProvider: "NBMC",
 serviceReason: "pysch eval", -->
 
 
+	</tr>
 
+											</tr>
 
-							</tr>
-
-						</tbody>
-					</table>
+										</tbody>
+									</table>
 
 				</section>
 
