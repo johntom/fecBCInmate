@@ -83,7 +83,7 @@ export class DataForm {
       
       this.currentRecord = this.appService.currentRecord
       //document.getElementById("test").appendChild(renderjson(example));
-      this.test.appendChild(renderjson(this.currentRecord));
+     // this.test.appendChild(renderjson(this.currentRecord));
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
         //// } else {
