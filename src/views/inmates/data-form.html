@@ -73,9 +73,9 @@
 
 				<section class="docs full-height flex-column-1 overflow-y-auto ignore">
 					<h2>
-						<i class="fa fa-folder-open"></i> Notes (${currentItem.notes.length})
+						<i class="fa fa-folder-open"></i> Booking (${appService.currentRecord.booking.length})
 						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
-							<i class="fa fa-plus"></i> Add Note
+							<i class="fa fa-plus"></i> Add Booking
 						</a>
 					</h2>
 
@@ -117,7 +117,7 @@
 							<tr repeat.for="booking of appService.currentRecord.booking" with.bind="booking">
 								<td width="125px">
 									<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
+									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="booking.bookingDate">
 								</td>
 								<td width="325px">
 									<span show.bind="!booking.edit">${classification}</span>
