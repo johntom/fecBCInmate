@@ -1,4 +1,12 @@
 <template>
-  <h1>Hello World</h1>
+  <require from="bootstrap/css/bootstrap.css"></require>
+   <require from="./inmates"></require>
+
+
+  <div class="container">
+    <div class="row">
+      <!--inmates <user-list class="col-md-4"></user-list> -->
+      <router-view class="col-md-8"></router-view>
+    </div>
+  </div>
 </template>
-    
