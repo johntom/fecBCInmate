@@ -359,3 +359,16 @@
 			background-color: #b8c0c8;
 			border-color: #a9b3bc;
 		}
+
+    /* renderjson http://caldwell.github.io/renderjson/ */
+    .renderjson a              { text-decoration: none; }
+.renderjson .disclosure    { color: crimson;
+                             font-size: 150%; }
+.renderjson .syntax        { color: grey; }
+.renderjson .string        { color: red; }
+.renderjson .number        { color: cyan; }
+.renderjson .boolean       { color: plum; }
+.renderjson .key           { color: lightblue; }
+.renderjson .keyword       { color: lightgoldenrodyellow; }
+.renderjson .object.syntax { color: lightseagreen; }
+.renderjson .array.syntax  { color: lightsalmon; }

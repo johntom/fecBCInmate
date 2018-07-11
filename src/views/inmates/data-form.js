@@ -81,7 +81,7 @@ export class DataForm {
          console.log('this.recordId ', this.recordId, this.appService.currentRecord);
       
       this.currentRecord = this.appService.currentRecord
-      
+      this.test = this.currentRecord
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
         //// } else {

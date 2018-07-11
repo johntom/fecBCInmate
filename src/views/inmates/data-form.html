@@ -1,6 +1,6 @@
 <template>
 	<require from="./date-format"></require>
-
+<script type="text/javascript" src="renderjson.js"></script>
 	<script language="JavaScript">
 		window.onbeforeunload = confirmExit;
     function confirmExit() {
@@ -9,6 +9,8 @@
 	</script>
 	<require from="./flex.css"></require>
 	<section class="full-height flex-column-1 au-animate ignore">
+    <div ref="test"></div>
+
 		<div class="flex-row-none section-header">
 			${heading} Add-
 		</div>
