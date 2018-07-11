@@ -117,15 +117,20 @@
 							<tr repeat.for="booking of appService.currentRecord.booking" with.bind="booking">
 								<td width="125px">
 									<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="appService.currentRecord.booking.bookingDate">
+									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
 								</td>
 								<td width="325px">
 									<span show.bind="!booking.edit">${classification}</span>
 
-									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">									</td>
+									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">									</td>
+								</td>
 
+                	<td width="325px">
+									<span show.bind="!booking.edit">${bookingNo}</span>
+
+									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">									</td>
+								</td>
 								<td width="225px">
-									<td width="325px">
 										<span show.bind="!booking.edit">${prisonerId}</span>
 
 										<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId">										</td>
