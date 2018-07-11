@@ -173,3 +173,62 @@ div.au-stagger {
     opacity: 1;
   }
 }
+
+/*
+  Flexbox
+*/
+.flex-column-1 {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+}
+.flex-column-2 {
+  display: flex;
+  flex-flow: column;
+  flex: 2;
+}
+.flex-column-3 {
+  display: flex;
+  flex-flow: column;
+  flex: 3;
+}
+.flex-column-4 {
+  display: flex;
+  flex-flow: column;
+  flex: 4;
+}
+.flex-row-none {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+}
+.flex-row-1 {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+}
+.flex-row-2 {
+  display: flex;
+  flex-flow: row;
+  flex: 2;
+}
+.flex-row-3 {
+  display: flex;
+  flex-flow: row;
+  flex: 3;
+}
+.flex-row-4 {
+  display: flex;
+  flex-flow: row;
+  flex: 4;
+}
+.flex-row-5 {
+  display: flex;
+  flex-flow: row;
+  flex: 5;
+}
+.flex-row-6 {
+  display: flex;
+  flex-flow: row;
+  flex: 6;
+}
