@@ -1,3 +1,5 @@
+import {PLATFORM} from 'aurelia-pal';
+
 export class InmatesSection {
 
  configureRouter(config, router) {
