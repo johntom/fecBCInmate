@@ -15,7 +15,7 @@ export class Inmates {
         .withBaseUrl('https://jif.bergenrisk.com/api/')
 
     });
-
+// https://jif.bergenrisk.com/api/v1/inmate
     this.http = http;
      this.router = router;
      this.appService = appService;
@@ -31,7 +31,7 @@ export class Inmates {
 
   openrecord(row) {
  console.log('row', row);
-    let rt2 = '#/inmates/data/'// + row.id; //CLAIM_ID;
+    let rt2 = '#/inmates/data/' + row.id; //CLAIM_ID;
     
       this.appService.currentRecord = row;
     this.router.navigate(rt2);// `#/inventory/${path}`);

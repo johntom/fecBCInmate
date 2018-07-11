@@ -11,9 +11,9 @@ export class App {
       {"route": "grid", "name": "grid", "moduleId": PLATFORM.moduleName("./views/grid/grid"), "nav": true, "title": "Grid"},
       {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates"), "nav": true, "title": "Inmates"},
       // {"route": "inmates/data/:id", "name": "inmates-data-form", "moduleId": PLATFORM.moduleName("../inmates/data-form"), "nav": true, "title": "Data Form" },
-      {"route": "inmates/data", "name": "data-form", "moduleId": PLATFORM.moduleName("../inmates/data-form"),  "title": "Data Form" },
+      {"route": "inmates/data", "name": "data-form", "moduleId": PLATFORM.moduleName("./inmates/data-form"),  "title": "Data Form" },
     //
-     {"route": "inmates/data/:id", "name": "data-form", "moduleId": PLATFORM.moduleName("../inmates/data-form"),  "title": "Data Form" },
+    //  {"route": "inmates/data/:id", "name": "data-form", "moduleId": PLATFORM.moduleName("../inmates/data-form"),  "title": "Data Form" },
      
       // { "route": 'inmates/data/:id', name: 'inmates-data-form', moduleId: '../inmates/data-form', title: 'Data Form' ,href: 'inmate/123', },
      
