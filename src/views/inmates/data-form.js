@@ -79,6 +79,9 @@ export class DataForm {
       } else {
         console.log('activate2')
          console.log('this.recordId ', this.recordId, this.appService.currentRecord);
+      
+      this.currentRecord = this.appService.currentRecord
+      
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
         //// } else {
