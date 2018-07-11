@@ -11,9 +11,3 @@ export class InmatesSection {
   }
 }
     
-
-
-    
-export class UsersSection {
-  
-}
