@@ -145,17 +145,7 @@
 									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 
 								</td>
-								<!--  new table -->
-								<h2>
-									<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
-									<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
-										<i class="fa fa-plus"></i> Add Services
-									</a>
-								</h2>
-
-
-								<!--  end new table -->
-
+							
 
 
 
@@ -163,6 +153,64 @@
 
 						</tbody>
 					</table>
+	<!--  new table -->
+								<h2>
+									<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.services.length})
+									<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+										<i class="fa fa-plus"></i> Add Services
+									</a>
+								</h2>
+<table class="table-condensed table">
+										<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking.services; cols: ['bookingDate','classification']">
+										  <tr>
+													<th class="header">serviceDateFrom
+													</th>
+													<th class="header">serviceProvided
+													</th>
+													<th class="header">serviceType
+													</th>
+
+													<th class="header">Cmd
+
+													</th>
+												</tr>
+										</body>
+										<tfoot>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+
+											</tr>
+										</tfoot>
+                    
+										<tbody>
+											<tr repeat.for="service of appService.currentRecord.booking.services" with.bind="service">
+												<td width="125px">
+													<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
+													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">
+												</td>
+												<td width="325px">
+													<span show.bind="!service.edit">${serviceProvided}</span>
+
+													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">													</td>
+												</td>
+
+												<td width="325px">
+													<span show.bind="!service.edit">${serviceType}</span>
+
+													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType">													</td>
+												</td>
+												<td width="225px">
+													<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+													<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+								<!--  end new table -->
 
 				</section>
 
