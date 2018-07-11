@@ -9,10 +9,9 @@ export class App {
       {"route": "child-router", "name": "child-router", "moduleId": PLATFORM.moduleName("./child-router"), "nav": true, "title": "Child Router"},
       {"route": "combo-box", "name": "combo-box", "moduleId": PLATFORM.moduleName("./views/combo-box/combo-box"), "nav": true, "title": "ComboBox"},
       {"route": "grid", "name": "grid", "moduleId": PLATFORM.moduleName("./views/grid/grid"), "nav": true, "title": "Grid"},
-      {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates"), "nav": true, "title": "Inmates"},
-      {"route": "inmates/data", "name": "data-form", "moduleId": PLATFORM.moduleName("./data-form"),  "title": "Data Form" },
-    
-     // {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates-section"), "nav": true, "title": "Inmates"},
+     // {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates"), "nav": true, "title": "Inmates"},
+     
+      {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates-section"), "nav": true, "title": "Inmates"},
       
      //  { name: 'users', route: ['users'], moduleId: 'users/users-section', nav: true, title: 'Users' },
      
@@ -23,7 +22,8 @@ export class App {
     //  {"route": "inmates/data/:id", "name": "data-form", "moduleId": PLATFORM.moduleName("../inmates/data-form"),  "title": "Data Form" },
      
       // { "route": 'inmates/data/:id', name: 'inmates-data-form', moduleId: '../inmates/data-form', title: 'Data Form' ,href: 'inmate/123', },
-     
+     // {"route": "inmates/data", "name": "data-form", "moduleId": PLATFORM.moduleName("./data-form"),  "title": "Data Form" },
+    
     ]);
 
     this.router = router;
