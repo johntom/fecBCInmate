@@ -31,7 +31,7 @@ export class Inmates {
 
   openrecord(row) {
  console.log('row', row);
-    let rt2 = '#/inmates/data/' + row.id; //CLAIM_ID;
+    let rt2 = '#/inmates/data/'// + row.id; //CLAIM_ID;
     
       this.appService.currentRecord = row;
     this.router.navigate(rt2);// `#/inventory/${path}`);
