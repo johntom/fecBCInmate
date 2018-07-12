@@ -45,7 +45,10 @@ export class DataForm {
     // this.navaway = false
 
   }
+  getServices(booking, index) {
+    console.log(' this.currentRecord ', index, booking);
 
+  }
   activate(params, routeConfig) {
     console.log('activate', params)
     if (params.id) {
@@ -75,8 +78,6 @@ export class DataForm {
         this.appService.currentItem.diaries = []
         this.appService.currentItem.notes = []
         this.appService.currentItem.adjusters = []
-
-
       } else {
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
@@ -169,6 +170,10 @@ export class DataForm {
         // });
       }
       // } // state
+
+
+
+
     }
 
 
