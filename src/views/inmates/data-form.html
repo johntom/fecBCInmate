@@ -81,9 +81,9 @@
 
 				<section class="docs full-height flex-column-1 overflow-y-auto ignore">
 					<h2>
-						<i class="fa fa-folder-open"></i> Booking (${appService.currentRecord.booking.length})
+						<i class="fa fa-folder-open"></i> Booking: (${appService.currentRecord.booking.length})
 
-						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+						<a slot="buttons-slot" class="btn btn-success" click.delegate="addBooking()">
 							<i class="fa fa-plus"></i> Add Booking
 						</a>
 					</h2>
@@ -141,11 +141,9 @@
 									<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
 								</td>
-								<td width="275px">
+								<td width="325px">
 									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
-
-
 									<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
 
 								</td>
@@ -158,7 +156,7 @@
 					</table>
 					<!--  new table -->
 					<h2>
-						<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.booking.services.length})
+						<i class="fa fa-folder-open"></i> Services (${services.length})
 						<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
 							<i class="fa fa-plus"></i> Add Services
 						</a>

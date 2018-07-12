@@ -48,6 +48,8 @@ export class DataForm {
   getServices(booking, index) {
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
+    this.getInvoices(this.services[0], index) 
+ 
   }
   getInvoices(service, index) {
     console.log(' this.currentRecord ', index, service.invoices);
@@ -88,7 +90,9 @@ export class DataForm {
 
         this.currentRecord = this.appService.currentRecord
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
-
+this.getServices(this.currentRecord.booking[0], 0) 
+this.getInvoices(this.currentRecord.booking[0].services[0], index) {
+ 
         //document.getElementById("test").appendChild(renderjson(example));
         // this.test.appendChild(renderjson(this.currentRecord));
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
