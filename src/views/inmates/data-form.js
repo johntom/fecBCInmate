@@ -43,6 +43,24 @@ export class DataForm {
     // this.navaway = false
   }
 
+  addbooking() {
+
+    let booking = this.currentRecord.booking
+    let flag = false
+    let item
+    let bookingDate = moment().format('YYYY-MM-DD')
+    if (booking === undefined) {
+      flag = true
+      booking = []
+    }
+    item = { WorkDate: newNoteWorkDate, Notes: '', edit: true }
+    booking.unshift(item)
+    if (flag) this.currentRecord.booking = booking
+
+    // this.newNoteWorkDate = '';
+    // this.newNoteNote = '';
+
+  }
   getServices(booking, index) {
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
