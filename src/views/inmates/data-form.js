@@ -23,10 +23,8 @@ export class DataForm {
   ];
 
   // productMatcher = (a, b) => a.id === b.id;
-
   // selectedProduct = { id: 1, name: 'CPU' };
-
-  //constructor(router, api, appService, dataService, eventAggregator, dialogService) {
+  // constructor(router, api, appService, dataService, eventAggregator, dialogService) {
   constructor(router, appService) {
     // this.api = api;
     // this.appService = appService;
@@ -43,14 +41,14 @@ export class DataForm {
     // this.inscontactMatcher = {}
     // this.skippromt = false
     // this.navaway = false
-
   }
+
   getServices(booking, index) {
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
     this.getInvoices(this.services[0], index)
   }
-  
+
   getInvoices(service, index) {
     // console.log(' this.currentRecord ', index, service.invoices);
     this.invoices = service.invoices
@@ -60,7 +58,6 @@ export class DataForm {
     console.log('activate', params)
     if (params.id) {
       this.recordId = params.id;
-
       if (this.recordId === 'create') {
         // this.appService.currentClaim = {}
         // this.appService.testrec = {}
@@ -88,43 +85,32 @@ export class DataForm {
       } else {
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
-
         this.currentRecord = this.appService.currentRecord
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
         this.getServices(this.currentRecord.booking[0], 0)
         // this.getInvoices(this.currentRecord.booking[0].services[0], 0)
-
         //document.getElementById("test").appendChild(renderjson(example));
         // this.test.appendChild(renderjson(this.currentRecord));
         //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
         ////  alert('You have previously modified and unsaved data')
         //// } else {
-
-
         // return this.api.findclaimOne(this.recordId).then((jsonRes) => {
         //   let claim = jsonRes.data
         //   this.appService.currentClaim = claim[0];
         //   this.appService.currentItem = claim[0];
-
         //   this.currentItem = this.appService.currentItem
-
         //   this.currentItem.xdesc = claim[0].LossDescription//DESCRIPTION
-
         //   console.log('claim[0] ', this.currentItem.LossDescription, claim[0]);
-
-
         //   this.currentItem.isDirty = () => {
         //     let tf = this.comparedata()
         //     let revtf
         //     tf === true ? revtf = false : revtf = true
         //     return revtf
-
         //   };
         //   this.currentItem.reset = () => {
         //     //   this.appService.originalrec = this.currentItem;
         //     // check for null
         //     this.appService.originalrec = JSON.parse(JSON.stringify(this.currentItem))// inv[0]));
-
         //   }
         //   // 6-13  
         //   this.appService.currentView = this.currentItem; // must set on every view
@@ -179,13 +165,7 @@ export class DataForm {
         // });
       }
       // } // state
-
-
-
-
     }
-
-
   }
 
   // comparedata() {

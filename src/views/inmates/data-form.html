@@ -142,7 +142,7 @@
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
 								</td>
 								<td width="325px">
-									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !booking.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 									<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
 
@@ -248,7 +248,7 @@
 
 
 									<td width="325px">
-										<button class="btn btn-primary" click.delegate="service.edit=!booking.edit">${ !service.edit ? 'Update' : 'Done' }</button>
+										<button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button>
 										<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
 										<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
 
@@ -321,15 +321,12 @@
 									</td>
 									<td width="125px">
 										<span show.bind="!invoice.edit">${serviceType}</span>
-
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">
 									</td>
 									<td width="125px">
 										<span show.bind="!invoice.edit">${medicalType}</span>
-
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">
 									</td>
-
 
 									<td width="125px">
 										<span show.bind="!invoice.edit">${serviceDateFrom | dateFormat }</span>
@@ -341,12 +338,10 @@
 									</td>
 									<td width="125px">
 										<span show.bind="!invoice.edit">${cpts}</span>
-
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="cpts">
 									</td>
 									<td width="125px">
 										<span show.bind="!invoice.edit">${invoiceTotal}</span>
-
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
 									</td>
 									<td width="125px">
@@ -356,7 +351,6 @@
 									</td>
 									<td width="125px">
 										<span show.bind="!invoice.edit">${savings}</span>
-
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
 									</td>
 									<td width="125px">
