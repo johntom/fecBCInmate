@@ -45,7 +45,7 @@ export class DataForm {
 
   addbooking() {
 
-    let booking = this.currentRecord.booking
+    let booking = this.appService.currentRecord.booking
     let flag = false
     let item
     let bookingDate = moment().format('YYYY-MM-DD')
@@ -55,7 +55,7 @@ export class DataForm {
     }
     item = { WorkDate: newNoteWorkDate, Notes: '', edit: true }
     booking.unshift(item)
-    if (flag) this.currentRecord.booking = booking
+    if (flag) this.appService.currentRecord = booking
 
     // this.newNoteWorkDate = '';
     // this.newNoteNote = '';
@@ -77,17 +77,7 @@ export class DataForm {
     if (params.id) {
       this.recordId = params.id;
       if (this.recordId === 'create') {
-        // this.appService.currentClaim = {}
-        // this.appService.testrec = {}
-        // this.appService.originalrec = {}
-        // this.appService.currentClaim.insured = {}
-        // this.appService.currentClaim.claimant = {}
-        // this.appService.currentClaim.insco = {}
-        // this.appService.currentClaim.insaddress = {}
-        // this.appService.currentClaim.inscontact = {}
-        // this.appService.currentClaim.diaries = []
-        // this.appService.currentClaim.notes = []
-        // this.appService.currentClaim.adjusters = []
+      
         this.appService.currentItem = {}
         this.appService.currentItem.id = 'create'
         this.appService.testrec = {}
