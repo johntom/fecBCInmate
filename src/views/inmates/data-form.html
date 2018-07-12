@@ -1,6 +1,6 @@
 <template>
 	<require from="./date-format"></require>
-  
+
 	<!-- <script type="text/javascript" src="renderjson.js"></script> -->
 	<script language="JavaScript">
 		window.onbeforeunload = confirmExit;
@@ -8,26 +8,26 @@
         return "You have attempted to leave this page. Are you sure?";
     }
 	</script>
-  <script>
-    document.getElementById("test").appendChild(
+	<script>
+		document.getElementById("test").appendChild(
         renderjson({ hello: [1,2,3,4], there: { a:1, b:2, c:["hello", null] } })
     );
-</script>
+	</script>
 	<require from="./flex.css"></require>
 	<section class="full-height flex-column-1 au-animate ignore">
 
 		<div class="flex-row-none section-header">
 			${heading} Add--
-      
+
 		</div>
-    	
+
 
 		<div class="flex-column-1 overflow-y-auto">
 			<form ref="inmate" class="flex-column-1">
 
 				<div class="flex-row-none">
 					<div class="form-group flex-column-1">
-            	<div ref="test"></div>
+						<div ref="test"></div>
 						<div class="Rtable Rtable--2cols">
 							<div class="Rtable-cell-30 Rtable-cell--green">
 								<strong> id ${appService.currentRecord.id} ${appService.currentRecord.inmate.lastname} ${currentRecord.inmate.lastname}</strong>
@@ -82,8 +82,8 @@
 				<section class="docs full-height flex-column-1 overflow-y-auto ignore">
 					<h2>
 						<i class="fa fa-folder-open"></i> Booking (${appService.currentRecord.booking.length})
-						
-            <a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+
+						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
 							<i class="fa fa-plus"></i> Add Booking
 						</a>
 					</h2>
@@ -145,10 +145,9 @@
 									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 
-								</td>
-								<td width="225px">
+
 									<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
-									
+
 								</td>
 
 
@@ -157,64 +156,224 @@
 
 						</tbody>
 					</table>
-	<!--  new table -->
-								<h2>
-									<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.booking.services.length})
-									<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
-										<i class="fa fa-plus"></i> Add Services
-									</a>
-								</h2>
-<table class="table-condensed table">
-										<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
-										  <tr>
-													<th class="header">serviceDateFrom
-													</th>
-													<th class="header">serviceProvided
-													</th>
-													<th class="header">serviceType
-													</th>
+					<!--  new table -->
+					<h2>
+						<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.booking.services.length})
+						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+							<i class="fa fa-plus"></i> Add Services
+						</a>
+					</h2>
+					<table class="table-condensed table">
+						<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
+							<tr>
+                	<th class="header">serviceProvided
+								</th>
+                	<th class="header">serviceType
+								</th>
+								<th class="header">serviceDateFrom
+								</th>
+								<th class="header">serviceProvided
+								</th>
+								<th class="header">transportMethod
+								</th>
+                	<th class="header">transportMethod
+								</th>
+                	<th class="header">sendingProvider
+								</th>
+                	<th class="header">designatedProvider
+								</th>
+                	<th class="header">serviceReason
+								</th>
 
-													<th class="header">Cmd
+								<th class="header">Cmd
 
-													</th>
-												</tr>
-										</body>
-										<tfoot>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+								</th>
+							</tr>
+							</body>
+							<tfoot>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+                  	<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+                  	<td></td>
+									<td></td>
+									
 
-											</tr>
-										</tfoot>
-                    
-										<tbody>
-											<tr repeat.for="service of services" with.bind="service">
-												<td width="125px">
-													<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
-													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">
-												</td>
-												<td width="325px">
-													<span show.bind="!service.edit">${serviceProvided}</span>
+								</tr>
+							</tfoot>
 
-													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">													</td>
-												</td>
+							<tbody>
+								<tr repeat.for="service of services" with.bind="service">
+                 <td width="125px">
+										<span show.bind="!service.edit">${serviceProvided}</span>
 
-												<td width="325px">
-													<span show.bind="!service.edit">${serviceType}</span>
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">										</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">
+									</td>
+									<td width="125px">
+										<span show.bind="!service.edit">${transportMethod}</span>
 
-													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType">													</td>
-												</td>
-												<td width="225px">
-													<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
-													<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="transportMethod">										</td>
+									</td>
 
-								<!--  end new table -->
+									<td width="125px">
+										<span show.bind="!service.edit">${sendingProvider}</span>
+
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">										</td>
+									</td>
+
+	<td width="125px">
+										<span show.bind="!service.edit">${designatedProvider}</span>
+
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">										</td>
+									</td>
+                  	<td width="325px">
+										<span show.bind="!service.edit">${serviceReason}</span>
+
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">										</td>
+									</td>
+                          
+
+									<td width="225px">
+										<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+										<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+										<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Services</button>
+
+									</td>
+								</tr>
+							</tbody>
+					</table>
+
+					<!--  end new table -->
+
+					<!--  new table invoices -->
+					<h2>
+						<i class="fa fa-folder-open"></i> Invocies (${invoices.length})
+						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+							<i class="fa fa-plus"></i> Add Services
+						</a>
+					</h2>
+					<table class="table-condensed table">
+						<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
+							<tr>
+								<th class="header">invDate
+								</th>
+								<th class="header">serviceType
+								</th>
+								<th class="header">medicalType
+								</th>
+
+								<th class="header">serviceDateFrom
+								</th>
+								<th class="header">serviceDateTo
+								</th>
+								<th class="header">cpts
+								</th>
+								<th class="header">invoiceTotal
+								</th>
+								<th class="header">repricedAmt
+								</th>
+								<th class="header">savings
+								</th>
+								<th class="header">paymentStatus
+								</th>
+								<th class="header">approvedDate
+								</th>
+								<th class="header">Cmd
+
+								</th>
+							</tr>
+							</body>
+							<tfoot>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tfoot>
+						
+							<tbody>
+								<tr repeat.for="invoice  of invoices" with.bind="invoice">
+									<td width="125px">
+										<span show.bind="!service.edit">${invDate | dateFormat }</span>
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invDate">
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${serviceType}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">	>
+									</td>
+                  	<td width="125px">
+									<span show.bind="!invoice.edit">${medicalType}</span>
+
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">									</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceDateFrom">
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${serviceDateTo | dateFormat }</span>
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceDateTo">
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${cpts}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="cpts">										</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${invoiceTotal}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">										</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${repricedAmt}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">										</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${savings}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">										</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${paymentStatus}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="paymentStatus">										</td>
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
+									</td>
+									<td width="225px">
+										<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
+										<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+								
+
+									</td>
+								</tr>
+							</tbody>
+					</table>
+					<!--  end new table -->
+
+
 
 				</section>
 
