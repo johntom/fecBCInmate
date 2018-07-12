@@ -43,7 +43,7 @@ export class DataForm {
     // this.navaway = false
   }
 
-  addbooking() {
+  addBooking() {
 
     let booking = this.appService.currentRecord.booking
     let flag = false
