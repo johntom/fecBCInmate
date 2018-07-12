@@ -260,15 +260,16 @@
 
 					<!--  end new table -->
 
-					<!--  new table invoices -->
+					<!--  new table invoices data-sort="items.bind: invoices; cols: ['bookingDate','classification']"-->
 					<h2>
-						<i class="fa fa-folder-open"></i> Invoices (${invoices.length}${ invoices[0].serviceType })
+						<i class="fa fa-folder-open"></i> Invoices (${invoices.length}
+            ${ invoices[0].serviceType ${ invoices[0].medicalType  ${ invoices[0].cpts  }  )
 						<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
 							<i class="fa fa-plus"></i> Add Invoice
 						</a>
 					</h2>
 					<table class="table-condensed table">
-						<thead class="table-header-blue" data-sort="items.bind: invoices; cols: ['bookingDate','classification']">
+						<thead class="table-header-blue" >
 							<tr>
 								<th class="header">invDate
 								</th>
@@ -314,7 +315,22 @@
 							</tfoot>
 
 							<tbody>
-								<tr repeat.for="invoice  of invoices" with.bind="invoice">
+                <tr repeat.for="invoice of invoices" with.bind="invoice">
+									<td width="125px">
+										<span show.bind="!invoice.edit">${invoice.invDate | dateFormat }</span>
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invDate">
+									</td>
+									<td width="125px">
+										<span show.bind="!invoice.edit">${invoice.serviceType}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">
+									</td>
+                  		<td width="125px">
+										<span show.bind="!invoice.edit">${invoice.serviceType}</span>
+
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">
+									</td>
+								<!-- <tr repeat.for="invoice  of invoices" with.bind="invoice">
 									<td width="125px">
 										<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invDate">
@@ -365,7 +381,7 @@
 									<td width="125px">
 										<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
-									</td>
+									</td> -->
 									<td width="225px">
 										<button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button>
 										<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
