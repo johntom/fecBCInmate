@@ -210,7 +210,7 @@
 									<td width="125px">
 										<span show.bind="!service.edit">${serviceProvided}</span>
 
-										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">							
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">
 									</td>
 									<td width="125px">
 										<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
@@ -219,30 +219,30 @@
 									<td width="125px">
 										<span show.bind="!service.edit">${transportMethod}</span>
 
-										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="transportMethod">								
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod">
 									</td>
 
 									<td width="125px">
 										<span show.bind="!service.edit">${sendingProvider}</span>
 
-										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">	
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">
 									</td>
 
 									<td width="125px">
 										<span show.bind="!service.edit">${designatedProvider}</span>
 
-										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">						
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">
 									</td>
 									<td width="325px">
 										<span show.bind="!service.edit">${serviceReason}</span>
 
-										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">		
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">
 									</td>
 
 
 									<td width="225px">
-										<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
-										<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+										<button class="btn btn-primary" click.delegate="service.edit=!booking.edit">${ !service.edit ? 'Update' : 'Done' }</button>
+										<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
 										<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Services</button>
 
 									</td>
@@ -314,12 +314,12 @@
 									<td width="125px">
 										<span show.bind="!invoice.edit">${serviceType}</span>
 
-										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">	
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">
 									</td>
 									<td width="125px">
 										<span show.bind="!invoice.edit">${medicalType}</span>
 
-										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">	
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">
 									</td>
 									<td width="125px">
 										<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
