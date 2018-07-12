@@ -176,8 +176,7 @@
 								</th>
 								<th class="header">transportMethod
 								</th>
-								<th class="header">transportMethod
-								</th>
+								
 								<th class="header">sendingProvider
 								</th>
 								<th class="header">designatedProvider
@@ -213,8 +212,17 @@
 										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceProvided">
 									</td>
 									<td width="125px">
+										<span show.bind="!service.edit">${serviceType}</span>
+
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="serviceType">
+									</td>
+									<td width="125px">
 										<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
 										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">
+									</td>
+									<td width="125px">
+										<span show.bind="!service.edit">${serviceDateTo | dateFormat }</span>
+										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateTo">
 									</td>
 									<td width="125px">
 										<span show.bind="!service.edit">${transportMethod}</span>
@@ -233,7 +241,7 @@
 
 										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">
 									</td>
-									<td width="325px">
+									<td width="125px">
 										<span show.bind="!service.edit">${serviceReason}</span>
 
 										<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">
@@ -247,6 +255,7 @@
 
 									</td>
 								</tr>
+
 							</tbody>
 					</table>
 
