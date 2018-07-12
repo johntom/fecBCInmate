@@ -141,7 +141,7 @@
 									<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
 								</td>
-								<td width="225px">
+								<td width="275px">
 									<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !note.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 

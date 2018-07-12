@@ -50,8 +50,8 @@ export class DataForm {
     this.services = booking.services
   }
   getInvoices(service, index) {
-    console.log(' this.currentRecord ', index, service.invocies);
-    this.invocies = service.invocies
+    console.log(' this.currentRecord ', index, service.invoices);
+    this.invoices = service.invoices
   }
   activate(params, routeConfig) {
     console.log('activate', params)
