@@ -1,7 +1,7 @@
 //import {computedFrom} from 'aurelia-framework';
 
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v45x';
+  heading = 'Welcome to the Aurelia Navigation App! v45y';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
