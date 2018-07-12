@@ -48,7 +48,7 @@ export class DataForm {
   getServices(booking, index) {
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
-    this.getInvoices(this.services[0], index)
+   // this.getInvoices(this.services[0], index)
 
   }
   getInvoices(service, index) {
