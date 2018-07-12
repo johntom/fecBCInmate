@@ -165,7 +165,7 @@
 									</a>
 								</h2>
 <table class="table-condensed table">
-										<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking.services; cols: ['bookingDate','classification']">
+										<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
 										  <tr>
 													<th class="header">serviceDateFrom
 													</th>
@@ -190,7 +190,7 @@
 										</tfoot>
                     
 										<tbody>
-											<tr repeat.for="service of appService.currentRecord.booking.services" with.bind="service">
+											<tr repeat.for="service of services" with.bind="service">
 												<td width="125px">
 													<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
 													<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceDateFrom">

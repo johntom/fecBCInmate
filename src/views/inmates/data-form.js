@@ -46,8 +46,8 @@ export class DataForm {
 
   }
   getServices(booking, index) {
-    console.log(' this.currentRecord ', index, booking);
-
+    console.log(' this.currentRecord ', index, booking.services);
+this.services=booking.services
   }
   activate(params, routeConfig) {
     console.log('activate', params)
