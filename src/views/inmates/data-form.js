@@ -35,8 +35,8 @@ export class DataForm {
     // this.dataService = dataService;
     // this.eventAggregator = eventAggregator;
     // this.createEventListeners();
-    this.inscoAdjusters = []
-    this.inscoAddresses = []
+    this.services = []
+    this.invoices = []
     this.router = router;
     this.appService = appService;
     // this.dialogService = dialogService
