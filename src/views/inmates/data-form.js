@@ -53,7 +53,7 @@ export class DataForm {
       flag = true
       booking = []
     }
-    item = { WorkDate: newNoteWorkDate, Notes: '', edit: true }
+    item = { bookingDate: bookingDate, classification: '', edit: true }
     booking.unshift(item)
     if (flag) this.appService.currentRecord = booking
 
