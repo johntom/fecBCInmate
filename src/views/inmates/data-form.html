@@ -122,18 +122,18 @@
 									<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
 								</td>
-								<td width="325px">
+								<td width="125px">
 									<span show.bind="!booking.edit">${classification}</span>
 
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">									</td>
 								</td>
 
-								<td width="325px">
+								<td width="125px">
 									<span show.bind="!booking.edit">${bookingNo}</span>
 
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">									</td>
 								</td>
-								<td width="225px">
+								<td width="125px">
 									<span show.bind="!booking.edit">${prisonerId}</span>
 
 									<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId">									</td>
@@ -159,7 +159,7 @@
 					<!--  new table -->
 					<h2>
 						<i class="fa fa-folder-open"></i> Services (${appService.currentRecord.booking.services.length})
-						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
+						<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
 							<i class="fa fa-plus"></i> Add Services
 						</a>
 					</h2>
@@ -251,7 +251,7 @@
 									<td width="225px">
 										<button class="btn btn-primary" click.delegate="service.edit=!booking.edit">${ !service.edit ? 'Update' : 'Done' }</button>
 										<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
-										<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Services</button>
+										<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
 
 									</td>
 								</tr>
@@ -263,9 +263,9 @@
 
 					<!--  new table invoices -->
 					<h2>
-						<i class="fa fa-folder-open"></i> Invocies (${invoices.length})
-						<a slot="buttons-slot" class="btn btn-success" click.delegate="addNote()">
-							<i class="fa fa-plus"></i> Add Services
+						<i class="fa fa-folder-open"></i> Invoices (${invoices.length})
+						<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
+							<i class="fa fa-plus"></i> Add Invoice
 						</a>
 					</h2>
 					<table class="table-condensed table">
