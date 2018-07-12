@@ -91,7 +91,7 @@ export class DataForm {
         this.currentRecord = this.appService.currentRecord
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
 this.getServices(this.currentRecord.booking[0], 0) 
-this.getInvoices(this.currentRecord.booking[0].services[0], index) 
+this.getInvoices(this.currentRecord.booking[0].services[0], 0) 
  
         //document.getElementById("test").appendChild(renderjson(example));
         // this.test.appendChild(renderjson(this.currentRecord));
