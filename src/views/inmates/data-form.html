@@ -263,7 +263,7 @@
 					<!--  new table invoices data-sort="items.bind: invoices; cols: ['bookingDate','classification']"-->
 					<h2>
 						<i class="fa fa-folder-open"></i> Invoices (${invoices.length}
-            ${ invoices[0].serviceType ${ invoices[0].medicalType  ${ invoices[0].cpts  }  )
+            ${ invoices[0].serviceType  )
 						<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
 							<i class="fa fa-plus"></i> Add Invoice
 						</a>
@@ -330,6 +330,15 @@
 
 										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">
 									</td>
+
+
+
+	<td width="125px">
+										<span show.bind="!invoice.edit">${medicalType}</span>
+	<span show.bind="!invoice.edit">${invoice.medicalType}</span>
+										<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">
+									</td>
+
 								<!-- <tr repeat.for="invoice  of invoices" with.bind="invoice">
 									<td width="125px">
 										<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
