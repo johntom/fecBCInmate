@@ -4,7 +4,7 @@ import {HttpClient} from 'aurelia-fetch-client';
 @inject(Lazy.of(HttpClient))
 export class Users {
 
-  heading = 'Github Users';
+  heading = 'Github Users a';
   users = [];
 
   constructor(getHttpClient) {
