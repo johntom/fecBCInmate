@@ -136,7 +136,7 @@ export class DataForm {
   //this.appService.currentItem
    // this.invoices = service.invoices booking.services
   
-    console.log(' call save ',this.currentItem)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+    console.log(' call save ',this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
   }
 
   
