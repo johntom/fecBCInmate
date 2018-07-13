@@ -45,7 +45,7 @@ export class DataForm {
 
   addBooking() {
 
-    let booking = this.appService.currentRecord.booking
+    let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
     let flag = false
     let item
     let bookingDate = moment().format('YYYY-MM-DD')
@@ -61,7 +61,6 @@ export class DataForm {
 
   }
   addService() {
-
     let service = this.services
     let flag = false
     let item
@@ -70,15 +69,12 @@ export class DataForm {
       flag = true
       service = []
     }
-    item = { serviceDateFrom: serviceDateFrom, edit: true }
+    item = { serviceDateFrom: serviceDateFrom,serviceDateTo: serviceDateFrom, edit: true }
     service.unshift(item)
     if (flag) this.services = service
     this.serviceDateFrom = '';
-   
-
   }
   addInvoice() {
-
     let invoice = this.invoices
     let flag = false
     let item
@@ -87,11 +83,10 @@ export class DataForm {
       flag = true
       invoice = []
     }
-    item = { invDate: bookingDate, edit: true }
+    item = { invDate: invDate, edit: true }
     invoice.unshift(item)
     if (flag) this.invoices = invoice
     this.invDate = '';
-   
   }
   getServices(booking, index) {
     console.log(' this.currentRecord ', index, booking.services);
@@ -101,7 +96,7 @@ export class DataForm {
 
   getInvoices(service, index) {
     // console.log(' this.currentRecord ', index, service.invoices);
-    this.invoices = service.invoices
+    this.invoices = service.invoices 
     console.log(' getInvoices ', this.invoices)
   }
   activate(params, routeConfig) {
@@ -128,130 +123,21 @@ export class DataForm {
         this.currentRecord = this.appService.currentRecord
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
         this.getServices(this.currentRecord.booking[0], 0)
-        // this.getInvoices(this.currentRecord.booking[0].services[0], 0)
-        //document.getElementById("test").appendChild(renderjson(example));
-        // this.test.appendChild(renderjson(this.currentRecord));
-        //// if ((this.appService.currentClaim !== undefined) && (this.appService.currentClaim.CLAIM_NO === this.recordId)) {
-        ////  alert('You have previously modified and unsaved data')
-        //// } else {
-        // return this.api.findclaimOne(this.recordId).then((jsonRes) => {
-        //   let claim = jsonRes.data
-        //   this.appService.currentClaim = claim[0];
-        //   this.appService.currentItem = claim[0];
-        //   this.currentItem = this.appService.currentItem
-        //   this.currentItem.xdesc = claim[0].LossDescription//DESCRIPTION
-        //   console.log('claim[0] ', this.currentItem.LossDescription, claim[0]);
-        //   this.currentItem.isDirty = () => {
-        //     let tf = this.comparedata()
-        //     let revtf
-        //     tf === true ? revtf = false : revtf = true
-        //     return revtf
-        //   };
-        //   this.currentItem.reset = () => {
-        //     //   this.appService.originalrec = this.currentItem;
-        //     // check for null
-        //     this.appService.originalrec = JSON.parse(JSON.stringify(this.currentItem))// inv[0]));
-        //   }
-        //   // 6-13  
-        //   this.appService.currentView = this.currentItem; // must set on every view
-        //   this.appService.originalrec = JSON.parse(JSON.stringify(this.currentItem))// inv[0]));
-        //   this.appService.testrec = claim[0];
-        //   console.log('copy this.appService.originalrec ', this.appService.originalrec);
-
-        //   if (claim[0].adjusters !== undefined && claim[0].adjusters.length > 0) {
-        //     let aid = claim[0].adjusters.findIndex(x => x.TYPE === "Primary")
-        //     this.currentItem.primaryAdjuster = claim[0].adjusters[aid].ADJUSTER_NAME;
-        //     this.appService.originalrec.primaryAdjuster = this.currentItem.primaryAdjuster
-        //   }
-        //   let insco = this.appService.InsurancecompanyList
-
-        //   let serviceinsco = this.appService.currentClaim.insco.INSURANCE_COMPANY_ID * 1
-        //   if (serviceinsco !== undefined) {
-        //     let aid = insco.findIndex(x => x.INSURANCE_COMPANY_ID === serviceinsco)
-        //     let item = insco[aid];
-        //     let icd
-        //     let bid
-        //     this.inscoAdjusters = item.contacts
-        //     icd = this.currentItem.inscontact.INSURANCE_CONTACT_ID
-        //     bid = this.inscoAdjusters.findIndex(x => x.INSURANCE_CONTACT_ID === icd)
-        //     this.inscontactMatcher = this.inscoAdjusters[bid]
-        //     let a = this.inscoAdjusters
-        //     let b = this.currentItem.inscontact
-        //     this.inscontactMatcher = (a, b) => a.INSURANCE_CONTACT_ID === b.INSURANCE_CONTACT_ID;
-        //     console.log('inscontactMatcher ', this.inscontactMatcher)
-        //   }
-
-        //   if ((this.currentItem.INSURED_ID === undefined) || (this.appService.insuredList === null)) {
-        //   } else {
-        //     let insured = this.appService.insuredList
-        //     oid = insured.findIndex(x => x.INSURED_ID === this.appService.currentClaim.INSURED_ID)
-        //     console.log('oid ', oid)
-        //     insuredobj = this.appService.insuredList[oid]//10]
-        //     console.log('insuredobj ', insuredobj)
-        //     if (insuredobj !== undefined) this.currentItem.LEGAL_NAME = insuredobj.LEGAL_NAME
-        //   }
-        //   // setup insured
-        //   let oid
-        //   let insuredobj
-        //   let insured = this.appService.insuredList
-        //   if ((this.currentItem.INSURED_ID === undefined) || (this.appService.insuredList === null)) {
-        //   } else {
-        //     oid = insured.findIndex(x => x.INSURED_ID === this.currentItem.INSURED_ID)
-        //     insuredobj = this.appService.insuredList[oid]//10]
-        //     if (insuredobj !== undefined) this.currentItem.LEGAL_NAME = insuredobj.LEGAL_NAME
-        //   }
-        //   // end setup insured
-
-        // });
+      
       }
       // } // state
     }
   }
 
-  // comparedata() {
-  //   console.log('ADJUSTER_NAME', this.currentItem.ADJUSTER_NAME === this.appService.originalrec.ADJUSTER_NAME)
-  //   console.log('ADJUSTER_ID', this.currentItem.ADJUSTER_ID === this.appService.originalrec.ADJUSTER_ID)
-  //   console.log('ASSIGNMENT_TYPE', this.currentItem.ASSIGNMENT_TYPE === this.appService.originalrec.ASSIGNMENT_TYPE)
-  //   console.log('ASSIGNMENT_TYPE_DESC', this.currentItem.ASSIGNMENT_TYPE_DESC === this.appService.originalrec.ASSIGNMENT_TYPE_DESC)
-  //   console.log('CARRIER_FILE_NO', this.currentItem.CARRIER_FILE_NO === this.appService.originalrec.CARRIER_FILE_NO)
-  //   console.log('CLAIMANT_ID', this.currentItem.claimant.LAST_NAME === this.appService.originalrec.claimant.LAST_NAME)
-  //   console.log('CLAIM_TYPE', this.currentItem.CLAIM_TYPE === this.appService.originalrec.CLAIM_TYPE)
-  //   console.log('DATE_OF_LOSS', this.currentItem.DATE_OF_LOSS === this.appService.originalrec.DATE_OF_LOSS)
-  //   console.log('LossDescription', this.currentItem.LossDescription === this.appService.originalrec.LossDescription)
-  //   console.log('ASSIGNMENT_TYPE', this.currentItem.ASSIGNMENT_TYPE === this.appService.originalrec.ASSIGNMENT_TYPE)
-  //   console.log('ASSIGNMENT_TYPE', this.currentItem.ASSIGNMENT_TYPE_DESC === this.appService.originalrec.ASSIGNMENT_TYPE_DESC)
-  //   console.log('STATUS', this.currentItem.STATUS === this.appService.originalrec.STATUS)
-  //   console.log('insured', this.currentItem.insured.LEGAL_NAME === this.appService.originalrec.insured.LEGAL_NAME)
-  //   console.log('primaryAdjuster', this.currentItem.primaryAdjuster === this.appService.originalrec.primaryAdjuster)
-  //   console.log('insco', this.currentItem.insco.NAME, this.appService.originalrec.insco.NAME, this.currentItem.insco.NAME === this.appService.originalrec.insco.NAME)
-  //   console.log('inscontact', this.currentItem.inscontact.NAME_LAST === this.appService.originalrec.inscontact.NAME_LAST)
-  //   console.log('claimant.LAST_NAME', this.currentItem.claimant.LAST_NAME === this.appService.originalrec.claimant.LAST_NAME)
-
-  //   return (
-
-  //     this.currentItem.ASSIGNMENT_TYPE === this.appService.originalrec.ASSIGNMENT_TYPE
-  //     && this.currentItem.ASSIGNMENT_TYPE_DESC === this.appService.originalrec.ASSIGNMENT_TYPE_DESC
-
-  //     && this.currentItem.CARRIER_FILE_NO === this.appService.originalrec.CARRIER_FILE_NO
-  //     && this.currentItem.claimant.LAST_NAME === this.appService.originalrec.claimant.LAST_NAME
-
-  //     && this.currentItem.CLAIM_TYPE === this.appService.originalrec.CLAIM_TYPE
-
-  //     && this.currentItem.DATE_OF_LOSS === this.appService.originalrec.DATE_OF_LOSS
-
-  //     && this.currentItem.LossDescription === this.appService.originalrec.LossDescription
-  //     && this.currentItem.STATUS === this.appService.originalrec.STATUS
-  //     && this.currentItem.insured.LEGAL_NAME === this.appService.originalrec.insured.LEGAL_NAME
-  //     && this.currentItem.primaryAdjuster === this.appService.originalrec.primaryAdjuster
-  //     && this.currentItem.insco.NAME === this.appService.originalrec.insco.NAME
-  //     && this.currentItem.inscontact.NAME_LAST === this.appService.originalrec.inscontact.NAME_LAST
-
-  //     && this.currentItem.claimant.LAST_NAME === this.appService.originalrec.claimant.LAST_NAME
-
-  //   )
-
-  // }
-
+  saveinmate() {
+  //  let modrec = this.currentRecord
+  // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
+  this.appService.currentItem.booking.services= this.services
+  //this.appService.currentItem
+   // this.invoices = service.invoices booking.services
+  
+    console.log(' call save ', JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+  }
 
   // showModal(fieldname) {
 
@@ -287,42 +173,11 @@ export class DataForm {
   // }
 
   attached() {
-    // if (this.appService.dataFormOneToOneTabs.length > 0) {
-    //   let tab = this.appService.dataFormOneToOneTabs[0];
-
-    //   this.selectOneToOneTab(tab);
-    // }
-    // if (this.appService.dataFormOneToManyTabs.length > 0) {
-    //   let tab = this.appService.dataFormOneToManyTabs[0];
-
-    //   this.selectOneToManyTab(tab);
-
-    // }
+   
   }
-  selectChangedIA(adjusterid) {
-
-    // let insadjusters = this.inscoAdjusters
-    // let aid = insadjusters.findIndex(x => x.INSURANCE_CONTACT_ID === adjusterid)
-    // let item = insadjusters[aid];// { ADJUSTER_ID: 4, ADJUSTER_NAME: "Donna Luciani", edit: true }
-    // //  this.currentnewItem.inscontact = item
-    // //this.currentItem.inscontact = item
-    // this.appService.currentClaim.inscontact = item
-  }
-  // selectChangedIAddr(insurancecompanyid) {
-
-  //   let insaddresses = this.inscoAddresses
-  //   let aid = insaddresses.findIndex(x => x.INSURANCE_COMPANY_ID === insurancecompanyid)
-  //   let item = insaddresses[aid];// { ADJUSTER_ID: 4, ADJUSTER_NAME: "Donna Luciani", edit: true }
-  //   this.currentnewItem.insaddress = item
-
-  // }
+  
   bind() {
-    // this.adjusters = this.appService.adjusterList
-    // console.log('adjusters ', this.adjusters);
-
-    // this.bookApi.getGenres().then(genres => {
-    //   this.adjusters = genres;
-    // });
+   
   }
 
   // createEventListeners() {
@@ -342,8 +197,9 @@ export class DataForm {
   }
 
 
-  saveinmate() {
-
+  saveinmatexx() {
+  let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
+  
     console.log(' call save ', JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
     //return 
 
@@ -422,8 +278,6 @@ export class DataForm {
       }
     });
 
-
-
   }
   //    async tryCloseTab(item, tab, route) {
   requestclose() {
@@ -435,21 +289,6 @@ export class DataForm {
 
   }
 
-
-  // selectOneToOneTab(tab) {
-  //   this.appService.dataFormOneToOneTabs.forEach(t => t.isSelected = false);
-  //   tab.isSelected = true;
-  //   this.currentOneToOneTab = tab;
-  //   // this.appService.currentItem = this.appService.currentClaim //this.currentItem
-  //   return true;
-  // }
-  // selectOneToManyTab(tab) {
-  //   this.appService.dataFormOneToManyTabs.forEach(t => t.isSelected = false);
-  //   tab.isSelected = true;
-  //   this.currentOneToManyTab = tab;
-  //   // this.appService.currentItem = this.appService.currentClaim //this.currentItem
-  //   return true;
-  // }
 
 
   // closeTab(tab) {
