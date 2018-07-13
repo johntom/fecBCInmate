@@ -132,45 +132,14 @@ export class DataForm {
   saveinmate() {
   //  let modrec = this.currentRecord
   // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
-  this.appService.currentItem.booking.services= this.services
+  this.currentItem//.booking//.services= this.services
   //this.appService.currentItem
    // this.invoices = service.invoices booking.services
   
-    console.log(' call save ', JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+    console.log(' call save ',this.currentItem)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
   }
 
-  // showModal(fieldname) {
-
-  //   // alert('fieldname' + fieldname, this.appService.currentClaim.DESCRIPTION) currentClaim
-  //   console.log('fieldname' + fieldname, this.currentItem.LossDescription)//DESCRIPTION)
-  //   this.dialogService.open({ viewModel: Prompt, model: fieldname, lock: false }).whenClosed(response => {
-  //     //INSURED_ID currentItem.insured.LEGAL_NAME
-  //     if (fieldname === 'insco') {
-  //       ///let serviceinsco = this.appService.currentClaim.INSURANCE_COMPANY_ID * 1 // or insco.IN...
-  //       let serviceinsco = this.appService.currentItem.insco.INSURANCE_COMPANY_ID * 1 // or insco.IN...
-  //       let insco = this.appService.InsurancecompanyList
-  //       if (serviceinsco !== undefined) {
-  //         let aid = insco.findIndex(x => x.INSURANCE_COMPANY_ID === serviceinsco)
-  //         let item = insco[aid];
-  //         this.inscoAdjusters = item.contacts
-  //         this.inscoAddresses = item.addresses
-  //         this.currentItem.insco = this.appService.currentItem.insco
-  //       }
-  //     }
-
-  //     if (fieldname === 'INSURED_ID') {
-
-  //       this.currentItem.insured = this.appService.currentItem.insured
-  //     }
-
-  //     if (fieldname === 'LossDescription') {
-
-  //       this.currentItem.LossDescription = this.appService.currentItem.LossDescription
-  //     }
-
-  //     console.log(response.output);
-  //   });
-  // }
+  
 
   attached() {
    
@@ -180,7 +149,53 @@ export class DataForm {
    
   }
 
-  // createEventListeners() {
+  
+  detached() {
+    // alert('det')
+    // this.ratingElement.removeEventListener('change', this.ratingChangedListener);
+    // this.selectAdjusterElement.removeEventListener('change', this.adjusterSelectedListener);
+  }
+
+
+
+
+  canDeactivate() {
+    return new Promise((resolve, reject) => {
+      if (this.currentItem &&
+        this.currentItem.isDirty &&
+        this.currentItem.isDirty()) {
+        // Now, we need to query the user... result => makes it a closure
+        this.appService.asyncHandleDirty().then(result => {
+          if (!result.wasCancelled) {
+
+
+            resolve(true); // ok to leave
+          } else {
+
+            resolve(false); // cancel to stay
+
+          }
+        });
+      } else {
+        resolve(true);
+      }
+    });
+
+  }
+  //    async tryCloseTab(item, tab, route) {
+  requestclose() {
+    // const resetFunc = () => { this.appService.originalrec = this.currentItem; };
+    // let cand = this.canDeactivate()
+    // let tab = this.appService.tabs.find(f => f.isSelected);
+    // let rt2 = '#/claim/' + this.tabname ///claim'//Search?'cant use when search has a number 
+    // this.appService.tryCloseTab(this.currentItem, tab, rt2);
+
+  }
+
+
+
+}
+// createEventListeners() {
   //   this.adjusterSelectedListener = e => {
   //     if (e && e.detail) {
   //       this.adjuster = e.detail.value;
@@ -190,18 +205,11 @@ export class DataForm {
 
   // }
 
-  detached() {
-    // alert('det')
-    // this.ratingElement.removeEventListener('change', this.ratingChangedListener);
-    // this.selectAdjusterElement.removeEventListener('change', this.adjusterSelectedListener);
-  }
-
-
-  saveinmatexx() {
-  let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
+  // saveinmatexx() {
+  // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
   
-    console.log(' call save ', JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
-    //return 
+  //   console.log(' call save ', JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+  //   //return 
 
     // let pcount = 0
     //  this.appService.currentItem.adjusters.forEach(function (item, index) {
@@ -253,44 +261,7 @@ export class DataForm {
     //   }
 
     // }
-  }
-
-
-  canDeactivate() {
-    return new Promise((resolve, reject) => {
-      if (this.currentItem &&
-        this.currentItem.isDirty &&
-        this.currentItem.isDirty()) {
-        // Now, we need to query the user... result => makes it a closure
-        this.appService.asyncHandleDirty().then(result => {
-          if (!result.wasCancelled) {
-
-
-            resolve(true); // ok to leave
-          } else {
-
-            resolve(false); // cancel to stay
-
-          }
-        });
-      } else {
-        resolve(true);
-      }
-    });
-
-  }
-  //    async tryCloseTab(item, tab, route) {
-  requestclose() {
-    // const resetFunc = () => { this.appService.originalrec = this.currentItem; };
-    // let cand = this.canDeactivate()
-    // let tab = this.appService.tabs.find(f => f.isSelected);
-    // let rt2 = '#/claim/' + this.tabname ///claim'//Search?'cant use when search has a number 
-    // this.appService.tryCloseTab(this.currentItem, tab, rt2);
-
-  }
-
-
-
+  // }
   // closeTab(tab) {
 
   //   let index = this.appService.tabs.indexOf(tab);
@@ -298,5 +269,35 @@ export class DataForm {
   //   this.appService.tabs.splice(index, 1);
 
   // }
-}
+// showModal(fieldname) {
 
+  //   // alert('fieldname' + fieldname, this.appService.currentClaim.DESCRIPTION) currentClaim
+  //   console.log('fieldname' + fieldname, this.currentItem.LossDescription)//DESCRIPTION)
+  //   this.dialogService.open({ viewModel: Prompt, model: fieldname, lock: false }).whenClosed(response => {
+  //     //INSURED_ID currentItem.insured.LEGAL_NAME
+  //     if (fieldname === 'insco') {
+  //       ///let serviceinsco = this.appService.currentClaim.INSURANCE_COMPANY_ID * 1 // or insco.IN...
+  //       let serviceinsco = this.appService.currentItem.insco.INSURANCE_COMPANY_ID * 1 // or insco.IN...
+  //       let insco = this.appService.InsurancecompanyList
+  //       if (serviceinsco !== undefined) {
+  //         let aid = insco.findIndex(x => x.INSURANCE_COMPANY_ID === serviceinsco)
+  //         let item = insco[aid];
+  //         this.inscoAdjusters = item.contacts
+  //         this.inscoAddresses = item.addresses
+  //         this.currentItem.insco = this.appService.currentItem.insco
+  //       }
+  //     }
+
+  //     if (fieldname === 'INSURED_ID') {
+
+  //       this.currentItem.insured = this.appService.currentItem.insured
+  //     }
+
+  //     if (fieldname === 'LossDescription') {
+
+  //       this.currentItem.LossDescription = this.appService.currentItem.LossDescription
+  //     }
+
+  //     console.log(response.output);
+  //   });
+  // }

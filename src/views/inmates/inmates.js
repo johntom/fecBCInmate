@@ -2,12 +2,12 @@ import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 import { Router } from 'aurelia-router';
 import { ApplicationService } from '../../services/application-service';
-@inject( HttpClient ,Router,ApplicationService)
+@inject(HttpClient, Router, ApplicationService)
 export class Inmates {
   heading = 'BC Inmates';
   inmates = [];
 
-  constructor(http,router,appService) {
+  constructor(http, router, appService) {
     //console.log('in c')
     http.configure(config => {
       config
@@ -15,10 +15,10 @@ export class Inmates {
         .withBaseUrl('https://jif.bergenrisk.com/api/')
 
     });
-// https://jif.bergenrisk.com/api/v1/inmate
+    // https://jif.bergenrisk.com/api/v1/inmate
     this.http = http;
-     this.router = router;
-     this.appService = appService;
+    this.router = router;
+    this.appService = appService;
   }
 
   activate() {
@@ -30,10 +30,10 @@ export class Inmates {
   }
 
   openrecord(row) {
- console.log('row', row);
+    console.log('row', row);
     let rt2 = `#/inmates/${row.id}`; //CLAIM_ID;
     // let rt2 = '#/inmatesdata'
-      this.appService.currentRecord = row;
+    this.appService.currentRecord = row;
     this.router.navigate(rt2);// `#/inventory/${path}`);
   }
 
