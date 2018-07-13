@@ -53,12 +53,16 @@ export class DataForm {
     }
     item = { bookingDate: bookingDate, classification: '', edit: true }
     booking.unshift(item)
+    
     if (flag) this.appService.currentRecord = booking
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-    booking.services = []
-    booking.invoices = []
+     booking.services=[]
+     booking.services.invoices=[]
+    booking.services.push('') //= []
+    booking.services.invoices.push('') //= []
+    // booking.invoices = []
     
   }
   addService() {
