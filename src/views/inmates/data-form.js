@@ -57,7 +57,7 @@ export class DataForm {
     if (flag) this.appService.currentRecord = booking
     this.bookingDate = '';
     this.classification = '';
-    this.getServices(booking, 0)
+    this.getServices(item,0)//booking, 0)
   }
   addService() {
     let service = this.services
