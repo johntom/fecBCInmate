@@ -56,10 +56,42 @@ export class DataForm {
     item = { bookingDate: bookingDate, classification: '', edit: true }
     booking.unshift(item)
     if (flag) this.appService.currentRecord = booking
+    this.bookingDate = '';
+    this.classification = '';
 
-    // this.newNoteWorkDate = '';
-    // this.newNoteNote = '';
+  }
+  addService() {
 
+    let service = this.services
+    let flag = false
+    let item
+    let serviceDateFrom = moment().format('YYYY-MM-DD')
+    if (service === undefined) {
+      flag = true
+      service = []
+    }
+    item = { serviceDateFrom: serviceDateFrom, edit: true }
+    service.unshift(item)
+    if (flag) this.services = service
+    this.serviceDateFrom = '';
+   
+
+  }
+  addInvoice() {
+
+    let invoice = this.invoices
+    let flag = false
+    let item
+    let invDate = moment().format('YYYY-MM-DD')
+    if (invoice === undefined) {
+      flag = true
+      invoice = []
+    }
+    item = { invDate: bookingDate, edit: true }
+    invoice.unshift(item)
+    if (flag) this.invoices = invoice
+    this.invDate = '';
+   
   }
   getServices(booking, index) {
     console.log(' this.currentRecord ', index, booking.services);
