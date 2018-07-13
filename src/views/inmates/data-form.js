@@ -58,12 +58,12 @@ export class DataForm {
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-    booking[0].services = []
-    booking[0].services.invoices = []
-    booking[0].services.push('') //= []
-    booking[0].services.invoices.push('') //= []
+    booking[0].services[0] = []
+    booking[0].services[0].invoices = []
+    //booking[0].services[0].push('') //= []
+   // booking[0].services.invoices.push('') //= []
     // booking.invoices = []
-
+this.getServices(booking[0],0) //booking, 0)
   }
   addService() {
     let service = this.services
