@@ -56,7 +56,9 @@ export class DataForm {
     if (flag) this.appService.currentRecord = booking
     this.bookingDate = '';
     this.classification = '';
-    this.getServices(0,0) //booking, 0)
+    // this.getServices(0,0) //booking, 0)
+    this.services = []
+    this.invoices = []
   }
   addService() {
     let service = this.services
@@ -71,7 +73,7 @@ export class DataForm {
     service.unshift(item)
     if (flag) this.services = service
     this.serviceDateFrom = '';
-     this.getInvoices(service, 0)
+    this.getInvoices(service, 0)
   }
   addInvoice() {
     let invoice = this.invoices
@@ -88,14 +90,14 @@ export class DataForm {
     this.invDate = '';
   }
   getServices(booking, index) {
-    if (booking===0){
-//  this.getInvoices(0,0)
- this.invoices =[]
-    } else {
-    console.log(' this.currentRecord ', index, booking.services);
-    this.services = booking.services
-    this.getInvoices(this.services[0], index)
-    }
+    // if (booking === 0) {
+    //   //  this.getInvoices(0,0)
+    //   this.invoices = []
+    // } else {
+      console.log(' this.currentRecord ', index, booking.services);
+      this.services = booking.services
+      this.getInvoices(this.services[0], index)
+    // }
   }
 
   getInvoices(service, index) {
