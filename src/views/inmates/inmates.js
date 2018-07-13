@@ -12,7 +12,7 @@ export class Inmates {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('https://gtztest.com/api')//https://jif.bergenrisk.com/api/')
+        .withBaseUrl('https://gtztest.com/api/')//https://jif.bergenrisk.com/api/')
 
     });
     // https://jif.bergenrisk.com/api/v1/inmate
