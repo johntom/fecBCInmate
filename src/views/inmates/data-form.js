@@ -62,17 +62,8 @@ export class DataForm {
     item2 = { serviceDateFrom: serviceDateFrom }
   
     booking[0].services = []
-    booking[0].services.push(item2)
-
+   // booking[0].services.push(item2)
     booking[0].services[0].invoices = []
-    //booking[0].services[0].invoices[0].push(item2)
-
-
-    // booking.services = []
-    // booking.services.push(item2)
-
-    // booking.services.invoices = []
-    // booking.services.invoices.push(item2)
 
     this.getServices(booking[0], 0) //booking, 0)
 
