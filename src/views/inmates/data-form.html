@@ -270,6 +270,11 @@
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
 						<i class="fa fa-plus"></i> Add Invoice
 					</a>
+          			<i class="fa fa-folder-open"></i> Docs for ${currentItem.claimant.LAST_NAME} click button below or drag n drop files's
+					over button
+					<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
+						<i class="fa fa-plus"></i> Add Uploaded File
+					</a>
 				</h2>
 				<table class="table-condensed table">
 					<thead class="table-header-blue">
@@ -376,7 +381,7 @@
 				</table>
 				<!--  end new table -->
 				<!--  new docs table -->
-				<h2>
+				<h4>
 
 					<i class="fa fa-folder-open"></i> Docs for ${currentItem.claimant.LAST_NAME} click button below or drag n drop files's
 					over button
@@ -391,7 +396,7 @@
 						<i class="material-icons prefix">search</i>
 					</a>
 					<input style='height:88' id='file' type="file" name="file" files.bind="file" multiple>
-				</h2>
+				</h4>
 				<!-- <form> -->
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: currentItem.docs; cols: ['FILE_NAME','FILE_EXT']">
