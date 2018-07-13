@@ -58,7 +58,7 @@ export class DataForm {
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-     let serviceDateFrom = moment().format('MM-DDYYYY')
+     let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
    
     booking[0].services = []
     booking[0].services.push({ serviceDateFrom: serviceDateFrom})
@@ -69,7 +69,7 @@ export class DataForm {
     //booking[0].services[0].push('') //= []
     //booking[0].services.invoices.push('') //= []
     //booking.invoices = []
-    this.getServices(booking[0], 0) //booking, 0)
+    this.getServices(booking, 0) //booking, 0)
 
   }
   addService() {
