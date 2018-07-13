@@ -9,7 +9,7 @@ import { ApiService } from '../../utils/servicesApi';
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
-@inject(Router, ApplicationService,ApiService)
+@inject(Router, ApplicationService, ApiService)
 
 export class DataForm {
   heading = 'DataAddForm HEADER...';
@@ -25,9 +25,10 @@ export class DataForm {
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
   // constructor(router, api, appService, dataService, eventAggregator, dialogService) {
-  constructor(router, appService,api) {
-    // this.api = api;
-    // this.appService = appService;
+  constructor(router, appService, api) {
+    this.api = api;
+    this.appService = appService;
+    this.router = router;
     console.log('DataForm')
     this.inv = '';
     // this.dataService = dataService;
@@ -35,8 +36,6 @@ export class DataForm {
     // this.createEventListeners();
     this.services = []
     this.invoices = []
-    this.router = router;
-    this.appService = appService;
     // this.dialogService = dialogService
     // this.inscontactMatcher = {}
     // this.skippromt = false
@@ -45,7 +44,7 @@ export class DataForm {
 
   addBooking() {
 
-    let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
+    let booking = this.currentRecord.booking //this.appService.currentRecord.booking
     let flag = false
     let item
     let bookingDate = moment().format('YYYY-MM-DD')
@@ -69,7 +68,7 @@ export class DataForm {
       flag = true
       service = []
     }
-    item = { serviceDateFrom: serviceDateFrom,serviceDateTo: serviceDateFrom, edit: true }
+    item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
     service.unshift(item)
     if (flag) this.services = service
     this.serviceDateFrom = '';
@@ -96,7 +95,7 @@ export class DataForm {
 
   getInvoices(service, index) {
     // console.log(' this.currentRecord ', index, service.invoices);
-    this.invoices = service.invoices 
+    this.invoices = service.invoices
     console.log(' getInvoices ', this.invoices)
   }
   activate(params, routeConfig) {
@@ -104,7 +103,7 @@ export class DataForm {
     if (params.id) {
       this.recordId = params.id;
       if (this.recordId === 'create') {
-      
+
         this.appService.currentItem = {}
         this.appService.currentItem.id = 'create'
         this.appService.testrec = {}
@@ -123,35 +122,35 @@ export class DataForm {
         this.currentRecord = this.appService.currentRecord
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
         this.getServices(this.currentRecord.booking[0], 0)
-      
+
       }
       // } // state
     }
   }
 
   saveinmate() {
-  //  let modrec = this.currentRecord
-  // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
-  //this.currentItem//.booking//.services= this.services
-  //this.appService.currentItem
-   // this.invoices = service.invoices booking.services
-  
-    console.log(' call save ',this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
-api.saveinmate(this.currentRecord)
+    //  let modrec = this.currentRecord
+    // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
+    //this.currentItem//.booking//.services= this.services
+    //this.appService.currentItem
+    // this.invoices = service.invoices booking.services
+
+    console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+    this.api.saveinmate(this.currentRecord)
 
   }
 
-  
+
 
   attached() {
-   
-  }
-  
-  bind() {
-   
+
   }
 
-  
+  bind() {
+
+  }
+
+
   detached() {
     // alert('det')
     // this.ratingElement.removeEventListener('change', this.ratingChangedListener);
@@ -209,7 +208,7 @@ api.saveinmate(this.currentRecord)
 
   // saveinmatexx() {
   // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
-  
+
   //   console.log(' call save ', JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
   //   //return 
 
