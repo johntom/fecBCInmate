@@ -57,7 +57,7 @@ export class DataForm {
     if (flag) this.appService.currentRecord = booking
     this.bookingDate = '';
     this.classification = '';
-    this.getServices(booking, index)
+    this.getServices(booking, 0)
   }
   addService() {
     let service = this.services
@@ -72,7 +72,7 @@ export class DataForm {
     service.unshift(item)
     if (flag) this.services = service
     this.serviceDateFrom = '';
-     this.getInvoices(service, index)
+     this.getInvoices(service, 0)
   }
   addInvoice() {
     let invoice = this.invoices
