@@ -132,7 +132,7 @@ export class DataForm {
   saveinmate() {
   //  let modrec = this.currentRecord
   // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
-  this.currentItem//.booking//.services= this.services
+  //this.currentItem//.booking//.services= this.services
   //this.appService.currentItem
    // this.invoices = service.invoices booking.services
   
