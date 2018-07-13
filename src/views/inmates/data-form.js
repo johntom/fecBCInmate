@@ -65,7 +65,7 @@ export class DataForm {
     booking[0].services.push(item2)
 
     booking[0].services[0].invoices = []
-    booking[0].services[0].invoices[0].push(item2)
+    //booking[0].services[0].invoices[0].push(item2)
 
 
     // booking.services = []
