@@ -53,17 +53,17 @@ export class DataForm {
     }
     item = { bookingDate: bookingDate, classification: '', edit: true }
     booking.unshift(item)
-    
+
     if (flag) this.appService.currentRecord = booking
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-     booking.services=[]
-     booking.services.invoices=[]
-    booking.services.push('') //= []
-    booking.services.invoices.push('') //= []
+    booking[0].services = []
+    booking[0].services.invoices = []
+    booking[0].services.push('') //= []
+    booking[0].services.invoices.push('') //= []
     // booking.invoices = []
-    
+
   }
   addService() {
     let service = this.services
@@ -99,9 +99,9 @@ export class DataForm {
     //   //  this.getInvoices(0,0)
     //   this.invoices = []
     // } else {
-      console.log(' this.currentRecord ', index, booking.services);
-      this.services = booking.services
-      this.getInvoices(this.services[0], index)
+    console.log(' this.currentRecord ', index, booking.services);
+    this.services = booking.services
+    this.getInvoices(this.services[0], index)
     // }
   }
 
