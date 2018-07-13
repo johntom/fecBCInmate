@@ -45,7 +45,7 @@ export class DataForm {
   addBooking() {
     let booking = this.currentRecord.booking //this.appService.currentRecord.booking
     let flag = false
-    let item
+    let item,item2
     let bookingDate = moment().format('YYYY-MM-DD')
     if (booking === undefined) {
       flag = true
@@ -59,13 +59,13 @@ export class DataForm {
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
      let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
-  let item2 = { serviceDateFrom: serviceDateFrom }
+    item2 = { serviceDateFrom: serviceDateFrom }
   
-    booking[0].services = []
+    booking[0].services = [item2]
     booking[0].services.push(item2)
 
-    booking[0].services[0].invoices = []
-    booking[0].services[0].invoices[0].push(item2)
+    booking[0].services[0].invoices = [item2]
+    // booking[0].services[0].invoices[0].push(item2)
 
 
     // booking.services = []
