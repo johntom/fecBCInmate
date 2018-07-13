@@ -51,7 +51,7 @@ export class DataForm {
       flag = true
       booking = []
     }
-    item = { bookingDate: bookingDate, classification: '', edit: true }
+    item = { bookingDate: bookingDate, classification: 'friday', edit: true }
     booking.unshift(item)
 
     if (flag) this.appService.currentRecord = booking
@@ -62,7 +62,7 @@ export class DataForm {
     item2 = { serviceDateFrom: serviceDateFrom }
   
     booking[0].services = [item2]
-    booking[0].services.push(item2)
+    //booking[0].services.push(item2)
 
     booking[0].services[0].invoices = [item2]
     // booking[0].services[0].invoices[0].push(item2)
@@ -74,7 +74,7 @@ export class DataForm {
     // booking.services.invoices = []
     // booking.services.invoices.push(item2)
 
-    this.getServices(booking, 0) //booking, 0)
+    this.getServices(booking[0], 0) //booking, 0)
 
   }
   addService() {
