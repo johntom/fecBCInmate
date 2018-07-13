@@ -57,8 +57,9 @@ export class DataForm {
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-    this.services = []
-    this.invoices = []
+    booking.services = []
+    booking.invoices = []
+    
   }
   addService() {
     let service = this.services
