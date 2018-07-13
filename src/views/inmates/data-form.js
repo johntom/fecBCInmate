@@ -3,13 +3,13 @@ import { inject } from 'aurelia-dependency-injection';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { ApplicationService } from '../../services/application-service';
 import moment from 'moment';
-// import { ApiService } from '../../utils/servicesApi';
+import { ApiService } from '../../utils/servicesApi';
 // import { ApplicationService } from '../../services/application-service';
 // import { MyDataService } from "../../services/my-data-service";
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
-@inject(Router, ApplicationService)
+@inject(Router, ApplicationService,ApiService)
 
 export class DataForm {
   heading = 'DataAddForm HEADER...';
@@ -25,7 +25,7 @@ export class DataForm {
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
   // constructor(router, api, appService, dataService, eventAggregator, dialogService) {
-  constructor(router, appService) {
+  constructor(router, appService,api) {
     // this.api = api;
     // this.appService = appService;
     console.log('DataForm')
@@ -137,6 +137,8 @@ export class DataForm {
    // this.invoices = service.invoices booking.services
   
     console.log(' call save ',this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+api.saveinmate(this.currentRecord)
+
   }
 
   
