@@ -7,7 +7,7 @@ import { bindable } from 'aurelia-framework';
 // @inject(HttpClient, Router, ApplicationService, ApiService)
 @inject(Router, ApplicationService, ApiService)
 export class Inmates {
-    @bindable searchdoc
+  @bindable searchdoc
   heading = 'BC Inmates';
   inmates = [];
 
@@ -34,33 +34,39 @@ export class Inmates {
   //   console.log('inmates ', this.inmates)
   // }
   ///////////
-  metainmates = ['inmate.lastname', 'inmate.firstname', 'inmate.ss']
-    
+  //metainmates = ['inmate.lastname', 'inmate.firstname', 'inmate.ss']
+ metainmates = ['lastname', 'firstname', 'ss']
+
   constructor(router, appService, api) {
     this.router = router;
     this.appService = appService;
     this.api = api;
-       
+
   }
   //  return this.api.findclaimOne(this.recordId).then((jsonRes) => {
   //         // console.log('jsonRes ', jsonRes);
   //         let claim = jsonRes.data
-  searchdocChanged(value) { 
-    if (value==="") {  this.inmates=this.allinmates } else
-    // this.inmates = this.inmates.filter((item) => {
-    //   //if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
-    //   if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
-      
-    // }); 
+  searchdocChanged(value) {
+    if (value === "") { this.inmates = this.allinmates } else
+      // this.inmates = this.inmates.filter((item) => {
+      //   //if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
+      //   if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
 
-     for (let i in this.metainmates) {
-                let md = this.metainmates[i]
-                   if (item[md] !== undefined) {
-                        // if (item[md].toLowerCase().search(value.toLowerCase()) != -1) return true
-                        if (item[md].toLowerCase().search(value.toLowerCase()) != -1) return true
-                }
-            }
-
+      // }); 
+      // this.inmates = this.inmates.filter((item) => {
+      //   //if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
+      //   if ((item.inmate.lastname).toLowerCase().search(value.toLowerCase()) != -1) return true
+      // }); 
+//  this.inmates = arr.find(o => o.name === 'string 1');
+      this.inmates = this.inmates.filter((item) => {
+        for (let i in this.metainmates) {
+          let md = this.metainmates[i]
+          if (item.inmate[md] !== undefined) {
+               // if (item[md].toLowerCase().search(value.toLowerCase()) != -1) return true
+            if ((item.inmate[md]).toLowerCase().search(value.toLowerCase()) != -1) return true
+          }
+        }
+      });
     return
   }
   activate() {
@@ -69,7 +75,7 @@ export class Inmates {
     return this.api.getInmates()
       .then(jsonRes => {
         this.inmates = jsonRes.data
-         this.allinmates = jsonRes.data
+        this.allinmates = jsonRes.data
         console.log('inmates ', this.inmates)
       });
   }
