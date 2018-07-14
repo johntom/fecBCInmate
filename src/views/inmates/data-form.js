@@ -41,7 +41,18 @@ export class DataForm {
     // this.skippromt = false
     // this.navaway = false
   }
-
+testEditB(booking,editstate){
+  booking.edit=!editstate//this.booking.edit
+  this.services = booking.services
+  this.getInvoices(this.services[0], 0)
+}
+testEditS(service,editstate){
+  service.edit=!editstate//this.booking.edit
+ //// this.services = booking.services
+  //this.getInvoices(this.services[0], 0)
+  this.getInvoices(service, 0)
+  
+}
   addBooking() {
     let booking = this.currentRecord.booking //this.appService.currentRecord.booking
     let flag = false

@@ -7,7 +7,7 @@ export class ApiService {
   constructor(http) {
     this.http = http;
     this.upmess = ''
-      this.baseweb = 'https://gtztest.com/api/'
+    this.baseweb = 'https://gtztest.com/api/'
     // this.baseweb = 'https://jif.bergenrisk.com/api/';
   }
   getUserJwt(username, pass) {
@@ -28,6 +28,17 @@ export class ApiService {
 
   }
 
+  getInmates() {
+    var url = this.baseweb + 'v1/inmate/'
+    console.log('url inmate ', url)
+    return this.http.fetch(url, {
+      method: 'get',
+      mode: 'cors'
+    }).then((res) => res.json());
+  }
+
+
+  // get images
   saveinmate(rec) {
     //alert('in saveclaim')
     let url = this.baseweb + `v1/inmate/update`

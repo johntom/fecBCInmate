@@ -17,7 +17,7 @@
 	<section class="full-height flex-column-1 au-animate ignore">
 
 		<div class="flex-row-none section-header">
-			${heading} Add--
+			${heading} Add
 
 		</div>
 
@@ -80,13 +80,13 @@
 			</div>
 
 			<section class="docs full-height flex-column-1 overflow-y-auto ignore">
-				<h2>
+				<h3>
 					<i class="fa fa-folder-open"></i> Booking: (${appService.currentRecord.booking.length})
 
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addBooking()">
 						<i class="fa fa-plus"></i> Add Booking
 					</a>
-				</h2>
+				</h3>
 
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking; cols: ['bookingDate','classification']">
@@ -143,8 +143,10 @@
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
 							</td>
 							<td width="325px">
-								<button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">${ !booking.edit ? 'Update' : 'Done' }</button>								edit: true
-
+								<!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
+                  ${ !booking.edit ? 'Update' : 'Done' }</button>	 -->
+								<button class="btn btn-primary" click.delegate="testEditB(booking,booking.edit)">
+                  ${ !booking.edit ? 'Update' : 'Done' }</button>
 								<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 								<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
 
@@ -159,12 +161,12 @@
 				<!--  end booking table -->
 
 				<!--  new table -->
-				<h2>
+				<h3>
 					<i class="fa fa-folder-open"></i> Services (${services.length})
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
 						<i class="fa fa-plus"></i> Add Services
 					</a>
-				</h2>
+				</h3>
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
 						<tr>
@@ -252,7 +254,9 @@
 
 
 								<td width="325px">
-									<button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button>
+									<!-- <button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button> -->
+									<button class="btn btn-primary" click.delegate="testEditB(service,service.edit)">
+                  ${ !service.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
 									<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
 
@@ -265,25 +269,25 @@
 				<!--  end new table -->
 
 				<!--  new table invoices data-sort="items.bind: invoices; cols: ['bookingDate','classification']"-->
-				<h2>
+				<h3>
 					<i class="fa fa-folder-open"></i> Invoices (${invoices.length} )
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
 						<i class="fa fa-plus"></i> Add Invoice
 					</a>
-          			<i class="fa fa-folder-open"></i> Docs for ${currentItem.claimant.LAST_NAME} click button below or drag n drop files's
-					over button
-					<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
+				  Docs for Invoice ${invoice.invDate} click button below or drag n drop files's over
+					button
+					<!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
 						<i class="fa fa-plus"></i> Add Uploaded File
-					</a>
-				</h2>
+					</a> -->
+				</h3>
 				<table class="table-condensed table">
 					<thead class="table-header-blue">
 						<tr>
 							<th class="header">invDate
 							</th>
-							<th class="header">serviceType
+							<th class="header">Service<br>Type
 							</th>
-							<th class="header">medicalType
+							<th class="header">Medical<br>Type
 							</th>
 							<th class="header">serviceDateFrom
 							</th>
@@ -291,7 +295,7 @@
 							</th>
 							<th class="header">cpts
 							</th>
-							<th class="header">invoiceTotal
+							<th class="header">Invoice<br>Total
 							</th>
 							<th class="header">repricedAmt
 							</th>
@@ -302,6 +306,8 @@
 							<th class="header">approvedDate
 							</th>
 							<th class="header">Cmd
+							</th>
+							<th class="header">Drop
 							</th>
 						</tr>
 						</body>
@@ -328,11 +334,11 @@
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invDate">
 								</td>
-								<td width="125px">
+								<td width="75px">
 									<span show.bind="!invoice.edit">${serviceType}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="serviceType">
 								</td>
-								<td width="125px">
+								<td width="75px">
 									<span show.bind="!invoice.edit">${medicalType}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">
 								</td>
@@ -349,7 +355,7 @@
 									<span show.bind="!invoice.edit">${cpts}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="cpts">
 								</td>
-								<td width="125px">
+								<td width="75px">
 									<span show.bind="!invoice.edit">${invoiceTotal}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
 								</td>
@@ -372,16 +378,23 @@
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
 								</td>
 
-								<td width="225px">
+								<td width="375px">
 									<button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
+									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
+										<i class="fa fa-plus"></i> Upload
+									</a>
+								</td>
+
+								<td width="125px">
+									<h4> <input id='file' type="file" name="file" files.bind="file"></h4>
 								</td>
 							</tr>
 						</tbody>
 				</table>
 				<!--  end new table -->
 				<!--  new docs table -->
-				<h4>
+				<h3>
 
 					<i class="fa fa-folder-open"></i> Docs for ${currentItem.claimant.LAST_NAME} click button below or drag n drop files's
 					over button
@@ -395,9 +408,11 @@
 						<input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
 						<i class="material-icons prefix">search</i>
 					</a>
-					<input style='height:88' id='file' type="file" name="file" files.bind="file" multiple>
+          </h3>
+			<h4>		<input style='height:88px' id='file' type="file" name="file" files.bind="file" multiple>
 				</h4>
 				<!-- <form> -->
+          <div class="col-sm-6 ">
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: currentItem.docs; cols: ['FILE_NAME','FILE_EXT']">
 						<tr>
@@ -425,6 +440,7 @@
 						</tr>
 					</tbody>
 				</table>
+          </div>
 				<!-- </form> -->
 
 				<!--  end booking table -->
