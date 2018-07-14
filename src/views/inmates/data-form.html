@@ -30,50 +30,56 @@
 					<div ref="test"></div>
 					<div class="Rtable Rtable--2cols">
 						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> id ${appService.currentRecord.id} ${appService.currentRecord.inmate.lastname} ${currentRecord.inmate.lastname}</strong>
+							<strong> id </strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="appService.currentRecord.id">
+							${currentRecord.id}
 						</div>
 						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> inmate.lastname</strong>
+							<strong> lastname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="appService.currentRecord.inmate.lastname">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.lastname">
 						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> inmate.firstname</strong>
+							<strong> firstname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="appService.currentRecord.inmate.firstname">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.firstname">
 						</div>
 
-						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> inmate.gender</strong>
-						</div>
-						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="appService.currentRecord.inmate.gender">
-						</div>
 
-						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> inmate.DOB</strong>
-						</div>
-						<div class="Rtable-cell-70 Rtable-cell--green">
-							<strong> inmate.DOB</strong>
-							<input type="text" id="id" class="form-control input-sm" value.bind="appService.currentRecord.inmate.DOB">
-						</div>
 					</div>
 				</div>
 
 				<div class="form-group flex-column-1 margin-left-10">
 					<div class="Rtable Rtable--2cols">
 						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> inmate.gender</strong>
+							<strong> Gender</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="appService.currentRecord.inmate.gender">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.gender">
 						</div>
+
+
+
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> DOB</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+${currentRecord.inmate.DOB}
+							<input type="date" id="DOB" class="form-control input-sm" value.bind="currentRecord.inmate.DOB">
+						</div>
+
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> ss</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
+						</div>
+
+
 					</div>
 				</div>
 
@@ -274,8 +280,7 @@
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
 						<i class="fa fa-plus"></i> Add Invoice
 					</a>
-				  Docs for Invoice ${invoice.invDate} click button below or drag n drop files's over
-					button
+					Docs for Invoice ${invoice.invDate} click button below or drag n drop files's over button
 					<!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
 						<i class="fa fa-plus"></i> Add Uploaded File
 					</a> -->
@@ -408,39 +413,39 @@
 						<input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
 						<i class="material-icons prefix">search</i>
 					</a>
-          </h3>
-			<h4>		<input style='height:88px' id='file' type="file" name="file" files.bind="file" multiple>
+				</h3>
+				<h4> <input style='height:88px' id='file' type="file" name="file" files.bind="file" multiple>
 				</h4>
 				<!-- <form> -->
-          <div class="col-sm-6 ">
-				<table class="table-condensed table">
-					<thead class="table-header-blue" data-sort="items.bind: currentItem.docs; cols: ['FILE_NAME','FILE_EXT']">
-						<tr>
-							<th class="header">FILE_NAME </th>
-							<th class="header">FILE_EXT </th>
+				<div class="col-sm-6 ">
+					<table class="table-condensed table">
+						<thead class="table-header-blue" data-sort="items.bind: currentItem.docs; cols: ['FILE_NAME','FILE_EXT']">
+							<tr>
+								<th class="header">FILE_NAME </th>
+								<th class="header">FILE_EXT </th>
 
-						</tr>
-					</thead>
-					<tfoot>
-						<tr>
-							<td></td>
-							<td></td>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<td></td>
+								<td></td>
 
-						</tr>
-					</tfoot>
-					<tbody>
-						<tr repeat.for="doc of showdocs" with.bind="doc">
-							<td>
-								<a size='100' class="form-control  input-sm" target="_blank" href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
-									${FILE_NAME}
-								</a>
-							</td>
-							<td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr repeat.for="doc of showdocs" with.bind="doc">
+								<td>
+									<a size='100' class="form-control  input-sm" target="_blank" href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
+										${FILE_NAME}
+									</a>
+								</td>
+								<td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td>
 
-						</tr>
-					</tbody>
-				</table>
-          </div>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<!-- </form> -->
 
 				<!--  end booking table -->
