@@ -455,7 +455,7 @@
 				<!-- <form> -->
 				<div class="col-sm-6 ">
 					<table class="table-condensed table">
-						<thead class="table-header-blue" data-sort="items.bind: currentItem.docs; cols: ['FILE_NAME','FILE_EXT']">
+						<thead class="table-header-blue" data-sort="items.bind: currentRecord.docs; cols: ['FILE_NAME','FILE_EXT']">
 							<tr>
 								<th class="header">FILE_NAME </th>
 								<th class="header">FILE_EXT </th>
@@ -470,7 +470,7 @@
 							</tr>
 						</tfoot>
 						<tbody>
-							<tr repeat.for="doc of showdocs" with.bind="doc">
+							<tr repeat.for="doc of docs" with.bind="doc">
 								<td>
 									<a size='100' class="form-control  input-sm" target="_blank" href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
 										${FILE_NAME}

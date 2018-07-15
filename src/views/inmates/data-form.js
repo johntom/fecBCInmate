@@ -207,9 +207,14 @@ export class DataForm {
       for (i = 0; i < images.length; i++) {
         let ext = images[i].name.split('.').pop();
         let fname = images[i].name
+        console.log('fname ',fname)
         let mid = -100// not needed
         let ival = i
+        console.log('ival ',ival)
+        
         mid = docs.findIndex(x => x.FILE_NAME === fname)
+        console.log('mid ',mid)
+       
         if (mid > -1) {
           // if we find file in array pass all values so we can evaluate later
           let obj = { name: fname, val: ival, ext: ext }
@@ -217,6 +222,8 @@ export class DataForm {
           promises.push(promise);
         } else {
           var item = { FILE_NAME: fname, FILE_EXT: '.' + ext, OVERWRITE: 'N' }
+          console.log('item ',item)
+      
           docs.unshift(item)
           formData.append('file', images[ival]);
         }
