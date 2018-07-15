@@ -41,12 +41,12 @@ export class DataForm {
     // this.skippromt = false
     // this.navaway = false
   }
-testEditB(booking,editstate){
+  EditBooking(booking,editstate){
   booking.edit=!editstate//this.booking.edit
   this.services = booking.services
   this.getInvoices(this.services[0], 0)
 }
-testEditS(service,editstate){
+  EditService(service,editstate){
   service.edit=!editstate//this.booking.edit
  //// this.services = booking.services
   //this.getInvoices(this.services[0], 0)
@@ -75,7 +75,7 @@ testEditS(service,editstate){
     booking[0].services = []
     booking[0].services.push(item2)
     booking[0].services[0].invoices = []
-    this.getServices(booking[0], 0) //booking, 0)
+    this.getServices(booking[0], 0)  //booking, 0)
 
   }
   addService() {
@@ -123,6 +123,30 @@ testEditS(service,editstate){
     this.invoices = service.invoices
     console.log(' getInvoices ', this.invoices)
   }
+  close() {
+
+
+      // let tab = this.appService.tabs.find(f => f.isSelected);
+      // Next, we navigate to the newly created claim
+
+      // Finally, we close out this tab
+      // this.closeTab(tab);
+      
+      this.closeTab
+      let rt2 = '#/'
+      
+      this.router.navigate(rt2);
+
+
+   
+  }
+  closeTab(tab) {
+
+    let index = this.appService.tabs.indexOf(tab);
+    tab.isSelected = false;
+    this.appService.tabs.splice(index, 1);
+  }
+
   activate(params, routeConfig) {
     console.log('activate', params)
     if (params.id) {
