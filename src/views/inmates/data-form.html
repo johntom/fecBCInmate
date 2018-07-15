@@ -391,7 +391,7 @@
 									<span show.bind="!invoice.edit">${serviceDateTo | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="serviceDateTo">
 								</td> -->
-								<td width="125px">
+								<td width="225px">
 									<span show.bind="!invoice.edit">${cpts}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="cpts">
 								</td>
@@ -418,7 +418,7 @@
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
 								</td>
 
-								<td width="375px">
+								<td width="325px">
 									<button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
 									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
