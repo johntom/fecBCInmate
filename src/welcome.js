@@ -1,9 +1,9 @@
-//import {computedFrom} from 'aurelia-framework';
-import { ApiService } from '../utils/servicesApi';
-import { ApplicationService } from '../services/application-service';
+import {inject} from 'aurelia-framework';
+import { ApiService } from './utils/servicesApi';
+import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v47x';
+  heading = 'Welcome to the Aurelia Navigation App! v47y';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
