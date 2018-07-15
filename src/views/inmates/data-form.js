@@ -186,6 +186,7 @@ addDocs(images) {
   //check for dups 2/21/2018
   //https://stackoverflow.com/questions/32736599/html-file-upload-and-action-on-single-button
   let docs = this.currentItem.docs
+  if (docs === undefined) docs = []
   let formData = new FormData()
   let newDate = moment().format('YYYY-MM-DD')
   let flag = false
