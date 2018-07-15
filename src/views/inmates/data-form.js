@@ -41,22 +41,25 @@ export class DataForm {
     // this.skippromt = false
     // this.navaway = false
   }
-  EditBooking(booking,editstate){
-  booking.edit=!editstate//this.booking.edit
-  this.services = booking.services
-  this.getInvoices(this.services[0], 0)
-}
-  EditService(service,editstate){
-  service.edit=!editstate//this.booking.edit
- //// this.services = booking.services
-  //this.getInvoices(this.services[0], 0)
-  this.getInvoices(service, 0)
-  
-}
+  EditBooking(booking, editstate) {
+    this.currentBooking = booking
+    booking.edit = !editstate//this.booking.edit
+    this.services = booking.services
+    this.getInvoices(this.services[0], 0)
+  }
+
+  EditService(service, editstate) {
+ this.currentService = service
+    service.edit = !editstate//this.booking.edit
+    //// this.services = booking.services
+    //this.getInvoices(this.services[0], 0)
+    this.getInvoices(service, 0)
+
+  }
   addBooking() {
     let booking = this.currentRecord.booking //this.appService.currentRecord.booking
     let flag = false
-    let item,item2
+    let item, item2
     let bookingDate = moment().format('YYYY-MM-DD')
     if (booking === undefined) {
       flag = true
@@ -69,9 +72,9 @@ export class DataForm {
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-     let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
+    let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
     item2 = { serviceDateFrom: serviceDateFrom }
-  
+
     booking[0].services = []
     booking[0].services.push(item2)
     booking[0].services[0].invoices = []
@@ -112,6 +115,7 @@ export class DataForm {
     //   //  this.getInvoices(0,0)
     //   this.invoices = []
     // } else {
+    this.currentBooking = booking
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
     this.getInvoices(this.services[0], index)
@@ -121,24 +125,25 @@ export class DataForm {
   getInvoices(service, index) {
     // console.log(' this.currentRecord ', index, service.invoices);
     this.invoices = service.invoices
+    this.currentService = service
     console.log(' getInvoices ', this.invoices)
   }
   close() {
 
 
-      // let tab = this.appService.tabs.find(f => f.isSelected);
-      // Next, we navigate to the newly created claim
+    // let tab = this.appService.tabs.find(f => f.isSelected);
+    // Next, we navigate to the newly created claim
 
-      // Finally, we close out this tab
-      // this.closeTab(tab);
-      
-      this.closeTab
-      let rt2 = '#/'
-      
-      this.router.navigate(rt2);
+    // Finally, we close out this tab
+    // this.closeTab(tab);
+
+    this.closeTab
+    let rt2 = '#/'
+
+    this.router.navigate(rt2);
 
 
-   
+
   }
   closeTab(tab) {
 
