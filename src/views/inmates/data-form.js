@@ -181,6 +181,66 @@ export class DataForm {
       // } // state
     }
   }
+addDocs(images) {
+  //images is file
+  //check for dups 2/21/2018
+  //https://stackoverflow.com/questions/32736599/html-file-upload-and-action-on-single-button
+  let docs = this.currentItem.docs
+  let formData = new FormData()
+  let newDate = moment().format('YYYY-MM-DD')
+  let flag = false
+  let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
+    let newform = values;
+    console.log('after checkdata1 ', this.status, newform);
+    // this.api.upload(formData, this.currentItem.CLAIM_NO)
+    this.api.upload(newform, this.currentItem.id)
+      .then((jsonRes) => {
+        this.upmess = jsonRes.message
+
+        $("#file").val("");
+      })
+  })
+}
+
+checkData(images, formData) {
+  let promises = []
+  return new Promise((resolve, reject) => {
+    let i = 0;
+    let docs = this.currentItem.docs
+    if (docs === undefined) docs = []
+    let imagelen = images.length
+    for (i = 0; i < images.length; i++) {
+      let ext = images[i].name.split('.').pop();
+      let fname = images[i].name
+      let mid = -100// not needed
+      let ival = i
+      mid = docs.findIndex(x => x.FILE_NAME === fname)
+      if (mid > -1) {
+        // if we find file in array pass all values so we can evaluate later
+        let obj = { name: fname, val: ival, ext: ext }
+        var promise = this.promiseDialog(obj)
+        promises.push(promise);
+      } else {
+        var item = { FILE_NAME: fname, FILE_EXT: '.' + ext, OVERWRITE: 'N' }
+        docs.unshift(item)
+        formData.append('file', images[ival]);
+      }
+    }
+    return Promise.all(promises).then(values => {
+      for (i = 0; i < values.length; i++) {
+        //console.log(' this.response values[i] ',i,values[i].name,values[i].val,values[i].resp)
+        if (!values[i].resp) {
+          //true=wasCancelled
+          var item = { FILE_NAME: values[i].name, FILE_EXT: values[i].ext, OVERWRITE: 'Y' }
+          // dont add to data docs.unshift(item)
+          formData.append('file', images[values[i].val]);
+        }
+      }
+      resolve(formData)
+    })
+  })
+}
+
 
   saveinmate() {
     //  let modrec = this.currentRecord
