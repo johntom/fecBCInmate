@@ -185,7 +185,7 @@ addDocs(images) {
   //images is file
   //check for dups 2/21/2018
   //https://stackoverflow.com/questions/32736599/html-file-upload-and-action-on-single-button
-  let docs = this.currentItem.docs
+  let docs = this.currentRecord.docs
   if (docs === undefined) docs = []
   let formData = new FormData()
   let newDate = moment().format('YYYY-MM-DD')
@@ -194,7 +194,7 @@ addDocs(images) {
     let newform = values;
     console.log('after checkdata1 ', this.status, newform);
     // this.api.upload(formData, this.currentItem.CLAIM_NO)
-    this.api.upload(newform, this.currentItem.id)
+    this.api.upload(newform, this.currentRecord.id)
       .then((jsonRes) => {
         this.upmess = jsonRes.message
 
