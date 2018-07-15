@@ -201,7 +201,7 @@ export class DataForm {
     let promises = []
     return new Promise((resolve, reject) => {
       let i = 0;
-      let docs = this.currentItem.docs
+      let docs = this.currentRecord.docs
       if (docs === undefined) docs = []
       let imagelen = images.length
       for (i = 0; i < images.length; i++) {
