@@ -196,7 +196,14 @@ export class DataForm {
         })
     })
   }
-
+addDocTest(){
+   var item = { FILE_NAME: 'fname', FILE_EXT: '.pdf' , OVERWRITE: 'N' }
+          console.log('item ',item)
+        let docs = this.currentRecord.docs
+      if (docs === undefined) docs = []
+        docs.unshift(item)
+        this.docs=docs
+}
   checkData(images, formData) {
     let promises = []
     return new Promise((resolve, reject) => {
@@ -225,6 +232,7 @@ export class DataForm {
           console.log('item ',item)
       
           docs.unshift(item)
+           this.docs=docs
           formData.append('file', images[ival]);
         }
       }
