@@ -132,8 +132,17 @@
 							<td width="125px">
 								<span show.bind="!booking.edit">${classification}</span>
 
-								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">								</td>
-							</td>
+								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">		</td>
+						
+            
+          	<select show.bind="booking.edit" id="adj" class="form-control input-sm" value.two-way="booking.classification" change.delegate="selectChanged(adjuster, adjuster.ADJUSTER_ID)"> 
+              <option model.bind="null">Choose...</option> 
+              <option repeat.for="opt of appService.classificationList" model.bind="opt.code">
+                ${opt.code} 
+              </option> 
+            </select>
+            
+            	</td>
 
 							<td width="125px">
 								<span show.bind="!booking.edit">${bookingNo}</span>
