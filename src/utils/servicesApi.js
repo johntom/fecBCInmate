@@ -739,11 +739,11 @@ export class ApiService {
     console.log('url ', url, formData);
     return this.http.fetch(url, {
       mode: 'cors',
-      method: 'POST',
+      method: 'POST', 
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'enctype': "multipart/form-data"
+        'enctype': "multipart/form-data" 
       },
       body: JSON.stringify(formData)
     }).then((res) => res.json());
@@ -759,7 +759,8 @@ export class ApiService {
       headers: {
         'enctype': "multipart/form-data"
       },
-      body: formData
+      // body: formData
+        body: JSON.stringify(formData)
     }).then((res) => res.json());
   }
 
