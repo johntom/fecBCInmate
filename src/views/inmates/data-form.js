@@ -168,6 +168,7 @@ export class DataForm {
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
         this.currentRecord = this.appService.currentRecord
+        this.docs =  this.currentRecord.docs
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
         this.getServices(this.currentRecord.booking[0], 0)
 
