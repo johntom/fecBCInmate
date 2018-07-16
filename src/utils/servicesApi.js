@@ -8,7 +8,7 @@ export class ApiService {
     this.http = http;
     this.upmess = ''
     this.baseweb = 'https://gtztest.com/api/'
-    // this.baseweb = 'https://jif.bergenrisk.com/api/';
+    this.basewebjif = 'https://jif.bergenrisk.com/api/';
   }
   getUserJwt(username, pass) {
     var token = {};
@@ -751,7 +751,9 @@ export class ApiService {
 
 
   upload(formData, id) {
-    var url = this.baseweb + `v1/uploadinmate/${id}`
+    // var url = this.baseweb + `v1/uploadinmate/${id}`
+      var url = this.basewebjif + `v1/uploadinmate/01-03166`
+ 
     console.log('url ', url, formData);
     return this.http.fetch(url, {
       mode: 'cors',
