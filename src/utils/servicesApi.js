@@ -761,10 +761,12 @@ export class ApiService {
       headers: {
         'enctype': "multipart/form-data"
       },
-      // body: formData
+       body: formData
         //body: json(formData)
-        body: JSON.stringify(formData)
-    }).then((res) => res.json());
+       // body: JSON.stringify(formData)
+    }).then((res) => res.json())
+    .then(data => console.log(data.message))
+    .catch(error => console.log(error));
   }
 
   upload_(formData) {
