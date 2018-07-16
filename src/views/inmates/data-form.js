@@ -190,7 +190,7 @@ export class DataForm {
       // this.api.upload(formData, this.currentItem.CLAIM_NO)
       this.api.upload(newform, this.currentRecord.id)
         .then((jsonRes) => {
-          this.upmess = jsonRes.data.message
+          this.upmess = jsonRes//.data.message
 
           $("#file").val("");
         })
@@ -233,6 +233,7 @@ addDocTest(){
       
           docs.unshift(item)
            this.docs=docs
+           this.currentRecord.docs=docs
           formData.append('file', images[ival]);
         }
       }
