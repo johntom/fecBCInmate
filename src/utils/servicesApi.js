@@ -76,6 +76,29 @@ export class ApiService {
   }
 
 
+
+  upload(formData, id) {
+    //http://arabsight.github.io/uploading-files-with-aurelia
+     var url = this.baseweb + `v1/uploadinmate/${id}`
+    ///  var url = this.basewebjif + `v1/upload/01-03166`
+ 
+    console.log('url ', url, formData);
+    return this.http.fetch(url, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'enctype': "multipart/form-data"
+      },
+       body: formData
+        //body: json(formData)
+       // body: JSON.stringify(formData)
+    }).then((res) => res.json())
+    .then(data => console.log('data.message',data.message))
+    .catch(error => console.log(error));
+  }
+
+ 
+
   // ============================== \\
   arprep() {
     var url = this.baseweb + 'v1/arprep/'
@@ -734,71 +757,6 @@ export class ApiService {
 
 
 
-  uploadxxx(formData, id) {
-
-    var url = this.baseweb + `v1/upload/${id}`
-    console.log('url ', url, formData);
-    return this.http.fetch(url, {
-      mode: 'cors',
-      method: 'POST', 
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'enctype': "multipart/form-data" 
-      },
-      body: JSON.stringify(formData)
-    }).then((res) => res.json());
-  }
-
-
-  upload(formData, id) {
-     var url = this.baseweb + `v1/uploadinmate/${id}`
-    ///  var url = this.basewebjif + `v1/upload/01-03166`
- 
-    console.log('url ', url, formData);
-    return this.http.fetch(url, {
-      mode: 'cors',
-      method: 'POST',
-      headers: {
-        'enctype': "multipart/form-data"
-      },
-       body: formData
-        //body: json(formData)
-       // body: JSON.stringify(formData)
-    }).then((res) => res.json())
-    .then(data => console.log('data.message',data.message))
-    .catch(error => console.log(error));
-  }
-
-  upload_(formData) {
-    // let bin =10007
-    // let dir = 'fdny'
-    // var url = this.baseweb + 'v1/upload/'+bin+'/'+dir;
-    // let basewebdemo = 'http://cm.brookbridgeinc.com:8880/api/'
-    // var url = this.baseweb + 'v1/upload';
-    // var url = basewebdemo + 'upload';
-    // var url = basewebdemo + 'v1/uploadviolations/'+bin+'/'+dir;
-    // let basewebdemo = 'http://localhost:8880/api/'
-    //var url = this.baseweb + 'v1/uploadviolations/' + bin + '/' + dir;
-    //   var url = this.baseweb + 'v1/uploaddocs' ///' + bin + '/' + dir;
-    var url = this.baseweb + 'v1/upload'
-    // console.log('url ', url)
-    // for (var [key, value] of formData.entries()) {
-    //   console.log('form ', key, value);
-    // }
-    return this.http.fetch(url, {
-      mode: 'cors',
-      method: 'POST',
-      headers: {
-        //'Accept': 'application/json',
-        //'Content-Type': 'application/json',
-        'enctype': "multipart/form-data"
-      },
-      body: formData
-    }).then((res) => res.json());
-  }
-
-
 
   findusers() {
     var url = this.baseweb + 'v1/findusers';
@@ -965,4 +923,48 @@ export class ApiService {
 
 
 }
+
+
+  // uploadxxx(formData, id) {
+
+  //   var url = this.baseweb + `v1/upload/${id}`
+  //   console.log('url ', url, formData);
+  //   return this.http.fetch(url, {
+  //     mode: 'cors',
+  //     method: 'POST', 
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'enctype': "multipart/form-data" 
+  //     },
+  //     body: JSON.stringify(formData)
+  //   }).then((res) => res.json());
+  // }
+  //  upload_(formData) {
+  //   // let bin =10007
+  //   // let dir = 'fdny'
+  //   // var url = this.baseweb + 'v1/upload/'+bin+'/'+dir;
+  //   // let basewebdemo = 'http://cm.brookbridgeinc.com:8880/api/'
+  //   // var url = this.baseweb + 'v1/upload';
+  //   // var url = basewebdemo + 'upload';
+  //   // var url = basewebdemo + 'v1/uploadviolations/'+bin+'/'+dir;
+  //   // let basewebdemo = 'http://localhost:8880/api/'
+  //   //var url = this.baseweb + 'v1/uploadviolations/' + bin + '/' + dir;
+  //   //   var url = this.baseweb + 'v1/uploaddocs' ///' + bin + '/' + dir;
+  //   var url = this.baseweb + 'v1/upload'
+  //   // console.log('url ', url)
+  //   // for (var [key, value] of formData.entries()) {
+  //   //   console.log('form ', key, value);
+  //   // }
+  //   return this.http.fetch(url, {
+  //     mode: 'cors',
+  //     method: 'POST',
+  //     headers: {
+  //       //'Accept': 'application/json',
+  //       //'Content-Type': 'application/json',
+  //       'enctype': "multipart/form-data"
+  //     },
+  //     body: formData
+  //   }).then((res) => res.json());
+  // }
 
