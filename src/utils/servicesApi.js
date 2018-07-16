@@ -751,7 +751,7 @@ export class ApiService {
 
 
   upload(formData, id) {
-    var url = this.baseweb + `v1/upload/${id}`
+    var url = this.baseweb + `v1/uploadinmate/${id}`
     console.log('url ', url, formData);
     return this.http.fetch(url, {
       mode: 'cors',
@@ -760,7 +760,8 @@ export class ApiService {
         'enctype': "multipart/form-data"
       },
       // body: formData
-        body: JSON.stringify(formData)
+        body: json(formData)
+        // body: JSON.stringify(formData)
     }).then((res) => res.json());
   }
 
