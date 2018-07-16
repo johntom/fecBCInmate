@@ -89,7 +89,7 @@ export class ApiService {
         'enctype': "multipart/form-data"
       },
       body: formData
-      //body: json(formData)
+    
       // body: JSON.stringify(formData)
     }).then((res) => res.json())
       .then(data => console.log('data.message', data.message))
@@ -97,7 +97,7 @@ export class ApiService {
   }
   uploadInvoice(formData, invoice) {
     //http://arabsight.github.io/uploading-files-with-aurelia
-    var url = this.baseweb + `v1/uploadinvoice/${invoice.invDate}`
+    var url = this.baseweb + `v1/uploadinvoice/${invoice.invno}`
     ///  var url = this.basewebjif + `v1/upload/01-03166`
     console.log('url ', url, formData);
     return this.http.fetch(url, {

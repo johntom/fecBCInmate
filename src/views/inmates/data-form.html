@@ -133,16 +133,16 @@
 								<span show.bind="!booking.edit">${classification}</span>
 
 								<!-- <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">		</td> -->
-						<!-- change.delegate="selectChanged(adjuster, adjuster.ADJUSTER_ID)" -->
-            
-          	<select show.bind="booking.edit" id="adj" class="form-control input-sm" value.two-way="booking.classification" > 
+								<!-- change.delegate="selectChanged(adjuster, adjuster.ADJUSTER_ID)" -->
+
+								<select show.bind="booking.edit" id="adj" class="form-control input-sm" value.two-way="booking.classification"> 
               <option model.bind="null">Choose...</option> 
               <option repeat.for="opt of appService.classificationList" model.bind="opt.code">
                 ${opt.code} 
               </option> 
             </select>
-            
-            	</td>
+
+							</td>
 
 							<td width="125px">
 								<span show.bind="!booking.edit">${bookingNo}</span>
@@ -181,7 +181,7 @@
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
 						<i class="fa fa-plus"></i> Add Services
 					</a>
-          ${currentBooking.bookingNo}
+					${currentBooking.bookingNo}
 				</h3>
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
@@ -232,28 +232,28 @@
 									<span show.bind="!service.edit">${serviceProvided}</span>
 
 									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
-							
-              <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceProvided" > 
-              <option model.bind="null">Choose...</option> 
-              <option repeat.for="opt of appService.serviceprovidedList" model.bind="opt.code">
-                ${opt.code} 
-              </option> 
-            </select>
-              
-              	</td>
+
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceProvided"> 
+                        <option model.bind="null">Choose...</option> 
+                        <option repeat.for="opt of appService.serviceprovidedList" model.bind="opt.code">
+                          ${opt.code} 
+                        </option> 
+                      </select>
+
+								</td>
 								<td width="125px">
 									<span show.bind="!service.edit">${serviceType}</span>
 
 									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType"> -->
-							
-                <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceType" > 
+
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceType"> 
               <option model.bind="null">Choose...</option> 
               <option repeat.for="opt of appService.servicetypeList" model.bind="opt.code">
                 ${opt.code} 
               </option> 
             </select>
-              
-              	</td>
+
+								</td>
 								<td width="125px">
 									<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateFrom">
@@ -263,15 +263,19 @@
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateTo">
 								</td>
 								<td width="125px">
-									<!-- <span show.bind="!service.edit">${transportMethod}</span> -->
-              <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod" > 
-              <option model.bind="null">Choose...</option> 
-              <option repeat.for="opt of appService.transportList" model.bind="opt.code">
-                ${opt.code} 
-              </option> 
-            </select>
+									<span show.bind="!service.edit">${transportMethod}</span>
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod"> 
+                    <option model.bind="null">Choose...</option> 
+                    <option repeat.for="opt of appService.transportList" model.bind="opt.code">
+                      ${opt.code} 
+                    </option> 
+                  </select>
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod">
 								</td>
+
+
+
+
 
 								<td width="125px">
 									<span show.bind="!service.edit">${sendingProvider}</span>
@@ -311,7 +315,9 @@
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
 						<i class="fa fa-plus"></i> Add Invoice
 					</a>
-					Docs for Invoice  ${currentBooking.bookingNo} / ${currentService.serviceProvided} - ${currentService.serviceType}  <h4> click button below or drag n drop files's over button</h4>
+					Docs for Invoice ${currentBooking.bookingNo} / ${currentService.serviceProvided} - ${currentService.serviceType}
+					<h4>
+						click button below or drag n drop files's over button</h4>
 					<!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
 						<i class="fa fa-plus"></i> Add Uploaded File
 					</a> -->
@@ -319,6 +325,8 @@
 				<table class="table-condensed table">
 					<thead class="table-header-blue">
 						<tr>
+							<th class="header">inv#
+							</th>
 							<th class="header">invDate
 							</th>
 							<!-- <th class="header">Service<br>Type
@@ -333,18 +341,21 @@
 							</th>
 							<th class="header">Invoice<br>Total
 							</th>
-							<th class="header">repricedAmt
+							<th class="header">reprice<br>dAmt
 							</th>
 							<th class="header">savings
 							</th>
-							<th class="header">paymentStatus
+							<th class="header">payment<br>Status
 							</th>
-							<th class="header">approvedDate
+							<th class="header">approved<br>Date
+							</th>
+							</th>
+							<th class="header">FileName
 							</th>
 							<th class="header">Cmd
-							</th>
-							<th class="header">Drop
-							</th>
+
+								<th class="header">Drop
+								</th>
 						</tr>
 						</body>
 						<tfoot>
@@ -366,6 +377,10 @@
 
 						<tbody>
 							<tr repeat.for="invoice of invoices" with.bind="invoice">
+								<td width="125px">
+									<span show.bind="!invoice.edit">${invno }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
+								</td>
 								<td width="125px">
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
@@ -418,19 +433,26 @@
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
 								</td>
-
+								<td width="125px">
+									<span show.bind="!invoice.edit">
+                  <a size='100' class="form-control  input-sm" target="_blank" 
+                  href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}">
+                  ${fileinvoicename}
+                  </a></span>
+									<span show.bind="invoice.edit">${fileinvoicename}</span>
+								</td>
 								<td width="325px">
 									<button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
-									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,file)">
+									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
 										<i class="fa fa-plus"></i> Upload
 									</a>
 								</td>
-			<td><span type="text" id="invoicename" class="form-control  input-sm" value.bind="invoicename"></span></td>
+								<td>
+									<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
 
-								<td width="125px">
-									<h4> <input id='fileinvoice' type="file" name="fileinvoice" files.bind="file"></h4>
-								</td>
+
+
 							</tr>
 						</tbody>
 				</table>
@@ -438,8 +460,8 @@
 				<!--  new docs table -->
 				<h4>
 
-					<i class="fa fa-folder-open"></i> Docs for ${currentBooking.bookingNo}  click button below or drag n drop files's
-					over button 
+					<i class="fa fa-folder-open"></i> Docs for ${currentBooking.bookingNo} click button below or drag n drop files's over
+					button
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
 						<i class="fa fa-plus"></i> Add Uploaded File
 					</a>
@@ -450,10 +472,10 @@
 						<input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
 						<i class="material-icons prefix">search</i>
 					</a>
-          
+
 					<!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocTest()"></a> -->
-					
-				<input style='height:88px' id='file' type="file" name="file" files.bind="file" multiple>
+
+					<input style='height:44px' id='file' type="file" name="file" files.bind="file" multiple>
 				</h4>
 				<!-- <form> -->
 				<div class="col-sm-6 ">
@@ -461,17 +483,17 @@
 						<thead class="table-header-blue" data-sort="items.bind: currentRecord.docs; cols: ['FILE_NAME','FILE_EXT']">
 							<tr>
 								<th class="header">FILE_NAME </th>
-								<th class="header">FILE_EXT </th>
+								<!-- <th class="header">FILE_EXT </th> -->
 
 							</tr>
 						</thead>
-						<tfoot>
+						<!-- <tfoot> -->
 							<tr>
 								<td></td>
 								<td></td>
 
 							</tr>
-						</tfoot>
+						<!-- </tfoot> -->
 						<tbody>
 							<tr repeat.for="doc of docs" with.bind="doc">
 								<td>
@@ -479,13 +501,12 @@
                    href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
 										${FILE_NAME}
 									</a> -->
-<a size='100' class="form-control  input-sm" target="_blank"
-                   href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
-                   	${FILE_NAME}
+									<a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
+										${FILE_NAME}
 									</a>
 
 								</td>
-								<td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td>
+								<!-- <td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td> -->
 
 							</tr>
 						</tbody>

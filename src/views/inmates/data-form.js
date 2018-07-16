@@ -105,7 +105,8 @@ export class DataForm {
       flag = true
       invoice = []
     }
-    item = { invDate: invDate, edit: true }
+    let invno=this.currentBooking.bookingNo
+    item = {invno:invno, invDate: invDate, edit: true }
     invoice.unshift(item)
     if (flag) this.invoices = invoice
     this.invDate = '';
@@ -205,16 +206,18 @@ addDocsInvoice(invoice,image) {
     let formData = new FormData()
     let newDate = moment().format('YYYY-MM-DD')
     let flag = false
+    invoice.fileinvoicename=image[0].name // only 1 allowed
     //let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
      // let newform = values;
     //  console.log('after checkdata1 ',  newform);//this.status,
       // this.api.upload(formData, this.currentItem.CLAIM_NO)
+      // delete fileinvoice
       formData.append('file', image);
       this.api.uploadInvoice(formData, invoice)
         .then((jsonRes) => {
           this.upmess = jsonRes//.data.message
 
-          $("#fileInvoice").val("");
+          $("#fileinvoice").val("");
         })
    // })
   }
