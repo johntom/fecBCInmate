@@ -751,8 +751,8 @@ export class ApiService {
 
 
   upload(formData, id) {
-    // var url = this.baseweb + `v1/uploadinmate/${id}`
-      var url = this.basewebjif + `v1/upload/01-03166`
+     var url = this.baseweb + `v1/uploadinmate/${id}`
+    ///  var url = this.basewebjif + `v1/upload/01-03166`
  
     console.log('url ', url, formData);
     return this.http.fetch(url, {

@@ -190,7 +190,7 @@ export class DataForm {
       // this.api.upload(formData, this.currentItem.CLAIM_NO)
       this.api.upload(newform, this.currentRecord.id)
         .then((jsonRes) => {
-          this.upmess = jsonRes.message
+          this.upmess = jsonRes.data.message
 
           $("#file").val("");
         })
