@@ -4,7 +4,8 @@ const RUNTIME_ORIGINS = [
   'https://maxcdn.bootstrapcdn.com'
 ];
 const NO_CACHE_ORIGINS = [
-  'https://api.mlab.com'
+  'https://api.mlab.com',
+  'https://gtztest.com'
 ];
 
 // The install handler takes care of precaching the resources we always need.
