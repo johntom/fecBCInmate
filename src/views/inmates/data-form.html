@@ -474,9 +474,15 @@
 						<tbody>
 							<tr repeat.for="doc of docs" with.bind="doc">
 								<td>
-									<a size='100' class="form-control  input-sm" target="_blank" href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
+									<!-- <a size='100' class="form-control  input-sm" target="_blank"
+                   href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
 										${FILE_NAME}
+									</a> -->
+<a size='100' class="form-control  input-sm" target="_blank"
+                   href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
+                   	${FILE_NAME}
 									</a>
+
 								</td>
 								<td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td>
 

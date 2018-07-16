@@ -7,7 +7,7 @@ export class ApiService {
   constructor(http) {
     this.http = http;
     this.upmess = ''
-    this.baseweb = 'https://gtztest.com/api/'
+    this.baseweb = 'https://gtztest.com/api/' /// https://gtztest.com/api/v1/getonePdf/:template/:filename
     this.basewebjif = 'https://jif.bergenrisk.com/api/';
   }
   getUserJwt(username, pass) {
