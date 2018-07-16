@@ -760,8 +760,8 @@ export class ApiService {
         'enctype': "multipart/form-data"
       },
       // body: formData
-        body: json(formData)
-        // body: JSON.stringify(formData)
+        //body: json(formData)
+        body: JSON.stringify(formData)
     }).then((res) => res.json());
   }
 
