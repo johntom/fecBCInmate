@@ -52,7 +52,8 @@ export class ApiService {
         'Content-Type': 'application/json'
         // , 'Authorization': 'JWT ' + token
       },
-      body: JSON.stringify(rec)
+      // body: JSON.stringify(rec)
+         body: rec
     }).then((res) => res.json());
   }
 
@@ -765,7 +766,7 @@ export class ApiService {
         //body: json(formData)
        // body: JSON.stringify(formData)
     }).then((res) => res.json())
-    .then(data => console.log(data.message))
+    .then(data => console.log('data.message',data.message))
     .catch(error => console.log(error));
   }
 
