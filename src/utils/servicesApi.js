@@ -52,7 +52,7 @@ export class ApiService {
         'Content-Type': 'application/json'
         // , 'Authorization': 'JWT ' + token
       },
-       body: JSON.stringify(rec)
+      body: JSON.stringify(rec)
       //   body: rec
     }).then((res) => res.json());
   }
@@ -76,12 +76,11 @@ export class ApiService {
   }
 
 
-
   upload(formData, id) {
     //http://arabsight.github.io/uploading-files-with-aurelia
-     var url = this.baseweb + `v1/uploadinmate/${id}`
+    var url = this.baseweb + `v1/uploadinmate/${id}`
     ///  var url = this.basewebjif + `v1/upload/01-03166`
- 
+
     console.log('url ', url, formData);
     return this.http.fetch(url, {
       mode: 'cors',
@@ -89,15 +88,32 @@ export class ApiService {
       headers: {
         'enctype': "multipart/form-data"
       },
-       body: formData
-        //body: json(formData)
-       // body: JSON.stringify(formData)
+      body: formData
+      //body: json(formData)
+      // body: JSON.stringify(formData)
     }).then((res) => res.json())
-    .then(data => console.log('data.message',data.message))
-    .catch(error => console.log(error));
+      .then(data => console.log('data.message', data.message))
+      .catch(error => console.log(error));
+  }
+  uploadInvoice(formData, invoice) {
+    //http://arabsight.github.io/uploading-files-with-aurelia
+    var url = this.baseweb + `v1/uploadinvoice/${invoice.invDate}`
+    ///  var url = this.basewebjif + `v1/upload/01-03166`
+    console.log('url ', url, formData);
+    return this.http.fetch(url, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'enctype': "multipart/form-data"
+      },
+      body: formData
+      //body: json(formData)
+      // body: JSON.stringify(formData)
+    }).then((res) => res.json())
+      .then(data => console.log('data.message', data.message))
+      .catch(error => console.log(error));
   }
 
- 
 
   // ============================== \\
   arprep() {
@@ -109,7 +125,6 @@ export class ApiService {
     }).then((res) => res.json());
   }
   updatecode(row) {
-
     let url = this.baseweb + `v1/code/update`
     return this.http.fetch(url, {
       method: 'put',
@@ -123,8 +138,6 @@ export class ApiService {
     }).then((res) => res.json());
 
   }
-
-
 
 
   arprepDocument() {

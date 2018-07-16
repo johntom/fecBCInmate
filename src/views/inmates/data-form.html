@@ -422,13 +422,14 @@
 								<td width="325px">
 									<button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
-									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
+									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,file)">
 										<i class="fa fa-plus"></i> Upload
 									</a>
 								</td>
+			<td><span type="text" id="invoicename" class="form-control  input-sm" value.bind="invoicename"></span></td>
 
 								<td width="125px">
-									<h4> <input id='file' type="file" name="file" files.bind="file"></h4>
+									<h4> <input id='fileinvoice' type="file" name="fileinvoice" files.bind="file"></h4>
 								</td>
 							</tr>
 						</tbody>

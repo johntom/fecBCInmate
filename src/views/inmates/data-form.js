@@ -197,6 +197,28 @@ export class DataForm {
         })
     })
   }
+
+addDocsInvoice(invoice,image) {
+    //images is file
+    //   let docs = this.currentRecord.docs
+    // if (docs === undefined) docs = []
+    let formData = new FormData()
+    let newDate = moment().format('YYYY-MM-DD')
+    let flag = false
+    //let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
+     // let newform = values;
+    //  console.log('after checkdata1 ',  newform);//this.status,
+      // this.api.upload(formData, this.currentItem.CLAIM_NO)
+      formData.append('file', image);
+      this.api.uploadInvoice(formData, invoice)
+        .then((jsonRes) => {
+          this.upmess = jsonRes//.data.message
+
+          $("#fileInvoice").val("");
+        })
+   // })
+  }
+
 addDocTest(){
    var item = { FILE_NAME: 'fname', FILE_EXT: '.pdf' , OVERWRITE: 'N' }
           console.log('item ',item)
