@@ -152,18 +152,18 @@ export class DataForm {
     if (params.id) {
       this.recordId = params.id;
       if (this.recordId === 'create') {
-  //let newrec = {inmate:{lastname: ""},booking: []}
-      //this.appService.currentRecord ={}//newrec
+        //let newrec = {inmate:{lastname: ""},booking: []}
+        //this.appService.currentRecord ={}//newrec
         this.appService.currentRecord = {}
         this.appService.currentRecord.id = 'create'
         this.appService.testrec = {}
         this.appService.originalrec = {}
         this.appService.currentRecord.inmate = {}
-      
+
         this.appService.currentRecord.booking = []
         this.appService.currentRecord.docs = []
-         this.currentRecord = this.appService.currentRecord
-      
+        this.currentRecord = this.appService.currentRecord
+
       } else {
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
@@ -199,7 +199,7 @@ export class DataForm {
   }
 
   // addDocsInvoice(invoice,image) {
-  addDocsInvoice(invoice,image) {
+  addDocsInvoice(invoice, image) {
     // not used
     // images is file
     // let docs = this.currentRecord.docs
@@ -213,10 +213,10 @@ export class DataForm {
     //  console.log('after checkdata1 ',  newform);//this.status,
     // this.api.upload(formData, this.currentItem.CLAIM_NO)
     // delete fileinvoice
-    
+
     // formData.append('file', image);
-        formData.append('fileinvoice', image);
-    
+    formData.append('fileinvoice', image);
+
     //    this.api.uploadInvoice(formData, invoice)
     // use same uploader just make sure pdf is uniq within record
     this.api.upload(newform, this.currentRecord.id)
@@ -294,12 +294,11 @@ export class DataForm {
     // this.invoices = service.invoices booking.services
 
     console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
-     if (this.recordId === 'create') {
-
-    this.api.addinmate(this.currentRecord)
-     } else {
-       this.api.saveinmate(this.currentRecord)
-     }
+    if (this.recordId === 'create') {
+      this.api.addinmate(this.currentRecord)
+    } else {
+      this.api.saveinmate(this.currentRecord)
+    }
   }
 
 
