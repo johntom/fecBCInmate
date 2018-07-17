@@ -154,14 +154,14 @@ export class DataForm {
       if (this.recordId === 'create') {
   //let newrec = {inmate:{lastname: ""},booking: []}
       //this.appService.currentRecord ={}//newrec
-        this.appService.currentItem = {}
-        this.appService.currentItem.id = 'create'
+        this.appService.currentRecord = {}
+        this.appService.currentRecord.id = 'create'
         this.appService.testrec = {}
         this.appService.originalrec = {}
-        this.appService.currentItem.inmate = {}
+        this.appService.currentRecord.inmate = {}
       
-        this.appService.currentItem.booking = []
-        this.appService.currentItem.docs = []
+        this.appService.currentRecord.booking = []
+        this.appService.currentRecord.docs = []
       
       } else {
         console.log('activate2')
