@@ -449,7 +449,7 @@
 										<i class="fa fa-plus"></i> Upload
 									</a> -->
 									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
-										<i class="fa fa-plus"></i> Add Uploaded File
+										<i class="fa fa-plus"></i> Upload
 									</a>
 									<!-- <a slot="buttons-slot">
                   <input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
@@ -457,7 +457,8 @@
 					        </a> -->
 								</td>
 								<td>
-									<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
+									<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice"
+                   files.bind="fileinvoice">
 							</tr>
 						</tbody>
 				</table>
