@@ -213,7 +213,10 @@ addDocsInvoice(invoice,image) {
       // this.api.upload(formData, this.currentItem.CLAIM_NO)
       // delete fileinvoice
       formData.append('file', image);
-      this.api.uploadInvoice(formData, invoice)
+  //    this.api.uploadInvoice(formData, invoice)
+    // use same uploader just make sure pdf is uniq within record
+      this.api.upload(newform, this.currentRecord.id)
+      
         .then((jsonRes) => {
           this.upmess = jsonRes//.data.message
 

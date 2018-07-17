@@ -435,10 +435,11 @@
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
 								</td>
-								<td width="125px">
+                 <!-- href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}"> -->
+        				<td width="125px">
 									<span show.bind="!invoice.edit">
                   <a size='100' class="form-control  input-sm" target="_blank" 
-                  href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}">
+                           href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
                   ${fileinvoicename}
                   </a></span>
 									<span show.bind="invoice.edit">${fileinvoicename}</span>
@@ -452,9 +453,6 @@
 								</td>
 								<td>
 									<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
-
-
-
 							</tr>
 						</tbody>
 				</table>
@@ -484,7 +482,7 @@
 					<table class="table-condensed table">
 						<thead class="table-header-blue" data-sort="items.bind: currentRecord.docs; cols: ['FILE_NAME','FILE_EXT']">
 							<tr>
-								<th class="header">FILE_NAME (No # or / in name)</th>
+								<th class="header">FILE_NAME (Must ne uniq and have no '#' or '/' in name)</th>
 								<!-- <th class="header">FILE_EXT </th> -->
 
 							</tr>
@@ -503,7 +501,8 @@
                    href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
 										${FILE_NAME}
 									</a> -->
-									<a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
+									<a size='100' class="form-control  input-sm" target="_blank" 
+                  href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
 										${FILE_NAME}
 									</a>
 
