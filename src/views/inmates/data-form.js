@@ -294,8 +294,12 @@ export class DataForm {
     // this.invoices = service.invoices booking.services
 
     console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
-    this.api.saveinmate(this.currentRecord)
+     if (this.recordId === 'create') {
 
+    this.api.addinmate(this.currentRecord)
+     } else {
+       this.api.saveinmate(this.currentRecord)
+     }
   }
 
 
