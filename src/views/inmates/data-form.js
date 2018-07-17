@@ -200,7 +200,7 @@ export class DataForm {
   }
 
   // addDocsInvoice(invoice,image) {
-  addDocsInvoice(image) {
+  addDocsInvoice(invoice,image) {
     // not used
     // images is file
     // let docs = this.currentRecord.docs
