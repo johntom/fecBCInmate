@@ -200,8 +200,9 @@ export class DataForm {
   }
 
 addDocsInvoice(invoice,image) {
-    //images is file
-    //   let docs = this.currentRecord.docs
+    // not used
+    // images is file
+    // let docs = this.currentRecord.docs
     // if (docs === undefined) docs = []
     let formData = new FormData()
     let newDate = moment().format('YYYY-MM-DD')
