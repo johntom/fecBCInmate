@@ -105,8 +105,8 @@ export class DataForm {
       flag = true
       invoice = []
     }
-    let invno=this.currentBooking.bookingNo
-    item = {invno:invno, invDate: invDate, edit: true }
+    let invno = this.currentBooking.bookingNo
+    item = { invno: invno, invDate: invDate, edit: true }
     invoice.unshift(item)
     if (flag) this.invoices = invoice
     this.invDate = '';
@@ -169,7 +169,7 @@ export class DataForm {
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
         this.currentRecord = this.appService.currentRecord
-        this.docs =  this.currentRecord.docs
+        this.docs = this.currentRecord.docs
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
         this.getServices(this.currentRecord.booking[0], 0)
 
@@ -188,7 +188,7 @@ export class DataForm {
     let flag = false
     let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
       let newform = values;
-      console.log('after checkdata1 ',  newform);//this.status,
+      console.log('after checkdata1 ', newform);//this.status,
       // this.api.upload(formData, this.currentItem.CLAIM_NO)
       this.api.upload(newform, this.currentRecord.id)
         .then((jsonRes) => {
@@ -199,7 +199,8 @@ export class DataForm {
     })
   }
 
-addDocsInvoice(invoice,image) {
+  // addDocsInvoice(invoice,image) {
+  addDocsInvoice(image) {
     // not used
     // images is file
     // let docs = this.currentRecord.docs
@@ -207,33 +208,36 @@ addDocsInvoice(invoice,image) {
     let formData = new FormData()
     let newDate = moment().format('YYYY-MM-DD')
     let flag = false
-    invoice.fileinvoicename=image[0].name // only 1 allowed
+    invoice.fileinvoicename = image[0].name // only 1 allowed
     //let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
-     // let newform = values;
+    // let newform = values;
     //  console.log('after checkdata1 ',  newform);//this.status,
-      // this.api.upload(formData, this.currentItem.CLAIM_NO)
-      // delete fileinvoice
-      formData.append('file', image);
-  //    this.api.uploadInvoice(formData, invoice)
+    // this.api.upload(formData, this.currentItem.CLAIM_NO)
+    // delete fileinvoice
+    
+    // formData.append('file', image);
+        formData.append('fileinvoice', image);
+    
+    //    this.api.uploadInvoice(formData, invoice)
     // use same uploader just make sure pdf is uniq within record
-      this.api.upload(newform, this.currentRecord.id)
-      
-        .then((jsonRes) => {
-          this.upmess = jsonRes//.data.message
+    this.api.upload(newform, this.currentRecord.id)
 
-          $("#fileinvoice").val("");
-        })
-   // })
+      .then((jsonRes) => {
+        this.upmess = jsonRes//.data.message
+
+        $("#fileinvoice").val("");
+      })
+    // })
   }
 
-addDocTest(){
-   var item = { FILE_NAME: 'fname', FILE_EXT: '.pdf' , OVERWRITE: 'N' }
-          console.log('item ',item)
-        let docs = this.currentRecord.docs
-      if (docs === undefined) docs = []
-        docs.unshift(item)
-        this.docs=docs
-}
+  addDocTest() {
+    var item = { FILE_NAME: 'fname', FILE_EXT: '.pdf', OVERWRITE: 'N' }
+    console.log('item ', item)
+    let docs = this.currentRecord.docs
+    if (docs === undefined) docs = []
+    docs.unshift(item)
+    this.docs = docs
+  }
   checkData(images, formData) {
     let promises = []
     return new Promise((resolve, reject) => {
@@ -244,14 +248,14 @@ addDocTest(){
       for (i = 0; i < images.length; i++) {
         let ext = images[i].name.split('.').pop();
         let fname = images[i].name
-        console.log('fname ',fname)
+        console.log('fname ', fname)
         let mid = -100// not needed
         let ival = i
-        console.log('ival ',ival)
-        
+        console.log('ival ', ival)
+
         mid = docs.findIndex(x => x.FILE_NAME === fname)
-        console.log('mid ',mid)
-       
+        console.log('mid ', mid)
+
         if (mid > -1) {
           // if we find file in array pass all values so we can evaluate later
           let obj = { name: fname, val: ival, ext: ext }
@@ -259,11 +263,11 @@ addDocTest(){
           promises.push(promise);
         } else {
           var item = { FILE_NAME: fname, FILE_EXT: '.' + ext, OVERWRITE: 'N' }
-          console.log('item ',item)
-      
+          console.log('item ', item)
+
           docs.unshift(item)
-           this.docs=docs
-           this.currentRecord.docs=docs
+          this.docs = docs
+          this.currentRecord.docs = docs
           formData.append('file', images[ival]);
         }
       }
