@@ -152,19 +152,17 @@ export class DataForm {
     if (params.id) {
       this.recordId = params.id;
       if (this.recordId === 'create') {
-
+  //let newrec = {inmate:{lastname: ""},booking: []}
+      //this.appService.currentRecord ={}//newrec
         this.appService.currentItem = {}
         this.appService.currentItem.id = 'create'
         this.appService.testrec = {}
         this.appService.originalrec = {}
-        this.appService.currentItem.insured = {}
-        this.appService.currentItem.claimant = {}
-        this.appService.currentItem.insco = {}
-        this.appService.currentItem.insaddress = {}
-        this.appService.currentItem.inscontact = {}
-        this.appService.currentItem.diaries = []
-        this.appService.currentItem.notes = []
-        this.appService.currentItem.adjusters = []
+        this.appService.currentItem.inmate = {}
+      
+        this.appService.currentItem.booking = []
+        this.appService.currentItem.docs = []
+      
       } else {
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);

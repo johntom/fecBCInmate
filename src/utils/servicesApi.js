@@ -7,7 +7,8 @@ export class ApiService {
   constructor(http) {
     this.http = http;
     this.upmess = ''
-    this.baseweb = 'https://gtztest.com/api/' /// https://gtztest.com/api/v1/getonePdf/:template/:filename
+    this.baseweb = 'https://gtztest.com/api/' /// https://gtztest.com/api/v1/inmate
+    // https://gtztest.com/api/v1/getonePdf/:template/:filename
     this.basewebjif = 'https://jif.bergenrisk.com/api/';
   }
   getUserJwt(username, pass) {
@@ -59,8 +60,8 @@ export class ApiService {
 
   addinmate(rec) {
     //alert('in saveclaim')
-    console.log('addclaim rec', rec)
-    let url = this.baseweb + `v1/claim/create`
+    console.log('addinmate rec', rec)
+    let url = this.baseweb + `v1/inmate/create`
     console.log('url ', url)
     //return {'data': true}
     return this.http.fetch(url, {

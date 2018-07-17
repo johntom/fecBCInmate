@@ -4,12 +4,16 @@
 <require from="./date-format"></require>
   
   <section class="au-animate">
-    <h2>${heading}
+    <h4>${heading}
       	<a slot="buttons-slot">
           <input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
                             
-			 <i class="material-icons prefix">search</i>
-    </h2>
+			 <i class="material-icons search">search</i>
+       </a>
+       	<a slot="buttons-slot" class="btn btn-success" click.delegate="openrecord('create')">
+						<i class="fa fa-plus"></i> Add Inmate
+					</a>
+    </h4>
     <div class="row au-stagger">
       <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="inmate of inmates">
         <div class="card">

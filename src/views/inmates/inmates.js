@@ -83,11 +83,19 @@ export class Inmates {
 
 
   openrecord(row) {
+
     console.log('row', row);
-    let rt2 = `#/inmates/${row.id}`; //CLAIM_ID;
-    // let rt2 = '#/inmatesdata'
-    this.appService.currentRecord = row;
-    this.router.navigate(rt2);// `#/inventory/${path}`);
+    let rt2
+    if (row==='create'){
+      //let newrec = {inmate:{lastname: ""},booking: []}
+      //this.appService.currentRecord ={}//newrec
+     rt2 = `#/inmates/create`
+    } else {
+     rt2 = `#/inmates/${row.id}`
+     this.appService.currentRecord = row;
+    }
+   
+    this.router.navigate(rt2);;
   }
 
 
