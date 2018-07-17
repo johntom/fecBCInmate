@@ -162,6 +162,7 @@ export class DataForm {
       
         this.appService.currentRecord.booking = []
         this.appService.currentRecord.docs = []
+         this.currentRecord = this.appService.currentRecord
       
       } else {
         console.log('activate2')
