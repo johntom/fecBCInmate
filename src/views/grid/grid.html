@@ -36,27 +36,44 @@
 			<ak-col k-title="ss" k-width="180px" k-field="ss"></ak-col>
 			<ak-col k-title="Gender" k-width="110px" k-field="gender"></ak-col>
 
-			<ak-col k-title="DOB-" k-width="100px" k-locked.bind="true" k-lockable.bind="false"
+			<ak-col k-title="DOB" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false"
        k-field="DOB" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
 
-			<ak-col k-title="bookingDate-" k-width="180px" k-field="bookingDate"></ak-col>
-			<ak-col k-title="bookingDate" k-width="100px" k-locked.bind="true" k-lockable.bind="false" k-field="createdAt" k-filterable.bind="false"
+			<ak-col k-title="bookingDate" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false" k-field="bookingDate" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
 			<ak-col k-title="bookingNo" k-width="180px" k-field="bookingNo"></ak-col>
-			<ak-col k-title="sentencingDate" k-width="180px" k-field="sentencingDate"></ak-col>
-			<ak-col k-title="serviceProvided" k-width="110px" k-field="serviceProvided"></ak-col>
+				<ak-col k-title="sentencingDate" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false" k-field="sentencingDate" k-filterable.bind="false"
+			 k-format="{0:MM/dd/yyyy}"></ak-col>
+      <ak-col k-title="serviceProvided" k-width="110px" k-field="serviceProvided"></ak-col>
 			<ak-col k-title="serviceDateFrom" k-width="110px" k-field="serviceDateFrom"></ak-col>
 			<ak-col k-title="serviceDateTo" k-width="180px" k-field="serviceDateTo"></ak-col>
-			<ak-col k-title="transportMethod" k-width="180px" k-field="transportMethod"></ak-col>
+		
+
+       	<ak-col k-title="serviceDateFrom" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false" k-field="serviceDateFrom" k-filterable.bind="false"
+			 k-format="{0:MM/dd/yyyy}"></ak-col>
+    	<ak-col k-title="sentencingDate" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false" k-field="serviceDateTo" k-filterable.bind="false"
+			 k-format="{0:MM/dd/yyyy}"></ak-col>
+    
+    	<ak-col k-title="transportMethod" k-width="180px" k-field="transportMethod"></ak-col>
 			<ak-col k-title="serviceReason" k-width="180px" k-field="serviceReason"></ak-col>
-			<ak-col k-title="invDate" k-width="110px" k-field="invDate"></ak-col>
-			<ak-col k-title="cpts" k-width="110px" k-field="cpts"></ak-col>
+			<ak-col k-title="invDate" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false" k-field="invDate" k-filterable.bind="false"
+			 k-format="{0:MM/dd/yyyy}"></ak-col>
+    
+    	<ak-col k-title="cpts" k-width="110px" k-field="cpts"></ak-col>
 			<ak-col k-title="invoiceTotal" k-width="180px" k-field="invoiceTotal"></ak-col>
 			<ak-col k-title="repricedAmt" k-width="180px" k-field="repricedAmt"></ak-col>
 			<ak-col k-title="savings" k-width="180px" k-field="savings"></ak-col>
 			<ak-col k-title="paymentStatus" k-width="110px" k-field="paymentStatus"></ak-col>
-			<ak-col k-title="approvedDate" k-width="110px" k-field="approvedDate"></ak-col>
+		  	<ak-col k-title="approvedDate" k-width="100px" k-locked.bind="true" 
+      k-lockable.bind="false" k-field="approvedDate" k-filterable.bind="false"
+			 k-format="{0:MM/dd/yyyy}"></ak-col>
 
 		</ak-grid>
 		<!-- <div class="flex-row-none section-footer">

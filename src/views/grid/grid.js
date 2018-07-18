@@ -43,6 +43,23 @@ export class Grid {
           bookingDate: {
             type: "date"
           },
+          sentencingDate: {
+            type: "date"
+          },
+          serviceDateFrom: {
+            type: "date"
+          },
+          serviceDateTo: {
+            type: "date"
+          },
+          approvedDate: {
+            type: "date"
+          },
+          invDate: {
+            type: "date"
+          },
+
+
         }
       }
     },
