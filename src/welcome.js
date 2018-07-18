@@ -1,9 +1,9 @@
-import {inject} from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { ApiService } from './utils/servicesApi';
 import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v50f';
+  heading = 'Welcome to the Aurelia Navigation App! v50g';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -21,19 +21,17 @@ export class Welcome {
 
   activate() {
     console.log('in activate')
-     let cCodes = [{ id: 1, code: 'County' }, { id: 2, code: 'ICE' }, { id: 3, code: 'State' }, { id: 4, code: 'Fed' }]
+    let cCodes = [{ id: 1, code: 'County' }, { id: 2, code: 'ICE' }, { id: 3, code: 'State' }, { id: 4, code: 'Fed' }]
     this.appService.classificationList = cCodes //" model.bind="opt.code
     let cCodes2 = [{ id: 1, code: 'Outpatient' }, { id: 2, code: 'Emergency' }, { id: 3, code: 'Inpatient' }]
-    this.appService.serviceprovidedList = cCodes2 
-
+    this.appService.serviceprovidedList = cCodes2
     let cCodes3 = [{ id: 1, code: 'Jail Transport' }, { id: 2, code: 'Ambulance Service' }, { id: 3, code: 'Other Agency' }]
-    this.appService.transportList = cCodes3 
+    this.appService.transportList = cCodes3
     let cCodes4 = [{ id: 1, code: 'Medical' }, { id: 2, code: 'Mental Health' }]
-    this.appService.servicetypeList = cCodes4 
+    this.appService.servicetypeList = cCodes4
     let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied 1' }, { id: 3, code: 'Denied 2' }, { id: 4, code: 'Denied 3' }, { id: 5, code: 'Denied Other' }]
-    this.appService.approvedList = cCodes5 
+    this.appService.approvedList = cCodes5
   }
-
 
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
