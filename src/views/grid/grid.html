@@ -73,7 +73,7 @@
 		 k-lockable.bind="false" k-field="invDate" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
     
-    	<ak-col k-title="cpts" k-width="110px" k-field="cpts"></ak-col>
+    	<!-- <ak-col k-title="cpts" k-width="110px" k-field="cpts"></ak-col> -->
 			<ak-col k-title="Inv Total" k-width="180px" k-field="invoiceTotal"></ak-col>
 			<ak-col k-title="Repriced<br>Amt" k-width="180px" k-field="repricedAmt"></ak-col>
 			<ak-col k-title="savings" k-width="180px" k-field="savings"></ak-col>
@@ -81,7 +81,9 @@
 		  	<ak-col k-title="Approved<br>Date" k-width="100px" k-locked.bind="false" 
       k-lockable.bind="false" k-field="approvedDate" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
-
+		<ak-col k-title="paymentStatus" k-width="180px" k-field="paymentStatus"></ak-col>
+			<ak-col k-title="deniedReason" k-width="180px" k-field="deniedReason"></ak-col>
+		
 		</ak-grid>
 		<!-- <div class="flex-row-none section-footer">
 			${footer} <span>  ${queryParams}</span> <span>&nbsp;&nbsp;	<button id="searchInputBtn" class="btn btn-primary" type="button" click.delegate="performRefresh()">Refresh</button></span>
