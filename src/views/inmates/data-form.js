@@ -89,14 +89,14 @@ export class DataForm {
      flag=true
       service = []
     }
-    // let item
-    // let serviceDateFrom = moment().format('YYYY-MM-DD')
-    // if (service === undefined) {
-    //   flag = true
-    //   service = []
-    // }
-    // item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
-    // service.unshift(item)
+    let item
+    let serviceDateFrom = moment().format('YYYY-MM-DD')
+    if (service === undefined) {
+      flag = true
+      service = []
+    }
+    item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
+    service.unshift(item)
     if (flag) this.services = service
     //this.serviceDateFrom = '';
    // this.getInvoices(service, 0)
