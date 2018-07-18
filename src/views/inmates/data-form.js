@@ -85,6 +85,7 @@ export class DataForm {
     let service = this.services
     let flag = false
     if (service === undefined) {
+     flag=true
       service = []
     }
     // let item
