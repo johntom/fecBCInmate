@@ -341,19 +341,28 @@
 							</th> -->
 							<th class="header">Invoice<br>Total
 							</th>
-							<th class="header">reprice<br>dAmt
+							<th class="header">Repriced<br>Amt
 							</th>
 							<th class="header">savings
 							</th>
 							<th class="header">Payment<br>Status
 							</th>
-							<th class="header">approved<br>Date
+							<th class="header">Apprvd<br>Date
 							</th>
+							<th class="header">Payment<br>Status
+							</th>
+							<th class="header">Apprvd<br>Date
+							</th>
+							<th class="header">Denied<br>Reason
+							</th>
+
+
+
 							</th>
 							<th class="header">FileName
 							</th>
-							<th class="header">Cmd
-
+							<th class="header">Cmd</th>
+	</th>
 								<th class="header">Drop
 								</th>
 						</tr>
@@ -386,19 +395,7 @@
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
 
-								<td width="75px">
-									<span show.bind="!invoice.edit">${medicalType}</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">
-								</td>
-
-								<td width="125px">
-									<span show.bind="!invoice.edit">${serviceDateFrom | dateFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="serviceDateFrom">
-								</td>
-								<td width="125px">
-									<span show.bind="!invoice.edit">${serviceDateTo | dateFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="serviceDateTo">
-								</td>
+							
 								<!-- <td width="225px">
 									<span show.bind="!invoice.edit">${cpts}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="cpts">
@@ -410,17 +407,15 @@
 								<td width="125px">
 									<span show.bind="!invoice.edit">${repricedAmt}</span>
 
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
+									<input show.bind="invoice.edit" class="form-control 
+                  input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
 								</td>
 								<td width="125px">
 									<span show.bind="!invoice.edit">${savings}</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
+									<input show.bind="invoice.edit" class="form-control input-sm" 
+                  disabled.bind="!invoice.edit" type="text" value.bind="savings">
 								</td>
-								<!-- <td width="125px">
-									<span show.bind="!invoice.edit">${paymentStatus}</span>
-
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="paymentStatus">
-								</td> -->
+							
 								<td width="125px">
 									<span show.bind="!invoice.edit">${paymentStatus}</span>
 									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="invoice.paymentStatus"> 
