@@ -84,27 +84,30 @@ export class DataForm {
   addService() {
     let service = this.services
     let flag = false
-    let item
-    let serviceDateFrom = moment().format('YYYY-MM-DD')
     if (service === undefined) {
-      flag = true
       service = []
     }
-    item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
-    service.unshift(item)
+    // let item
+    // let serviceDateFrom = moment().format('YYYY-MM-DD')
+    // if (service === undefined) {
+    //   flag = true
+    //   service = []
+    // }
+    // item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
+    // service.unshift(item)
     if (flag) this.services = service
-    this.serviceDateFrom = '';
-    this.getInvoices(service, 0)
+    //this.serviceDateFrom = '';
+   // this.getInvoices(service, 0)
   }
   addInvoice() {
     let invoice = this.invoices
     let flag = false
-    let item
-    let invDate = moment().format('YYYY-MM-DD')
-    if (invoice === undefined) {
+    let iif (invoice === undefined) {
       flag = true
       invoice = []
-    }
+    }tem
+    let invDate = moment().format('YYYY-MM-DD')
+    
     let invno = this.currentBooking.bookingNo
     item = { invno: invno, invDate: invDate, edit: true }
     invoice.unshift(item)
