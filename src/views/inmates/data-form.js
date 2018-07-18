@@ -107,7 +107,8 @@ export class DataForm {
     if (invoice === undefined) {
       flag = true
       invoice = []
-    }tem
+    }
+    let item
     let invDate = moment().format('YYYY-MM-DD')
     
     let invno = this.currentBooking.bookingNo
