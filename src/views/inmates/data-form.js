@@ -123,7 +123,8 @@ export class DataForm {
     this.currentBooking = booking
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
-    if (index!==0)  this.getInvoices(this.services[0], index)
+    // if (index!==0)  this.getInvoices(this.services[0], index)
+    this.getInvoices(this.services[0],0)
     // }
   }
 
