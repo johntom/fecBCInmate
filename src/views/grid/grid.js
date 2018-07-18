@@ -41,7 +41,7 @@ export class Grid {
             type: "date"
           },
           bookingDate: {
-            type: "date"
+            type: "date" 
           },
           sentencingDate: {
             type: "date"
