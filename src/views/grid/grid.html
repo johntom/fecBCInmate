@@ -36,28 +36,28 @@
 
 			<!-- <ak-col k-field="CLAIM_NO" k-filterable.bind="true" k-title="Edit ClaimNo" k-width.bind="180" k-template="<button click.delegate='details($event)' class='k-button'>#=CLAIM_NO#</button>">
 			</ak-col> -->
-			<ak-col k-title="Last" k-width="180px" k-field="lastname"  k-locked.bind="true" 
+			<ak-col k-title="Last" k-width="100px" k-field="lastname"  k-locked.bind="true" 
       k-lockable.bind="false"></ak-col>
-			<ak-col k-title="First" k-width="180px" k-field="firstname" k-locked.bind="true" 
+			<ak-col k-title="First" k-width="90px" k-field="firstname" k-locked.bind="true" 
       k-lockable.bind="false"></ak-col>
-			<ak-col k-title="ss" k-width="180px" k-field="ss" k-locked.bind="true" 
+			<ak-col k-title="ss" k-width="100px" k-field="ss" k-locked.bind="true" 
       k-lockable.bind="false"></ak-col>
 			<ak-col k-title="Gender" k-width="110px" k-field="gender" k-locked.bind="true" 
       k-lockable.bind="false"></ak-col>
 
 			<ak-col k-title="DOB" k-width="100px" k-locked.bind="true" 
       k-lockable.bind="false"
-       k-field="DOB" k-filterable.bind="false"
+       k-field="DOB" k-filterable.bind="true"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
 
 			<ak-col k-title="Booking<br>Date" k-width="100px" k-locked.bind="false" 
       k-lockable.bind="false" k-field="bookingDate" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
-			<ak-col k-title="Booking<br>No" k-width="180px" k-field="bookingNo"></ak-col>
-				<ak-col k-title="Sentencing<br>Date" k-width="100px" k-locked.bind="false" 
+			<ak-col k-title="Booking#" k-width="100px" k-field="bookingNo"></ak-col>
+				<ak-col k-title="Date<br>of Sentencing" k-width="100px" k-locked.bind="false" 
       k-lockable.bind="false" k-field="sentencingDate" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
-      <ak-col k-title="Srv Provided" k-width="110px" k-field="serviceProvided"></ak-col>
+      <ak-col k-title="Srv Provided" k-width="120px" k-field="serviceProvided"></ak-col>
 		
 
     	<ak-col k-title="Srv DateFrom" k-width="120px" k-locked.bind="false" 
