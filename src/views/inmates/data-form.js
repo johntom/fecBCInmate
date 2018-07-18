@@ -103,7 +103,7 @@ export class DataForm {
   addInvoice() {
     let invoice = this.invoices
     let flag = false
-    let iif (invoice === undefined) {
+    if (invoice === undefined) {
       flag = true
       invoice = []
     }tem
