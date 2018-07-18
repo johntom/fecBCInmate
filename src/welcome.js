@@ -3,7 +3,7 @@ import { ApiService } from './utils/servicesApi';
 import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v49z';
+  heading = 'Welcome to the Aurelia Navigation App! v50a';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -30,7 +30,7 @@ export class Welcome {
     this.appService.transportList = cCodes3 
     let cCodes4 = [{ id: 1, code: 'Medical' }, { id: 2, code: 'Mental Health' }]
     this.appService.servicetypeList = cCodes4 
-    let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied' }]
+    let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied 1' }, { id: 3, code: 'Denied 2' }, { id: 4, code: 'Denied 3' }, { id: 5, code: 'Denied Other' }]
     this.appService.approvedList = cCodes5 
   }
 

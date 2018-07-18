@@ -337,15 +337,15 @@
 							</th>
 							<th class="header">serviceDateTo
 							</th> -->
-							<th class="header">cpts
-							</th>
+							<!-- <th class="header">cpts
+							</th> -->
 							<th class="header">Invoice<br>Total
 							</th>
 							<th class="header">reprice<br>dAmt
 							</th>
 							<th class="header">savings
 							</th>
-							<th class="header">payment<br>Status
+							<th class="header">Payment<br>Status
 							</th>
 							<th class="header">approved<br>Date
 							</th>
@@ -385,15 +385,7 @@
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
-								<!-- <td width="75px">
-									<span show.bind="!invoice.edit">${serviceType}</span>
-									 <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="invoice.serviceType" > 
-              <option model.bind="null">Choose...</option> 
-              <option repeat.for="opt of appService.servicetypeList" model.bind="opt.code">
-                ${opt.code} 
-              </option> 
-                
-                </td>
+							
 								<td width="75px">
 									<span show.bind="!invoice.edit">${medicalType}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="medicalType">
@@ -407,10 +399,10 @@
 									<span show.bind="!invoice.edit">${serviceDateTo | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="serviceDateTo">
 								</td> -->
-								<td width="225px">
+								<!-- <td width="225px">
 									<span show.bind="!invoice.edit">${cpts}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="cpts">
-								</td>
+								</td> -->
 								<td width="75px">
 									<span show.bind="!invoice.edit">${invoiceTotal}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
@@ -424,11 +416,28 @@
 									<span show.bind="!invoice.edit">${savings}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
 								</td>
-								<td width="125px">
+								<!-- <td width="125px">
 									<span show.bind="!invoice.edit">${paymentStatus}</span>
 
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="paymentStatus">
+								</td> -->
+	            <td width="125px">
+									<span show.bind="!invoice.edit">${paymentStatus}</span>
+									 <select show.bind="service.edit" id="adj" class="form-control input-sm" 
+                   value.two-way="invoice.paymentStatus" > 
+              <option model.bind="null">Choose...</option> 
+              <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
+                ${opt.code} 
+              </option> 
+                
+                </td>
+
+	            <td width="125px">
+									<span show.bind="!invoice.edit">${deniedReason}</span>
+
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="deniedReason">
 								</td>
+
 								<td width="125px">
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
