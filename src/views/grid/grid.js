@@ -34,10 +34,16 @@ export class Grid {
     schema: {
       model: {
         id: "id", // Must assign id for update to work
-        // fields: {
-        //   // LegacyID: { type: "number" }, // scan template
-        //   Artist: { type: "string" }, // barcode insured
-        // }
+        fields: {
+          //   // LegacyID: { type: "number" }, // scan template
+          //   Artist: { type: "string" }, // barcode insured
+          DOB: {
+            type: "date"
+          },
+          bookingDate: {
+            type: "date"
+          },
+        }
       }
     },
     pageSize: 12,
