@@ -9,32 +9,35 @@
 		
 	</section>
 	<section class="full-height flex-column-1 au-animate ignore">
-<div class="row au-stagger">
-      <div class="col-sm-6 col-md-3 card-container au-animate" repeat.for="inmate of inmates">
-        <div class="card">
 
-          <div class="content">
-            <p class="name">${inmate.inmate.lastname}, ${inmate.inmate.firstname}</p>
-             <p class="name">gender:${inmate.inmate.gender} ss:${inmate.inmate.ss} dob:${inmate.inmate.DOB | dateFormat  } </p>
-            <!-- <p><a target="_blank" class="btn btn-default" click.delegate="openrecord(inmate)">Records</a></p> -->
-          <p><button class="btn btn-default" click.delegate="openrecord(inmate)">Records</button></p>
-          
-          </div>
-        </div>
-      </div>
 		<ak-grid class="flex-row-1 overflow-y-auto" id="grid" k-data-source.bind="datasource" k-widget.bind="grid" k-sortable.bind="{ mode: 'multiple',   allowUnsort: 'true'}"
 		 k-filterable.bind="{  mode: 'row' }" k-editable="inline" k-reorderable.bind="true" k-groupable.bind="true" k-resizable.bind="true"
 		 k-selectable="[row,multiple]" k-on-change.delegate="rowSelected($event.detail)" k-column-menu.bind="true" k-pageable.bind="true">
 
 			<!-- <ak-col k-field="CLAIM_NO" k-filterable.bind="true" k-title="Edit ClaimNo" k-width.bind="180" k-template="<button click.delegate='details($event)' class='k-button'>#=CLAIM_NO#</button>">
 			</ak-col> -->
-			<ak-col k-title="Last" k-width="180px" k-field="inmate.lastname"></ak-col>
-			<ak-col k-title="First" k-width="180px" k-field="inmate.firstname"></ak-col>
-			<ak-col k-title="ss" k-width="180px" k-field="inmate.ss"></ak-col>
-			<ak-col k-title="Gender" k-width="110px" k-field="inmate.gender"></ak-col>
-			
-			<ak-col k-title="DOL" k-width="110px" k-field="inmate.DOL"></ak-col>
-		</ak-grid>
+			<ak-col k-title="Last" k-width="180px" k-field="lastname"></ak-col>
+			<ak-col k-title="First" k-width="180px" k-field="firstname"></ak-col>
+			<ak-col k-title="ss" k-width="180px" k-field="ss"></ak-col>
+			<ak-col k-title="Gender" k-width="110px" k-field="gender"></ak-col>
+			<ak-col k-title="DOL" k-width="110px" k-field="DOB"></ak-col>
+      	<ak-col k-title="bookingDate" k-width="180px" k-field="bookingDate"></ak-col>
+			<ak-col k-title="bookingNo" k-width="180px" k-field="bookingNo"></ak-col>
+			<ak-col k-title="sentencingDate" k-width="180px" k-field="sentencingDate"></ak-col>
+			<ak-col k-title="serviceProvided" k-width="110px" k-field="serviceProvided"></ak-col>
+			<ak-col k-title="serviceDateFrom" k-width="110px" k-field="serviceDateFrom"></ak-col>
+      	<ak-col k-title="serviceDateTo" k-width="180px" k-field="serviceDateTo"></ak-col>
+			<ak-col k-title="transportMethod" k-width="180px" k-field="transportMethod"></ak-col>
+			<ak-col k-title="serviceReason" k-width="180px" k-field="serviceReason"></ak-col>
+			<ak-col k-title="invDate" k-width="110px" k-field="invDate"></ak-col>
+			<ak-col k-title="cpts" k-width="110px" k-field="cpts"></ak-col>
+			<ak-col k-title="invoiceTotal" k-width="180px" k-field="invoiceTotal"></ak-col>
+			<ak-col k-title="repricedAmt" k-width="180px" k-field="repricedAmt"></ak-col>
+			<ak-col k-title="savings" k-width="180px" k-field="savings"></ak-col>
+			<ak-col k-title="paymentStatus" k-width="110px" k-field="paymentStatus"></ak-col>
+			<ak-col k-title="approvedDate" k-width="110px" k-field="approvedDate"></ak-col>
+     
+    </ak-grid>
 		<!-- <div class="flex-row-none section-footer">
 			${footer} <span>  ${queryParams}</span> <span>&nbsp;&nbsp;	<button id="searchInputBtn" class="btn btn-primary" type="button" click.delegate="performRefresh()">Refresh</button></span>
 		</div> -->

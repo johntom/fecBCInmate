@@ -70,7 +70,7 @@ export class Grid {
   
  loadData() {
     console.log('this.loadData ')
-   return this.api.getInmates()
+   return this.api.getInmatesExpanded()
         .then(jsonRes => {
           this.inmates = jsonRes.data
          

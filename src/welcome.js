@@ -3,7 +3,7 @@ import { ApiService } from './utils/servicesApi';
 import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v49p';
+  heading = 'Welcome to the Aurelia Navigation App! v49q ';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
