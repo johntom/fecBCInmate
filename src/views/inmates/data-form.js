@@ -111,7 +111,8 @@ export class DataForm {
     let invno = this.currentBooking.bookingNo
     item = { invno: invno, invDate: invDate, edit: true }
     invoice.unshift(item)
-    if (flag) this.invoices = invoice
+    // if (flag) this.invoices = invoice
+    this.invoices = invoice
     this.invDate = '';
   }
   getServices(booking, index) {
