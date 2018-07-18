@@ -91,15 +91,13 @@ export class DataForm {
     }
     let item
     let serviceDateFrom = moment().format('YYYY-MM-DD')
-    if (service === undefined) {
-      flag = true
-      service = []
-    }
+   
     item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
     service.unshift(item)
     if (flag) this.services = service
+   this.services[0].invoices=[]
     //this.serviceDateFrom = '';
-   // this.getInvoices(service, 0)
+    this.getInvoices(service, 0)
   }
   addInvoice() {
     let invoice = this.invoices
@@ -110,7 +108,6 @@ export class DataForm {
     }
     let item
     let invDate = moment().format('YYYY-MM-DD')
-    
     let invno = this.currentBooking.bookingNo
     item = { invno: invno, invDate: invDate, edit: true }
     invoice.unshift(item)
@@ -131,6 +128,7 @@ export class DataForm {
 
   getInvoices(service, index) {
     // console.log(' this.currentRecord ', index, service.invoices);
+    // if (service.invoices===undefined)
     this.invoices = service.invoices
     this.currentService = service
     console.log(' getInvoices ', this.invoices)
