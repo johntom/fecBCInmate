@@ -409,20 +409,24 @@
 
                             
 
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
-                                    <input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="approvedDate">
-                                </td>
-                            
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${paymentStatus}</span>
-                                    <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="invoice.paymentStatus">
-                                        <option model.bind="null">Choose...</option>
-                                        <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
-                                            ${opt.code}
-                                        </option>
 
-                                </td>
+
+<td width="125px">
+<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
+<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
+</td>
+
+
+<td width="125px">
+<span show.bind="!invoice.edit">${paymentStatus}</span>
+<select show.bind="invoice.edit" id="adj" class="form-control input-sm" 
+value.two-way="invoice.paymentStatus">
+<option model.bind="null">Choose...</option>
+<option repeat.for="opt of appService.approvedList" model.bind="opt.code">
+${opt.code}
+</option>
+
+</td>
 
                                 <td width="125px">
                                     <span show.bind="!invoice.edit">${deniedReason}</span>
