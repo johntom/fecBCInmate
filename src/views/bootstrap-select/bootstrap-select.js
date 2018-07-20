@@ -1,7 +1,10 @@
 import 'bootstrap-select/css/bootstrap-select.min.css';
 
 export class BootstrapSelect {
-
+ pickerOptions = {
+      actionsBox: true,
+      dropupAuto: true
+    };
   allCondiments = [
     { id: 1, option: 'Ketchup', group: 'Condiments' },
     { id: 2, option: 'Mustard', group: 'Condiments' },
