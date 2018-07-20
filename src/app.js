@@ -12,7 +12,8 @@ export class App {
       {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates"), "nav": true, "title": "Inmates"},
       {"route": "inmatesdata", "name": "inmatesdata", "moduleId": PLATFORM.moduleName("./views/inmates/data-form"), "nav": false, "title": "InmatesData"},
       {"route": "inmates/:id", "name": "inmates-data-form", "moduleId": PLATFORM.moduleName("./views/inmates/data-form"), "nav": false, "title": "InmatesData"},
-     
+      {"route": "bootstrap-select", "name": "bootstrap-select", "moduleId": PLATFORM.moduleName( "./views/bootstrap-select/bootstrap-select"), "nav": true, "title": "Bootstrap Select"}
+  
      // {"route": "inmates", "name": "inmates", "moduleId": PLATFORM.moduleName("./views/inmates/inmates-section"), "nav": true, "title": "Inmates"},
       
      //  { name: 'users', route: ['users'], moduleId: 'users/users-section', nav: true, title: 'Users' },

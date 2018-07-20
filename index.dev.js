@@ -1,3 +1,5 @@
+// 
+// new
 function hashCode(s) {
   if (!s) return 0;
   let h = 0;
@@ -51,21 +53,29 @@ function buildDependencyMap() {
         const map = {};
         const packages = {};
         const meta = {};
+
         for (let i = 0; i < values.length - 1; i += 2) {
           const pkg = values[i];
           const dir = values[i + 1];
-          let {browser, main, name, version, jspm} = pkg.data;
-          if (jspm && jspm.directories) {
+          let {browser, main, name, version, jspm, dependencies, peerDependencies} = pkg.data;
+
+          if (jspm) {
             const jspmMain = jspm.main;
-            const dist = jspm.directories.dist || jspm.directories.lib;
-            main = `${dist}`;
+            if (jspm.directories) {
+              const dist = jspm.directories.dist || jspm.directories.lib;
+              main = `${dist}`;
+            }
             packages[name] = {
               main: `${jspmMain}.js`,
               defaultExtension: 'js'
             };
-            if (jspm.dependencies) {
+            if (jspm.dependencies && Object.keys(jspm.dependencies).length > 0) {
               meta[name] = {
                 deps: Object.keys(jspm.dependencies)
+              };
+            } else if (dependencies && Object.keys(dependencies).length > 0) {
+              meta[name] = {
+                deps: Object.keys(dependencies)
               };
             }
           } else {
@@ -83,6 +93,16 @@ function buildDependencyMap() {
             } else if (browser) {
               main = browser;
             }
+
+            if (dependencies && Object.keys(dependencies).length > 0) {
+              meta[name] = {
+                deps: Object.keys(dependencies)
+              };
+            } else if (peerDependencies && Object.keys(peerDependencies).length > 0) {
+              meta[name] = {
+                deps: Object.keys(peerDependencies)
+              };
+            }
           }
           if (!main) {
             main = 'index.js';
@@ -91,11 +111,20 @@ function buildDependencyMap() {
           const valueUri = `npm:${name}@${version}/${main}`;
           map[name] = valueUri;
         }
+
         // Also, handle fecDependencies
-        for (const [key2, value2] of Object.entries(data.fecDependencies)) {
-          console.log(`${key2} ${value2}`);
-          map[key2] = value2;
+        for (const [name, value] of Object.entries(data.fecDependencies)) {
+          if (value.map) {
+            map[name] = value.map;
+          }
+          if (value.package) {
+            packages[name] = value.package;
+          }
+          if (value.meta) {
+            meta[name] = value.meta;
+          }
         }
+
         localStorage.setItem('packageMap', JSON.stringify(map));
         localStorage.setItem('packagePackages', JSON.stringify(packages));
         localStorage.setItem('packageMeta', JSON.stringify(meta));
@@ -116,10 +145,7 @@ async function receiveMessage(event) {
   // Do we trust the sender of this message?
   const origins = [
     'http://localhost:9000',
-    'http://frontendcreator.com',
-    'http://www.frontendcreator.com',
-    'https://frontendcreator.com',
-    'https://www.frontendcreator.com'
+    'https://frontendcreator.com'
   ];
   if (!origins.includes(event.origin)) return;
 
