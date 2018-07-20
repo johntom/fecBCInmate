@@ -7,7 +7,6 @@
     "type": "git"
   },
   "author": "Matt Duffield <matt.duffield@gmail.com> (https://frontendcreator.com/)",
- "author": "Matt Duffield <matt.duffield@gmail.com> (https://frontendcreator.com/)",
   "fecDependencies": {
     "bootstrap": {
       "map": "npm:bootstrap@3.3.7/./dist",
