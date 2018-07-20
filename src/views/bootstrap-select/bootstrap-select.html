@@ -5,7 +5,8 @@
 
  <abp-select collection.bind="allCondiments" picker-options.bind="{ actionsBox: true }"></abp-select>
 <!--   { id: 1, option: 'Ketchup', group: 'Condiments' -->
- <abp-select cpicker-options.bind="allCondiments" empty-on-null="true" selected-item.bind="condiment" selected-value.bind="option" disabled="false" ></abp-select>
+ <abp-select collection.bind="allCondiments" picker-options.bind="selectOptions" empty-on-null="true" 
+ selected-item.bind="condiment" selected-value.bind="condimentValue" disabled="false" ></abp-select>
 
 </template>
 
