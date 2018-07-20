@@ -1,6 +1,7 @@
 import 'bootstrap-select/css/bootstrap-select.min.css';
 
 export class BootstrapSelect {
+  //if we use selectOptions
  pickerOptions = {
       actionsBox: true,
       dropupAuto: true
