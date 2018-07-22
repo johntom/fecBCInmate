@@ -1,17 +1,24 @@
 import { Router } from 'aurelia-router';
-import { inject } from 'aurelia-dependency-injection';
+import { inject, customAttribute } from 'aurelia-dependency-injection';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { ApplicationService } from '../../services/application-service';
 import moment from 'moment';
 import { ApiService } from '../../utils/servicesApi';
+import { observable } from "aurelia-framework";
+// import {CssAnimator} from 'aurelia-animator-css';
 // import { ApplicationService } from '../../services/application-service';
 // import { MyDataService } from "../../services/my-data-service";
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
+
+// @customAttribute('animateonchange')
+
+//,Element, CssAnimator
 @inject(Router, ApplicationService, ApiService)
 
 export class DataForm {
+ // @observable selectedBooking;
   heading = 'DataAddForm HEADER...';
   footer = 'DataAddForm FOOTER...';
   adjusterList = 'adjusterList';
@@ -24,25 +31,51 @@ export class DataForm {
 
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
-  // constructor(router, api, appService, dataService, eventAggregator, dialogService) {
+
   constructor(router, appService, api) {
+    
     this.api = api;
     this.appService = appService;
     this.router = router;
     console.log('DataForm')
     this.inv = '';
-    // this.dataService = dataService;
-    // this.eventAggregator = eventAggregator;
-    // this.createEventListeners();
+    
     this.services = []
     this.invoices = []
-    // this.dialogService = dialogService
-    // this.inscontactMatcher = {}
-    // this.skippromt = false
-    // this.navaway = false
+   
   }
+
+  // valueChanged(newValue) {
+  //   if (this.initialValueSet) {
+  //     this.animator.addClass(this.element, 'background-animation').then(() => {
+  //       this.animator.removeClass(this.element, 'background-animation');
+  //     });
+  //   }
+  //   this.initialValueSet = true;
+  // }
+
+  // selectedBookingChanged(newVal, oldVal) {
+  //   this.booking.forEach(function (d) { // no longer out of scope
+  //     d.isCurrent = d === newValue;
+  //   })
+  // }
+  changeColor(item) {
+    // alert(item.classification);
+    item.isSelected = !item.isSelected;
+  }
+
   EditBooking(booking, editstate) {
     this.currentBooking = booking
+
+   for (let bk of this.currentRecord.booking) {
+      // console.log('bk2 ', bk2)
+      bk.isSelected = false
+    }
+ 
+    this.currentBooking.isSelected = true
+    this.services[0].isSelected = true
+
+
     booking.edit = !editstate//this.booking.edit
     this.services = booking.services
     this.getInvoices(this.services[0], 0)
@@ -72,12 +105,12 @@ export class DataForm {
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
-    
+
     // let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
     // item2 = { serviceDateFrom: serviceDateFrom }
     booking[0].services = []
-    this.services=[]
-      this.invoices =[]
+    this.services = []
+    this.invoices = []
     // // booking[0].services.push(item2)
     // // booking[0].services[0]=''
     // //  booking[0].services[0].invoices = []
@@ -88,16 +121,16 @@ export class DataForm {
     let service = this.services
     let flag = false
     if (service === undefined) {
-     flag=true
+      flag = true
       service = []
     }
     let item
     let serviceDateFrom = moment().format('YYYY-MM-DD')
-   
+
     item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
     service.unshift(item)
     if (flag) this.services = service
-   this.services[0].invoices=[]
+    this.services[0].invoices = []
     //this.serviceDateFrom = '';
     this.getInvoices(service, 0)
   }
@@ -125,8 +158,18 @@ export class DataForm {
     this.currentBooking = booking
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
-    // if (index!==0)  this.getInvoices(this.services[0], index)
-    this.getInvoices(this.services[0],0)
+    for (let bk of this.currentRecord.booking) {
+     // console.log('bk2 ', bk2)
+      bk.isSelected = false
+    }
+ 
+    this.currentRecord.booking[index].isSelected = true
+    this.services[0].isSelected = true
+
+
+    //   this.services[0].isSelected=true
+
+    this.getInvoices(this.services[0], 0)
     // }
   }
 
@@ -135,6 +178,8 @@ export class DataForm {
     // if (service.invoices===undefined)
     this.invoices = service.invoices
     this.currentService = service
+    this.invoices[0].isSelected = true
+
     console.log(' getInvoices ', this.invoices)
   }
   close() {
@@ -178,11 +223,19 @@ export class DataForm {
         this.currentRecord = this.appService.currentRecord
         this.docs = this.currentRecord.docs
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
+
+        this.currentRecord.booking[0].isSelected = true
+
         this.getServices(this.currentRecord.booking[0], 0)
 
       }
       // } // state
     }
+    // click.delegate
+    //  this.table.click.delegate('click-row.bs.table', function (e, row, $element) {
+    //     $('.success').removeClass('success');
+    //     $($element).addClass('success');
+    //   });
   }
   addDocs(images) {
     //images is file

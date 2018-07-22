@@ -5,6 +5,7 @@
 			max-width: 100%;
 			height: auto;
 		}
+
 		/* Variables
 ================================== */
 		/* Tables
@@ -361,7 +362,7 @@
 		}
 
     /* renderjson http://caldwell.github.io/renderjson/ */
-    .renderjson a              { text-decoration: none; }
+    /* .renderjson a              { text-decoration: none; }
 .renderjson .disclosure    { color: crimson;
                              font-size: 150%; }
 .renderjson .syntax        { color: grey; }
@@ -371,4 +372,4 @@
 .renderjson .key           { color: lightblue; }
 .renderjson .keyword       { color: lightgoldenrodyellow; }
 .renderjson .object.syntax { color: lightseagreen; }
-.renderjson .array.syntax  { color: lightsalmon; }
+.renderjson .array.syntax  { color: lightsalmon; } */

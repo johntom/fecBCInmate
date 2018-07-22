@@ -1,418 +1,433 @@
 <template>
-    <require from="./date-format"></require>
-
-    <!-- <script type="text/javascript" src="renderjson.js"></script> -->
-    <script language="JavaScript">
-        window.onbeforeunload = confirmExit;
+	<require from="./date-format"></require>
+	<script language="JavaScript">
+		window.onbeforeunload = confirmExit;
         function confirmExit() {
             return "You have attempted to leave this page. Are you sure?";
         }
-    </script>
-    <script>
-        document.getElementById("test").appendChild(
+	</script>
+	<!-- <script>
+		document.getElementById("test").appendChild(
             renderjson({ hello: [1, 2, 3, 4], there: { a: 1, b: 2, c: ["hello", null] } })
         );
-    </script>
-    <require from="./flex.css"></require>
-    <section class="full-height flex-column-1 au-animate ignore">
+	</script> -->
+	<require from="./flex.css"></require>
+	<section class="full-height flex-column-1 au-animate ignore">
 
-        <div class="flex-row-none section-header">
-            ${heading} Add
+		<div class="flex-row-none section-header">
+			${heading} Add
 
-        </div>
-
-
-        <div class="flex-column-1 overflow-y-auto">
-            <!-- <form ref="inmate" class="flex-column-1"> -->
-
-            <div class="flex-row-none">
-                <div class="form-group flex-column-1">
-                    <div ref="test"></div>
-                    <div class="Rtable Rtable--2cols">
-                        <div class="Rtable-cell-30 Rtable-cell--green">
-                            <strong> id </strong>
-                        </div>
-                        <div class="Rtable-cell-70 Rtable-cell--green">
-                            ${currentRecord.id}
-                        </div>
-                        <div class="Rtable-cell-30 Rtable-cell--green">
-                            <strong> lastname</strong>
-                        </div>
-                        <div class="Rtable-cell-70 Rtable-cell--green">
-                            <input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.lastname">
-                        </div>
-
-                        <div class="Rtable-cell-30 Rtable-cell--green">
-                            <strong> firstname</strong>
-                        </div>
-                        <div class="Rtable-cell-70 Rtable-cell--green">
-                            <input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.firstname">
-                        </div>
+		</div>
 
 
-                    </div>
-                </div>
+		<div class="flex-column-1 overflow-y-auto">
+			<!-- <form ref="inmate" class="flex-column-1"> -->
 
-                <div class="form-group flex-column-1 margin-left-10">
-                    <div class="Rtable Rtable--2cols">
-                        <div class="Rtable-cell-30 Rtable-cell--green">
-                            <strong> Gender</strong>
-                        </div>
-                        <div class="Rtable-cell-70 Rtable-cell--green">
-                            <input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.gender">
-                        </div>
+			<div class="flex-row-none">
+				<div class="form-group flex-column-1">
+					<div ref="test"></div>
+					<div class="Rtable Rtable--2cols">
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> id </strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							${currentRecord.id}
+						</div>
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> lastname</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.lastname">
+						</div>
 
-
-
-                        <div class="Rtable-cell-30 Rtable-cell--green">
-                            <strong> DOB</strong>
-                        </div>
-                        <div class="Rtable-cell-70 Rtable-cell--green">
-                            ${currentRecord.inmate.DOB}
-                            <input type="date" id="DOB" class="form-control input-sm" value.bind="currentRecord.inmate.DOB">
-                        </div>
-
-                        <div class="Rtable-cell-30 Rtable-cell--green">
-                            <strong> ss</strong>
-                        </div>
-                        <div class="Rtable-cell-70 Rtable-cell--green">
-                            <input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
-                        </div>
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> firstname</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.firstname">
+						</div>
 
 
-                    </div>
-                </div>
+					</div>
+				</div>
 
-            </div>
+				<div class="form-group flex-column-1 margin-left-10">
+					<div class="Rtable Rtable--2cols">
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> Gender</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.gender">
+						</div>
 
-            <section class="docs full-height flex-column-1 overflow-y-auto ignore">
-                <h3>
-                    <i class="fa fa-folder-open"></i> Booking: (${appService.currentRecord.booking.length})
 
-                    <a slot="buttons-slot" class="btn btn-success" click.delegate="addBooking()">
-                        <i class="fa fa-plus"></i> Add Booking
-                    </a>
-                </h3>
 
-                <table class="table-condensed table">
-                    <thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking; cols: ['bookingDate','classification']">
-                        <tr>
-                            <tr>
-                                <th class="header">bookingDate
-                                </th>
-                                <th class="header">classification
-                                </th>
-                                <th class="header">bookingNo
-                                </th>
-                                <th class="header">prisonerId
-                                </th>
-                                <th class="header">sentencingDate
-                                </th>
-                                <th class="header">Cmd
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> DOB</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							${currentRecord.inmate.DOB}
+							<input type="date" id="DOB" class="form-control input-sm" value.bind="currentRecord.inmate.DOB">
+						</div>
 
-                                </th>
-                            </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <!-- <tr repeat.for="booking of appService.currentRecord.booking" with.bind="booking"> -->
-                        <tr repeat.for="booking of currentRecord.booking" with.bind="booking">
-                            <td width="125px">
-                                <span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
-                                <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
-                            </td>
-                            <td width="125px">
-                                <span show.bind="!booking.edit">${classification}</span>
+						<div class="Rtable-cell-30 Rtable-cell--green">
+							<strong> ss</strong>
+						</div>
+						<div class="Rtable-cell-70 Rtable-cell--green">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
+						</div>
 
-                                <!-- <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">		</td> -->
-                                <!-- change.delegate="selectChanged(adjuster, adjuster.ADJUSTER_ID)" -->
 
-                                <select show.bind="booking.edit" id="adj" class="form-control input-sm" value.two-way="booking.classification">
+					</div>
+				</div>
+
+			</div>
+
+			<section class="docs full-height flex-column-1 overflow-y-auto ignore">
+				<h3>
+					<i class="fa fa-folder-open"></i> Booking: (${appService.currentRecord.booking.length})
+
+					<a slot="buttons-slot" class="btn btn-success" click.delegate="addBooking()">
+						<i class="fa fa-plus"></i> Add Booking
+					</a>
+				</h3>
+
+				<!-- <table class="table-condensed table"> -->
+
+
+				<table class="table-condensed table" id="table" ref="table" data-toggle="table">
+					<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking; cols: ['bookingDate','classification']">
+						<tr>
+							<tr>
+								<th class="header">iss
+								</th>
+								<th class="header">bookingDate
+								</th>
+								<!-- <th class="header">classification~
+							</th> -->
+								<th class="header">classification
+								</th>
+								<th class="header">bookingNo
+								</th>
+								<th class="header">prisonerId
+								</th>
+								<th class="header">sentencingDate
+								</th>
+								<th class="header">Cmd
+
+								</th>
+							</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
+					<tbody>
+
+						<tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
+						 click.trigger="changeColor(booking)">
+							<!-- <tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${(booking.classification == selectedBooking.classification) ? 'selected' : 'notSelected'}"> -->
+
+							<td width="25px">
+								${isSelected}
+							</td>
+							<td width="125px">
+								<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
+								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
+							</td>
+							<!-- <td width="125px" animateonchange.bind="booking.classification">${booking.classification}</td> -->
+
+
+							<td width="125px">
+								<span show.bind="!booking.edit">${classification}</span>
+
+								<!-- <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">		</td> -->
+								<!-- change.delegate="selectChanged(adjuster, adjuster.ADJUSTER_ID)" -->
+
+								<select show.bind="booking.edit" id="adj" class="form-control input-sm" value.two-way="booking.classification">
                                     <option model.bind="null">Choose...</option>
                                     <option repeat.for="opt of appService.classificationList" model.bind="opt.code">
                                         ${opt.code}
                                     </option>
                                 </select>
 
-                            </td>
+							</td>
 
-                            <td width="125px">
-                                <span show.bind="!booking.edit">${bookingNo}</span>
+							<td width="125px">
+								<span show.bind="!booking.edit">${bookingNo}</span>
 
-                                <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo"> </td>
-                            </td>
-                            <td width="125px">
-                                <span show.bind="!booking.edit">${prisonerId}</span>
+								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">								</td>
+							</td>
+							<td width="125px">
+								<span show.bind="!booking.edit">${prisonerId}</span>
 
-                                <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId"> </td>
-                            <td width="125px">
-                                <span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
-                                <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
-                            </td>
-                            <td width="325px">
-                                <!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
+								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId">								</td>
+							<td width="125px">
+								<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
+								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
+							</td>
+							<td width="325px">
+								<!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
                   ${ !booking.edit ? 'Update' : 'Done' }</button>	 -->
-                                <button class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit)">
+								<button class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit)">
                                     ${ !booking.edit ? 'Update' : 'Done' }</button>
-                                <button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
-                                <button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
+								<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
+								<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
 
-                            </td>
+							</td>
 
 
+							</span>
+						</tr>
 
-                        </tr>
+					</tbody>
+				</table>
+				<!--  end booking table -->
 
-                    </tbody>
-                </table>
-                <!--  end booking table -->
+				<!--  new table -->
+				<h3>
+					<i class="fa fa-folder-open"></i> Services (${services.length})
+					<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
+						<i class="fa fa-plus"></i> Add Services
+					</a>
+					${currentBooking.bookingNo}
+				</h3>
+				<table class="table-condensed table">
+					<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
+						<tr>
 
-                <!--  new table -->
-                <h3>
-                    <i class="fa fa-folder-open"></i> Services (${services.length})
-                    <a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
-                        <i class="fa fa-plus"></i> Add Services
-                    </a>
-                    ${currentBooking.bookingNo}
-                </h3>
-                <table class="table-condensed table">
-                    <thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
-                        <tr>
+							<th class="header">Srv Provided
+							</th>
+							<th class="header">Srv Type
+							</th>
+							<th class="header">Srv DateFrom
+							</th>
+							<th class="header">Srv DateTo
+							</th>
+							<th class="header">Transport<br>Method
+							</th>
 
-                            <th class="header">Srv Provided
-                            </th>
-                            <th class="header">Srv Type
-                            </th>
-                            <th class="header">Srv DateFrom
-                            </th>
-                            <th class="header">Srv DateTo
-                            </th>
-                            <th class="header">Transport<br>Method
-                            </th>
+							<th class="header">Sending<br>Provider
+							</th>
+							<th class="header">Designated<br>Provider
+							</th>
+							<th class="header">Service<br>Reason
+							</th>
+							<th class="header">Cmd
+							</th>
+						</tr>
+						</body>
+						<tfoot>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tfoot>
 
-                            <th class="header">Sending<br>Provider
-                            </th>
-                            <th class="header">Designated<br>Provider
-                            </th>
-                            <th class="header">Service<br>Reason
-                            </th>
-                            <th class="header">Cmd
-                            </th>
-                        </tr>
-                        </body>
-                        <tfoot>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
+						<tbody>
+							<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
+							 click.trigger="changeColor(service)">
+								<!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
+								<td width="125px">
+									<span show.bind="!service.edit">${serviceProvided}</span>
 
-                        <tbody>
-                            <tr repeat.for="service of services" with.bind="service">
-                                <!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${serviceProvided}</span>
+									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
 
-                                    <!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
-
-                                    <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceProvided">
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceProvided">
                                         <option model.bind="null">Choose...</option>
                                         <option repeat.for="opt of appService.serviceprovidedList" model.bind="opt.code">
                                             ${opt.code}
                                         </option>
                                     </select>
 
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${serviceType}</span>
+								</td>
+								<td width="125px">
+									<span show.bind="!service.edit">${serviceType}</span>
 
-                                    <!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType"> -->
+									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType"> -->
 
-                                    <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceType">
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceType">
                                         <option model.bind="null">Choose...</option>
                                         <option repeat.for="opt of appService.servicetypeList" model.bind="opt.code">
                                             ${opt.code}
                                         </option>
                                     </select>
 
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
-                                    <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateFrom">
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${serviceDateTo | dateFormat }</span>
-                                    <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateTo">
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${transportMethod}</span>
-                                    <select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod">
+								</td>
+								<td width="125px">
+									<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateFrom">
+								</td>
+								<td width="125px">
+									<span show.bind="!service.edit">${serviceDateTo | dateFormat }</span>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateTo">
+								</td>
+								<td width="125px">
+									<span show.bind="!service.edit">${transportMethod}</span>
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod">
                                         <option model.bind="null">Choose...</option>
                                         <option repeat.for="opt of appService.transportList" model.bind="opt.code">
                                             ${opt.code}
                                         </option>
                                     </select>
-                                    <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod">
-                                </td>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod">
+								</td>
 
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${sendingProvider}</span>
-                                    <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">
-                                </td>
+								<td width="125px">
+									<span show.bind="!service.edit">${sendingProvider}</span>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">
+								</td>
 
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${designatedProvider}</span>
-                                    <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!service.edit">${serviceReason}</span>
-                                    <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">
-                                </td>
+								<td width="125px">
+									<span show.bind="!service.edit">${designatedProvider}</span>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">
+								</td>
+								<td width="125px">
+									<span show.bind="!service.edit">${serviceReason}</span>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">
+								</td>
 
 
-                                <td width="325px">
-                                    <!-- <button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button> -->
-                                    <button class="btn btn-primary" click.delegate="EditService(service,service.edit)">
+								<td width="325px">
+									<!-- <button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button> -->
+									<button class="btn btn-primary" click.delegate="EditService(service,service.edit)">
                                         ${ !service.edit ? 'Update' : 'Done' }</button>
-                                    <button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
-                                    <button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
+									<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
+									<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
 
-                                </td>
-                            </tr>
+								</td>
+							</tr>
 
-                        </tbody>
-                </table>
+						</tbody>
+				</table>
 
-                <!--  end new table -->
+				<!--  end new table -->
 
-                <!--  new table invoices data-sort="items.bind: invoices; cols: ['bookingDate','classification']"-->
-                <h3>
-                    <i class="fa fa-folder-open"></i> Invoices (${invoices.length} )
-                    <a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
-                        <i class="fa fa-plus"></i> Add Invoice
-                    </a>
-                    Docs for Invoice ${currentBooking.bookingNo} / ${currentService.serviceProvided} - ${currentService.serviceType}
-                    <h4>
-                        click button below or drag n drop files's over button</h4>
-                    <!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
+				<!--  new table invoices data-sort="items.bind: invoices; cols: ['bookingDate','classification']"-->
+				<h3>
+					<i class="fa fa-folder-open"></i> Invoices (${invoices.length} )
+					<a slot="buttons-slot" class="btn btn-success" click.delegate="addInvoice()">
+						<i class="fa fa-plus"></i> Add Invoice
+					</a>
+					Docs for Invoice ${currentBooking.bookingNo} / ${currentService.serviceProvided} - ${currentService.serviceType}
+					<h4>
+						click button below or drag n drop files's over button</h4>
+					<!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
 						<i class="fa fa-plus"></i> Add Uploaded File
 					</a> -->
-                </h3>
-                <table class="table-condensed table">
-                    <thead class="table-header-blue">
-                        <tr>
-                            <th class="header">inv#
-                            </th>
-                            <th class="header">invDate
-                            </th>
-                   
-                            <!-- <th class="header">cpts
+				</h3>
+				<table class="table-condensed table">
+					<thead class="table-header-blue">
+						<tr>
+							<th class="header">inv#
+							</th>
+							<th class="header">invDate
+							</th>
+
+							<!-- <th class="header">cpts
 							</th> -->
-                            <th class="header">Invoice
-                                <br>Total
-                            </th>
-                            <th class="header">Repriced
-                                <br>Amt
-                            </th>
-                            <th class="header">savings
-                            </th>
-                          
-                            <th class="header">Apprvd
-                                <br>Date
-                            </th>
-                            <th class="header">Payment
-                                <br>Status
-                            </th>
-                      
-                            <th class="header">Denied
-                                <br>Reason
-                            </th>
+							<th class="header">Invoice
+								<br>Total
+							</th>
+							<th class="header">Repriced
+								<br>Amt
+							</th>
+							<th class="header">savings
+							</th>
+
+							<th class="header">Apprvd
+								<br>Date
+							</th>
+							<th class="header">Payment
+								<br>Status
+							</th>
+
+							<th class="header">Denied
+								<br>Reason
+							</th>
 
 
 
-                            </th>
-                            <th class="header">FileName
-                            </th>
-                            <th class="header">Cmd</th>
-                            </th>
-                            <th class="header">Drop
-                            </th>
-                        </tr>
-                        </body>
-                        <tfoot>
-                            <tr>
-                                <!-- <td></td>
+							</th>
+							<th class="header">FileName
+							</th>
+							<th class="header">Cmd</th>
+							</th>
+							<th class="header">Drop
+							</th>
+						</tr>
+						</body>
+						<tfoot>
+							<tr>
+								<!-- <td></td>
 								<td></td>
 								<td></td>
 								<td></td> -->
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tfoot>
 
-                        <tbody>
-                            <tr repeat.for="invoice of invoices" with.bind="invoice">
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${invno}</span>
-                                    <input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${invDate | dateFormat }</span>
-                                    <input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
-                                </td>
+						<tbody>
+							<tr repeat.for="invoice of invoices" with.bind="invoice" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
+							 click.trigger="changeColor(invoice)">
+								<td width="125px">
+									<span show.bind="!invoice.edit">${invno}</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
+								</td>
+								<td width="125px">
+									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
+								</td>
 
 
-                                <td width="75px">
-                                    <span show.bind="!invoice.edit">${invoiceTotal}</span>
-                                    <input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${repricedAmt}</span>
+								<td width="75px">
+									<span show.bind="!invoice.edit">${invoiceTotal}</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
+								</td>
+								<td width="125px">
+									<span show.bind="!invoice.edit">${repricedAmt}</span>
 
-                                    <input show.bind="invoice.edit" class="form-control 
+									<input show.bind="invoice.edit" class="form-control 
                   input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
-                                </td>
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${savings}</span>
-                                    <input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
-                                </td>
-
-                            
+								</td>
+								<td width="125px">
+									<span show.bind="!invoice.edit">${savings}</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
+								</td>
 
 
 
-<td width="125px">
-<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
-<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
-</td>
 
 
-<td width="125px">
-<span show.bind="!invoice.edit">${paymentStatus}</span>
-<select show.bind="invoice.edit" id="adj" class="form-control input-sm" 
-value.two-way="invoice.paymentStatus">
+								<td width="125px">
+									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
+								</td>
+
+
+								<td width="125px">
+									<span show.bind="!invoice.edit">${paymentStatus}</span>
+									<select show.bind="invoice.edit" id="adj" class="form-control input-sm" value.two-way="invoice.paymentStatus">
 <option model.bind="null">Choose...</option>
 <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
 ${opt.code}
