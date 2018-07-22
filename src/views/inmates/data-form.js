@@ -19,8 +19,8 @@ import { observable } from "aurelia-framework";
 
 export class DataForm {
  // @observable selectedBooking;
-  heading = 'DataAddForm HEADER...';
-  footer = 'DataAddForm FOOTER...';
+  heading = 'Inmate Entry...';
+  footer = 'Inmate Footer...';
   adjusterList = 'adjusterList';
   recordId = '';
   products = [
