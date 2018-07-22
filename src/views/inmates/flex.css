@@ -370,14 +370,14 @@
         background: #f9f9f9 !important;
       }
 
-        .is-row-selected {
+        /* .is-row-selected {
       background:#f9f9f9 !important;
     }
 
     .is-row-not-selected {
 
     background: yellow !important;
-    } 
+    }  */
     /* renderjson http://caldwell.github.io/renderjson/ */
     /* .renderjson a              { text-decoration: none; }
 .renderjson .disclosure    { color: crimson;
