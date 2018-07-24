@@ -15,7 +15,7 @@
 	<section class="full-height flex-column-1 au-animate ignore">
 
 		<div class="flex-row-none section-header">
-			${heading}  
+			${heading}
 
 		</div>
 
@@ -128,9 +128,10 @@
 						</tr>
 					</tfoot>
 					<tbody>
+						<tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
+							<!-- <tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
+						 click.trigger="changeColor(booking)"> -->
 
-						<tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
-						 click.trigger="changeColor(booking)">
 							<!-- <tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${(booking.classification == selectedBooking.classification) ? 'selected' : 'notSelected'}"> -->
 
 							<td width="25px">
@@ -238,8 +239,8 @@
 						</tfoot>
 
 						<tbody>
-							<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
-							 click.trigger="changeColor(service)">
+							<!-- click.trigger="changeColor(service)" -->
+							<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
 								<!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
 								<td width="125px">
 									<span show.bind="!service.edit">${serviceProvided}</span>
@@ -332,6 +333,8 @@
 				<table class="table-condensed table">
 					<thead class="table-header-blue">
 						<tr>
+
+							<th class="header">iss </th>
 							<th class="header">inv#
 							</th>
 							<th class="header">invDate
@@ -388,8 +391,12 @@
 						</tfoot>
 
 						<tbody>
-							<tr repeat.for="invoice of invoices" with.bind="invoice" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}"
-							 click.trigger="changeColor(invoice)">
+							<!--  click.trigger="changeColor(invoice)" -->
+							<tr repeat.for="invoice of invoices" with.bind="invoice" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
+								<td width="25px">
+									${isSelected}
+								</td>
+
 								<td width="125px">
 									<span show.bind="!invoice.edit">${invno}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
@@ -414,11 +421,6 @@
 									<span show.bind="!invoice.edit">${savings}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
 								</td>
-
-
-
-
-
 								<td width="125px">
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
@@ -428,12 +430,12 @@
 								<td width="125px">
 									<span show.bind="!invoice.edit">${paymentStatus}</span>
 									<select show.bind="invoice.edit" id="adj" class="form-control input-sm" value.two-way="invoice.paymentStatus">
-<option model.bind="null">Choose...</option>
-<option repeat.for="opt of appService.approvedList" model.bind="opt.code">
-${opt.code}
-</option>
+                <option model.bind="null">Choose...</option>
+                <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
+                ${opt.code}
+                </option>
 
-</td>
+                </td>
 
 
                                 <td width="125px">
@@ -455,18 +457,15 @@ ${opt.code}
                                     <span show.bind="invoice.edit">${fileinvoicename}</span>
                                 </td>
                                 <td width="325px">
-                                    <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button>
+                                    <!-- <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button> -->
+                                    <button class="btn btn-primary" click.delegate="EditInvoice(invoice,invoice.edit,$index)">
+                                        ${ !service.edit ? 'Update' : 'Done' }</button>
                                     <button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
-                                    <!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
-										<i class="fa fa-plus"></i> Upload
-									</a> -->
+                 
                                     <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
                                         <i class="fa fa-plus"></i> Upload
                                     </a>
-                                    <!-- <a slot="buttons-slot">
-                  <input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
-                  <i class="material-icons prefix">search</i>
-					        </a> -->
+             
                                 </td>
                                 <td>
                                     <input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">

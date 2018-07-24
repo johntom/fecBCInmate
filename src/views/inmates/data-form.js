@@ -89,6 +89,18 @@ export class DataForm {
     this.getInvoices(service, 0)
 
   }
+
+  EditInvoice(invoice, editstate,index) {
+    this.currentInvoice= invoice
+    invoice.edit = !editstate//this.booking.edit
+     for (let bk of this.invoices) {
+    //  console.log('bk2 ', bk2)
+       bk.isSelected = false
+     }
+ 
+    // this.currentRecord.booking[index].isSelected = true
+     this.invoices[index].isSelected = true
+  }
   addBooking() {
     let booking = this.currentRecord.booking //this.appService.currentRecord.booking
     let flag = false
