@@ -135,7 +135,7 @@
 							<!-- <tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${(booking.classification == selectedBooking.classification) ? 'selected' : 'notSelected'}"> -->
 
 							<td width="25px">
-								${isSelected}
+								${booking.isSelected}
 							</td>
 							<td width="125px">
 								<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
@@ -192,7 +192,7 @@
 
 				<!--  new table -->
 				<h3>
-					<i class="fa fa-folder-open"></i> Services (${services.length})
+					<i class="fa fa-folder-open"></i> Services (${services.length}  BookingIndex ${bookingindex} / ServiceIndex ${currentServiceIndex})
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
 						<i class="fa fa-plus"></i> Add Services
 					</a>
@@ -201,7 +201,8 @@
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
 						<tr>
-
+	<th class="header">iss
+							</th>
 							<th class="header">Srv Provided
 							</th>
 							<th class="header">Srv Type
@@ -242,7 +243,10 @@
 							<!-- click.trigger="changeColor(service)" -->
 							<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
 								<!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
-								<td width="125px">
+							<td width="25px">
+								${service.isSelected}
+							</td>
+              	<td width="125px">
 									<span show.bind="!service.edit">${serviceProvided}</span>
 
 									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
@@ -304,7 +308,7 @@
 
 								<td width="325px">
 									<!-- <button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button> -->
-									<button class="btn btn-primary" click.delegate="EditService(service,service.edit)">
+									<button class="btn btn-primary" click.delegate="EditService(service,service.edit,$index)">
                                         ${ !service.edit ? 'Update' : 'Done' }</button>
 									<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
 									<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
@@ -394,7 +398,7 @@
 							<!--  click.trigger="changeColor(invoice)" -->
 							<tr repeat.for="invoice of invoices" with.bind="invoice" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
 								<td width="25px">
-									${isSelected}
+									${invoice.isSelected}
 								</td>
 
 								<td width="125px">

@@ -18,7 +18,7 @@ import { observable } from "aurelia-framework";
 @inject(Router, ApplicationService, ApiService)
 
 export class DataForm {
- // @observable selectedBooking;
+  // @observable selectedBooking;
   heading = 'Inmate Entry...';
   footer = 'Inmate Footer...';
   adjusterList = 'adjusterList';
@@ -33,16 +33,16 @@ export class DataForm {
   // selectedProduct = { id: 1, name: 'CPU' };
 
   constructor(router, appService, api) {
-    
+
     this.api = api;
     this.appService = appService;
     this.router = router;
     console.log('DataForm')
     this.inv = '';
-    
+
     this.services = []
     this.invoices = []
-   
+    this.bookingindex = 0
   }
 
   // valueChanged(newValue) {
@@ -67,11 +67,11 @@ export class DataForm {
   EditBooking(booking, editstate) {
     this.currentBooking = booking
 
-   for (let bk of this.currentRecord.booking) {
+    for (let bk of this.currentRecord.booking) {
       // console.log('bk2 ', bk2)
       bk.isSelected = false
     }
- 
+
     this.currentBooking.isSelected = true
     this.services[0].isSelected = true
 
@@ -81,46 +81,56 @@ export class DataForm {
     this.getInvoices(this.services[0], 0)
   }
 
-  EditService(service, editstate) {
+  EditService(service, editstate, index) {
     this.currentService = service
+    this.currentServiceIndex = index
     service.edit = !editstate//this.booking.edit
-    //// this.services = booking.services
-    //this.getInvoices(this.services[0], 0)
+    for (let bk of this.services) {
+      // console.log('bk2 ', bk2)
+      bk.isSelected = false
+    }
+
+    this.services[index].isSelected = true
+
     this.getInvoices(service, 0)
 
   }
 
-  EditInvoice(invoice, editstate,index) {
-    this.currentInvoice= invoice
+  EditInvoice(invoice, editstate, index) {
+    this.currentInvoice = invoice
     invoice.edit = !editstate//this.booking.edit
-     for (let bk of this.invoices) {
-    //  console.log('bk2 ', bk2)
-       bk.isSelected = false
-     }
- 
+    for (let bk of this.invoices) {
+      //  console.log('bk2 ', bk2)
+      bk.isSelected = false
+    }
+
     // this.currentRecord.booking[index].isSelected = true
-     this.invoices[index].isSelected = true
+    this.invoices[index].isSelected = true
   }
   addBooking() {
     let booking = this.currentRecord.booking //this.appService.currentRecord.booking
+
+
     let flag = false
     let item, item2
     let bookingDate = moment().format('YYYY-MM-DD')
     if (booking === undefined) {
       flag = true
       booking = []
-    }
+    } else this.bookingindex = booking.length
+
     item = { bookingDate: bookingDate, classification: 'friday', edit: true }
     booking.unshift(item)
 
     if (flag) this.appService.currentRecord = booking
+
     this.bookingDate = '';
     this.classification = '';
     // this.getServices(0,0) //booking, 0)
 
     // let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
     // item2 = { serviceDateFrom: serviceDateFrom }
-    booking[0].services = []
+    booking[this.bookingindex].services = []
     this.services = []
     this.invoices = []
     // // booking[0].services.push(item2)
@@ -132,17 +142,26 @@ export class DataForm {
   addService() {
     let service = this.services
     let flag = false
+    let indx
     if (service === undefined) {
       flag = true
+      indx = 0
       service = []
+    } else {
+      indx = service.length
     }
     let item
     let serviceDateFrom = moment().format('YYYY-MM-DD')
 
     item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
     service.unshift(item)
-    if (flag) this.services = service
-    this.services[0].invoices = []
+    if (flag) {
+      this.services = service
+      this.services[0].invoices = []
+      this.currentRecord.booking[0].services[indx] = this.services
+      // this.currentRecord.currentBooking.services = this.services
+
+    }
     //this.serviceDateFrom = '';
     this.getInvoices(service, 0)
   }
@@ -160,6 +179,8 @@ export class DataForm {
     invoice.unshift(item)
     // if (flag) this.invoices = invoice
     this.invoices = invoice
+    this.currentRecord.booking[this.bookingindex].services[this.currentServiceIndex].invoices = this.invoices
+
     this.invDate = '';
   }
   getServices(booking, index) {
@@ -171,11 +192,19 @@ export class DataForm {
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
     for (let bk of this.currentRecord.booking) {
-     // console.log('bk2 ', bk2)
+      // console.log('bk2 ', bk2)
       bk.isSelected = false
     }
- 
+
     this.currentRecord.booking[index].isSelected = true
+
+
+
+    for (let bk of this.services) {
+      // console.log('bk2 ', bk2)
+      bk.isSelected = false
+    }
+
     this.services[0].isSelected = true
 
 
@@ -190,7 +219,25 @@ export class DataForm {
     // if (service.invoices===undefined)
     this.invoices = service.invoices
     this.currentService = service
-    this.invoices[0].isSelected = true
+    this.currentServiceIndex = index
+    
+    
+
+    for (let bk of this.services) {
+      // console.log('bk2 ', bk2)
+      bk.isSelected = false
+    }
+
+    this.services[index].isSelected = true
+
+    
+    if (this.invoices !== undefined) {
+      this.invoices[0].isSelected = true
+    }
+
+
+
+
 
     console.log(' getInvoices ', this.invoices)
   }
