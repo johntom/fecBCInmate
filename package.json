@@ -83,7 +83,7 @@
     "karma-jasmine": "1.1.2",
     "karma-sourcemap-loader": "0.3.7",
     "minimatch": "3.0.4",
-    
+     "numeral": "2.0.6",
     "through2": "2.0.3",
     "uglify-js": "3.4.3",
     "vinyl-fs": "3.0.3"

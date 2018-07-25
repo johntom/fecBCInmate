@@ -1,5 +1,9 @@
 <template>
 	<require from="./date-format"></require>
+	<require from="./number-format"></require>
+	<require from="./currency-format"></require>
+
+	<require from="./ss-format"></require>
 	<script language="JavaScript">
 		window.onbeforeunload = confirmExit;
         function confirmExit() {
@@ -74,7 +78,8 @@
 							<strong> ss</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">${currentRecord.inmate.ss
+							| ssFormat}
 						</div>
 
 
@@ -192,7 +197,7 @@
 
 				<!--  new table -->
 				<h3>
-					<i class="fa fa-folder-open"></i> Services (${services.length}  BookingIndex ${bookingindex} / ServiceIndex ${currentServiceIndex})
+					<i class="fa fa-folder-open"></i> Services (${services.length} BookingIndex ${bookingindex} / ServiceIndex ${currentServiceIndex})
 					<a slot="buttons-slot" class="btn btn-success" click.delegate="addService()">
 						<i class="fa fa-plus"></i> Add Services
 					</a>
@@ -201,7 +206,7 @@
 				<table class="table-condensed table">
 					<thead class="table-header-blue" data-sort="items.bind: services; cols: ['bookingDate','classification']">
 						<tr>
-	<th class="header">iss
+							<th class="header">iss
 							</th>
 							<th class="header">Srv Provided
 							</th>
@@ -243,10 +248,10 @@
 							<!-- click.trigger="changeColor(service)" -->
 							<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
 								<!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
-							<td width="25px">
-								${service.isSelected}
-							</td>
-              	<td width="125px">
+								<td width="25px">
+									${service.isSelected}
+								</td>
+								<td width="125px">
 									<span show.bind="!service.edit">${serviceProvided}</span>
 
 									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
@@ -412,11 +417,11 @@
 
 
 								<td width="75px">
-									<span show.bind="!invoice.edit">${invoiceTotal}</span>
+									<span show.bind="!invoice.edit">${invoiceTotal |  CurrencyFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
 								</td>
 								<td width="125px">
-									<span show.bind="!invoice.edit">${repricedAmt}</span>
+									<span show.bind="!invoice.edit">${repricedAmt |  CurrencyFormat}</span>
 
 									<input show.bind="invoice.edit" class="form-control 
                   input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
@@ -424,10 +429,10 @@
 								<td width="125px">
 									<!-- <span show.bind="!invoice.edit">${invoiceTotal - repricedAmt}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings"> -->
-							
-              	<span >${invoiceTotal - repricedAmt}</span>
-								
-              	</td>
+
+									<span>${invoiceTotal - repricedAmt |  CurrencyFormat}</span>
+
+								</td>
 								<td width="125px">
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
@@ -466,7 +471,7 @@
                                 <td width="325px">
                                     <!-- <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button> -->
                                     <button class="btn btn-primary" click.delegate="EditInvoice(invoice,invoice.edit,$index)">
-                                        ${ !service.edit ? 'Update' : 'Done' }</button>
+                                        ${ !invoice.edit ? 'Update' : 'Done' }</button>
                                     <button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
                  
                                     <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
