@@ -64,7 +64,7 @@ export class DataForm {
     item.isSelected = !item.isSelected;
   }
 
-  EditBooking(booking, editstate) {
+  EditBooking(booking, editstate,index) {
     this.currentBooking = booking
 
     for (let bk of this.currentRecord.booking) {
@@ -72,9 +72,8 @@ export class DataForm {
       bk.isSelected = false
     }
 
-    this.currentBooking.isSelected = true
-    this.services[0].isSelected = true
-
+    this.currentRecord.booking[index].isSelected = true
+    //this.services[0].isSelected = true
 
     booking.edit = !editstate//this.booking.edit
     this.services = booking.services
@@ -105,34 +104,43 @@ export class DataForm {
     }
 
     // this.currentRecord.booking[index].isSelected = true
+    this.invoices[index].savings = this.invoices[index].invoiceTotal - this.invoices[index].repricedAmt
     this.invoices[index].isSelected = true
   }
   addBooking() {
     let booking = this.currentRecord.booking //this.appService.currentRecord.booking
-
-
     let flag = false
     let item, item2
     let bookingDate = moment().format('YYYY-MM-DD')
     if (booking === undefined) {
       flag = true
       booking = []
+      this.bookingindex=0
     } else this.bookingindex = booking.length
 
     item = { bookingDate: bookingDate, classification: 'friday', edit: true }
     booking.unshift(item)
 
-    if (flag) this.appService.currentRecord = booking
+//    if (flag) this.appService.currentRecord = booking
 
     this.bookingDate = '';
     this.classification = '';
-    // this.getServices(0,0) //booking, 0)
-
-    // let serviceDateFrom = moment().format('YYYY-MM-DD')//'MM-DD-YYYY')
-    // item2 = { serviceDateFrom: serviceDateFrom }
     booking[this.bookingindex].services = []
     this.services = []
     this.invoices = []
+
+ for (let bk of booking) {
+      bk.isSelected = false
+    }
+   booking[this.bookingindex].isSelected = true
+
+
+
+    this.currentBooking.isSelected = true
+    this.services[0].isSelected = true
+
+
+
     // // booking[0].services.push(item2)
     // // booking[0].services[0]=''
     // //  booking[0].services[0].invoices = []
@@ -158,7 +166,7 @@ export class DataForm {
     if (flag) {
       this.services = service
       this.services[0].invoices = []
-      this.currentRecord.booking[0].services[indx] = this.services
+      // this.currentRecord.booking[0].services[indx] = this.services
       // this.currentRecord.currentBooking.services = this.services
 
     }
@@ -199,19 +207,18 @@ export class DataForm {
     this.currentRecord.booking[index].isSelected = true
 
 
-
+if (booking.services[0]!==undefined){
+    
     for (let bk of this.services) {
       // console.log('bk2 ', bk2)
       bk.isSelected = false
     }
 
     this.services[0].isSelected = true
-
-
     //   this.services[0].isSelected=true
 
     this.getInvoices(this.services[0], 0)
-    // }
+    }
   }
 
   getInvoices(service, index) {
@@ -220,8 +227,8 @@ export class DataForm {
     this.invoices = service.invoices
     this.currentService = service
     this.currentServiceIndex = index
-    
-    
+
+
 
     for (let bk of this.services) {
       // console.log('bk2 ', bk2)
@@ -230,7 +237,7 @@ export class DataForm {
 
     this.services[index].isSelected = true
 
-    
+
     if (this.invoices !== undefined) {
       this.invoices[0].isSelected = true
     }
@@ -282,11 +289,11 @@ export class DataForm {
         this.currentRecord = this.appService.currentRecord
         this.docs = this.currentRecord.docs
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
+        if (this.currentRecord.booking[0] !== undefined) {
+          this.currentRecord.booking[0].isSelected = true
 
-        this.currentRecord.booking[0].isSelected = true
-
-        this.getServices(this.currentRecord.booking[0], 0)
-
+          this.getServices(this.currentRecord.booking[0], 0)
+        }
       }
       // } // state
     }

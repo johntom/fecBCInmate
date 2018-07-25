@@ -175,7 +175,7 @@
 							<td width="325px">
 								<!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
                   ${ !booking.edit ? 'Update' : 'Done' }</button>	 -->
-								<button class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit)">
+								<button class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit,$index)">
                                     ${ !booking.edit ? 'Update' : 'Done' }</button>
 								<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 								<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
@@ -288,7 +288,7 @@
                                             ${opt.code}
                                         </option>
                                     </select>
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod">
+									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod"> -->
 								</td>
 
 								<td width="125px">
@@ -422,9 +422,12 @@
                   input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
 								</td>
 								<td width="125px">
-									<span show.bind="!invoice.edit">${savings}</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings">
-								</td>
+									<!-- <span show.bind="!invoice.edit">${invoiceTotal - repricedAmt}</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings"> -->
+							
+              	<span >${invoiceTotal - repricedAmt}</span>
+								
+              	</td>
 								<td width="125px">
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
