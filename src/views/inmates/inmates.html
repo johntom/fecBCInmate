@@ -23,7 +23,7 @@
 
           <div class="content">
             <p class="name">${inmate.inmate.lastname}, ${inmate.inmate.firstname}</p>
-             <p class="name">gender:${inmate.inmate.gender} ss:${inmate.inmate.ss | socialFormat } dob:${inmate.inmate.DOB | dateFormat  } </p>
+             <p class="name">gender:${inmate.inmate.gender} ss: ${inmate.inmate.ss | socialFormat } dob:${inmate.inmate.DOB | dateFormat  } </p>
             <!--ss:${inmate.inmate.ss| ssFormat } <p><a target="_blank" class="btn btn-default" click.delegate="openrecord(inmate)">Records</a></p> -->
           <p><button class="btn btn-default" click.delegate="openrecord(inmate)">Records</button></p>
           

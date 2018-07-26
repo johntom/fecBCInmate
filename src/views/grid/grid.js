@@ -58,8 +58,15 @@ export class Grid {
           invDate: {
             type: "date"
           },
-
-
+          invoiceTotal: {
+                type: "number"
+              },
+			   repricedAmt: {
+                type: "number"
+              },
+savings: {
+                type: "number"
+              },
         }
       }
     },
