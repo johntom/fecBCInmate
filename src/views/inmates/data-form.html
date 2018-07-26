@@ -1,9 +1,8 @@
 <template>
 	<require from="./date-format"></require>
 	<require from="./number-format"></require>
-	<require from="./currency-format"></require>
-
-	<require from="./ss-format"></require>
+  <require from="./currency-format"></require>
+	<require from="./social-format"></require>
 	<script language="JavaScript">
 		window.onbeforeunload = confirmExit;
         function confirmExit() {
@@ -78,8 +77,8 @@
 							<strong> ss</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">${currentRecord.inmate.ss
-							| ssFormat}
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
+              ${currentRecord.inmate.ss	| socialFormat}
 						</div>
 
 
@@ -414,14 +413,15 @@
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
-
+<!-- //CurrencyFormatValueConverter -->
 
 								<td width="75px">
-									<span show.bind="!invoice.edit">${invoiceTotal |  CurrencyFormat }</span>
+                  <!-- ${netWorth | currencyFormat} -->
+									<span show.bind="!invoice.edit">${invoiceTotal |  currencyFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
 								</td>
 								<td width="125px">
-									<span show.bind="!invoice.edit">${repricedAmt |  CurrencyFormat}</span>
+									<span show.bind="!invoice.edit">${repricedAmt |  currencyFormat}</span>
 
 									<input show.bind="invoice.edit" class="form-control 
                   input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
@@ -430,7 +430,7 @@
 									<!-- <span show.bind="!invoice.edit">${invoiceTotal - repricedAmt}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings"> -->
 
-									<span>${invoiceTotal - repricedAmt |  CurrencyFormat}</span>
+									<span>${invoiceTotal - repricedAmt |  currencyFormat}</span>
 
 								</td>
 								<td width="125px">
