@@ -413,10 +413,10 @@
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
-<!-- //CurrencyFormatValueConverter -->
+
 
 								<td width="75px">
-                  <!-- ${netWorth | currencyFormat} -->
+             
 									<span show.bind="!invoice.edit">${invoiceTotal |  currencyFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
 								</td>
