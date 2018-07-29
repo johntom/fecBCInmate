@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export class Welcome {
  // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to the Aurelia Navigation au-kendo App! v2f'// + ndate;
+  heading = 'Welcome to the Aurelia Navigation au-kendo App! v2h  '// + ndate;
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
