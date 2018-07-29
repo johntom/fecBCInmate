@@ -1,9 +1,11 @@
 import { inject } from 'aurelia-framework';
 import { ApiService } from './utils/servicesApi';
 import { ApplicationService } from './services/application-service';
+import moment from 'moment';
+
 @inject(ApplicationService, ApiService)
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v53q';
+  heading = 'Welcome to the Aurelia Navigation App! v53s ';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -16,6 +18,8 @@ export class Welcome {
   constructor(appService, api) {
     this.appService = appService;
     this.api = api;
+     const format = moment(new Date()).format('M/D/YYYY');
+    console.log('format', format);
   }
 
 
