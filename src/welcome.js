@@ -5,7 +5,7 @@ import moment from 'moment';
 
 @inject(ApplicationService, ApiService)
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App! v53s ';
+  heading = 'Welcome to the Aurelia Navigation App! v54';
   firstName = 'John';
   lastName = 'Doe';
   previousValue = this.fullName;
