@@ -105,6 +105,11 @@ export class ApplicationService {
   searchDataLoaded = false;
   curentClaim;
   currentRecord;
+ classificationList = []
+    serviceprovidedList = []
+    transportList = []
+    servicetypeList = []
+    approvedList = []
   // curentDaily;
   // currentAdjuster;
   // currentSearchadj = {}

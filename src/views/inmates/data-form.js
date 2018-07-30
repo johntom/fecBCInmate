@@ -81,38 +81,44 @@ export class DataForm {
   }
 
   EditService(service, editstate, index) {
-    //     this.currentService = service
-    //     this.currentServiceIndex = index
-    //     service.edit = !editstate//this.booking.edit
-    //     for (let bk of this.services) {
-    //        console.log('bk ', bk)
-    //       bk.isSelected = false
-    //     }
-    //    console.log('bk finish')
+        this.currentService = service
+        this.currentServiceIndex = index
+        service.edit = !editstate//this.booking.edit
+        for (let bk of this.services) {
+           console.log('bk ', bk)
+          bk.isSelected = false
+        }
+       console.log('bk finish')
 
-    //      this.services[index].isSelected = true
-    // //  console.log('getInvoices service:',service)
-    // //   this.invoices = service.invoices
-    //     // this.getInvoices(service, 0)
-    // ======================================
-    service.edit = !editstate
-    this.invoices = service.invoices
-    this.currentService = service
-    this.currentServiceIndex = index
+         this.services[index].isSelected = true
+    //  console.log('getInvoices service:',service)
+    //   this.invoices = service.invoices
+        // this.getInvoices(service, 0)
 
-
-
-    for (let bk of this.services) {
-      // console.log('bk2 ', bk2)
-      bk.isSelected = false
-    }
-
-    this.services[index].isSelected = true
-
-
-    if (this.invoices !== undefined) {
+ if (this.invoices !== undefined) {
       this.invoices[0].isSelected = true
     }
+
+
+    // ======================================
+    // service.edit = !editstate
+    // this.invoices = service.invoices
+    // this.currentService = service
+    // this.currentServiceIndex = index
+
+
+
+    // for (let bk of this.services) {
+    //   // console.log('bk2 ', bk2)
+    //   bk.isSelected = false
+    // }
+
+    // this.services[index].isSelected = true
+
+
+    // if (this.invoices !== undefined) {
+    //   this.invoices[0].isSelected = true
+    // }
 
 
 

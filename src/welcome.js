@@ -1,14 +1,19 @@
 import {computedFrom} from 'aurelia-framework';
 import moment from 'moment';
-
+import { inject } from 'aurelia-framework';
+import { ApiService } from './utils/servicesApi';
+import { ApplicationService } from './services/application-service';
+@inject(ApplicationService, ApiService)
 export class Welcome {
  // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! v2j'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! v2k'// + ndate;
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
 
-  constructor() {
+  constructor(appService, api) {
+    this.appService = appService;
+    this.api = api;
     const format = moment(new Date()).format('M/D/YYYY');
     console.log('format', format);
   }
@@ -32,8 +37,23 @@ export class Welcome {
       return confirm('Are you sure you want to leave?');
     }
   }
-}
 
+  activate() {
+    console.log('in activate')
+    let cCodes = [{ id: 1, code: 'County' }, { id: 2, code: 'ICE' }, { id: 3, code: 'State' }, { id: 4, code: 'Fed' }]
+    this.appService.classificationList = cCodes //" model.bind="opt.code
+    let cCodes2 = [{ id: 1, code: 'Outpatient' }, { id: 2, code: 'Emergency' }, { id: 3, code: 'Inpatient' }]
+    this.appService.serviceprovidedList = cCodes2
+    let cCodes3 = [{ id: 1, code: 'Jail Transport' }, { id: 2, code: 'Ambulance Service' }, { id: 3, code: 'Other Agency' }]
+    this.appService.transportList = cCodes3
+    let cCodes4 = [{ id: 1, code: 'Medical' }, { id: 2, code: 'Mental Health' }]
+    this.appService.servicetypeList = cCodes4
+
+    let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied – Medicaid' }, { id: 3, code: 'Denied – Medicare' }, { id: 4, code: 'Denied – Submit to Other Insurer' }, 
+    { id: 5, code: 'Denied – Duplicate' },{ id: 6, code: 'Denied – Awaiting Documentation' },{ id: 7, code: 'Denied – Other' }]
+    this.appService.approvedList = cCodes5
+  }
+}
 export class UpperValueConverter {
   toView(value) {
     return value && value.toUpperCase();
