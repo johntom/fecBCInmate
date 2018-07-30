@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export class Welcome {
  // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! v2i  '// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! v2j'// + ndate;
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
