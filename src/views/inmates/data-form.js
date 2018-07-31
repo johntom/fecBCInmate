@@ -458,11 +458,13 @@ export class DataForm {
 
       this.api.addinmate(this.currentRecord)
       //  this.recordId = 'modify'
-      this.close('inmates')
-    } else {
-      return Promise.all(
+       return Promise.all(
         this.api.saveinmate(this.currentRecord).then((res) => res.json())
       )
+      this.close('inmates')
+    } else {
+      
+        this.api.saveinmate(this.currentRecord)
     }
   }
 
