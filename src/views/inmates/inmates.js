@@ -95,7 +95,7 @@ export class Inmates {
      this.appService.currentRecord = row;
     }
    
-    this.router.navigate(rt2);;
+    this.router.navigate(rt2);
   }
 
 

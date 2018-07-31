@@ -314,12 +314,7 @@ export class DataForm {
         this.appService.currentRecord.booking = []
         this.appService.currentRecord.docs = []
         this.currentRecord = this.appService.currentRecord
-        this.api.getInmates()
-          .then(jsonRes => {
-            this.inmates = jsonRes.data
-            this.allinmates = jsonRes.data
-            console.log('inmates ', this.inmates)
-          });
+        
 
       } else {
         this.message = 'Save & Stay'
