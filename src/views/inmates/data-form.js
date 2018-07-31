@@ -458,7 +458,7 @@ export class DataForm {
 
       this.api.addinmate(this.currentRecord)
       //  this.recordId = 'modify'
-       return Promise.all(
+      Promise.all(
         this.api.saveinmate(this.currentRecord).then((res) => res.json())
       )
       this.close('inmates')
