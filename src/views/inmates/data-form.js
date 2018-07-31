@@ -314,7 +314,7 @@ export class DataForm {
         this.appService.currentRecord.booking = []
         this.appService.currentRecord.docs = []
         this.currentRecord = this.appService.currentRecord
-        
+
 
       } else {
         this.message = 'Save & Stay'
@@ -325,7 +325,6 @@ export class DataForm {
         console.log(' this.currentRecord ', this.currentRecord.booking.services);
         if (this.currentRecord.booking[0] !== undefined) {
           this.currentRecord.booking[0].isSelected = true
-
           this.getServices(this.currentRecord.booking[0], 0)
         }
       }
@@ -461,7 +460,9 @@ export class DataForm {
       //  this.recordId = 'modify'
       this.close('inmates')
     } else {
-      this.api.saveinmate(this.currentRecord)
+      return Promise.all(
+        this.api.saveinmate(this.currentRecord).then((res) => res.json())
+      )
     }
   }
 
