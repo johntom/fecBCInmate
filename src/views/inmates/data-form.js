@@ -28,7 +28,7 @@ export class DataForm {
     { id: 1, name: 'CPU' },
     { id: 2, name: 'Memory' },
   ];
-message='Save & Stay' //&amp;
+  message = 'Save & Stay' //&amp;
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
 
@@ -81,21 +81,21 @@ message='Save & Stay' //&amp;
   }
 
   EditService(service, editstate, index) {
-        this.currentService = service
-        this.currentServiceIndex = index
-        service.edit = !editstate//this.booking.edit
-        for (let bk of this.services) {
-           console.log('bk ', bk)
-          bk.isSelected = false
-        }
-       console.log('bk finish')
+    this.currentService = service
+    this.currentServiceIndex = index
+    service.edit = !editstate//this.booking.edit
+    for (let bk of this.services) {
+      console.log('bk ', bk)
+      bk.isSelected = false
+    }
+    console.log('bk finish')
 
-         this.services[index].isSelected = true
+    this.services[index].isSelected = true
     //  console.log('getInvoices service:',service)
     //   this.invoices = service.invoices
-        // this.getInvoices(service, 0)
+    // this.getInvoices(service, 0)
 
- if (this.invoices !== undefined) {
+    if (this.invoices !== undefined) {
       this.invoices[0].isSelected = true
     }
 
@@ -260,8 +260,6 @@ message='Save & Stay' //&amp;
     this.currentService = service
     this.currentServiceIndex = index
 
-
-
     for (let bk of this.services) {
       // console.log('bk2 ', bk2)
       bk.isSelected = false
@@ -273,9 +271,6 @@ message='Save & Stay' //&amp;
     if (this.invoices !== undefined) {
       this.invoices[0].isSelected = true
     }
-
-
-
 
 
     console.log(' getInvoices ', this.invoices)
@@ -290,9 +285,9 @@ message='Save & Stay' //&amp;
     // this.closeTab(tab);\
     let rt2
     this.closeTab
-    if (path===undefined){
-    rt2 = `#/inmates`
-    } else  rt2 = `#/${path}`
+    if (path === undefined) {
+      rt2 = `#/inmates`
+    } else rt2 = `#/${path}`
     this.router.navigate(rt2);
   }
   closeTab(tab) {
@@ -309,7 +304,7 @@ message='Save & Stay' //&amp;
         //let newrec = {inmate:{lastname: ""},booking: []}
         //this.appService.currentRecord ={}//newrec
 
-        this.message='Save & Close'
+        this.message = 'Save & Close'
         this.appService.currentRecord = {}
         this.appService.currentRecord.id = 'create'
         this.appService.testrec = {}
@@ -319,9 +314,15 @@ message='Save & Stay' //&amp;
         this.appService.currentRecord.booking = []
         this.appService.currentRecord.docs = []
         this.currentRecord = this.appService.currentRecord
+        this.api.getInmates()
+          .then(jsonRes => {
+            this.inmates = jsonRes.data
+            this.allinmates = jsonRes.data
+            console.log('inmates ', this.inmates)
+          });
 
       } else {
-        this.message='Save & Stay'
+        this.message = 'Save & Stay'
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
         this.currentRecord = this.appService.currentRecord
@@ -460,10 +461,10 @@ message='Save & Stay' //&amp;
 
     console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
     if (this.recordId === 'create') {
-     
+
       this.api.addinmate(this.currentRecord)
       //  this.recordId = 'modify'
-       this.close('inmates')
+      this.close('inmates')
     } else {
       this.api.saveinmate(this.currentRecord)
     }
