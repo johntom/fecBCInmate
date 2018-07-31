@@ -28,7 +28,7 @@ export class DataForm {
     { id: 1, name: 'CPU' },
     { id: 2, name: 'Memory' },
   ];
-
+message='Save & Stay' //&amp;
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
 
@@ -280,16 +280,19 @@ export class DataForm {
 
     console.log(' getInvoices ', this.invoices)
   }
-  close() {
+  close(path) {
 
 
     // let tab = this.appService.tabs.find(f => f.isSelected);
     // Next, we navigate to the newly created claim
 
     // Finally, we close out this tab
-    // this.closeTab(tab);
+    // this.closeTab(tab);\
+    let rt2
     this.closeTab
-    let rt2 = '#/'
+    if (path===undefined){
+    rt2 = `#/inmates`
+    } else  rt2 = `#/${path}`
     this.router.navigate(rt2);
   }
   closeTab(tab) {
@@ -305,6 +308,8 @@ export class DataForm {
       if (this.recordId === 'create') {
         //let newrec = {inmate:{lastname: ""},booking: []}
         //this.appService.currentRecord ={}//newrec
+
+        this.message='Save & Close'
         this.appService.currentRecord = {}
         this.appService.currentRecord.id = 'create'
         this.appService.testrec = {}
@@ -316,6 +321,7 @@ export class DataForm {
         this.currentRecord = this.appService.currentRecord
 
       } else {
+        this.message='Save & Stay'
         console.log('activate2')
         console.log('this.recordId ', this.recordId, this.appService.currentRecord);
         this.currentRecord = this.appService.currentRecord
@@ -454,7 +460,10 @@ export class DataForm {
 
     console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
     if (this.recordId === 'create') {
+     
       this.api.addinmate(this.currentRecord)
+      //  this.recordId = 'modify'
+       this.close('inmates')
     } else {
       this.api.saveinmate(this.currentRecord)
     }
