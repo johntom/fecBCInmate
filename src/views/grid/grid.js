@@ -25,7 +25,7 @@ export class Grid {
         //  this.loadData(this.capColor, this.prevtown)
         this.loadData()
           .then((inmates) => {
-            console.log(' inv datasource ', inmates.length);// inv[0]);
+            console.log(' inv datasource ', inmates,inmates.length);// inv[0]);
             options.success(inmates);
           });
       },

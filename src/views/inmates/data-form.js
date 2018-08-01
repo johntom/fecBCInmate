@@ -239,7 +239,7 @@ export class DataForm {
     this.currentRecord.booking[index].isSelected = true
 
 
-    if (booking.services[0] !== undefined) {
+    if (booking.services && booking.services[0] !== undefined) {
 
       for (let bk of this.services) {
         // console.log('bk2 ', bk2)
