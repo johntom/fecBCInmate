@@ -6,7 +6,7 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3b / Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3d / Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
  
   firstName = 'John ';

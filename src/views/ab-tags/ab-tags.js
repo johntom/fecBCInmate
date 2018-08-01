@@ -7,7 +7,7 @@ import 'bootstrap-select/css/bootstrap-select.min.css';
 // import jQuery from 'jquery';
 // import { inject } from 'aurelia-framework';
 // import { bindable } from 'aurelia-framework';
-import { bindable, inject } from 'aurelia-framework';
+// import { bindable, inject } from 'aurelia-framework';
 
 
 @inject(Element)
