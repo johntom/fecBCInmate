@@ -15,14 +15,15 @@ import { observable } from "aurelia-framework";
 // @customAttribute('animateonchange')
 
 //,Element, CssAnimator
-import {
-  ValidationControllerFactory,
-  ValidationController,
-  ValidationRules
-} from 'aurelia-validation';
-import {BootstrapFormRenderer} from './bootstrap-form-renderer';
+// import {
+//   ValidationControllerFactory,
+//   ValidationController,
+//   ValidationRules
+// } from 'aurelia-validation';
+// import {BootstrapFormRenderer} from './bootstrap-form-renderer';
 
-@inject(Router, ApplicationService, ApiService,ValidationControllerFactory)
+// @inject(Router, ApplicationService, ApiService,ValidationControllerFactory)
+@inject(Router, ApplicationService, ApiService)
 
 export class DataForm {
   // @observable selectedBooking;
@@ -44,9 +45,10 @@ firstName = '';
   controller = null;
   
 
-  constructor(router, appService, api,controllerFactory) {
-this.controller = controllerFactory.createForCurrentScope();
-    this.controller.addRenderer(new BootstrapFormRenderer());
+   constructor(router, appService, api) {
+//,controllerFactory
+// this.controller = controllerFactory.createForCurrentScope();
+  //  this.controller.addRenderer(new BootstrapFormRenderer());
     this.api = api;
     this.appService = appService;
     this.router = router;
@@ -465,7 +467,7 @@ this.controller = controllerFactory.createForCurrentScope();
     //this.currentItem//.booking//.services= this.services
     //this.appService.currentItem
     // this.invoices = service.invoices booking.services
-
+ this.controller.validate();
     console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
     if (this.recordId === 'create') {
 
@@ -545,11 +547,11 @@ this.controller = controllerFactory.createForCurrentScope();
 //         .required().withMessage(`\${$displayName} cannot be blank.`);
 //         .matches(/\d{3}-\d{2}-\d{4}/).withMessage(`"\${$value}" is not a valid \${$displayName}.`);
   
-  ValidationRules
-  .ensure(a => a.firstName).required()
-  .ensure(a => a.lastName).required()
-  .ensure(a => a.email).required().email()
-  .on(DataForm);
+  // ValidationRules
+  // .ensure(a => a.firstName).required()
+  // .ensure(a => a.lastName).required()
+  // .ensure(a => a.email).required().email()
+  // .on(DataForm);
 
 
 

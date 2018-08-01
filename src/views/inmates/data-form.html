@@ -40,18 +40,21 @@
 							<strong> lastname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" 
-              value.bind="currentRecord.inmate.lastname & validate">
+							<input type="text" id="last" class="form-control input-sm" 
+              value.bind="currentRecord.inmate.lastname ">
 						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
 							<strong> firstname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" 
-              value.bind="currentRecord.inmate.firstname & validate">
+							<input type="text" id="first" class="form-control input-sm" 
+              value.bind="currentRecord.inmate.firstname ">
 						</div>
-
+<!-- <div class="Rtable-cell-70 Rtable-cell--green">
+							<input type="text" id="first" class="form-control input-sm" 
+              value.bind="currentRecord.inmate.firstname & validate">
+						</div> -->
 
 					</div>
 				</div>
@@ -62,10 +65,19 @@
 							<strong> Gender</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.gender">
-						</div>
-
-
+							<!-- <input type="text" id="id" 
+              class="form-control input-sm"
+               value.bind="currentRecord.currentRecord.gender"> -->
+					
+          	<select id="gender" class="form-control input-sm" 
+            value.two-way="currentRecord.currentRecord.gender">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.genderList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
+                    
+          	</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
 							<strong> DOB</strong>

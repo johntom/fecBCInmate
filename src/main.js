@@ -9,7 +9,7 @@ export async function configure(aurelia) {
     .standardConfiguration()
     .developmentLogging()
     .plugin('aurelia-kendoui-bridge')
-    .plugin('aurelia-validation')
+    // .plugin('aurelia-validation')
     // .plugin('aurelia-bootstrap-tagsinput')
     .plugin('aurelia-bootstrap-select');
     //;

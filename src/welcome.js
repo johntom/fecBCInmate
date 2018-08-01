@@ -6,7 +6,7 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3h / Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3i / Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
  
   firstName = 'John ';
@@ -70,6 +70,9 @@ export class Welcome {
     let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied – Medicaid' }, { id: 3, code: 'Denied – Medicare' }, { id: 4, code: 'Denied – Submit to Other Insurer' },
     { id: 5, code: 'Denied – Duplicate' }, { id: 6, code: 'Denied – Awaiting Documentation' }, { id: 7, code: 'Denied – Other' }]
     this.appService.approvedList = cCodes5
+  let cCodes6 = [{ id: 'M', code: 'Male' }, { id: 'F', code: 'Female' }]
+    this.appService.genderList = cCodes6
+
   }
 }
 export class UpperValueConverter {
