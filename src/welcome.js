@@ -6,7 +6,7 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
  // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! v2v'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! v2w'// + ndate;
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -17,7 +17,9 @@ export class Welcome {
     const format = moment(new Date()).format('M/D/YYYY');
     console.log('format', format);
   }
-
+Cache(){
+  rememberForever('js_version_number', time())
+}
   // Getters can't be directly observed, so they must be dirty checked.
   // However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
   // To optimize by declaring the properties that this getter is computed from, uncomment the line below
