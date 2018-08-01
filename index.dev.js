@@ -107,6 +107,7 @@ function buildDependencyMap() {
           }
           // Now load the main entry e.g. https://unpkg.com/lodash@4.17.4/lodash.js
           const valueUri = `npm:${name}@${version}/${main}`;
+          console.log('valueUri',valueUri)
           map[name] = valueUri;
         }
 

@@ -15,7 +15,14 @@ import { observable } from "aurelia-framework";
 // @customAttribute('animateonchange')
 
 //,Element, CssAnimator
-@inject(Router, ApplicationService, ApiService)
+import {
+  ValidationControllerFactory,
+  ValidationController,
+  ValidationRules
+} from 'aurelia-validation';
+import {BootstrapFormRenderer} from './bootstrap-form-renderer';
+
+@inject(Router, ApplicationService, ApiService,ValidationControllerFactory)
 
 export class DataForm {
   // @observable selectedBooking;
@@ -31,9 +38,15 @@ export class DataForm {
   message = 'Save & Stay' //&amp;
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
+firstName = '';
+  lastName = '';
+  email = '';
+  controller = null;
+  
 
-  constructor(router, appService, api) {
-
+  constructor(router, appService, api,controllerFactory) {
+this.controller = controllerFactory.createForCurrentScope();
+    this.controller.addRenderer(new BootstrapFormRenderer());
     this.api = api;
     this.appService = appService;
     this.router = router;
@@ -526,6 +539,20 @@ export class DataForm {
 
 
 }
+
+// ValidationRules      
+//       .ensure('ssn').displayName('SSN')
+//         .required().withMessage(`\${$displayName} cannot be blank.`);
+//         .matches(/\d{3}-\d{2}-\d{4}/).withMessage(`"\${$value}" is not a valid \${$displayName}.`);
+  
+  ValidationRules
+  .ensure(a => a.firstName).required()
+  .ensure(a => a.lastName).required()
+  .ensure(a => a.email).required().email()
+  .on(DataForm);
+
+
+
 // createEventListeners() {
   //   this.adjusterSelectedListener = e => {
   //     if (e && e.detail) {

@@ -40,14 +40,16 @@
 							<strong> lastname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.lastname">
+							<input type="text" id="id" class="form-control input-sm" 
+              value.bind="currentRecord.inmate.lastname & validate">
 						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
 							<strong> firstname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.firstname">
+							<input type="text" id="id" class="form-control input-sm" 
+              value.bind="currentRecord.inmate.firstname & validate">
 						</div>
 
 
@@ -74,7 +76,7 @@
 						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> ss</strong>
+							<strong> ss (numners only)</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
 							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">

@@ -47,8 +47,8 @@
         ]
       }
     },
-"bootstrap-tagsinput": {
-      "map": "npm:bootstrap-tagsinput@0.7.1/./dist",
+   "bootstrap-tagsinput": {
+      "map": "npm:bootstrap-tagsinput",
       "package": {
         "defaultExtension": "js",
         "main": "bootstrap-tagsinput.js"
@@ -113,6 +113,7 @@
     "aurelia-templating-binding": "1.4.3",
     "aurelia-templating-resources": "1.7.1",
     "aurelia-templating-router": "1.3.2",
+    "aurelia-validation": "1.2.2",
     "aurelia-kendoui-bridge": "1.7.0",
     "bluebird": "3.5.1",
     "isomorphic-fetch": "2.2.1",
