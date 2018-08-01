@@ -11,6 +11,7 @@ export class App {
       {"route": "inmates/:id", "name": "inmates-data-form", "moduleId": PLATFORM.moduleName("./views/inmates/data-form"), "nav": false, "title": "InmatesData"},
       // // {"route": "bootstrap-select", "name": "bootstrap-select", "moduleId": PLATFORM.moduleName( "./views/bootstrap-select/bootstrap-select"), "nav": true, "title": "Bootstrap Select"}
       //  {"route": "ab-select", "name": "ab-select", "moduleId": PLATFORM.moduleName("./views/ab-select/ab-select"), "nav": true, "title": "AB Select"}
+  , {"route": "ab-tags", "name": "ab-tags", "moduleId": PLATFORM.moduleName("./views/ab-tags/ab-tags"), "nav": true, "title": "AB Tags"}
  
     
     ]);
