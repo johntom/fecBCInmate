@@ -6,7 +6,7 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
  // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! v2u'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! v2v'// + ndate;
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -26,7 +26,9 @@ export class Welcome {
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
-
+clear(){
+  location.reload(true)
+}
   submit() {
     this.previousValue = this.fullName;
     alert(`Welcome, ${this.fullName}!`);
