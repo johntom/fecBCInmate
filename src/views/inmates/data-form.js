@@ -229,8 +229,9 @@ firstName = '';
     }
     let item
     let invDate = moment().format('YYYY-MM-DD')
-    let invno = this.currentBooking.bookingNo
-    item = { invno: invno, invDate: invDate, edit: true }
+   // let invno = this.currentBooking.bookingNo
+    // item = { invno: invno, invDate: invDate, edit: true }
+    item = { invDate: invDate, edit: true }
     invoice.unshift(item)
     // if (flag) this.invoices = invoice
     this.invoices = invoice
@@ -467,7 +468,7 @@ firstName = '';
     //this.currentItem//.booking//.services= this.services
     //this.appService.currentItem
     // this.invoices = service.invoices booking.services
- this.controller.validate();
+ // this.controller.validate();
     console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
     if (this.recordId === 'create') {
 

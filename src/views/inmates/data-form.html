@@ -1,7 +1,7 @@
 <template>
 	<require from="./date-format"></require>
 	<require from="./number-format"></require>
-  <require from="./currency-format"></require>
+	<require from="./currency-format"></require>
 	<require from="./social-format"></require>
 	<script language="JavaScript">
 		window.onbeforeunload = confirmExit;
@@ -40,18 +40,16 @@
 							<strong> lastname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="last" class="form-control input-sm" 
-              value.bind="currentRecord.inmate.lastname ">
+							<input type="text" id="last" class="form-control input-sm" value.bind="currentRecord.inmate.lastname ">
 						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
 							<strong> firstname</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="first" class="form-control input-sm" 
-              value.bind="currentRecord.inmate.firstname ">
+							<input type="text" id="first" class="form-control input-sm" value.bind="currentRecord.inmate.firstname ">
 						</div>
-<!-- <div class="Rtable-cell-70 Rtable-cell--green">
+						<!-- <div class="Rtable-cell-70 Rtable-cell--green">
 							<input type="text" id="first" class="form-control input-sm" 
               value.bind="currentRecord.inmate.firstname & validate">
 						</div> -->
@@ -68,16 +66,15 @@
 							<!-- <input type="text" id="id" 
               class="form-control input-sm"
                value.bind="currentRecord.currentRecord.gender"> -->
-					
-          	<select id="gender" class="form-control input-sm" 
-            value.two-way="currentRecord.currentRecord.gender">
+
+							<select id="gender" class="form-control input-sm" value.two-way="currentRecord.currentRecord.gender">
                                     <option model.bind="null">Choose...</option>
                                     <option repeat.for="opt of appService.genderList" model.bind="opt.code">
                                         ${opt.code}
                                     </option>
                                 </select>
-                    
-          	</div>
+
+						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
 							<strong> DOB</strong>
@@ -91,8 +88,8 @@
 							<strong> ss (numners only)</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
-              ${currentRecord.inmate.ss	| socialFormat}
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss"> ${currentRecord.inmate.ss
+							| socialFormat}
 						</div>
 
 
@@ -254,6 +251,7 @@
 								<td></td>
 								<td></td>
 								<td></td>
+
 							</tr>
 						</tfoot>
 
@@ -306,17 +304,34 @@
                                             ${opt.code}
                                         </option>
                                     </select>
-									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod"> -->
 								</td>
+								<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod"> -->
 
+
+								<!-- <span show.bind="!service.edit">${sendingProvider}</span>
+									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">
+								</td> -->
 								<td width="125px">
 									<span show.bind="!service.edit">${sendingProvider}</span>
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">
+									<select show.bind="service.edit" id="sp" class="form-control input-sm" value.two-way="service.sendingProvider">
+                                        <option model.bind="null">Choose...</option>
+                                        <option repeat.for="opt of appService.sendingproviderList" model.bind="opt.code">
+                                            ${opt.code}
+                                        </option>
+                                    </select>
 								</td>
-
-								<td width="125px">
+								<!-- <td width="125px">
 									<span show.bind="!service.edit">${designatedProvider}</span>
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">
+								</td> -->
+								<td width="125px">
+									<span show.bind="!service.edit">${designatedProvider}</span>
+									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.designatedProvider">
+                                        <option model.bind="null">Choose...</option>
+                                        <option repeat.for="opt of appService.designatedproviderList" model.bind="opt.code">
+                                            ${opt.code}
+                                        </option>
+                                    </select>
 								</td>
 								<td width="125px">
 									<span show.bind="!service.edit">${serviceReason}</span>
@@ -361,11 +376,10 @@
 							</th>
 							<th class="header">invDate
 							</th>
-	<th class="header">Payee Name
-							</th>
-	<th class="header">Payee Addr
-							</th>
-	<th class="header">Payee Fein
+							<th class="header">Payee Name
+                <br>Payee Fein
+								<br>Payee Addr
+								
 							</th>
 							<!-- <th class="header">cpts
 							</th> -->
@@ -424,30 +438,37 @@
 									${invoice.isSelected}
 								</td>
 
-								<td width="125px">
+								<td width="165px">
 									<span show.bind="!invoice.edit">${invno}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
 								</td>
-								<td width="125px">
+								<td width="95px">
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
 
-        <td width="95px">
+								<td width="165px">
 									<span show.bind="!invoice.edit">${payeename }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="payeename">
-								</td>
-<td width="95px">
-									<span show.bind="!invoice.edit">${payeeaddr }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="payeename">
-								</td>
-<td width="95px">
-									<span show.bind="!invoice.edit">${payeefein }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="payeename">
-								</td>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text" value.bind="payeename">
+	              	<span show.bind="!invoice.edit">${payeefein }<br></span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text" value.bind="payeefein">
+						
+									<span show.bind="!invoice.edit">${payeeaddr }<br></span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="address" type="text" value.bind="payeeaddr">
+
+									<span show.bind="!invoice.edit">${payeecity }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="city" type="text" value.bind="payeecity">
+
+									<span show.bind="!invoice.edit">${payeestate }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="state" type="text" value.bind="payeestate">
+									<span show.bind="!invoice.edit">${payeezip }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="zip" type="text" value.bind="payeezip">
+
+
+									</td>
 
 								<td width="75px">
-             
+
 									<span show.bind="!invoice.edit">${invoiceTotal |  currencyFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
 								</td>
@@ -464,7 +485,7 @@
 									<span>${invoiceTotal - repricedAmt |  currencyFormat}</span>
 
 								</td>
-								<td width="125px">
+								<td width="95px">
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
 								</td>

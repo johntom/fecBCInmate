@@ -82,7 +82,7 @@ export class Welcome {
     
     let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
 
-    this.appService.xproviderList = cCodes8
+    this.appService.designatedproviderList = cCodes8
   }
 }
 export class UpperValueConverter {
