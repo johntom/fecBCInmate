@@ -361,7 +361,12 @@
 							</th>
 							<th class="header">invDate
 							</th>
-
+	<th class="header">Payee Name
+							</th>
+	<th class="header">Payee Addr
+							</th>
+	<th class="header">Payee Fein
+							</th>
 							<!-- <th class="header">cpts
 							</th> -->
 							<th class="header">Invoice
@@ -428,6 +433,18 @@
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
 
+        <td width="95px">
+									<span show.bind="!invoice.edit">${payeename }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="payeename">
+								</td>
+<td width="95px">
+									<span show.bind="!invoice.edit">${payeeaddr }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="payeename">
+								</td>
+<td width="95px">
+									<span show.bind="!invoice.edit">${payeefein }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="payeename">
+								</td>
 
 								<td width="75px">
              

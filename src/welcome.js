@@ -6,9 +6,9 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3i / Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3j / Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
- 
+
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
@@ -70,9 +70,19 @@ export class Welcome {
     let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied – Medicaid' }, { id: 3, code: 'Denied – Medicare' }, { id: 4, code: 'Denied – Submit to Other Insurer' },
     { id: 5, code: 'Denied – Duplicate' }, { id: 6, code: 'Denied – Awaiting Documentation' }, { id: 7, code: 'Denied – Other' }]
     this.appService.approvedList = cCodes5
-  let cCodes6 = [{ id: 'M', code: 'Male' }, { id: 'F', code: 'Female' }]
+    let cCodes6 = [{ id: 'M', code: 'Male' }, { id: 'F', code: 'Female'}
+    ,{ id: 'O', code: 'Other' }]
     this.appService.genderList = cCodes6
+    
+    let cCodes7 = [{ id: '1', code: 'NBMD' }, { id: '2', code: 'HUMC' },
+      , { id: '3', code: 'North Hudson' }, { id: '4', code: 'Holy Name' },
+    { id: '5', code: 'Englewood' }
+    ]
+    this.appService.sendingproviderList = cCodes7
+    
+    let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
 
+    this.appService.xproviderList = cCodes8
   }
 }
 export class UpperValueConverter {
