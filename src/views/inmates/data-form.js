@@ -5,6 +5,8 @@ import { ApplicationService } from '../../services/application-service';
 import moment from 'moment';
 import { ApiService } from '../../utils/servicesApi';
 import { observable } from "aurelia-framework";
+import { Prompt } from './prompt';
+import { DialogService } from 'aurelia-dialog';
 // import {CssAnimator} from 'aurelia-animator-css';
 // import { ApplicationService } from '../../services/application-service';
 // import { MyDataService } from "../../services/my-data-service";
@@ -23,7 +25,7 @@ import { observable } from "aurelia-framework";
 // import {BootstrapFormRenderer} from './bootstrap-form-renderer';
 
 // @inject(Router, ApplicationService, ApiService,ValidationControllerFactory)
-@inject(Router, ApplicationService, ApiService)
+@inject(Router, ApplicationService, ApiService,DialogService)
 
 export class DataForm {
   // @observable selectedBooking;
@@ -45,7 +47,7 @@ firstName = '';
   controller = null;
   
 
-   constructor(router, appService, api) {
+   constructor(router, appService, api,dialogService) {
 //,controllerFactory
 // this.controller = controllerFactory.createForCurrentScope();
   //  this.controller.addRenderer(new BootstrapFormRenderer());
@@ -58,6 +60,8 @@ firstName = '';
     this.services = []
     this.invoices = []
     this.bookingindex = 0
+    // this.dataService = dataService
+        this.dialogService = dialogService
   }
 
   // valueChanged(newValue) {
@@ -104,12 +108,10 @@ firstName = '';
       bk.isSelected = false
     }
     console.log('bk finish')
-
     this.services[index].isSelected = true
     //  console.log('getInvoices service:',service)
     //   this.invoices = service.invoices
     // this.getInvoices(service, 0)
-
     if (this.invoices !== undefined) {
       this.invoices[0].isSelected = true
     }
@@ -504,7 +506,19 @@ firstName = '';
   }
 
 
+modalDocs() {
 
+    this.dialogService.open({ viewModel: Prompt, model: 'docs', lock: false }).whenClosed(response => {
+      // if (!response.wasCancelled) {
+      //   console.log('Delete')
+      //   let notes = this.currentItem.notes
+      //   notes.splice(index, 1)// start, deleteCount)
+      // } else {
+      //   console.log('cancel');
+      // }
+      console.log(response.output);
+    });
+}
 
   canDeactivate() {
     return new Promise((resolve, reject) => {
