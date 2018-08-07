@@ -18,7 +18,7 @@
 	<section class="full-height flex-column-1 au-animate ignore">
 
 		<div class="flex-row-none section-header">
-			${heading}
+			 <h3>${heading} 		${currentRecord.inmate.lastname} , ${currentRecord.inmate.firstname} </h3>
 
 		</div>
 
@@ -80,16 +80,15 @@
 							<strong> DOB</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							${currentRecord.inmate.DOB}
+							
 							<input type="date" id="DOB" class="form-control input-sm" value.bind="currentRecord.inmate.DOB">
 						</div>
 
 						<div class="Rtable-cell-30 Rtable-cell--green">
-							<strong> ss (numners only)</strong>
+							<strong> ss (numners only) ${currentRecord.inmate.ss| socialFormat}</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss"> ${currentRecord.inmate.ss
-							| socialFormat}
+							<input type="text" id="id" class="form-control input-sm" value.bind="currentRecord.inmate.ss">
 						</div>
 
 
