@@ -6,10 +6,11 @@ import moment from 'moment';
 import { ApiService } from '../../utils/servicesApi';
 import { observable } from "aurelia-framework";
 import { Prompt } from './prompt';
+import { Promptyn } from '../../services/promptyn';// /../../../services/promptyn
 import { DialogService } from 'aurelia-dialog';
-// import {CssAnimator} from 'aurelia-animator-css';
-// import { ApplicationService } from '../../services/application-service';
 // import { MyDataService } from "../../services/my-data-service";
+
+// import {CssAnimator} from 'aurelia-animator-css';
 // import { Prompt } from './prompt';
 // import { DialogService } from 'aurelia-dialog';
 // @inject(Router, ApiService, ApplicationService, MyDataService, EventAggregator, DialogService)
@@ -504,20 +505,30 @@ firstName = '';
     // this.ratingElement.removeEventListener('change', this.ratingChangedListener);
     // this.selectAdjusterElement.removeEventListener('change', this.adjusterSelectedListener);
   }
-
+promiseDialog(obj) {
+  return new Promise((resolve, reject) => {
+    this.dialogService.open({ viewModel: Promptyn, model: 'Press OK to Overwrite or Cancel ' + obj.name + '?', lock: false }).whenClosed(response => {
+      let out = { name: obj.name, val: obj.val, ext: obj.ext, resp: response.wasCancelled }
+      // send object back with answer
+      resolve(out)
+    });
+  });
+}
 
 modalDocs() {
-
-    this.dialogService.open({ viewModel: Prompt, model: 'docs', lock: false }).whenClosed(response => {
-      // if (!response.wasCancelled) {
-      //   console.log('Delete')
-      //   let notes = this.currentItem.notes
-      //   notes.splice(index, 1)// start, deleteCount)
-      // } else {
-      //   console.log('cancel');
-      // }
-      console.log(response.output);
-    });
+  //let obj = { name: 'fname', val: ival, ext: ext }
+  let obj = { name: 'fname', val:'john', ext:'123' }
+        var promise = this.promiseDialog(obj)
+    // this.dialogService.open({ viewModel: Prompt, model: 'docs', lock: false }).whenClosed(response => {
+    //   // if (!response.wasCancelled) {
+    //   //   console.log('Delete')
+    //   //   let notes = this.currentItem.notes
+    //   //   notes.splice(index, 1)// start, deleteCount)
+    //   // } else {
+    //   //   console.log('cancel');
+    //   // }
+    //   console.log(response.output);
+    // });
 }
 
   canDeactivate() {
