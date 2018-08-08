@@ -6,7 +6,7 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3L11/ Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3L12/ Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
@@ -82,7 +82,7 @@ export class Welcome {
 
 
 
- let cCodes9 = [{ "payeename" : "NBMD, Jim", 
+ let cCodes9 = [{ "payeename" : "NBMD", 
                             "payeefein" : "NA", 
                             "payeeaddr" : "230 E Ridgewood Ave", 
                             "payeecity" : "Paramus", 
