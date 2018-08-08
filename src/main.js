@@ -10,7 +10,7 @@ export async function configure(aurelia) {
     .developmentLogging()
     .plugin('aurelia-kendoui-bridge')
     // .plugin('aurelia-validation')
-    .plugin('aurelia-bootstrap-tagsinput')
+  //  .plugin('aurelia-bootstrap-tagsinput')
     .plugin('aurelia-bootstrap-select');
     //;
     // .plugin('aurelia-kendoui-bridge', (kendo) => kendo.pro());
