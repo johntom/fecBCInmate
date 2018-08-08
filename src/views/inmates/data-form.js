@@ -103,6 +103,53 @@ export class DataForm {
   EditService(service, editstate, index) {
     this.currentService = service
     this.currentServiceIndex = index
+
+   // if update is clicked editstate=false if done is clicked editstate=true
+    if (editstate === true) {
+    // let startDate = moment( service.serviceDateFrom, "DD.MM.YYYY");
+    // let endDate  = moment( service.serviceDateTo, "DD.MM.YYYY")
+    // let startDate = moment( service.serviceDateFrom).format('M/D/YYYY')
+    // let endDate  = moment( service.serviceDateTo).format('M/D/YYYY')
+   // var result = 'Diff: ' + endDate.diff(startDate, 'days');
+
+//     let startDate = moment( service.serviceDateFrom).format('DD.MM.YYYY')
+//     let endDate  = moment( service.serviceDateTo).format('DD.MM.YYYY')
+//   var diff=moment.duration(service.serviceDateTo.diff(service.serviceDateFrom));
+// var diffIndays= diff.asDays()
+// console.log("DiffIndays: "+diffIndays)
+//     service.serviceDays = diffIndays// endDate.diff(startDate, 'days');
+// var a = moment([2007, 0, 29]);
+// var b = moment([2007, 0, 28]);
+// var a = moment( service.serviceDateFrom).format('YYYY.MM.DD');
+// var b = moment( service.serviceDateTo).format('YYYY.MM.DD');
+// var a1 = moment(service.serviceDateTo,"DD/MM/YYYY").format("YYYY")
+// var a2 = moment(service.serviceDateTo,"DD/MM/YYYY").format("MM")
+// var a3 = moment(service.serviceDateTo,"DD/MM/YYYY").format("DD")
+var str = service.serviceDateTo
+var a1 = str. substr( 0,4)
+var a2 = str. substr( 5,2)
+var a3 = str. substr( 8,2)
+
+var str2 = service.serviceDateFrom
+var b1 = str2. substr( 0,4)
+var b2 = str2. substr( 5,2)
+var b3 = str2. substr( 8,2)
+// var a1 = substring(service.serviceDateTo, 6,2)//  moment(service.serviceDateTo,"DD/MM/YYYY").format("YYYY")
+// var a1 = substring(service.serviceDateTo, 8,2)//  moment(service.serviceDateTo,"DD/MM/YYYY").format("YYYY")
+// var str = "2018-09-07";
+// var res = str.substr(0,4)
+// var res = str.substr(5,2);
+// var res = str.substr(8,2);
+// var b1  = moment(service.serviceDateFrom,"DD/MM/YYYY").format("YYYY")
+// var b2 = moment(service.serviceDateFrom,"DD/MM/YYYY").format("MM")
+// var b3 = moment(service.serviceDateFrom,"DD/MM/YYYY").format("DD")
+
+ var a = moment([a1, a2, a3]);
+ var b = moment([b1, b2, b3]);
+
+service.serviceDays = a.diff(b, 'days') // 1
+
+    }
     service.edit = !editstate//this.booking.edit
     for (let bk of this.services) {
       console.log('bk ', bk)

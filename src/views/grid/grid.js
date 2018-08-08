@@ -52,12 +52,23 @@ export class Grid {
           serviceDateTo: {
             type: "date"
           },
+           serviceDays: {
+            type: "number"
+          },
           approvedDate: {
             type: "date"
           },
           invDate: {
             type: "date"
           },
+          treatmentDateFrom: {
+            type: "date"
+          },
+          treatmentDateTo: {
+            type: "date"
+          },
+          
+          
           payee: {
                 type: "string"
               },

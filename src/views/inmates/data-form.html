@@ -178,14 +178,14 @@
 
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">								</td>
 							</td>
-							<td width="125px">
+							<!-- <td width="125px">
 								<span show.bind="!booking.edit">${prisonerId}</span>
 
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="prisonerId">								</td>
 							<td width="125px">
 								<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
-							</td>
+							</td> -->
 							<td width="325px">
 								<!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
                   ${ !booking.edit ? 'Update' : 'Done' }</button>	 -->
@@ -224,6 +224,8 @@
 							<th class="header">Srv DateFrom
 							</th>
 							<th class="header">Srv DateTo
+							</th>
+             <th class="header">Srv Days
 							</th>
 							<th class="header">Transport<br>Method
 							</th>
@@ -295,6 +297,11 @@
 									<span show.bind="!service.edit">${serviceDateTo | dateFormat }</span>
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateTo">
 								</td>
+                	<td width="125px">
+									<span show.bind="!service.edit">${serviceDays}</span>
+							
+              
+              			</td>
 								<td width="125px">
 									<span show.bind="!service.edit">${transportMethod}</span>
 									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod">
@@ -390,7 +397,10 @@
 							</th>
 							<th class="header">savings
 							</th>
-
+	<th class="header">Trt DateFrom
+							</th>
+							<th class="header">Trt DateTo
+							</th>
 							<th class="header">Apprvd
 								<br>Date
 							</th>
@@ -504,6 +514,16 @@
 									<span>${invoiceTotal - repricedAmt |  currencyFormat}</span>
 
 								</td>
+			<td width="125px">
+									<span show.bind="!invoice.edit">${treatmentDateFrom | dateFormat }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="treatmentDateFrom">
+								</td>
+								<td width="125px">
+									<span show.bind="!invoice.edit">${treatmentDateTo | dateFormat }</span>
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="treatmentDateTo">
+								</td>
+
+
 								<td width="95px">
 									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
