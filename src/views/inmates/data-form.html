@@ -67,7 +67,7 @@
               class="form-control input-sm"
                value.bind="currentRecord.currentRecord.gender"> -->
 
-							<select id="gender" class="form-control input-sm" value.two-way="currentRecord.currentRecord.gender">
+							<select id="gender" class="form-control input-sm" value.two-way="currentRecord.inmate.gender">
                                     <option model.bind="null">Choose...</option>
                                     <option repeat.for="opt of appService.genderList" model.bind="opt.code">
                                         ${opt.code}
