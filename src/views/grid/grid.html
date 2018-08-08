@@ -43,8 +43,8 @@
 		
     <!-- true -->
     
-    	<ak-col k-title="DOB " k-width="100px "  k-lockable.bind="true" 
-      k-field="DOB" k-filterable.bind="true " k-format="{0:MM/dd/yyyy} "></ak-col>
+    	<ak-col k-title="DOB " k-width="100px "  k-lockable.bind="true " 
+      k-field="DOB " k-filterable.bind="true " k-format="{0:MM/dd/yyyy} "></ak-col>
 			
 			<ak-col k-title="Booking<br>Date" k-width="100px" k-locked.bind="false" k-lockable.bind="false" k-field="bookingDate" k-filterable.bind="false" k-format="{0:MM/dd/yyyy}">
 			</ak-col>
@@ -52,6 +52,7 @@
 			<ak-col k-title="Date<br>of Sentencing" k-width="100px" k-locked.bind="false" k-lockable.bind="false" k-field="sentencingDate"
 			 k-filterable.bind="false" k-format="{0:MM/dd/yyyy}"></ak-col>
 			<ak-col k-title="Srv Provided" k-width="120px" k-field="serviceProvided"></ak-col>
+			<ak-col k-title="payee" k-width="180px" k-field="payee"></ak-col>
 
 			<ak-col k-title="Inv Total" k-width="120px" k-locked.bind="false" k-lockable.bind="false" k-field="invoiceTotal" k-filterable.bind="true"
 			 k-format="{0:c2}" k-attributes.bind='{ class: "text-right" }'></ak-col>
@@ -77,8 +78,7 @@
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
 
 
-		<ak-col k-title="payee" k-width="180px" k-field="payee"></ak-col>
-	
+
 			<ak-col k-title="Payment<br>Status" k-width="110px" k-field="paymentStatus"></ak-col>
 			<ak-col k-title="Approved<br>Date" k-width="100px" k-locked.bind="false" k-lockable.bind="false" k-field="approvedDate" k-filterable.bind="false"
 			 k-format="{0:MM/dd/yyyy}"></ak-col>
