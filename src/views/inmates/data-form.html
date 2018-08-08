@@ -18,7 +18,7 @@
 	<section class="full-height flex-column-1 au-animate ignore">
 
 		<div class="flex-row-none section-header">
-			 <h3>${heading} 		${currentRecord.inmate.lastname} , ${currentRecord.inmate.firstname} </h3>
+			<h3>${heading} ${currentRecord.inmate.lastname} , ${currentRecord.inmate.firstname} </h3>
 
 		</div>
 
@@ -80,7 +80,7 @@
 							<strong> DOB</strong>
 						</div>
 						<div class="Rtable-cell-70 Rtable-cell--green">
-							
+
 							<input type="date" id="DOB" class="form-control input-sm" value.bind="currentRecord.inmate.DOB">
 						</div>
 
@@ -375,10 +375,10 @@
 							</th>
 							<th class="header">invDate
 							</th>
+              	<!-- <th class="header">Payee Name</th> -->
 							<th class="header">Payee Name
-                <br>Payee Fein
+								<br>Payee Fein
 								<br>Payee Addr
-								
 							</th>
 							<!-- <th class="header">cpts
 							</th> -->
@@ -438,42 +438,53 @@
 								</td>
 
 								<td width="165px">
-									<span show.bind="!invoice.edit">${invno}</span>
+									<span show.bind="!invoice.edit">${invno} ${payee.payeefein}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
 								</td>
 								<td width="95px">
 									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
 								</td>
-
+<!-- <td width="165px">
+									<span >${payee.payeename}</span>
+								</td> -->
 								<td width="165px">
 
 
-
-		<select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payee">
+   <!-- <option repeat.for="opt of appService.payeelist" model.bind="opt.payeename"> -->
+              <!-- <span  >${payee.payeename}  / ${payee.payeefein}</span> -->
+               <span  >${payee.payeename} </span>
+              
+								<select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payeeselect">
+               
+               ${payee.payeename}
                 <option model.bind="null">Choose...</option>
-                <option repeat.for="opt of appService.payeelist" model.bind="opt.payeename">
+                <option repeat.for="opt of appService.payeelist" model.bind="opt">
                 ${opt.payeename} /  ${opt.payeefein}
                 </option>
-</select>
-									<span show.bind="!invoice.edit">${payeename }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text" value.bind="payeename">
-	              	<span show.bind="!invoice.edit">${payeefein }<br></span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text" value.bind="payeefein">
-						
-									<!-- <span show.bind="!invoice.edit">${payeeaddr }<br></span> -->
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="address" type="text" value.bind="payeeaddr">
+                </select>
+								
+                
+                	<!-- <span show.bind="!invoice.edit">${payeename }</span> -->
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text"
+									 value.bind="payeename">
+									<!-- <span show.bind="!invoice.edit">${payeefein }<br></span> -->
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text"
+									 value.bind="payeefein">
 
-									<!-- <span show.bind="!invoice.edit">${payeecity }</span> -->
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="city" type="text" value.bind="payeecity">
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="address" type="text"
+									 value.bind="payeeaddr">
 
-									<!-- <span show.bind="!invoice.edit">${payeestate }</span> -->
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="state" type="text" value.bind="payeestate">
-									<!-- <span show.bind="!invoice.edit">${payeezip }</span> -->
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="zip" type="text" value.bind="payeezip">
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="city" type="text"
+									 value.bind="payeecity">
+
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="state" type="text"
+									 value.bind="payeestate">
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="zip" type="text"
+									 value.bind="payeezip">
 
 
-									</td>
+								</td>
 
 								<td width="75px">
 
@@ -506,111 +517,112 @@
                 <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
                 ${opt.code}
                 </option>
-</select>
-                </td>
+              </select>
+								</td>
 
 
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">${deniedReason}</span>
+								<td width="125px">
+									<span show.bind="!invoice.edit">${deniedReason}</span>
 
-                                    <input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="deniedReason">
-                                </td>
-                            
-                                <!-- href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}"> -->
-                            
-                            
-                            
-                                <td width="125px">
-                                    <span show.bind="!invoice.edit">
+									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="deniedReason">
+								</td>
+
+								<!-- href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}"> -->
+
+
+
+								<td width="125px">
+									<span show.bind="!invoice.edit">
                                         <a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${fileinvoicename}">
                                             ${fileinvoicename}
                                         </a>
                                     </span>
-                                    <span show.bind="invoice.edit">${fileinvoicename}</span>
-                                </td>
-                                <td width="325px">
-                                    <!-- <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button> -->
-                                    <button class="btn btn-primary" click.delegate="EditInvoice(invoice,invoice.edit,$index)">
+									<span show.bind="invoice.edit">${fileinvoicename}</span>
+								</td>
+								<td width="325px">
+									<!-- <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button> -->
+									<button class="btn btn-primary" click.delegate="EditInvoice(invoice,invoice.edit,$index)">
                                         ${ !invoice.edit ? 'Update' : 'Done' }</button>
-                                    <button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
-                 
-                                    <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
-                                        <i class="fa fa-plus"></i> Upload
-                                    </a>
-             
-                                </td>
-                                <td>
-                                    <input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
-                            </tr>
-                        </tbody>
-                </table>
-                <!--  end new table -->
-                <!--  new docs table -->
-                <h4>
+									<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
 
-                    <i class="fa fa-folder-open"></i> Docs for ${currentBooking.bookingNo} click button below or drag n drop files's over button
-                    <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
-                        <i class="fa fa-plus"></i> Add Uploaded File
-                    </a>
-                    <a slot="buttons-slot" class="btn btn-success" click.delegate="modalDocs()">
-                        <i class="fa fa-plus"></i> Popup Docs
-                    </a>
-                    <a slot="buttons-slot">
-                        <input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
-                        <i class="material-icons prefix">search</i>
-                    </a>
+									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
+										<i class="fa fa-plus"></i> Upload
+									</a>
 
-                    <!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocTest()"></a> -->
+								</td>
+								<td>
+									<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
+							</tr>
+						</tbody>
+				</table>
+				<!--  end new table -->
+				<!--  new docs table -->
+				<h4>
 
-                    <input style='height:44px' id='file' type="file" name="file" files.bind="file" multiple>
-                </h4>
-                <!-- <form> -->
-                <div class="col-sm-6 ">
-                    <table class="table-condensed table">
-                        <thead class="table-header-blue" data-sort="items.bind: currentRecord.docs; cols: ['FILE_NAME','FILE_EXT']">
-                            <tr>
-                                <th class="header">FILE_NAME (Must ne uniq and have no '#' or '/' in name)</th>
-                                <!-- <th class="header">FILE_EXT </th> -->
+					<i class="fa fa-folder-open"></i> Docs for ${currentBooking.bookingNo} click button below or drag n drop files's over
+					button
+					<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocs(file)">
+						<i class="fa fa-plus"></i> Add Uploaded File
+					</a>
+					<a slot="buttons-slot" class="btn btn-success" click.delegate="modalDocs()">
+						<i class="fa fa-plus"></i> Popup Docs
+					</a>
+					<a slot="buttons-slot">
+						<input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
+						<i class="material-icons prefix">search</i>
+					</a>
 
-                            </tr>
-                        </thead>
-                        <!-- <tfoot> -->
-                        <tr>
-                            <td></td>
-                            <td></td>
+					<!-- <a slot="buttons-slot" class="btn btn-success" click.delegate="addDocTest()"></a> -->
 
-                        </tr>
-                        <!-- </tfoot> -->
-                        <tbody>
-                            <tr repeat.for="doc of docs" with.bind="doc">
-                                <td>
-                                    <!-- <a size='100' class="form-control  input-sm" target="_blank"
+					<input style='height:44px' id='file' type="file" name="file" files.bind="file" multiple>
+				</h4>
+				<!-- <form> -->
+				<div class="col-sm-6 ">
+					<table class="table-condensed table">
+						<thead class="table-header-blue" data-sort="items.bind: currentRecord.docs; cols: ['FILE_NAME','FILE_EXT']">
+							<tr>
+								<th class="header">FILE_NAME (Must ne uniq and have no '#' or '/' in name)</th>
+								<!-- <th class="header">FILE_EXT </th> -->
+
+							</tr>
+						</thead>
+						<!-- <tfoot> -->
+						<tr>
+							<td></td>
+							<td></td>
+
+						</tr>
+						<!-- </tfoot> -->
+						<tbody>
+							<tr repeat.for="doc of docs" with.bind="doc">
+								<td>
+									<!-- <a size='100' class="form-control  input-sm" target="_blank"
                    href="http://adjusters.markadjustment.com/docs/${currentItem.CLAIM_NO}/${doc.FILE_NAME}">
 										${FILE_NAME}
 									</a> -->
-                                    <a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
-                                        ${FILE_NAME}
-                                    </a>
+									<a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${doc.FILE_NAME}">
+										${FILE_NAME}
+									</a>
 
-                                </td>
-                                <!-- <td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td> -->
+								</td>
+								<!-- <td><input type="text" id="FILE_EXT" class="form-control  input-sm" value.bind="FILE_EXT"></td> -->
 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- </form> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- </form> -->
 
-                <!--  end booking table -->
-
-
+				<!--  end booking table -->
 
 
 
-            </section>
-            <!-- </form> -->
-            <div class="flex-column-none section-footer">
-                <span>&nbsp;&nbsp;
+
+
+			</section>
+			<!-- </form> -->
+			<div class="flex-column-none section-footer">
+				<span>&nbsp;&nbsp;
                     <button class="btn btn-sm btn-danger" click.delegate="saveinmate(0)">
                        ${message}  
                     </button>
@@ -619,7 +631,7 @@
                         Close
                     </button>
                 </span>
-            </div>
-        </div>
-    </section>
+			</div>
+		</div>
+	</section>
 </template>

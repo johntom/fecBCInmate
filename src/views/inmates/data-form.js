@@ -26,7 +26,7 @@ import { DialogService } from 'aurelia-dialog';
 // import {BootstrapFormRenderer} from './bootstrap-form-renderer';
 
 // @inject(Router, ApplicationService, ApiService,ValidationControllerFactory)
-@inject(Router, ApplicationService, ApiService,DialogService)
+@inject(Router, ApplicationService, ApiService, DialogService)
 
 export class DataForm {
   // @observable selectedBooking;
@@ -42,16 +42,16 @@ export class DataForm {
   message = 'Save & Stay' //&amp;
   // productMatcher = (a, b) => a.id === b.id;
   // selectedProduct = { id: 1, name: 'CPU' };
-firstName = '';
+  firstName = '';
   lastName = '';
   email = '';
   controller = null;
-  
 
-   constructor(router, appService, api,dialogService) {
-//,controllerFactory
-// this.controller = controllerFactory.createForCurrentScope();
-  //  this.controller.addRenderer(new BootstrapFormRenderer());
+
+  constructor(router, appService, api, dialogService) {
+    //,controllerFactory
+    // this.controller = controllerFactory.createForCurrentScope();
+    //  this.controller.addRenderer(new BootstrapFormRenderer());
     this.api = api;
     this.appService = appService;
     this.router = router;
@@ -62,7 +62,7 @@ firstName = '';
     this.invoices = []
     this.bookingindex = 0
     // this.dataService = dataService
-        this.dialogService = dialogService
+    this.dialogService = dialogService
   }
 
   // valueChanged(newValue) {
@@ -139,368 +139,393 @@ firstName = '';
     // }
 
 
-
-
-
-
   }
 
   EditInvoice(invoice, editstate, index) {
-    this.currentInvoice = invoice
-    invoice.edit = !editstate//this.booking.edit
-    for (let bk of this.invoices) {
-      //  console.log('bk2 ', bk2)
-      bk.isSelected = false
-    }
-
-    // this.currentRecord.booking[index].isSelected = true
-    this.invoices[index].savings = this.invoices[index].invoiceTotal - this.invoices[index].repricedAmt
-    this.invoices[index].isSelected = true
-  }
-  addBooking() {
-    let booking = this.currentRecord.booking //this.appService.currentRecord.booking
-    let flag = false
-    let item, item2
-    let bookingDate = moment().format('YYYY-MM-DD')
-    if (booking === undefined) {
-      flag = true
-      booking = []
-      this.bookingindex = 0
-    } else this.bookingindex = booking.length
-
-    item = { bookingDate: bookingDate, classification: 'friday', edit: true }
-    booking.unshift(item)
-
-    //    if (flag) this.appService.currentRecord = booking
-
-    this.bookingDate = '';
-    this.classification = '';
-    booking[this.bookingindex].services = []
-    this.services = []
-    this.invoices = []
-
-    for (let bk of booking) {
-      bk.isSelected = false
-    }
-    booking[this.bookingindex].isSelected = true
-
-
-
-    this.currentBooking.isSelected = true
-    this.services[0].isSelected = true
-
-
-
-    // // booking[0].services.push(item2)
-    // // booking[0].services[0]=''
-    // //  booking[0].services[0].invoices = []
-    //  this.getServices(booking[0], 0)  //booking, 0)
-
-  }
-  addService() {
-    let service = this.services
-    let flag = false
-    let indx
-    if (service === undefined) {
-      flag = true
-      indx = 0
-      service = []
-    } else {
-      indx = service.length
-    }
-    let item
-    let serviceDateFrom = moment().format('YYYY-MM-DD')
-
-    item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
-    service.unshift(item)
-    if (flag) {
-      this.services = service
-      this.services[0].invoices = []
-      // this.currentRecord.booking[0].services[indx] = this.services
-      // this.currentRecord.currentBooking.services = this.services
-
-    }
-    //this.serviceDateFrom = '';
-    this.getInvoices(service, 0)
-  }
-  addInvoice() {
-    let invoice = this.invoices
-    let flag = false
-    if (invoice === undefined) {
-      flag = true
-      invoice = []
-    }
-    let item
-    let invDate = moment().format('YYYY-MM-DD')
-   // let invno = this.currentBooking.bookingNo
-    // item = { invno: invno, invDate: invDate, edit: true }
-    item = { invDate: invDate, edit: true }
-    invoice.unshift(item)
-    // if (flag) this.invoices = invoice
-    this.invoices = invoice
-    this.currentRecord.booking[this.bookingindex].services[this.currentServiceIndex].invoices = this.invoices
-
-    this.invDate = '';
-  }
-  getServices(booking, index) {
-    // if (booking === 0) {
-    //   //  this.getInvoices(0,0)
-    //   this.invoices = []
-    // } else {
-    this.currentBooking = booking
-    console.log(' this.currentRecord ', index, booking.services);
-    this.services = booking.services
-    for (let bk of this.currentRecord.booking) {
-      // console.log('bk2 ', bk2)
-      bk.isSelected = false
-    }
-
-    this.currentRecord.booking[index].isSelected = true
-
-
-    if (booking.services && booking.services[0] !== undefined) {
-
-      for (let bk of this.services) {
-        // console.log('bk2 ', bk2)
-        bk.isSelected = false
-      }
-
-      this.services[0].isSelected = true
-      //   this.services[0].isSelected=true
-
-      this.getInvoices(this.services[0], 0)
+    // if update is clicked editstate=false if done is clicked editstate=true
+    if (editstate === true) {
+      console.log('payee ', invoice.payee)
+      if (invoice.payeeselect === null && invoice.payeename !== '') {
+        console.log('null payee ')
+        let payee = {
+          "payeename": invoice.payeename,
+          "payeefein": invoice.payeefein,
+          "payeeaddr": invoice.payeeaddr,
+          "payeecity": invoice.payeecity,
+          "payeestate": invoice.payeestate,
+          "payeezip": invoice.payeezip
+        }
+        this.appService.payeelist.push(payee)
+        // write to database and refresh list
+        invoice.payee = payee
+      } else {
+        if (invoice.payeeselect !== null) {
+      invoice.payee = invoice.payeeselect
+      invoice.payeename = ''
+      invoice.payeefein = ''
+      invoice.payeeaddr = ''
+      invoice.payeecity = ''
+      invoice.payeestate = ''
+      invoice.payeezip = ''
     }
   }
+}
 
-  getInvoices(service, index) {
-    // console.log(' this.currentRecord ', index, service.invoices);
-    // if (service.invoices===undefined)
-    this.invoices = service.invoices
-    this.currentService = service
-    this.currentServiceIndex = index
+this.currentInvoice = invoice
+invoice.edit = !editstate//this.booking.edit
+for (let bk of this.invoices) {
+  //  console.log('bk2 ', bk2)
+  bk.isSelected = false
+}
+
+// this.currentRecord.booking[index].isSelected = true
+this.invoices[index].savings = this.invoices[index].invoiceTotal - this.invoices[index].repricedAmt
+this.invoices[index].isSelected = true
+  }
+addBooking() {
+  let booking = this.currentRecord.booking //this.appService.currentRecord.booking
+  let flag = false
+  let item, item2
+  let bookingDate = moment().format('YYYY-MM-DD')
+  if (booking === undefined) {
+    flag = true
+    booking = []
+    this.bookingindex = 0
+  } else this.bookingindex = booking.length
+
+  item = { bookingDate: bookingDate, classification: 'friday', edit: true }
+  booking.unshift(item)
+
+  //    if (flag) this.appService.currentRecord = booking
+
+  this.bookingDate = '';
+  this.classification = '';
+  booking[this.bookingindex].services = []
+  this.services = []
+  this.invoices = []
+
+  for (let bk of booking) {
+    bk.isSelected = false
+  }
+  booking[this.bookingindex].isSelected = true
+
+
+
+  this.currentBooking.isSelected = true
+  this.services[0].isSelected = true
+
+
+
+  // // booking[0].services.push(item2)
+  // // booking[0].services[0]=''
+  // //  booking[0].services[0].invoices = []
+  //  this.getServices(booking[0], 0)  //booking, 0)
+
+}
+addService() {
+  let service = this.services
+  let flag = false
+  let indx
+  if (service === undefined) {
+    flag = true
+    indx = 0
+    service = []
+  } else {
+    indx = service.length
+  }
+  let item
+  let serviceDateFrom = moment().format('YYYY-MM-DD')
+
+  item = { serviceDateFrom: serviceDateFrom, serviceDateTo: serviceDateFrom, edit: true }
+  service.unshift(item)
+  if (flag) {
+    this.services = service
+    this.services[0].invoices = []
+    // this.currentRecord.booking[0].services[indx] = this.services
+    // this.currentRecord.currentBooking.services = this.services
+
+  }
+  //this.serviceDateFrom = '';
+  this.getInvoices(service, 0)
+}
+addInvoice() {
+  let invoice = this.invoices
+  let flag = false
+  if (invoice === undefined) {
+    flag = true
+    invoice = []
+  }
+  let item
+  let invDate = moment().format('YYYY-MM-DD')
+  // let invno = this.currentBooking.bookingNo
+  // item = { invno: invno, invDate: invDate, edit: true }
+  item = { invDate: invDate, edit: true }
+  invoice.unshift(item)
+  // if (flag) this.invoices = invoice
+  this.invoices = invoice
+  this.currentRecord.booking[this.bookingindex].services[this.currentServiceIndex].invoices = this.invoices
+
+  this.invDate = '';
+}
+getServices(booking, index) {
+  // if (booking === 0) {
+  //   //  this.getInvoices(0,0)
+  //   this.invoices = []
+  // } else {
+  this.currentBooking = booking
+  console.log(' this.currentRecord ', index, booking.services);
+  this.services = booking.services
+  for (let bk of this.currentRecord.booking) {
+    // console.log('bk2 ', bk2)
+    bk.isSelected = false
+  }
+
+  this.currentRecord.booking[index].isSelected = true
+
+
+  if (booking.services && booking.services[0] !== undefined) {
 
     for (let bk of this.services) {
       // console.log('bk2 ', bk2)
       bk.isSelected = false
     }
 
-    this.services[index].isSelected = true
+    this.services[0].isSelected = true
+    //   this.services[0].isSelected=true
 
-
-    if (this.invoices !== undefined) {
-      this.invoices[0].isSelected = true
-    }
-
-
-    console.log(' getInvoices ', this.invoices)
+    this.getInvoices(this.services[0], 0)
   }
-  close(path) {
+}
 
+getInvoices(service, index) {
+  // console.log(' this.currentRecord ', index, service.invoices);
+  // if (service.invoices===undefined)
+  this.invoices = service.invoices
+  this.currentService = service
+  this.currentServiceIndex = index
 
-    // let tab = this.appService.tabs.find(f => f.isSelected);
-    // Next, we navigate to the newly created claim
-
-    // Finally, we close out this tab
-    // this.closeTab(tab);\
-    let rt2
-    this.closeTab
-    if (path === undefined) {
-      rt2 = `#/inmates`
-    } else rt2 = `#/${path}`
-    this.router.navigate(rt2);
-  }
-  closeTab(tab) {
-    let index = this.appService.tabs.indexOf(tab);
-    tab.isSelected = false;
-    this.appService.tabs.splice(index, 1);
+  for (let bk of this.services) {
+    // console.log('bk2 ', bk2)
+    bk.isSelected = false
   }
 
-  activate(params, routeConfig) {
-    console.log('activate', params)
-    if (params.id) {
-      this.recordId = params.id;
-      if (this.recordId === 'create') {
-        //let newrec = {inmate:{lastname: ""},booking: []}
-        //this.appService.currentRecord ={}//newrec
-
-        this.message = 'Save & Close'
-        this.appService.currentRecord = {}
-        this.appService.currentRecord.id = 'create'
-        this.appService.testrec = {}
-        this.appService.originalrec = {}
-        this.appService.currentRecord.inmate = {}
-
-        this.appService.currentRecord.booking = []
-        this.appService.currentRecord.docs = []
-        this.currentRecord = this.appService.currentRecord
+  this.services[index].isSelected = true
 
 
-      } else {
-        this.message = 'Save & Stay'
-        console.log('activate2')
-        console.log('this.recordId ', this.recordId, this.appService.currentRecord);
-        this.currentRecord = this.appService.currentRecord
-        this.docs = this.currentRecord.docs
-        console.log(' this.currentRecord ', this.currentRecord.booking.services);
-        if (this.currentRecord.booking[0] !== undefined) {
-          this.currentRecord.booking[0].isSelected = true
-          this.getServices(this.currentRecord.booking[0], 0)
-        }
+  if (this.invoices !== undefined) {
+    this.invoices[0].isSelected = true
+  }
+
+
+  console.log(' getInvoices ', this.invoices)
+}
+close(path) {
+
+
+  // let tab = this.appService.tabs.find(f => f.isSelected);
+  // Next, we navigate to the newly created claim
+
+  // Finally, we close out this tab
+  // this.closeTab(tab);\
+  let rt2
+  this.closeTab
+  if (path === undefined) {
+    rt2 = `#/inmates`
+  } else rt2 = `#/${path}`
+  this.router.navigate(rt2);
+}
+closeTab(tab) {
+  let index = this.appService.tabs.indexOf(tab);
+  tab.isSelected = false;
+  this.appService.tabs.splice(index, 1);
+}
+
+activate(params, routeConfig) {
+  console.log('activate', params)
+  if (params.id) {
+    this.recordId = params.id;
+    if (this.recordId === 'create') {
+      //let newrec = {inmate:{lastname: ""},booking: []}
+      //this.appService.currentRecord ={}//newrec
+
+      this.message = 'Save & Close'
+      this.appService.currentRecord = {}
+      this.appService.currentRecord.id = 'create'
+      this.appService.testrec = {}
+      this.appService.originalrec = {}
+      this.appService.currentRecord.inmate = {}
+
+      this.appService.currentRecord.booking = []
+      this.appService.currentRecord.docs = []
+      this.currentRecord = this.appService.currentRecord
+
+
+    } else {
+      this.message = 'Save & Stay'
+      console.log('activate2')
+      console.log('this.recordId ', this.recordId, this.appService.currentRecord);
+      this.currentRecord = this.appService.currentRecord
+      this.docs = this.currentRecord.docs
+      console.log(' this.currentRecord ', this.currentRecord.booking.services);
+      if (this.currentRecord.booking[0] !== undefined) {
+        this.currentRecord.booking[0].isSelected = true
+        this.getServices(this.currentRecord.booking[0], 0)
       }
-      // } // state
     }
-    // click.delegate
-    //  this.table.click.delegate('click-row.bs.table', function (e, row, $element) {
-    //     $('.success').removeClass('success');
-    //     $($element).addClass('success');
-    //   });
+    // } // state
   }
-  addDocs(images) {
-    //images is file
-    //check for dups 2/21/2018
-    //https://stackoverflow.com/questions/32736599/html-file-upload-and-action-on-single-button
-    let docs = this.currentRecord.docs
-    if (docs === undefined) docs = []
-    let formData = new FormData()
-    let newDate = moment().format('YYYY-MM-DD')
-    let flag = false
-    let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
-      let newform = values;
-      console.log('after checkdata1 ', newform);//this.status,
-      // this.api.upload(formData, this.currentItem.CLAIM_NO)
-      this.api.upload(newform, this.currentRecord.id)
-        .then((jsonRes) => {
-          this.upmess = jsonRes//.data.message
-
-          $("#file").val("");
-        })
-    })
-  }
-
-  // addDocsInvoice(invoice,image) {
-  addDocsInvoice(invoice, image) {
-    // not used
-    // images is file
-    // let docs = this.currentRecord.docs
-    // if (docs === undefined) docs = []
-    let formData = new FormData()
-    let newDate = moment().format('YYYY-MM-DD')
-    let flag = false
-    invoice.fileinvoicename = image[0].name // only 1 allowed
-    //let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
-    // let newform = values;
-    //  console.log('after checkdata1 ',  newform);//this.status,
+  // click.delegate
+  //  this.table.click.delegate('click-row.bs.table', function (e, row, $element) {
+  //     $('.success').removeClass('success');
+  //     $($element).addClass('success');
+  //   });
+}
+addDocs(images) {
+  //images is file
+  //check for dups 2/21/2018
+  //https://stackoverflow.com/questions/32736599/html-file-upload-and-action-on-single-button
+  let docs = this.currentRecord.docs
+  if (docs === undefined) docs = []
+  let formData = new FormData()
+  let newDate = moment().format('YYYY-MM-DD')
+  let flag = false
+  let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
+    let newform = values;
+    console.log('after checkdata1 ', newform);//this.status,
     // this.api.upload(formData, this.currentItem.CLAIM_NO)
-    // delete fileinvoice
-    // formData.append('file', image);
-    formData.append('fileinvoice', image);
-    //    this.api.uploadInvoice(formData, invoice)
-    // use same uploader just make sure pdf is uniq within record
     this.api.upload(newform, this.currentRecord.id)
       .then((jsonRes) => {
         this.upmess = jsonRes//.data.message
-        $("#fileinvoice").val("");
-      })
-    // })
-  }
 
-  addDocTest() {
-    var item = { FILE_NAME: 'fname', FILE_EXT: '.pdf', OVERWRITE: 'N' }
-    console.log('item ', item)
+        $("#file").val("");
+      })
+  })
+}
+
+// addDocsInvoice(invoice,image) {
+addDocsInvoice(invoice, image) {
+  // not used
+  // images is file
+  // let docs = this.currentRecord.docs
+  // if (docs === undefined) docs = []
+  let formData = new FormData()
+  let newDate = moment().format('YYYY-MM-DD')
+  let flag = false
+  invoice.fileinvoicename = image[0].name // only 1 allowed
+  //let prom = Promise.resolve(this.checkData(images, formData)).then(values => {
+  // let newform = values;
+  //  console.log('after checkdata1 ',  newform);//this.status,
+  // this.api.upload(formData, this.currentItem.CLAIM_NO)
+  // delete fileinvoice
+  // formData.append('file', image);
+  formData.append('fileinvoice', image);
+  //    this.api.uploadInvoice(formData, invoice)
+  // use same uploader just make sure pdf is uniq within record
+  this.api.upload(newform, this.currentRecord.id)
+    .then((jsonRes) => {
+      this.upmess = jsonRes//.data.message
+      $("#fileinvoice").val("");
+    })
+  // })
+}
+
+addDocTest() {
+  var item = { FILE_NAME: 'fname', FILE_EXT: '.pdf', OVERWRITE: 'N' }
+  console.log('item ', item)
+  let docs = this.currentRecord.docs
+  if (docs === undefined) docs = []
+  docs.unshift(item)
+  this.docs = docs
+}
+checkData(images, formData) {
+  let promises = []
+  return new Promise((resolve, reject) => {
+    let i = 0;
     let docs = this.currentRecord.docs
     if (docs === undefined) docs = []
-    docs.unshift(item)
-    this.docs = docs
-  }
-  checkData(images, formData) {
-    let promises = []
-    return new Promise((resolve, reject) => {
-      let i = 0;
-      let docs = this.currentRecord.docs
-      if (docs === undefined) docs = []
-      let imagelen = images.length
-      for (i = 0; i < images.length; i++) {
-        let ext = images[i].name.split('.').pop();
-        let fname = images[i].name
-        console.log('fname ', fname)
-        let mid = -100// not needed
-        let ival = i
-        console.log('ival ', ival)
+    let imagelen = images.length
+    for (i = 0; i < images.length; i++) {
+      let ext = images[i].name.split('.').pop();
+      let fname = images[i].name
+      console.log('fname ', fname)
+      let mid = -100// not needed
+      let ival = i
+      console.log('ival ', ival)
 
-        mid = docs.findIndex(x => x.FILE_NAME === fname)
-        console.log('mid ', mid)
+      mid = docs.findIndex(x => x.FILE_NAME === fname)
+      console.log('mid ', mid)
 
-        if (mid > -1) {
-          // if we find file in array pass all values so we can evaluate later
-          let obj = { name: fname, val: ival, ext: ext }
-          var promise = this.promiseDialog(obj)
-          promises.push(promise);
-        } else {
-          var item = { FILE_NAME: fname, FILE_EXT: '.' + ext, OVERWRITE: 'N' }
-          console.log('item ', item)
+      if (mid > -1) {
+        // if we find file in array pass all values so we can evaluate later
+        let obj = { name: fname, val: ival, ext: ext }
+        var promise = this.promiseDialog(obj)
+        promises.push(promise);
+      } else {
+        var item = { FILE_NAME: fname, FILE_EXT: '.' + ext, OVERWRITE: 'N' }
+        console.log('item ', item)
 
-          docs.unshift(item)
-          this.docs = docs
-          this.currentRecord.docs = docs
-          formData.append('file', images[ival]);
+        docs.unshift(item)
+        this.docs = docs
+        this.currentRecord.docs = docs
+        formData.append('file', images[ival]);
+      }
+    }
+    return Promise.all(promises).then(values => {
+      for (i = 0; i < values.length; i++) {
+        //console.log(' this.response values[i] ',i,values[i].name,values[i].val,values[i].resp)
+        if (!values[i].resp) {
+          //true=wasCancelled
+          var item = { FILE_NAME: values[i].name, FILE_EXT: values[i].ext, OVERWRITE: 'Y' }
+          // dont add to data docs.unshift(item)
+          formData.append('file', images[values[i].val]);
         }
       }
-      return Promise.all(promises).then(values => {
-        for (i = 0; i < values.length; i++) {
-          //console.log(' this.response values[i] ',i,values[i].name,values[i].val,values[i].resp)
-          if (!values[i].resp) {
-            //true=wasCancelled
-            var item = { FILE_NAME: values[i].name, FILE_EXT: values[i].ext, OVERWRITE: 'Y' }
-            // dont add to data docs.unshift(item)
-            formData.append('file', images[values[i].val]);
-          }
-        }
-        resolve(formData)
-      })
+      resolve(formData)
     })
+  })
+}
+
+
+saveinmate() {
+  //  let modrec = this.currentRecord
+  // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
+  //this.currentItem//.booking//.services= this.services
+  //this.appService.currentItem
+  // this.invoices = service.invoices booking.services
+  // this.controller.validate();
+  console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+  if (this.recordId === 'create') {
+
+    this.api.addinmate(this.currentRecord)
+    //  this.recordId = 'modify'
+    Promise.all(
+      // this.api.saveinmate(this.currentRecord).then((res) => res.json())
+      this.api.saveinmate(this.currentRecord).then((res) => this.close('inmates'))
+
+    )
+
+  } else {
+
+    this.api.saveinmate(this.currentRecord)
   }
-
-
-  saveinmate() {
-    //  let modrec = this.currentRecord
-    // let booking =  this.currentRecord.booking //this.appService.currentRecord.booking
-    //this.currentItem//.booking//.services= this.services
-    //this.appService.currentItem
-    // this.invoices = service.invoices booking.services
- // this.controller.validate();
-    console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
-    if (this.recordId === 'create') {
-
-      this.api.addinmate(this.currentRecord)
-      //  this.recordId = 'modify'
-      Promise.all(
-        // this.api.saveinmate(this.currentRecord).then((res) => res.json())
-            this.api.saveinmate(this.currentRecord).then((res) => this.close('inmates'))
-    
-      )
-      
-    } else {
-      
-        this.api.saveinmate(this.currentRecord)
-    }
-  }
+}
 
 
 
-  attached() {
+attached() {
 
-  }
+}
 
-  bind() {
+bind() {
 
-  }
+}
 
 
-  detached() {
-    // alert('det')
-    // this.ratingElement.removeEventListener('change', this.ratingChangedListener);
-    // this.selectAdjusterElement.removeEventListener('change', this.adjusterSelectedListener);
-  }
+detached() {
+  // alert('det')
+  // this.ratingElement.removeEventListener('change', this.ratingChangedListener);
+  // this.selectAdjusterElement.removeEventListener('change', this.adjusterSelectedListener);
+}
 promiseDialog(obj) {
   return new Promise((resolve, reject) => {
     this.dialogService.open({ viewModel: Promptyn, model: 'Press OK to Overwrite or Cancel ' + obj.name + '?', lock: false }).whenClosed(response => {
@@ -513,52 +538,52 @@ promiseDialog(obj) {
 
 modalDocs() {
   //let obj = { name: 'fname', val: ival, ext: ext }
-  let obj = { name: 'fname', val:'john', ext:'123' }
-        var promise = this.promiseDialog(obj)
-    // this.dialogService.open({ viewModel: Prompt, model: 'docs', lock: false }).whenClosed(response => {
-    //   // if (!response.wasCancelled) {
-    //   //   console.log('Delete')
-    //   //   let notes = this.currentItem.notes
-    //   //   notes.splice(index, 1)// start, deleteCount)
-    //   // } else {
-    //   //   console.log('cancel');
-    //   // }
-    //   console.log(response.output);
-    // });
+  let obj = { name: 'fname', val: 'john', ext: '123' }
+  var promise = this.promiseDialog(obj)
+  // this.dialogService.open({ viewModel: Prompt, model: 'docs', lock: false }).whenClosed(response => {
+  //   // if (!response.wasCancelled) {
+  //   //   console.log('Delete')
+  //   //   let notes = this.currentItem.notes
+  //   //   notes.splice(index, 1)// start, deleteCount)
+  //   // } else {
+  //   //   console.log('cancel');
+  //   // }
+  //   console.log(response.output);
+  // });
 }
 
-  canDeactivate() {
-    return new Promise((resolve, reject) => {
-      if (this.currentItem &&
-        this.currentItem.isDirty &&
-        this.currentItem.isDirty()) {
-        // Now, we need to query the user... result => makes it a closure
-        this.appService.asyncHandleDirty().then(result => {
-          if (!result.wasCancelled) {
+canDeactivate() {
+  return new Promise((resolve, reject) => {
+    if (this.currentItem &&
+      this.currentItem.isDirty &&
+      this.currentItem.isDirty()) {
+      // Now, we need to query the user... result => makes it a closure
+      this.appService.asyncHandleDirty().then(result => {
+        if (!result.wasCancelled) {
 
 
-            resolve(true); // ok to leave
-          } else {
+          resolve(true); // ok to leave
+        } else {
 
-            resolve(false); // cancel to stay
+          resolve(false); // cancel to stay
 
-          }
-        });
-      } else {
-        resolve(true);
-      }
-    });
+        }
+      });
+    } else {
+      resolve(true);
+    }
+  });
 
-  }
-  //    async tryCloseTab(item, tab, route) {
-  requestclose() {
-    // const resetFunc = () => { this.appService.originalrec = this.currentItem; };
-    // let cand = this.canDeactivate()
-    // let tab = this.appService.tabs.find(f => f.isSelected);
-    // let rt2 = '#/claim/' + this.tabname ///claim'//Search?'cant use when search has a number 
-    // this.appService.tryCloseTab(this.currentItem, tab, rt2);
+}
+//    async tryCloseTab(item, tab, route) {
+requestclose() {
+  // const resetFunc = () => { this.appService.originalrec = this.currentItem; };
+  // let cand = this.canDeactivate()
+  // let tab = this.appService.tabs.find(f => f.isSelected);
+  // let rt2 = '#/claim/' + this.tabname ///claim'//Search?'cant use when search has a number 
+  // this.appService.tryCloseTab(this.currentItem, tab, rt2);
 
-  }
+}
 
 
 
@@ -568,7 +593,7 @@ modalDocs() {
 //       .ensure('ssn').displayName('SSN')
 //         .required().withMessage(`\${$displayName} cannot be blank.`);
 //         .matches(/\d{3}-\d{2}-\d{4}/).withMessage(`"\${$value}" is not a valid \${$displayName}.`);
-  
+
   // ValidationRules
   // .ensure(a => a.firstName).required()
   // .ensure(a => a.lastName).required()

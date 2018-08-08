@@ -46,7 +46,7 @@ function buildDependencyMap() {
         uris.push(axios.get(pkgUri));
         const jsonUri = `https://unpkg.com/${key}@${value}/?json`;
         uris.push(axios.get(jsonUri));
-        console.log(pkgUri ,jsonUri )
+        console.log('pkg' ,pkgUri ,jsonUri )
       }
       return Promise.all(uris).then(values => {
         const map = {};
