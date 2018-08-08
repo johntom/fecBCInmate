@@ -13,7 +13,7 @@ export class App {
    
       // // {"route": "bootstrap-select", "name": "bootstrap-select", "moduleId": PLATFORM.moduleName( "./views/bootstrap-select/bootstrap-select"), "nav": true, "title": "Bootstrap Select"}
       //  {"route": "ab-select", "name": "ab-select", "moduleId": PLATFORM.moduleName("./views/ab-select/ab-select"), "nav": true, "title": "AB Select"}
- // , {"route": "ab-tags", "name": "ab-tags", "moduleId": PLATFORM.moduleName("./views/ab-tags/ab-tags"), "nav": true, "title": "AB Tags"}
+  , {"route": "ab-tags", "name": "ab-tags", "moduleId": PLATFORM.moduleName("./views/ab-tags/ab-tags"), "nav": true, "title": "AB Tags"}
  
     
     ]);

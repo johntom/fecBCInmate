@@ -447,20 +447,29 @@
 								</td>
 
 								<td width="165px">
+
+
+
+		<select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payee">
+                <option model.bind="null">Choose...</option>
+                <option repeat.for="opt of appService.payeelist" model.bind="opt.payeename">
+                ${opt.payeename} /  ${opt.payeefein}
+                </option>
+</select>
 									<span show.bind="!invoice.edit">${payeename }</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text" value.bind="payeename">
 	              	<span show.bind="!invoice.edit">${payeefein }<br></span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text" value.bind="payeefein">
 						
-									<span show.bind="!invoice.edit">${payeeaddr }<br></span>
+									<!-- <span show.bind="!invoice.edit">${payeeaddr }<br></span> -->
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="address" type="text" value.bind="payeeaddr">
 
-									<span show.bind="!invoice.edit">${payeecity }</span>
+									<!-- <span show.bind="!invoice.edit">${payeecity }</span> -->
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="city" type="text" value.bind="payeecity">
 
-									<span show.bind="!invoice.edit">${payeestate }</span>
+									<!-- <span show.bind="!invoice.edit">${payeestate }</span> -->
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="state" type="text" value.bind="payeestate">
-									<span show.bind="!invoice.edit">${payeezip }</span>
+									<!-- <span show.bind="!invoice.edit">${payeezip }</span> -->
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="zip" type="text" value.bind="payeezip">
 
 
@@ -497,7 +506,7 @@
                 <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
                 ${opt.code}
                 </option>
-
+</select>
                 </td>
 
 

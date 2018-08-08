@@ -48,10 +48,10 @@
       }
     },
    "bootstrap-tagsinput": {
-      "map": "npm:bootstrap-tagsinput",
+      "map": "npm:bootstrap-tagsinput@0.7.1/./dist/amd",
       "package": {
         "defaultExtension": "js",
-        "main": "bootstrap-tagsinput.js"
+        "main": "js/bootstrap-tagsinput.js"
       },
       "meta": {
         "deps": [

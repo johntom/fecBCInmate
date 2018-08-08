@@ -58,8 +58,8 @@ export class AbTags {
     this.exposeMethods();
 
     // finally create the tagsinput with all options
-    pickerOptions = Object.assign({}, globalPickerOptions, pickerOptions);
-    this.domElm.tagsinput(pickerOptions);
+    // pickerOptions = Object.assign({}, globalPickerOptions, pickerOptions);
+    // this.domElm.tagsinput(pickerOptions);
 
     // expose the element object to the outside
     // this will be useful for calling events/methods/options from the outside
