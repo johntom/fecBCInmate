@@ -6,7 +6,7 @@ import { ApplicationService } from './services/application-service';
 @inject(ApplicationService, ApiService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3L10/ Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3L11/ Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
@@ -79,18 +79,40 @@ export class Welcome {
     this.appService.sendingproviderList = cCodes7
     let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
     this.appService.designatedproviderList = cCodes8
- let cCodes9 = [{ "payeename" : "Jones, Jim", 
-                            "payeefein" : "FEIN 123", 
-                            "payeeaddr" : "444", 
-                            "payeecity" : "ny", 
-                            "payeestate" : "ny", 
-                            "payeezip" : "10009"},
-                            { "payeename" : "Smith Med Center", 
-                            "payeefein" : "FEIN S3343", 
-                            "payeeaddr" : "20 Hiltop", 
-                            "payeecity" : "Ramsel", 
+
+
+
+ let cCodes9 = [{ "payeename" : "NBMD, Jim", 
+                            "payeefein" : "NA", 
+                            "payeeaddr" : "230 E Ridgewood Ave", 
+                            "payeecity" : "Paramus", 
                             "payeestate" : "NJ", 
-                            "payeezip" : "07944"}]
+                            "payeezip" : "07652"},
+                            { "payeename" : "HUMC", 
+                            "payeefein" : "221487576", 
+                            "payeeaddr" : "30 Prospect Avenue", 
+                            "payeecity" : "Hackensack", 
+                            "payeestate" : "NJ", 
+                            "payeezip" : "07601"},
+                                { "payeename" : "North Hudson ", 
+                            "payeefein" : "NA", 
+                            "payeeaddr" : "714 31st St", 
+                            "payeecity" : "Union City", 
+                            "payeestate" : "NJ", 
+                            "payeezip" : "07087"},
+                                { "payeename" : "Holy Name Hospital", 
+                            "payeefein" : "221487322", 
+                            "payeeaddr" : "718 Teaneck Road", 
+                            "payeecity" : "Teaneck", 
+                            "payeestate" : "NJ", 
+                            "payeezip" : "07666"},
+                                { "payeename" : "Englewood Hospital", 
+                            "payeefein" : "221487173", 
+                            "payeeaddr" : " 350 Engle Street", 
+                            "payeecity" : "Englewood", 
+                            "payeestate" : "NJ", 
+                            "payeezip" : "07631"}                           
+                            ]
     this.appService.payeelist = cCodes9
 
 
