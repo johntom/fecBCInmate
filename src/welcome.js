@@ -3,19 +3,23 @@ import moment from 'moment';
 import { inject } from 'aurelia-framework';
 import { ApiService } from './utils/servicesApi';
 import { ApplicationService } from './services/application-service';
-@inject(ApplicationService, ApiService)
+import { MyDataService } from "./services/my-data-service";
+
+@inject(ApplicationService, ApiService, MyDataService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3L17/ Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3L18/ Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
   lastName = 'Doe';
   previousValue = this.fullName;
 
-  constructor(appService, api) {
+  constructor(appService, api, dataService) {
     this.appService = appService;
     this.api = api;
+    this.dataService = dataService;
+
     const format = moment(new Date()).format('M/D/YYYY');
     console.log('format', format);
   }
@@ -55,7 +59,28 @@ export class Welcome {
       return confirm('Are you sure you want to leave?');
     }
   }
+  attached() {
+  let Promise = this.dataService.loadPayee()
+      .then(response => {
+         this.appService.payeelist = response.data
+         console.log(' this.appService.payeelist ',  this.appService.payeelist)
+        return this.appService.payeelist
+      })
+      // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1) : states)
+      // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filterlc) > -1) : states)
 
+    return Promise
+    // return Promise.resolve(this.dataService.loadPayee()).then(values => {
+    //   this.appService.payeelist = values
+    // }).catch(error => {
+    //   console.error("Error encountered while trying to get data.", error);
+    // })
+
+    // if (this.appService.claimLookupDataLoaded) {
+    //   console.log('using data cache from home....')
+    //   return Promise.resolve(true);
+    // }
+  }
   activate() {
     console.log('in activate')
     let cCodes = [{ id: 1, code: 'County' }, { id: 2, code: 'ICE' }, { id: 3, code: 'State' }, { id: 4, code: 'Fed' }]
@@ -69,51 +94,48 @@ export class Welcome {
     let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied – Medicaid' }, { id: 3, code: 'Denied – Medicare' }, { id: 4, code: 'Denied – Submit to Other Insurer' },
     { id: 5, code: 'Denied – Duplicate' }, { id: 6, code: 'Denied – Awaiting Documentation' }, { id: 7, code: 'Denied – Other' }]
     this.appService.approvedList = cCodes5
-    let cCodes6 = [{ id: 'M', code: 'Male' }, { id: 'F', code: 'Female'}
-    ,{ id: 'O', code: 'Other' }]
+    let cCodes6 = [{ id: 'M', code: 'Male' }, { id: 'F', code: 'Female' }
+      , { id: 'O', code: 'Other' }]
     this.appService.genderList = cCodes6
     let cCodes7 = [{ id: '1', code: 'NBMD' }, { id: '2', code: 'HUMC' },
-       { id: '3', code: 'North Hudson' }, { id: '4', code: 'Holy Name' },
+    { id: '3', code: 'North Hudson' }, { id: '4', code: 'Holy Name' },
     { id: '5', code: 'Englewood' }
     ]
     this.appService.sendingproviderList = cCodes7
     let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
     this.appService.designatedproviderList = cCodes8
-
-
-
- let cCodes9 = [{ "payeename" : "NBMD", 
-                            "payeefein" : "NA", 
-                            "payeeaddr" : "230 E Ridgewood Ave", 
-                            "payeecity" : "Paramus", 
-                            "payeestate" : "NJ", 
-                            "payeezip" : "07652"},
-                            { "payeename" : "HUMC", 
-                            "payeefein" : "221487576", 
-                            "payeeaddr" : "30 Prospect Avenue", 
-                            "payeecity" : "Hackensack", 
-                            "payeestate" : "NJ", 
-                            "payeezip" : "07601"},
-                                { "payeename" : "North Hudson ", 
-                            "payeefein" : "NA", 
-                            "payeeaddr" : "714 31st St", 
-                            "payeecity" : "Union City", 
-                            "payeestate" : "NJ", 
-                            "payeezip" : "07087"},
-                                { "payeename" : "Holy Name Hospital", 
-                            "payeefein" : "221487322", 
-                            "payeeaddr" : "718 Teaneck Road", 
-                            "payeecity" : "Teaneck", 
-                            "payeestate" : "NJ", 
-                            "payeezip" : "07666"},
-                                { "payeename" : "Englewood Hospital", 
-                            "payeefein" : "221487173", 
-                            "payeeaddr" : " 350 Engle Street", 
-                            "payeecity" : "Englewood", 
-                            "payeestate" : "NJ", 
-                            "payeezip" : "07631"}                           
-                            ]
-    this.appService.payeelist = cCodes9
+    // let cCodes9 = [{ "payeename" : "NBMD", 
+    //                         "payeefein" : "NA", 
+    //                         "payeeaddr" : "230 E Ridgewood Ave", 
+    //                         "payeecity" : "Paramus", 
+    //                         "payeestate" : "NJ", 
+    //                         "payeezip" : "07652"},
+    //                         { "payeename" : "HUMC", 
+    //                         "payeefein" : "221487576", 
+    //                         "payeeaddr" : "30 Prospect Avenue", 
+    //                         "payeecity" : "Hackensack", 
+    //                         "payeestate" : "NJ", 
+    //                         "payeezip" : "07601"},
+    //                             { "payeename" : "North Hudson ", 
+    //                         "payeefein" : "NA", 
+    //                         "payeeaddr" : "714 31st St", 
+    //                         "payeecity" : "Union City", 
+    //                         "payeestate" : "NJ", 
+    //                         "payeezip" : "07087"},
+    //                             { "payeename" : "Holy Name Hospital", 
+    //                         "payeefein" : "221487322", 
+    //                         "payeeaddr" : "718 Teaneck Road", 
+    //                         "payeecity" : "Teaneck", 
+    //                         "payeestate" : "NJ", 
+    //                         "payeezip" : "07666"},
+    //                             { "payeename" : "Englewood Hospital", 
+    //                         "payeefein" : "221487173", 
+    //                         "payeeaddr" : " 350 Engle Street", 
+    //                         "payeecity" : "Englewood", 
+    //                         "payeestate" : "NJ", 
+    //                         "payeezip" : "07631"}                           
+    //                         ]
+    // this.appService.payeelist = cCodes9
 
 
   }

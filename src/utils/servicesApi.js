@@ -28,6 +28,50 @@ export class ApiService {
     }).then((res) => res.json());
 
   }
+  findPayees() {
+    var url = this.baseweb + 'v1/payee/'
+    console.log('url payee ', url)
+    return this.http.fetch(url, {
+      method: 'get',
+      mode: 'cors'
+    }).then((res) => res.json());
+  }
+
+  savepayee(rec) {
+    //alert('in saveclaim')
+    let url = this.baseweb + `v1/payee/update`
+    console.log('url ', url)
+    //return {'data': true}
+    return this.http.fetch(url, {
+      method: 'put',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        // , 'Authorization': 'JWT ' + token
+      },
+      body: JSON.stringify(rec)
+      //   body: rec
+    }).then((res) => res.json());
+  }
+
+  addpayee(rec) {
+    //alert('in saveclaim')
+    console.log('addinmate rec', rec)
+    let url = this.baseweb + `v1/payee/create`
+    console.log('url ', url)
+    //return {'data': true}
+    return this.http.fetch(url, {
+      method: 'post',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        // , 'Authorization': 'JWT ' + token
+      },
+      body: JSON.stringify(rec)
+    }).then((res) => res.json());
+  }
 
   getInmates() {
     var url = this.baseweb + 'v1/inmate/'
@@ -37,7 +81,7 @@ export class ApiService {
       mode: 'cors'
     }).then((res) => res.json());
   }
-getInmatesExpanded(){
+  getInmatesExpanded() {
     var url = this.baseweb + 'v1/findallexpand/'
     console.log('url inmate ', url)
     return this.http.fetch(url, {
@@ -97,7 +141,7 @@ getInmatesExpanded(){
         'enctype': "multipart/form-data"
       },
       body: formData
-    
+
       // body: JSON.stringify(formData)
     }).then((res) => res.json())
       .then(data => console.log('data.message', data.message))

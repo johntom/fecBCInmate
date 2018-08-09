@@ -41,7 +41,6 @@ export class MyDataService {
     { name: 'open', value: 1 },
     { name: 'closed', value: 2 },
     { name: 'reopened', value: 3 }
-
   ];
   stateList = [
     { name: 'Alabama', value: 'AL' },
@@ -113,6 +112,26 @@ export class MyDataService {
     { name: 'Wales', value: 'wales' },
     { name: 'Japan', value: 'japan' },
   ];
+
+  loadPayee() {
+    // this.api.findPayees()
+    //   .then((jsonRes) => {
+    //     var payeeList = jsonRes// .data;
+    //     return payeeList
+    //   });
+    return new Promise((resolve, reject) => {
+      this.api.findPayees()
+        .then((jsonRes) => {
+          var payeeList = jsonRes
+          console.log('payeeList', payeeList)
+
+          resolve(payeeList);
+        });
+
+    });
+
+
+  }
   getadjusterList() {
 
     this.api.findAdjusters()
@@ -136,11 +155,11 @@ export class MyDataService {
   }
 
   loadPayperiod() {
-// this.api.findPayperiod() payperiod
+    // this.api.findPayperiod() payperiod
     return new Promise((resolve, reject) => {
-      this.api.findPayperiod() 
+      this.api.findPayperiod()
         .then((jsonRes) => {
-          var PayperiodList  = jsonRes.data;
+          var PayperiodList = jsonRes.data;
           console.log('PayperiodList', PayperiodList)
           resolve(PayperiodList);
         });
@@ -260,7 +279,7 @@ export class MyDataService {
   }
 
 
-loadSearchInvoice(queryParams) {
+  loadSearchInvoice(queryParams) {
     return new Promise((resolve, reject) => {
       this.api.findinvoicequery(queryParams)
         .then((jsonRes) => {
@@ -296,22 +315,6 @@ loadSearchInvoice(queryParams) {
   }
 
 
-  // loadSearch(queryParams) {
-  //   return new Promise((resolve, reject) => {
-  //     this.api.findclaim(queryParams)
-  //       .then((jsonRes) => {
-  //         var searchList = jsonRes.data
-  //         resolve(searchList)
-  //          this.origItems = claim
-  //         this.appService.searchDataLoaded = true
-  //         // console.log('jsonRes ', jsonRes);
-  //         console.log('this.claim loadData 0 ', claim.length)//claim[0]);
-  //         return claim
-  //       });
-  //   });
-
-  // }
-  // this is search for claims
   loadSearch(queryParams) {
     return new Promise((resolve, reject) => {
       this.api.findclaim(queryParams)
