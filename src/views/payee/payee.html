@@ -10,16 +10,16 @@
 	<section class="full-height flex-column-1 au-animate ignore">
 
 		<div class="flex-row-none section-header">
-			<h3>${heading} ${currentRecord.inmate.lastname} , ${currentRecord.inmate.firstname} </h3>
+			<h3>${heading}  </h3>
 
 		</div>
 
 		<section class="docs full-height flex-column-1 overflow-y-auto ignore">
 			<h3>
-				<i class="fa fa-folder-open"></i> Booking: (${appService.currentRecord.booking.length})
+				<i class="fa fa-folder-open"></i> Payee
 
-				<a slot="buttons-slot" class="btn btn-success" click.delegate="addBooking()">
-					<i class="fa fa-plus"></i> Add Booking
+				<a slot="buttons-slot" class="btn btn-success" click.delegate="addPayee()">
+					<i class="fa fa-plus"></i> Add Payee
 				</a>
 			</h3>
 
@@ -30,19 +30,19 @@
 				<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking; cols: ['bookingDate','classification']">
 					<tr>
 						<tr>
-							<th class="header">iss
+						
+							<th class="header">Name (Full)
 							</th>
-							<th class="header">bookingDate
+						
+							<th class="header">Fein
 							</th>
-							<!-- <th class="header">classification~
-							</th> -->
-							<th class="header">classification
+							<th class="header">Address
 							</th>
-							<th class="header">bookingNo
+							<th class="header">City
 							</th>
-							<th class="header">prisonerId
+							<th class="header">State
 							</th>
-							<th class="header">sentencingDate
+              <th class="header">Zip
 							</th>
 							<th class="header">Cmd
 
@@ -60,9 +60,7 @@
 				</tfoot>
 				<tbody>
 					<tr repeat.for="payee of payees" with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
-						<td width="25px">
-							${payee.isSelected}
-						</td>
+						
 						<td width="125px">
 							<span show.bind="!payee.edit">${payeename  }</span>
 							<input show.bind="payee.edit" class="form-control input-sm" disabled.bind="!payee.edit" type="text" value.bind="payeename">
@@ -98,11 +96,10 @@
 						</td>
 
 						<td width="325px">
-							<button class="btn btn-primary" click.delegate="Editpayee(payee,payee.edit,$index)">
+							<button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)">
                                     ${ !payee.edit ? 'Update' : 'Done' }</button>
-							<button class="btn btn-danger" click.delegate="remove(payee,$index)">Delete</button>
-							<button class="btn btn-primary" click.delegate="getServices(payee,$index)">Get Services</button>
-
+							<!-- <button class="btn btn-danger" click.delegate="remove(payee,$index)">Delete</button>
+					 -->
 						</td>
 
 
@@ -117,8 +114,8 @@
 		<!-- </form> -->
 		<div class="flex-column-none section-footer">
 			<span>&nbsp;&nbsp;
-                    <button class="btn btn-sm btn-danger" click.delegate="saveinmate(0)">
-                       ${message}  
+                    <button class="btn btn-sm btn-danger" click.delegate="savePayee(0)">
+                    Save   ${message}  
                     </button>
 
                     <button class="btn btn-sm btn-danger" click.delegate="close()">
