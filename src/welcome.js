@@ -8,7 +8,7 @@ import { MyDataService } from "./services/my-data-service";
 @inject(ApplicationService, ApiService, MyDataService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3L19/ Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3L20/ Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
@@ -59,36 +59,39 @@ export class Welcome {
       return confirm('Are you sure you want to leave?');
     }
   }
-  attached() {
-    // let Promise = this.dataService.loadPayee()
-    //     .then(response => {
-    //        this.appService.payeelist = response.data
-    //        console.log(' this.appService.payeelist ',  this.appService.payeelist)
-    //       return this.appService.payeelist
-    //     })
-    //     // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1) : states)
-    //     // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filterlc) > -1) : states)
-    //    return Promise
 
+  async attached() {
+    this.appService.payeelist = await this.dataService.loadPayeeAsync()
 
-    // let Promise = this.dataService.loadPayee().then(response => {
-    //   this.appService.payeelist = response.data
-    // }).catch(error => {
-    //   console.error("Error encountered while trying to get data.", error);
-    // })
-    // console.log(' this.appService.payeelist ', this.appService.payeelist)
-    
-  const payeelist = await this.dataService.loadPayeeAsync()
-   this.appService.payeelist = payeelist
-//  await this.dataService.loadPayee().then(response => {
-//       this.appService.payeelist = response.data
-//     }).catch(error => {
-//       console.error("Error encountered while trying to get data.", error);
-//     })
-//     console.log(' this.appService.payeelist ', this.appService.payeelist)
-    
-
+    console.log(' await payeelist ', this.appService.payeelist)
   }
+  // attached() {
+  // let Promise = this.dataService.loadPayee()
+  //     .then(response => {
+  //        this.appService.payeelist = response.data
+  //        console.log(' this.appService.payeelist ',  this.appService.payeelist)
+  //       return this.appService.payeelist
+  //     })
+  //     // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1) : states)
+  //     // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filterlc) > -1) : states)
+  //    return Promise
+  // let Promise = this.dataService.loadPayee().then(response => {
+  //   this.appService.payeelist = response.data
+  // }).catch(error => {
+  //   console.error("Error encountered while trying to get data.", error);
+  // })
+  // console.log(' this.appService.payeelist ', this.appService.payeelist)
+
+  // const payeelist = await this.dataService.loadPayeeAsync()
+  //  this.appService.payeelist = payeelist
+
+  //  await this.dataService.loadPayee().then(response => {
+  //       this.appService.payeelist = response.data
+  //     }).catch(error => {
+  //       console.error("Error encountered while trying to get data.", error);
+  //     })
+  //     console.log(' this.appService.payeelist ', this.appService.payeelist)
+  //  }
   activate() {
     console.log('in activate')
     let cCodes = [{ id: 1, code: 'County' }, { id: 2, code: 'ICE' }, { id: 3, code: 'State' }, { id: 4, code: 'Fed' }]

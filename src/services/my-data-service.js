@@ -128,14 +128,10 @@ export class MyDataService {
     let payeeList
     await this.api.findPayees()
       .then((jsonRes) => {
-        payeeList = jsonRes
+        payeeList = jsonRes.data
         //console.log('async payeeList', resolve(payeeList);)
-
       });
     return await (payeeList)
-
-
-
   }
 
 
