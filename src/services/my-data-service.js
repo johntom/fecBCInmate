@@ -114,24 +114,31 @@ export class MyDataService {
   ];
 
   loadPayee() {
-    // this.api.findPayees()
-    //   .then((jsonRes) => {
-    //     var payeeList = jsonRes// .data;
-    //     return payeeList
-    //   });
     return new Promise((resolve, reject) => {
       this.api.findPayees()
         .then((jsonRes) => {
           var payeeList = jsonRes
           console.log('payeeList', payeeList)
-
           resolve(payeeList);
         });
-
     });
+  }
+
+  async  loadPayeeAsync() {
+    let payeeList
+    await this.api.findPayees()
+      .then((jsonRes) => {
+        payeeList = jsonRes
+        //console.log('async payeeList', resolve(payeeList);)
+
+      });
+    return await (payeeList)
+
 
 
   }
+
+
   getadjusterList() {
 
     this.api.findAdjusters()

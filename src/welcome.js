@@ -8,7 +8,7 @@ import { MyDataService } from "./services/my-data-service";
 @inject(ApplicationService, ApiService, MyDataService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v3L18/ Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v3L19/ Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
@@ -60,26 +60,34 @@ export class Welcome {
     }
   }
   attached() {
-  let Promise = this.dataService.loadPayee()
-      .then(response => {
-         this.appService.payeelist = response.data
-         console.log(' this.appService.payeelist ',  this.appService.payeelist)
-        return this.appService.payeelist
-      })
-      // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1) : states)
-      // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filterlc) > -1) : states)
+    // let Promise = this.dataService.loadPayee()
+    //     .then(response => {
+    //        this.appService.payeelist = response.data
+    //        console.log(' this.appService.payeelist ',  this.appService.payeelist)
+    //       return this.appService.payeelist
+    //     })
+    //     // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filter.toLowerCase()) > -1) : states)
+    //     // .then(states => filter.length > 0 ? states.filter(item => item.name.toLowerCase().indexOf(filterlc) > -1) : states)
+    //    return Promise
 
-    return Promise
-    // return Promise.resolve(this.dataService.loadPayee()).then(values => {
-    //   this.appService.payeelist = values
+
+    // let Promise = this.dataService.loadPayee().then(response => {
+    //   this.appService.payeelist = response.data
     // }).catch(error => {
     //   console.error("Error encountered while trying to get data.", error);
     // })
+    // console.log(' this.appService.payeelist ', this.appService.payeelist)
+    
+  const payeelist = await this.dataService.loadPayeeAsync()
+   this.appService.payeelist = payeelist
+//  await this.dataService.loadPayee().then(response => {
+//       this.appService.payeelist = response.data
+//     }).catch(error => {
+//       console.error("Error encountered while trying to get data.", error);
+//     })
+//     console.log(' this.appService.payeelist ', this.appService.payeelist)
+    
 
-    // if (this.appService.claimLookupDataLoaded) {
-    //   console.log('using data cache from home....')
-    //   return Promise.resolve(true);
-    // }
   }
   activate() {
     console.log('in activate')
