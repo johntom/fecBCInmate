@@ -47,34 +47,7 @@
         ]
       }
     },
-   "bootstrap-tagsinput": {
-      "map": "npm:bootstrap-tagsinput@0.7.1/./dist",
-      
-      "package": {
-        "defaultExtension": "js",
-        "main": "js/bootstrap-tagsinput.js"
-      },
-      "meta": {
-        "deps": [
-          "bootstrap",
-          "jquery"
-        ]
-      }
-    },
-   "aurelia-bootstrap-tagsinput": {
-      "map": "npm:aurelia-bootstrap-tagsinput@1.1.2/./dist/amd",
-      "package": {
-        "defaultExtension": "js",
-        "main": "index.js"
-      },
-      "meta": {
-        "deps": [
-          "bootstrap",
-          "bootstrap-tagsinput",
-          "jquery"
-        ]
-      }
-    },
+  
     "moment": {
       "map": "npm:moment@2.22.2",
       "package": {
