@@ -48,17 +48,9 @@ export class Inmates {
   //         let claim = jsonRes.data
   searchdocChanged(value) {
     if (value === "") { this.inmates = this.allinmates } else
-      // this.inmates = this.inmates.filter((item) => {
-      //   //if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
-      //   if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
-
-      // }); 
-      // this.inmates = this.inmates.filter((item) => {
-      //   //if (item.inmate['lastname'].toLowerCase().search(value.toLowerCase()) != -1) return true
-      //   if ((item.inmate.lastname).toLowerCase().search(value.toLowerCase()) != -1) return true
-      // }); 
-//  this.inmates = arr.find(o => o.name === 'string 1');
-      this.inmates = this.inmates.filter((item) => {
+     //this.inmates = this.inmates.filter((item) => {
+     
+      this.inmates = this.allinmates.filter((item) => {
         for (let i in this.metainmates) {
           let md = this.metainmates[i]
           if (item.inmate[md] !== undefined) {

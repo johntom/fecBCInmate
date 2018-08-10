@@ -18,7 +18,7 @@ export class Grid {
     pageSizes: true,
     buttonCount: 10
   };
-  heading = 'Inmates...';
+  heading = 'Service-Invoice...';
   datasource = new kendo.data.DataSource({
     transport: {
       read: (options) => {

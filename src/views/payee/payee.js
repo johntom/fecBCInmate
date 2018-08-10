@@ -31,7 +31,8 @@ export class Payee {
   }
   searchdocChanged(value) {
     if (value === "") { this.payees = this.allpayees } else {
-      this.payees = this.payees.filter((item) => {
+      // this.payees = this.payees.filter((item) => {
+         this.payees = this.allpayees.filter((item) => {
         for (let i in this.metapayees) {
           let md = this.metapayees[i]
           if (item[md] !== undefined) {

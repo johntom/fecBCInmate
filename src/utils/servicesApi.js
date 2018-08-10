@@ -1,4 +1,12 @@
-
+// getInmatesServiceExpanded() {
+//   var url = this.baseweb + 'v1/findallserviceexpand/'
+//   console.log('url inmate ', url)
+//   return this.http.fetch(url, {
+//     method: 'get',
+//     mode: 'cors'
+//   }).then((res) => res.json());
+// }
+ 
 import { inject, singleton } from 'aurelia-dependency-injection';
 import { HttpClient } from 'aurelia-fetch-client'
 // sample-layout-mrg
@@ -95,6 +103,9 @@ export class ApiService {
     //alert('in saveclaim')
     let url = this.baseweb + `v1/inmate/update`
     console.log('url ', url)
+      delete rec.currentRecord
+    // let    bod = JSON.stringify(rec)
+    // console.log('url ', url,bod)
     //return {'data': true}
     return this.http.fetch(url, {
       method: 'put',
@@ -104,8 +115,8 @@ export class ApiService {
         'Content-Type': 'application/json'
         // , 'Authorization': 'JWT ' + token
       },
-      body: JSON.stringify(rec)
-      //   body: rec
+      //body: JSON.stringify(rec)
+       body: rec
     }).then((res) => res.json());
   }
 
@@ -113,7 +124,8 @@ export class ApiService {
     //alert('in saveclaim')
     console.log('addinmate rec', rec)
     let url = this.baseweb + `v1/inmate/create`
-    console.log('url ', url)
+   //let    bod = JSON.stringify(rec)
+   // console.log('url ', url,bod)
     //return {'data': true}
     return this.http.fetch(url, {
       method: 'post',

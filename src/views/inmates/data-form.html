@@ -189,7 +189,7 @@
 							<td width="325px">
 								<!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
                   ${ !booking.edit ? 'Update' : 'Done' }</button>	 -->
-								<button class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit,$index)">
+								<button ref='btnEdit' class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit,$index)">
                                     ${ !booking.edit ? 'Update' : 'Done' }</button>
 								<button class="btn btn-danger" click.delegate="remove(booking,$index)">Delete</button>
 								<button class="btn btn-primary" click.delegate="getServices(booking,$index)">Get Services</button>
