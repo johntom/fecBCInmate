@@ -89,6 +89,14 @@ export class ApiService {
       mode: 'cors'
     }).then((res) => res.json());
   }
+  getInmatesServiceExpanded() {
+    var url = this.baseweb + 'v1/findallserviceexpand/'
+    console.log('url inmate ', url)
+    return this.http.fetch(url, {
+      method: 'get',
+      mode: 'cors'
+    }).then((res) => res.json());
+  }
 
   // get images
   saveinmate(rec) {
