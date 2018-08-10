@@ -7,21 +7,21 @@
 	<require from="../../resources/value-converters/stringify"></require>
 
 	<require from="../../../styles/flex.css"></require>
-	<section class="full-height flex-column-1 au-animate ignore">
+	 <section class="au-animate">
+ 
+ <section class="au-animate">
+    <h4>${heading}
+      	<a slot="buttons-slot">
+          <input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
+                            
+			 <i class="material-icons search">search</i>
+       </a>
+       	<a slot="buttons-slot" class="btn btn-success" click.delegate="addPayee()">
+						<i class="fa fa-plus"></i> Add Payee
+					</a>
+    </h4>
 
-		<div class="flex-row-none section-header">
-			<h3>${heading}  </h3>
 
-		</div>
-
-		<section class="docs full-height flex-column-1 overflow-y-auto ignore">
-			<h3>
-				<i class="fa fa-folder-open"></i> Payee
-
-				<a slot="buttons-slot" class="btn btn-success" click.delegate="addPayee()">
-					<i class="fa fa-plus"></i> Add Payee
-				</a>
-			</h3>
 
 			<!-- <table class="table-condensed table"> -->
 
@@ -30,10 +30,10 @@
 				<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking; cols: ['bookingDate','classification']">
 					<tr>
 						<tr>
-						
+
 							<th class="header">Name (Full)
 							</th>
-						
+
 							<th class="header">Fein
 							</th>
 							<th class="header">Address
@@ -42,7 +42,7 @@
 							</th>
 							<th class="header">State
 							</th>
-              <th class="header">Zip
+							<th class="header">Zip
 							</th>
 							<th class="header">Cmd
 
@@ -60,12 +60,11 @@
 				</tfoot>
 				<tbody>
 					<tr repeat.for="payee of payees" with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
-						
+
 						<td width="125px">
 							<span show.bind="!payee.edit">${payeename  }</span>
 							<input show.bind="payee.edit" class="form-control input-sm" disabled.bind="!payee.edit" type="text" value.bind="payeename">
 						</td>
-						${payeename | dateFormat }
 
 						<td width="125px">
 							<span show.bind="!payee.edit">${payeefein}</span>
