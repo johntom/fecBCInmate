@@ -115,8 +115,8 @@ export class ApiService {
         'Content-Type': 'application/json'
         // , 'Authorization': 'JWT ' + token
       },
-      //body: JSON.stringify(rec)
-       body: rec
+      body: JSON.stringify(rec)
+      // body: rec
     }).then((res) => res.json());
   }
 
