@@ -1,4 +1,3 @@
-
 // import { MyDataService } from "../../services/my-data-service";
 // @inject(ApiService, ApplicationService, MyDataService)
 // @inject(Router, ApiService, UtilService, ApplicationService, MyDataService)
@@ -13,7 +12,6 @@ import { bindable } from 'aurelia-framework';
 
 @inject(Router, ApiService, ApplicationService)
 
-
 export class Payee {
   @bindable searchdoc
   pageable = {
@@ -23,16 +21,18 @@ export class Payee {
   };
   heading = 'Payees...';
   metapayees = ['payeename', 'payeefein', 'payeeaddr', 'payeecity', 'payeestate', 'payeeaddr']
-
+  // disabledbtn=false
   constructor(router, api, appService) {
     this.api = api
     this.appService = appService
     this.router = router
+    // this.disabledbtn = true // leave on
+    this.currentIndex = -1
   }
   searchdocChanged(value) {
     if (value === "") { this.payees = this.allpayees } else {
       // this.payees = this.payees.filter((item) => {
-         this.payees = this.allpayees.filter((item) => {
+      this.payees = this.allpayees.filter((item) => {
         for (let i in this.metapayees) {
           let md = this.metapayees[i]
           if (item[md] !== undefined) {
@@ -48,38 +48,58 @@ export class Payee {
     console.log('in activate')
     this.payees = this.appService.payeelist
     this.allpayees = this.payees
+     for (let bk of this.payees) {
+      bk.edit = false
+    }
   }
 
   // // if update is clicked editstate=false if done is clicked editstate=true
+  // changeColor(item) {
+  //   alert(item.new);
+  //   item.isSelected = !item.isSelected;
+  // }
 
-  editPayee(payee, editstate, index) {
-    this.currentPayee = payee
-    // for (let bk of this.currentRecord.booking) {
-    //   bk.isSelected = false
-    // }
-    editstate ? this.payees[index].isSelected = false : this.payees[index].isSelected = true
+  // testDisabled(index) {
+  // console.log('index ', index)
+  // if (this.currentIndex===index) console.log('A MATCH')
+  // }
 
-    if (payee.payeemode === 'insert') {
-      // create 
-      // this.api.createpayee(payee)
-      //   .then((jsonRes) => {
-      //     this.upmess = jsonRes
+  editPayee(payee, editstate, rowindex) {
+    this.currentIndex = rowindex
 
-
-      //   })
-      console.log(' await payeelist ', this.appService.payeelist)
-    } else {
-      payee.payeemode === 'update'
-
-      // this.api.updatepayee(payee)
-      //   .then((jsonRes) => {
-      //     this.upmess = jsonRes
-      //   })
-
+    for (let bk of this.payees) {
+      bk.isSelected = false
     }
+    payee.isSelected = true
 
+    if (editstate) {
+      this.payees[rowindex].isSelected = false
+      this.currentIndex = -1
+      if (payee.payeemode === 'insert') {
+        // create 
+        this.api.addpayee(payee)
+          .then((jsonRes) => {
+            this.upmess = jsonRes
+          })
+        console.log(' await payeelist ', this.appService.payeelist)
+      } else {
+        payee.payeemode === 'update'
+        // console.log(' call save ', this.currentRecord)
+        if (JSON.stringify(this.currentPayee) === JSON.stringify(payee)) {
+
+          //   this.message = 'You clicked save'
+          this.api.updatepayee(payee)
+            .then((jsonRes) => {
+              this.upmess = jsonRes
+            })
+        }
+
+      }
+    } else {
+      this.currentPayee = payee
+     // this.payees[rowindex].isSelected = true
+    }
     payee.edit = !editstate
-
   }
 
   addPayee() {
@@ -101,18 +121,18 @@ export class Payee {
     this.payees[0].edit = true
 
   }
-  savePayee() {
-    console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
-    this.message = 'You clicked save'
-    // if (this.recordId === 'create') {
-    //   this.api.addinmate(this.currentRecord)
-    //   Promise.all(
-    //     this.api.saveinmate(this.currentRecord).then((res) => this.close('inmates'))
-    //   )
-    // } else {
-    //   this.api.saveinmate(this.currentRecord)
-    // }
-  }
+  // savePayee() {
+  //   console.log(' call save ', this.currentRecord)// JSON.stringify(this.appService.currentItem) === JSON.stringify(this.appService.testrec)) //this.appService.currentClaim)
+  //   this.message = 'You clicked save'
+  //   // if (this.recordId === 'create') {
+  //   //   this.api.addinmate(this.currentRecord)
+  //   //   Promise.all(
+  //   //     this.api.saveinmate(this.currentRecord).then((res) => this.close('inmates'))
+  //   //   )
+  //   // } else {
+  //   //   this.api.saveinmate(this.currentRecord)
+  //   // }
+  // }
 
   close(path) {
 
@@ -130,3 +150,25 @@ export class Payee {
     this.router.navigate(rt2);
   }
 }
+
+// for (const index of [1, 2, 3, 4, 5].keys()) {
+    // for (const [index, value] of [1, 2, 3, 4, 5].entries()) {
+    // for (const [index, value] of this.payees.entries()) {
+    //   console.log('index value', index, value)
+    //   value.isSelected = false
+    //   //  this.disabledbtn=true
+    //   console.log(rowindex, index)
+    //   if (index === rowindex) {
+    //     console.log('index value equal')
+    //     //  value.this.disabledbtn = true // leave on
+    //   } //else value.this.disabledbtn = false
+    //   // index===rowindex ?  this.disabledbtn=true : this.disabledbtn=false // leave on
+    // }
+    // for (let bk of this.payees) {
+    //          console.log('bk2 ', bk)
+    //         bk.isSelected = false 
+    //       //  this.disabledbtn=true
+    //       //  console.log(indexe,index)
+    //         // index===indexe ?  this.disabledbtn=true : this.disabledbtn=false // leave on
+    //       }
+  //  editstate ? this.payees[rowindex].isSelected = false : this.payees[rowindex].isSelected = true

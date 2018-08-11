@@ -59,8 +59,10 @@
 					</tr>
 				</tfoot>
 				<tbody>
-					<tr repeat.for="payee of payees" with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
-
+					<!-- <tr repeat.for="payee of payees" with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" click.trigger="juice.changeColor()"> -->
+          <!-- <tr repeat.for="payee of payees" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" click.trigger="juice.changeColor()"> -->
+ 	         <tr repeat.for="payee of payees"  with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" >
+ 				
 						<td width="125px">
 							<span show.bind="!payee.edit">${payeename  }</span>
 							<input show.bind="payee.edit" class="form-control input-sm" disabled.bind="!payee.edit" type="text" value.bind="payeename">
@@ -95,12 +97,15 @@
 						</td>
 
 						<td width="325px">
-							<button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)">
-                                    ${ !payee.edit ? 'Update' : 'Done' }</button>
-							<!-- <button class="btn btn-danger" click.delegate="remove(payee,$index)">Delete</button>
-					 -->
-						</td>
+							<!-- <button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)"  disabled.bind="!disabledbtn">
+                  ${$index}-${currentIndex}     ${payee.edit}               ${ !payee.edit ? 'Update' : 'Done' }</button> disabled.bind="$index==!currentIndex&&currentIndex!==-1">-->
 
+							<button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)" disabled.bind="$index!==currentIndex&&currentIndex!==-1">
+                ${ !payee.edit ? 'Update' : 'Done' }</button>
+
+						</td>
+            
+<!-- https://stackoverflow.com/questions/45844344/aurelia-js-inserting-css-class-after-click-and-bind-just-the-row-clicked -->
 
 						</span>
 					</tr>

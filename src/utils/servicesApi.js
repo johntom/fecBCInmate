@@ -37,7 +37,7 @@ export class ApiService {
     }).then((res) => res.json());
   }
 
-  savepayee(rec) {
+  updatepayee(rec) {
     //alert('in saveclaim')
     let url = this.baseweb + `v1/payee/update`
     console.log('url ', url)
