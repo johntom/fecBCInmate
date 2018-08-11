@@ -457,12 +457,12 @@
 <!-- <td width="165px">
 									<span >${payee.payeename}</span>
 								</td> -->
-								<td width="195px">
+								<td width="295px">
 
 
    <!-- <option repeat.for="opt of appService.payeelist" model.bind="opt.payeename"> -->
-              <!-- <span  >${payee.payeename}  / ${payee.payeefein}</span> -->
-               <span  >${payee.payeename} </span>
+              <!-- <span  >${payee.payeename}  / ${payee.payeefein} > ${payee.payeename} /  ${payeeselect.payeename} ${payeename} / </span> -->
+               <span show.bind="!invoice.edit">${payee.payeename}   </span>
               
 								<select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payeeselect">
                
@@ -475,7 +475,7 @@
 								
                 
                 	<!-- <span show.bind="!invoice.edit">${payeename }</span> -->
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text"
+									<input show.bind="invoice.edit" sytle="width:295px" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text"
 									 value.bind="payeename">
 									<!-- <span show.bind="!invoice.edit">${payeefein }<br></span> -->
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text"

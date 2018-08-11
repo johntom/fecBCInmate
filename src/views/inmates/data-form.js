@@ -163,6 +163,18 @@ export class DataForm {
         this.api.addpayee(payee)
           .then((jsonRes) => {
             this.upmess = jsonRes
+            delete invoice.payeename
+            delete invoice.payeefein
+            delete invoice.payeeaddr
+            delete invoice.payeecity
+            delete invoice.payeestate
+            delete invoice.payeezip
+            invoice.payeename = ''
+            invoice.payeefein = ''
+            invoice.payeeaddr = ''
+            invoice.payeecity = ''
+            invoice.payeestate = ''
+            invoice.payeezip = ''
           })
       } else {
         /*
@@ -175,9 +187,15 @@ export class DataForm {
               </option>
             </select>
          */
-        
+
         if (invoice.payeeselect !== null) {
           invoice.payee = invoice.payeeselect
+          // invoice.payee.payeename = ''
+          // invoice.payee.payeefein = ''
+          // invoice.payee.payeeaddr = ''
+          // invoice.payee.payeecity = ''
+          // invoice.payee.payeestate = ''
+          // invoice.payee.payeezip = ''
           invoice.payeename = ''
           invoice.payeefein = ''
           invoice.payeeaddr = ''
@@ -189,11 +207,34 @@ export class DataForm {
     } else {
       // editstate = false
       let payees = this.appService.payeelist
-       let  oid = payees.findIndex(x => x.id === invoice.payeeselect.id)
-        console.log('oid ', oid)
-        let payeeobj = this.appService.payeelist[oid]//10]
-        console.log('payeeobj ', payeeobj)
-        if (payeeobj !== undefined) invoice.payeeselect.payeename = payeeobj.payeename
+      // let oid = payees.findIndex(x => x.id === invoice.payee.id) //select.id)
+      let oid = payees.findIndex(x => x.payeename === invoice.payee.payeename)//id) //select.id)
+      console.log('oid ', oid)
+      let payeeobj = this.appService.payeelist[oid]//10]
+      console.log('payeeobj ', payeeobj)
+      // if (payeeobj !== undefined) invoice.payeeselect.payeename = payeeobj.payeename
+      if (payeeobj !== undefined) invoice.payeeselect = payeeobj
+      // invoice.payee.payeename = ''
+      // invoice.payee.payeefein = ''
+      // invoice.payee.payeeaddr = ''
+      // invoice.payee.payeecity = ''
+      // invoice.payee.payeestate = ''
+      // invoice.payee.payeezip = ''
+      invoice.payeename = ''
+      invoice.payeefein = ''
+      invoice.payeeaddr = ''
+      invoice.payeecity = ''
+      invoice.payeestate = ''
+      invoice.payeezip = ''
+      // let payees = this.appService.payeelist
+      //     let oid = payees.findIndex(x => x.payeename === invoice.payeeselect.payeename) //payeeselect.id)
+      //     console.log('oid ', oid)
+      //     let payeeobj = this.appService.payee[oid]//10] 
+      //     console.log('payeeobj ', payeeobj)
+      //     // if (payeeobj !== undefined) invoice.payeeselect = payeeobj
+      //     if (payeeobj !== undefined) invoice.payeeselect = payeeobj 
+
+
 
     }
 
