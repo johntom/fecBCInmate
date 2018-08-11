@@ -102,7 +102,8 @@
 
 							<button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)" disabled.bind="$index!==currentIndex&&currentIndex!==-1">
                 ${ !payee.edit ? 'Update' : 'Done' }</button>
-
+		      <button class="btn btn-danger" disabled.bind="!payee.edit" click.delegate="cancelPayee(payee,payee.edit,$index)">Cancel</button>
+						
 						</td>
             
 <!-- https://stackoverflow.com/questions/45844344/aurelia-js-inserting-css-class-after-click-and-bind-just-the-row-clicked -->
@@ -118,9 +119,9 @@
 		<!-- </form> -->
 		<div class="flex-column-none section-footer">
 			<span>&nbsp;&nbsp;
-                    <button class="btn btn-sm btn-danger" click.delegate="savePayee(0)">
+                    <!-- <button class="btn btn-sm btn-danger" click.delegate="savePayee(0)">
                     Save   ${message}  
-                    </button>
+                    </button> -->
 
                     <button class="btn btn-sm btn-danger" click.delegate="close()">
                         Close

@@ -48,7 +48,7 @@ export class Payee {
     console.log('in activate')
     this.payees = this.appService.payeelist
     this.allpayees = this.payees
-     for (let bk of this.payees) {
+    for (let bk of this.payees) {
       bk.edit = false
     }
   }
@@ -63,6 +63,27 @@ export class Payee {
   // console.log('index ', index)
   // if (this.currentIndex===index) console.log('A MATCH')
   // }
+
+  cancelPayee(payee, editstate, index) {
+    payee.isSelected = false
+    payee.edit = false//!editstate
+    this.currentIndex = -1
+    // 3 below does not work
+    // payee = JSON.parse(JSON.stringify(this.currentPayee));
+    // payee = JSON.stringify(this.currentPayee)
+    //   payee = this.currentPayee
+    // does not work payee
+     payee.payeename= this.currentPayee.payeename
+     payee.payeefein= this.currentPayee.payeefein
+     payee.payeeaddr= this.currentPayee.payeeaddr
+     payee.payeecity= this.currentPayee.payeecity
+     payee.payeestate= this.currentPayee.payeestate
+     payee.payeezip= this.currentPayee.payeezip
+
+
+
+  }
+
 
   editPayee(payee, editstate, rowindex) {
     this.currentIndex = rowindex
@@ -96,8 +117,9 @@ export class Payee {
 
       }
     } else {
-      this.currentPayee = payee
-     // this.payees[rowindex].isSelected = true
+      // this.currentPayee = payee deep copy below
+      this.currentPayee = JSON.parse(JSON.stringify(payee));
+
     }
     payee.edit = !editstate
   }
