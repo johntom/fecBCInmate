@@ -279,6 +279,7 @@ export class DataForm {
     //   this.invoices = []
     // } else {
     this.currentBooking = booking
+    this.bookingindex=index
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
     for (let bk of this.currentRecord.booking) {
@@ -293,7 +294,7 @@ export class DataForm {
 
       for (let bk of this.services) {
         // console.log('bk2 ', bk2)
-        bk.isSelected = false
+        bk.isSelected = false 
       }
 
       this.services[0].isSelected = true
