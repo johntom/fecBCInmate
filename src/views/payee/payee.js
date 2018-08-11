@@ -71,7 +71,7 @@ export class Payee {
     // 3 below does not work
     // payee = JSON.parse(JSON.stringify(this.currentPayee));
     // payee = JSON.stringify(this.currentPayee)
-    //   payee = this.currentPayee
+    // payee = this.currentPayee
     // does not work payee
      payee.payeename= this.currentPayee.payeename
      payee.payeefein= this.currentPayee.payeefein
@@ -79,8 +79,6 @@ export class Payee {
      payee.payeecity= this.currentPayee.payeecity
      payee.payeestate= this.currentPayee.payeestate
      payee.payeezip= this.currentPayee.payeezip
-
-
 
   }
 

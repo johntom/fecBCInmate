@@ -158,8 +158,24 @@ export class DataForm {
         }
         this.appService.payeelist.push(payee)
         // write to database and refresh list
+
         invoice.payee = payee
+        this.api.addpayee(payee)
+          .then((jsonRes) => {
+            this.upmess = jsonRes
+          })
       } else {
+        /*
+          <span  >${payee.payeename} </span>
+           <select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payeeselect">
+              ${payee.payeename}
+              <option model.bind="null">Choose...</option>
+              <option repeat.for="opt of appService.payeelist" model.bind="opt">
+              ${opt.payeename} /  ${opt.payeefein}
+              </option>
+            </select>
+         */
+        
         if (invoice.payeeselect !== null) {
           invoice.payee = invoice.payeeselect
           invoice.payeename = ''
@@ -170,6 +186,15 @@ export class DataForm {
           invoice.payeezip = ''
         }
       }
+    } else {
+      // editstate = false
+      let payees = this.appService.payeelist
+       let  oid = payees.findIndex(x => x.id === invoice.payeeselect.id)
+        console.log('oid ', oid)
+        let payeeobj = this.appService.payeelist[oid]//10]
+        console.log('payeeobj ', payeeobj)
+        if (payeeobj !== undefined) invoice.payeeselect.payeename = payeeobj.payeename
+
     }
 
     this.currentInvoice = invoice
@@ -279,7 +304,7 @@ export class DataForm {
     //   this.invoices = []
     // } else {
     this.currentBooking = booking
-    this.bookingindex=index
+    this.bookingindex = index
     console.log(' this.currentRecord ', index, booking.services);
     this.services = booking.services
     for (let bk of this.currentRecord.booking) {
@@ -294,7 +319,7 @@ export class DataForm {
 
       for (let bk of this.services) {
         // console.log('bk2 ', bk2)
-        bk.isSelected = false 
+        bk.isSelected = false
       }
 
       this.services[0].isSelected = true
