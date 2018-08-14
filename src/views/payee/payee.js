@@ -104,14 +104,14 @@ export class Payee {
       } else {
         payee.payeemode === 'update'
         // console.log(' call save ', this.currentRecord)
-        if (JSON.stringify(this.currentPayee) === JSON.stringify(payee)) {
+       // if (JSON.stringify(this.currentPayee) === JSON.stringify(payee)) {
 
           //   this.message = 'You clicked save'
           this.api.updatepayee(payee)
             .then((jsonRes) => {
               this.upmess = jsonRes
             })
-        }
+        //}
 
       }
     } else {
