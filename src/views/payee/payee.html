@@ -19,6 +19,7 @@
        	<a slot="buttons-slot" class="btn btn-success" click.delegate="addPayee()">
 						<i class="fa fa-plus"></i> Add Payee
 					</a>
+          ${updateinmatesmess}
     </h4>
 
 
@@ -103,6 +104,7 @@
 							<button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)" disabled.bind="$index!==currentIndex&&currentIndex!==-1">
                 ${ !payee.edit ? 'Update' : 'Done' }</button>
 		      <button class="btn btn-danger" disabled.bind="!payee.edit" click.delegate="cancelPayee(payee,payee.edit,$index)">Cancel</button>
+					<button class="btn  btn-info" disabled.bind="!payee.edit" click.delegate="updateInmates(payee)">Update Inmates</button>
 						
 						</td>
             

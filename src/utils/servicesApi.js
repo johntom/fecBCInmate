@@ -36,7 +36,22 @@ export class ApiService {
       mode: 'cors'
     }).then((res) => res.json());
   }
-
+updateInmates(rec) {
+    let url = this.baseweb + `v1/inmate/updateinmates`
+    console.log('url ', url)
+    //return {'data': true}
+    return this.http.fetch(url, {
+      method: 'put',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        // , 'Authorization': 'JWT ' + token
+      },
+      body: JSON.stringify(rec)
+      //   body: rec
+    }).then((res) => res.json());
+  }
   updatepayee(rec) {
     //alert('in saveclaim')
     let url = this.baseweb + `v1/payee/update`

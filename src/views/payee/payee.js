@@ -21,6 +21,7 @@ export class Payee {
   };
   heading = 'Payees...';
   metapayees = ['payeename', 'payeefein', 'payeeaddr', 'payeecity', 'payeestate', 'payeeaddr']
+
   // disabledbtn=false
   constructor(router, api, appService) {
     this.api = api
@@ -28,6 +29,7 @@ export class Payee {
     this.router = router
     // this.disabledbtn = true // leave on
     this.currentIndex = -1
+    this.payeemode = 'update'
   }
   searchdocChanged(value) {
     if (value === "") { this.payees = this.allpayees } else {
@@ -52,7 +54,13 @@ export class Payee {
       bk.edit = false
     }
   }
-
+  updateInmates(payee) {
+    console.log('in updateInmates')
+    this.api.updateInmates(payee)
+      .then((jsonRes) => {
+        this.updateinmatesmess = 'all inmate records are updated for ' + payee.payeename
+      })
+  }
   // // if update is clicked editstate=false if done is clicked editstate=true
   // changeColor(item) {
   //   alert(item.new);
@@ -73,12 +81,12 @@ export class Payee {
     // payee = JSON.stringify(this.currentPayee)
     // payee = this.currentPayee
     // does not work payee
-     payee.payeename= this.currentPayee.payeename
-     payee.payeefein= this.currentPayee.payeefein
-     payee.payeeaddr= this.currentPayee.payeeaddr
-     payee.payeecity= this.currentPayee.payeecity
-     payee.payeestate= this.currentPayee.payeestate
-     payee.payeezip= this.currentPayee.payeezip
+    payee.payeename = this.currentPayee.payeename
+    payee.payeefein = this.currentPayee.payeefein
+    payee.payeeaddr = this.currentPayee.payeeaddr
+    payee.payeecity = this.currentPayee.payeecity
+    payee.payeestate = this.currentPayee.payeestate
+    payee.payeezip = this.currentPayee.payeezip
 
   }
 
@@ -94,30 +102,28 @@ export class Payee {
     if (editstate) {
       this.payees[rowindex].isSelected = false
       this.currentIndex = -1
-      if (payee.payeemode === 'insert') {
+      if (this.payeemode === 'insert') {
         // create 
         this.api.addpayee(payee)
           .then((jsonRes) => {
             this.upmess = jsonRes
           })
         console.log(' await payeelist ', this.appService.payeelist)
+        this.payeemode = 'update'
       } else {
-        payee.payeemode === 'update'
-        // console.log(' call save ', this.currentRecord)
-       // if (JSON.stringify(this.currentPayee) === JSON.stringify(payee)) {
-
-          //   this.message = 'You clicked save'
-          this.api.updatepayee(payee)
-            .then((jsonRes) => {
-              this.upmess = jsonRes
-            })
+        this.payeemode = 'update'
+        // console 
+        this.api.updatepayee(payee)
+          .then((jsonRes) => {
+            this.upmess = jsonRes
+          }) // not sure where this came from .log(' call save payee')
+        // if (JSON.stringify(this.currentPayee) === JSON.stringify(payee)) {
+        //   this.message = 'You clicked save'
         //}
-
       }
     } else {
       // this.currentPayee = payee deep copy below
       this.currentPayee = JSON.parse(JSON.stringify(payee));
-
     }
     payee.edit = !editstate
   }
@@ -136,6 +142,7 @@ export class Payee {
       "payeezip": '',
       "payeemode": 'insert'
     }
+    this.payee.payeemode = 'insert'
     this.payees.unshift(payeerec)
     this.payees[0].isSelected = true
     this.payees[0].edit = true
