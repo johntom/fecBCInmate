@@ -7,20 +7,20 @@
 	<require from="../../resources/value-converters/stringify"></require>
 
 	<require from="../../../styles/flex.css"></require>
-	 <section class="au-animate">
- 
- <section class="au-animate">
-    <h4>${heading}
-      	<a slot="buttons-slot">
-          <input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
-                            
-			 <i class="material-icons search">search</i>
-       </a>
-       	<a slot="buttons-slot" class="btn btn-success" click.delegate="addPayee()">
-						<i class="fa fa-plus"></i> Add Payee
-					</a>
-          ${updateinmatesmess}
-    </h4>
+	<section class="au-animate">
+
+		<section class="au-animate">
+			<h4>${heading}
+				<a slot="buttons-slot">
+					<input id="icon_prefix" type="text" value.bind="searchdoc & debounce" class="validate">
+
+					<i class="material-icons search">search</i>
+				</a>
+				<a slot="buttons-slot" class="btn btn-success" click.delegate="addPayee()">
+					<i class="fa fa-plus"></i> Add Payee
+				</a>
+				${updateinmatesmess}
+			</h4>
 
 
 
@@ -61,9 +61,9 @@
 				</tfoot>
 				<tbody>
 					<!-- <tr repeat.for="payee of payees" with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" click.trigger="juice.changeColor()"> -->
-          <!-- <tr repeat.for="payee of payees" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" click.trigger="juice.changeColor()"> -->
- 	         <tr repeat.for="payee of payees"  with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" >
- 				
+					<!-- <tr repeat.for="payee of payees" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}" click.trigger="juice.changeColor()"> -->
+					<tr repeat.for="payee of payees" with.bind="payee" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
+
 						<td width="125px">
 							<span show.bind="!payee.edit">${payeename  }</span>
 							<input show.bind="payee.edit" class="form-control input-sm" disabled.bind="!payee.edit" type="text" value.bind="payeename">
@@ -100,15 +100,15 @@
 						<td width="325px">
 							<!-- <button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)"  disabled.bind="!disabledbtn">
                   ${$index}-${currentIndex}     ${payee.edit}               ${ !payee.edit ? 'Update' : 'Done' }</button> disabled.bind="$index==!currentIndex&&currentIndex!==-1">-->
+							<input ref="checkbox" type="checkbox" disabled.bind="!payee.edit" >updateInmates: </input>
 
 							<button class="btn btn-primary" click.delegate="editPayee(payee,payee.edit,$index)" disabled.bind="$index!==currentIndex&&currentIndex!==-1">
                 ${ !payee.edit ? 'Update' : 'Done' }</button>
-		      <button class="btn btn-danger" disabled.bind="!payee.edit" click.delegate="cancelPayee(payee,payee.edit,$index)">Cancel</button>
-					<button class="btn  btn-info" disabled.bind="!payee.edit" click.delegate="updateInmates(payee)">Update Inmates</button>
-						
+							<button class="btn btn-danger" disabled.bind="!payee.edit" click.delegate="cancelPayee(payee,payee.edit,$index)">Cancel</button>
+							<!-- <button class="btn  btn-info" disabled.bind="!payee.edit" click.delegate="updateInmates(payee)">Update Inmates</button> -->
 						</td>
-            
-<!-- https://stackoverflow.com/questions/45844344/aurelia-js-inserting-css-class-after-click-and-bind-just-the-row-clicked -->
+
+						<!-- https://stackoverflow.com/questions/45844344/aurelia-js-inserting-css-class-after-click-and-bind-just-the-row-clicked -->
 
 						</span>
 					</tr>

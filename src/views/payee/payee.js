@@ -120,6 +120,18 @@ export class Payee {
         // if (JSON.stringify(this.currentPayee) === JSON.stringify(payee)) {
         //   this.message = 'You clicked save'
         //}
+        // if (payee.payeecheckbox.checked) {
+         if (payee.checkbox.checked) { 
+         console.log('in updateInmates') 
+          this.api.updateInmates(payee)
+            .then((jsonRes) => {
+              this.updateinmatesmess = 'all inmate records are updated for ' + payee.payeename
+            })
+
+payee.checkbox.checked=false
+        } else   this.updateinmatesmess = ''
+
+
       }
     } else {
       // this.currentPayee = payee deep copy below
