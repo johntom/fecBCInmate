@@ -68,11 +68,11 @@
                value.bind="currentRecord.currentRecord.gender"> -->
 
 							<select id="gender" class="form-control input-sm" value.two-way="currentRecord.inmate.gender">
-                                    <option model.bind="null">Choose...</option>
-                                    <option repeat.for="opt of appService.genderList" model.bind="opt.code">
-                                        ${opt.code}
-                                    </option>
-                                </select>
+                                <option model.bind="null">Choose...</option>
+                                <option repeat.for="opt of appService.genderList" model.bind="opt.code">
+                                    ${opt.code}
+                                </option>
+                            </select>
 
 						</div>
 
@@ -111,26 +111,26 @@
 
 				<table class="table-condensed table" id="table" ref="table" data-toggle="table">
 					<thead class="table-header-blue" data-sort="items.bind: appService.currentRecord.booking; cols: ['bookingDate','classification']">
-						<tr>
-							<tr>
-								<th class="header">iss
-								</th>
-								<th class="header">bookingDate
-								</th>
-								<!-- <th class="header">classification~
-							</th> -->
-								<th class="header">classification
-								</th>
-								<th class="header">bookingNo
-								</th>
-								<th class="header">prisonerId
-								</th>
-								<th class="header">sentencingDate
-								</th>
-								<th class="header">Cmd
 
-								</th>
-							</tr>
+						<tr>
+							<th class="header">iss
+							</th>
+							<th class="header">bookingDate
+							</th>
+							<!-- <th class="header">classification~
+							</th> -->
+							<th class="header">classification
+							</th>
+							<th class="header">bookingNo
+							</th>
+							<th class="header">prisonerId
+							</th>
+							<th class="header">sentencingDate
+							</th>
+							<th class="header">Cmd
+
+							</th>
+						</tr>
 					</thead>
 					<tfoot>
 						<tr>
@@ -148,17 +148,17 @@
 
 							<!-- <tr repeat.for="booking of currentRecord.booking" with.bind="booking" class="${(booking.classification == selectedBooking.classification) ? 'selected' : 'notSelected'}"> -->
 
-							<td width="25px">
+							<td width="25">
 								${booking.isSelected}
 							</td>
-							<td width="125px">
+							<td width="125">
 								<span show.bind="!booking.edit">${bookingDate | dateFormat }</span>
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="bookingDate">
 							</td>
 							<!-- <td width="125px" animateonchange.bind="booking.classification">${booking.classification}</td> -->
 
 
-							<td width="125px">
+							<td width="125">
 								<span show.bind="!booking.edit">${classification}</span>
 
 								<!-- <input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="classification">		</td> -->
@@ -173,7 +173,7 @@
 
 							</td>
 
-							<td width="125px">
+							<td width="125">
 								<span show.bind="!booking.edit">${bookingNo}</span>
 
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="text" value.bind="bookingNo">								</td>
@@ -186,7 +186,7 @@
 								<span show.bind="!booking.edit">${sentencingDate| dateFormat }</span>
 								<input show.bind="booking.edit" class="form-control input-sm" disabled.bind="!booking.edit" type="date" value.bind="sentencingDate">
 							</td> -->
-							<td width="325px">
+							<td width="325">
 								<!-- <button class="btn btn-primary" click.delegate="booking.edit=!booking.edit">
                   ${ !booking.edit ? 'Update' : 'Done' }</button>	 -->
 								<button class="btn btn-primary" click.delegate="EditBooking(booking,booking.edit,$index)">
@@ -201,7 +201,10 @@
 						</tr>
 
 					</tbody>
+
 				</table>
+
+
 				<!--  end booking table -->
 
 				<!--  new table -->
@@ -225,136 +228,141 @@
 							</th>
 							<th class="header">Srv DateTo
 							</th>
-             <th class="header">Srv Days
+							<th class="header">Srv Days
 							</th>
-							<th class="header">Transport<br>Method
+							<th class="header">Transport
+								<br>Method
 							</th>
 
-							<th class="header">Sending<br>Provider
+							<th class="header">Sending
+								<br>Provider
 							</th>
-							<th class="header">Designated<br>Provider
+							<th class="header">Designated
+								<br>Provider
 							</th>
-							<th class="header">Service<br>Reason
+							<th class="header">Service
+								<br>Reason
 							</th>
 							<th class="header">Cmd
 							</th>
 						</tr>
-						</body>
-						<tfoot>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+					</thead>
 
-							</tr>
-						</tfoot>
+					<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 
-						<tbody>
-							<!-- click.trigger="changeColor(service)" -->
-							<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
-								<!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
-								<td width="25px">
-									${service.isSelected}
-								</td>
-								<td width="125px">
-									<span show.bind="!service.edit">${serviceProvided}</span>
+						</tr>
+					</tfoot>
 
-									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
+					<tbody>
+						<!-- click.trigger="changeColor(service)" -->
+						<tr repeat.for="service of services" with.bind="service" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
+							<!-- <tr repeat.for="service of currentRecord.booking.services" with.bind="service"> -->
+							<td width="25">
+								${service.isSelected}
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${serviceProvided}</span>
 
-									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceProvided">
-                                        <option model.bind="null">Choose...</option>
-                                        <option repeat.for="opt of appService.serviceprovidedList" model.bind="opt.code">
-                                            ${opt.code}
-                                        </option>
-                                    </select>
+								<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceProvided"> -->
 
-								</td>
-								<td width="125px">
-									<span show.bind="!service.edit">${serviceType}</span>
+								<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceProvided">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.serviceprovidedList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
 
-									<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType"> -->
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${serviceType}</span>
 
-									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceType">
-                                        <option model.bind="null">Choose...</option>
-                                        <option repeat.for="opt of appService.servicetypeList" model.bind="opt.code">
-                                            ${opt.code}
-                                        </option>
-                                    </select>
+								<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceType"> -->
 
-								</td>
-								<td width="125px">
-									<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateFrom">
-								</td>
-								<td width="125px">
-									<span show.bind="!service.edit">${serviceDateTo | dateFormat }</span>
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateTo">
-								</td>
-                	<td width="125px">
-									<span show.bind="!service.edit">${serviceDays}</span>
-							             
-              			</td>
-								<td width="125px">
-									<span show.bind="!service.edit">${transportMethod}</span>
-									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod">
-                                        <option model.bind="null">Choose...</option>
-                                        <option repeat.for="opt of appService.transportList" model.bind="opt.code">
-                                            ${opt.code}
-                                        </option>
-                                    </select>
-								</td>
-								<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod"> -->
+								<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.serviceType">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.servicetypeList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
+
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${serviceDateFrom | dateFormat }</span>
+								<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateFrom">
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${serviceDateTo | dateFormat }</span>
+								<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="date" value.bind="serviceDateTo">
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${serviceDays}</span>
+
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${transportMethod}</span>
+								<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.transportMethod">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.transportList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
+							</td>
+							<!-- <input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="transportMethod"> -->
 
 
-								<!-- <span show.bind="!service.edit">${sendingProvider}</span>
+							<!-- <span show.bind="!service.edit">${sendingProvider}</span>
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="sendingProvider">
 								</td> -->
-								<td width="125px">
-									<span show.bind="!service.edit">${sendingProvider}</span>
-									<select show.bind="service.edit" id="sp" class="form-control input-sm" value.two-way="service.sendingProvider">
-                                        <option model.bind="null">Choose...</option>
-                                        <option repeat.for="opt of appService.sendingproviderList" model.bind="opt.code">
-                                            ${opt.code}
-                                        </option>
-                                    </select>
-								</td>
-								<!-- <td width="125px">
+							<td width="125">
+								<span show.bind="!service.edit">${sendingProvider}</span>
+								<select show.bind="service.edit" id="sp" class="form-control input-sm" value.two-way="service.sendingProvider">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.sendingproviderList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
+							</td>
+							<!-- <td width="125px">
 									<span show.bind="!service.edit">${designatedProvider}</span>
 									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="designatedProvider">
 								</td> -->
-								<td width="125px">
-									<span show.bind="!service.edit">${designatedProvider}</span>
-									<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.designatedProvider">
-                                        <option model.bind="null">Choose...</option>
-                                        <option repeat.for="opt of appService.designatedproviderList" model.bind="opt.code">
-                                            ${opt.code}
-                                        </option>
-                                    </select>
-								</td>
-								<td width="125px">
-									<span show.bind="!service.edit">${serviceReason}</span>
-									<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">
-								</td>
+							<td width="125">
+								<span show.bind="!service.edit">${designatedProvider}</span>
+								<select show.bind="service.edit" id="adj" class="form-control input-sm" value.two-way="service.designatedProvider">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.designatedproviderList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
+							</td>
+							<td width="125">
+								<span show.bind="!service.edit">${serviceReason}</span>
+								<input show.bind="service.edit" class="form-control input-sm" disabled.bind="!service.edit" type="text" value.bind="serviceReason">
+							</td>
 
 
-								<td width="325px">
-									<!-- <button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button> -->
-									<button class="btn btn-primary" click.delegate="EditService(service,service.edit,$index)">
-                                        ${ !service.edit ? 'Update' : 'Done' }</button>
-									<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
-									<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
+							<td width="325">
+								<!-- <button class="btn btn-primary" click.delegate="service.edit=!service.edit">${ !service.edit ? 'Update' : 'Done' }</button> -->
+								<button class="btn btn-primary" click.delegate="EditService(service,service.edit,$index)">
+                                    ${ !service.edit ? 'Update' : 'Done' }</button>
+								<button class="btn btn-danger" click.delegate="remove(service,$index)">Delete</button>
+								<button class="btn btn-primary" click.delegate="getInvoices(service,$index)">Get Invoices</button>
 
-								</td>
-							</tr>
+							</td>
+						</tr>
 
-						</tbody>
+					</tbody>
 				</table>
 
 				<!--  end new table -->
@@ -377,202 +385,181 @@
 						<tr>
 
 							<th class="header">iss </th>
-							<th class="header">inv#
-							</th>
-							<th class="header">invDate
-							</th>
-              	<th class="header">Payee Name</th>
-							<!-- <th class="header">Payee Name
-								<br>Payee Fein
-								<br>Payee Addr
-							</th> -->
-							<!-- <th class="header">cpts
-							</th> -->
+							<th class="header">inv# </th>
+							<th class="header">invDate</th>
+							<th class="header">Payee Name.................................</th>
+
 							<th class="header">Invoice
-								<br>Total
-							</th>
+								<br>Total</th>
 							<th class="header">Repriced
-								<br>Amt
-							</th>
-							<th class="header">savings
-							</th>
-	<th class="header">Trt DateFrom
-							</th>
-							<th class="header">Trt DateTo
-							</th>
+								<br>Amt</th>
+							<th class="header">savings</th>
+							<th class="header">Trt DateFrom</th>
+							<th class="header">Trt DateTo</th>
 							<th class="header">Apprvd
-								<br>Date
-							</th>
+								<br>Date</th>
 							<th class="header">Payment
-								<br>Status
-							</th>
+								<br>Status</th>
 
 							<th class="header">Denied
-								<br>Reason
-							</th>
+								<br>Reason</th>
 
-
-
-							</th>
-							<th class="header">FileName
-							</th>
+							<th class="header">FileName</th>
 							<th class="header">Cmd</th>
-							</th>
-							<th class="header">Drop
-							</th>
+
+							<th class="header">Drop</th>
 						</tr>
-						</body>
-						<tfoot>
-							<tr>
-								<!-- <td></td>
+					</thead>
+
+					<tfoot>
+						<tr>
+							<!-- <td></td>
 								<td></td>
 								<td></td>
 								<td></td> -->
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tfoot>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
 
-						<tbody>
-							<!--  click.trigger="changeColor(invoice)" -->
-							<tr repeat.for="invoice of invoices" with.bind="invoice" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
-								<td width="25px">
-									${invoice.isSelected}
-								</td>
+					<tbody>
+						<!--  click.trigger="changeColor(invoice)" -->
+						<tr repeat.for="invoice of invoices" with.bind="invoice" class="${isSelected ? 'is-row-selected' : 'is-row-not-selected'}">
+							<td width="25">
+								${invoice.isSelected}
+							</td>
 
-								<td width="165px">
-									<span show.bind="!invoice.edit">${invno} ${payee.payeefein}</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
-								</td>
-								<td width="95px">
-									<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
-								</td>
-<!-- <td width="165px">
+							<td width="165">
+								<span show.bind="!invoice.edit">${invno} ${payee.payeefein}</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invno">
+							</td>
+							<td width="95">
+								<span show.bind="!invoice.edit">${invDate | dateFormat }</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="invDate">
+							</td>
+							<!-- <td width="165px">
 									<span >${payee.payeename}</span>
 								</td> -->
-								<td width="295px">
+							<td width="325px">
 
 
-   <!-- <option repeat.for="opt of appService.payeelist" model.bind="opt.payeename"> -->
-              <!-- <span  >${payee.payeename}  / ${payee.payeefein} > ${payee.payeename} /  ${payeeselect.payeename} ${payeename} / </span> -->
-               <span show.bind="!invoice.edit">${payee.payeename}   </span>
-              
-								<select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payeeselect">
-               
-               ${payee.payeename}
-                <option model.bind="null">Choose...</option>
-                <option repeat.for="opt of appService.payeelist" model.bind="opt">
-                ${opt.payeename} /  ${opt.payeefein}
-                </option>
-                </select>
-								
-                
-                	<!-- <span show.bind="!invoice.edit">${payeename }</span> -->
-									<input show.bind="invoice.edit" sytle="width:295px" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text"
-									 value.bind="payeename">
-									<!-- <span show.bind="!invoice.edit">${payeefein }<br></span> -->
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text"
-									 value.bind="payeefein">
+								<!-- <option repeat.for="opt of appService.payeelist" model.bind="opt.payeename"> -->
+								<!-- <span  >${payee.payeename}  / ${payee.payeefein} > ${payee.payeename} /  ${payeeselect.payeename} ${payeename} / </span> -->
+								<span show.bind="!invoice.edit">${payee.payeename} </span>
+							
+                                <select show.bind="invoice.edit" id="pl" class="form-control input-sm" value.two-way="invoice.payeeselect">
 
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="address" type="text"
-									 value.bind="payeeaddr">
-
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="city" type="text"
-									 value.bind="payeecity">
-
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="state" type="text"
-									 value.bind="payeestate">
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="zip" type="text"
-									 value.bind="payeezip">
+                                    ${payee.payeename}
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.payeelist" model.bind="opt">
+                                        ${opt.payeename} / ${opt.payeefein}
+                                    </option>
+                                </select>
 
 
-								</td>
+               	<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="name" type="text"
+								 value.bind="payeename">
+								<!-- <span show.bind="!invoice.edit">${payeefein }<br></span> -->
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="fein" type="text"
+								 value.bind="payeefein">
 
-								<td width="75px">
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="address" type="text"
+								 value.bind="payeeaddr">
 
-									<span show.bind="!invoice.edit">${invoiceTotal |  currencyFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
-								</td>
-								<td width="125px">
-									<span show.bind="!invoice.edit">${repricedAmt |  currencyFormat}</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="city" type="text"
+								 value.bind="payeecity">
 
-									<input show.bind="invoice.edit" class="form-control 
-                  input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
-								</td>
-								<td width="125px">
-									<!-- <span show.bind="!invoice.edit">${invoiceTotal - repricedAmt}</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="state" type="text"
+								 value.bind="payeestate">
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" placeholder="zip" type="text"
+								 value.bind="payeezip">
+							
+
+							</td>
+
+							<td width="85">
+
+								<span show.bind="!invoice.edit">${invoiceTotal | currencyFormat }</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="invoiceTotal">
+							</td>
+							<td width="85">
+								<span show.bind="!invoice.edit">${repricedAmt | currencyFormat}</span>
+
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="repricedAmt">
+							</td>
+							<td width="85">
+								<!-- <span show.bind="!invoice.edit">${invoiceTotal - repricedAmt}</span>
 									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="savings"> -->
 
-									<span>${invoiceTotal - repricedAmt |  currencyFormat}</span>
+								<span>${invoiceTotal - repricedAmt | currencyFormat}</span>
 
-								</td>
-			<td width="125px">
-									<span show.bind="!invoice.edit">${treatmentDateFrom | dateFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="treatmentDateFrom">
-								</td>
-								<td width="125px">
-									<span show.bind="!invoice.edit">${treatmentDateTo | dateFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="treatmentDateTo">
-								</td>
-
-
-								<td width="95px">
-									<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
-								</td>
+							</td>
+							<td width="95">
+								<span show.bind="!invoice.edit">${treatmentDateFrom | dateFormat }</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="treatmentDateFrom">
+							</td>
+							<td width="95">
+								<span show.bind="!invoice.edit">${treatmentDateTo | dateFormat }</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="treatmentDateTo">
+							</td>
 
 
-								<td width="125px">
-									<span show.bind="!invoice.edit">${paymentStatus}</span>
-									<select show.bind="invoice.edit" id="adj" class="form-control input-sm" value.two-way="invoice.paymentStatus">
-                <option model.bind="null">Choose...</option>
-                <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
-                ${opt.code}
-                </option>
-              </select>
-								</td>
+							<td width="95">
+								<span show.bind="!invoice.edit">${approvedDate | dateFormat }</span>
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="date" value.bind="approvedDate">
+							</td>
 
 
-								<td width="125px">
-									<span show.bind="!invoice.edit">${deniedReason}</span>
+							<td width="105">
+								<span show.bind="!invoice.edit">${paymentStatus}</span>
+								<select show.bind="invoice.edit" id="adj" class="form-control input-sm" value.two-way="invoice.paymentStatus">
+                                    <option model.bind="null">Choose...</option>
+                                    <option repeat.for="opt of appService.approvedList" model.bind="opt.code">
+                                        ${opt.code}
+                                    </option>
+                                </select>
+							</td>
 
-									<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="deniedReason">
-								</td>
 
-								<!-- href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}"> -->
+							<td width="105">
+								<span show.bind="!invoice.edit">${deniedReason}</span>
+
+								<input show.bind="invoice.edit" class="form-control input-sm" disabled.bind="!invoice.edit" type="text" value.bind="deniedReason">
+							</td>
+
+							<!-- href="https://gtztest.com/api/v1/getonePdf/${invoice.invno}/${doc.fileinvoicename}"> -->
 
 
 
-								<td width="125px">
-									<span show.bind="!invoice.edit">
-                                        <a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${fileinvoicename}">
-                                            ${fileinvoicename}
-                                        </a>
-                                    </span>
-									<span show.bind="invoice.edit">${fileinvoicename}</span>
-								</td>
-								<td width="325px">
-									<!-- <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button> -->
-									<button class="btn btn-primary" click.delegate="EditInvoice(invoice,invoice.edit,$index)">
-                                        ${ !invoice.edit ? 'Update' : 'Done' }</button>
-									<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
+							<td width="125">
+								<span show.bind="!invoice.edit">
+                                    <a size='100' class="form-control  input-sm" target="_blank" href="https://gtztest.com/api/v1/getonePdf/${currentRecord.id}/${fileinvoicename}">
+                                        ${fileinvoicename}
+                                    </a>
+                                </span>
+								<span show.bind="invoice.edit">${fileinvoicename}</span>
+							</td>
+							<td width="325">
+								<!-- <button class="btn btn-primary" click.delegate="invoice.edit=!invoice.edit">${ !invoice.edit ? 'Update' : 'Done' }</button> -->
+								<button class="btn btn-primary" click.delegate="EditInvoice(invoice,invoice.edit,$index)">
+                                    ${ !invoice.edit ? 'Update' : 'Done' }</button>
+								<button class="btn btn-danger" click.delegate="remove(invoice,$index)">Delete</button>
 
-									<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
-										<i class="fa fa-plus"></i> Upload
-									</a>
+								<a slot="buttons-slot" class="btn btn-success" click.delegate="addDocsInvoice(invoice,fileinvoice)">
+									<i class="fa fa-plus"></i> Upload
+								</a>
 
-								</td>
-								<td>
-									<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
-							</tr>
-						</tbody>
+							</td>
+							<td>
+								<input style='height:44px' ref='fileinvoice' id='fileinvoice' type="file" name="fileinvoice" files.bind="fileinvoice">
+						</tr>
+					</tbody>
 				</table>
 				<!--  end new table -->
 				<!--  new docs table -->
@@ -643,7 +630,7 @@
 			<div class="flex-column-none section-footer">
 				<span>&nbsp;&nbsp;
                     <button class="btn btn-sm btn-danger" click.delegate="saveinmate(0)">
-                       ${message}  
+                        ${message}
                     </button>
 
                     <button class="btn btn-sm btn-danger" click.delegate="close()">

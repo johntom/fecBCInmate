@@ -120,7 +120,7 @@ export class DataForm {
       var a = moment([a1, a2, a3]);
       var b = moment([b1, b2, b3]);
 
-      service.serviceDays = a.diff(b, 'days') // 1
+      service.serviceDays = a.diff(b, 'days') +1 // 1
 
     }
     if (editstate === true && service.serviceProvided !== 'Inpatient') service.serviceDays = ''
