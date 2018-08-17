@@ -8,7 +8,7 @@ import { MyDataService } from "./services/my-data-service";
 @inject(ApplicationService, ApiService, MyDataService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v4I  / Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v4E  / Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
@@ -96,11 +96,11 @@ export class Welcome {
     console.log('in activate')
     let cCodes = [{ id: 1, code: 'County' }, { id: 2, code: 'ICE' }, { id: 3, code: 'State' }, { id: 4, code: 'Fed' }]
     this.appService.classificationList = cCodes //" model.bind="opt.code
-    let cCodes2 = [{ id: 1, code: 'Outpatient' }, { id: 2, code: 'Emergency' }, { id: 3, code: 'Inpatient' }]
+    let cCodes2 = [{ id: 1, code: 'Outpatient' }, { id: 2, code: 'Emergency' }, { id: 3, code: 'Inpatient' },{ id: 4, code: 'ER/IP'}]
     this.appService.serviceprovidedList = cCodes2
     let cCodes3 = [{ id: 1, code: 'Jail Transport' }, { id: 2, code: 'Ambulance Service' }, { id: 3, code: 'Other Agency' }]
     this.appService.transportList = cCodes3
-    let cCodes4 = [{ id: 1, code: 'Medical' }, { id: 2, code: 'Mental Health' }]
+    let cCodes4 = [{ id: 1, code: 'Medical' }, { id: 2, code: 'Behavior Health' }, { id: 3, code: 'Medical/Behavior Health' }]
     this.appService.servicetypeList = cCodes4
     let cCodes5 = [{ id: 1, code: 'Approved' }, { id: 2, code: 'Denied – Medicaid' }, { id: 3, code: 'Denied – Medicare' }, { id: 4, code: 'Denied – Submit to Other Insurer' },
     { id: 5, code: 'Denied – Duplicate' }, { id: 6, code: 'Denied – Awaiting Documentation' }, { id: 7, code: 'Denied – Other' }]
@@ -108,13 +108,15 @@ export class Welcome {
     let cCodes6 = [{ id: 'M', code: 'Male' }, { id: 'F', code: 'Female' }
       , { id: 'O', code: 'Other' }]
     this.appService.genderList = cCodes6
-    let cCodes7 = [{ id: '1', code: 'NBMD' }, { id: '2', code: 'HUMC' },
+    let cCodes7 = [{ id: '1', code: 'NBMC' }, { id: '2', code: 'HUMC' },
     { id: '3', code: 'North Hudson' }, { id: '4', code: 'Holy Name' },
     { id: '5', code: 'Englewood' }
     ]
-    this.appService.sendingproviderList = cCodes7
     let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
-    this.appService.designatedproviderList = cCodes8
+    
+    this.appService.sendingproviderList = cCodes8
+    
+    this.appService.designatedproviderList = cCodes7
     // let cCodes9 = [{ "payeename" : "NBMD", 
     //                         "payeefein" : "NA", 
     //                         "payeeaddr" : "230 E Ridgewood Ave", 
