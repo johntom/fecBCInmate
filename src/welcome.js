@@ -8,7 +8,7 @@ import { MyDataService } from "./services/my-data-service";
 @inject(ApplicationService, ApiService, MyDataService)
 export class Welcome {
   // ndate = moment(new Date()).format('M/D/YYYY')
-  heading = 'Welcome to BCInmate Medical Services App! version: v4E  / Press Ctrl+F5 for latest version in development'// + ndate;
+  heading = 'Welcome to BCInmate Medical Services App! version: v4F  / Press Ctrl+F5 for latest version in development'// + ndate;
   // heading2 = ' v3a'// + ndate;
 
   firstName = 'John ';
@@ -112,11 +112,12 @@ export class Welcome {
    { id: '3', code: 'Holy Name Hospital' },    { id: '4', code: 'Englewood' },{ id: '5', code: 'North Hudson Regional' },
    { id: '6', code: 'Beth Israel' }
     ]
+     this.appService.designatedproviderList = cCodes7
+   
     let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
     
     this.appService.sendingproviderList = cCodes8
     
-    this.appService.designatedproviderList = cCodes7
     // let cCodes9 = [{ "payeename" : "NBMD", 
     //                         "payeefein" : "NA", 
     //                         "payeeaddr" : "230 E Ridgewood Ave", 
