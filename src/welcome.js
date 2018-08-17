@@ -109,8 +109,8 @@ export class Welcome {
       , { id: 'O', code: 'Other' }]
     this.appService.genderList = cCodes6
     let cCodes7 = [{ id: '1', code: 'NBMC' }, { id: '2', code: 'HUMC' },
-    { id: '3', code: 'North Hudson' }, { id: '4', code: 'Holy Name' },
-    { id: '5', code: 'Englewood' }
+   { id: '3', code: 'Holy Name Hospital' },    { id: '4', code: 'Englewood' },{ id: '5', code: 'North Hudson Regional' },
+   { id: '6', code: 'Beth Israel' }
     ]
     let cCodes8 = [{ id: 1, code: 'BC Jail' }, { id: 2, code: 'Other' }]
     
