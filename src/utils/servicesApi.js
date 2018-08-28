@@ -7,9 +7,19 @@ export class ApiService {
   constructor(http) {
     this.http = http;
     this.upmess = ''
-    this.baseweb = 'https://gtztest.com/api/' /// https://gtztest.com/api/v1/inmate
-    // https://gtztest.com/api/v1/getonePdf/:template/:filename
-    this.basewebjif = 'https://jif.bergenrisk.com/api/';
+    // this.baseweb = 'https://gtztest.com/api/' /// https://gtztest.com/api/v1/inmate
+    // // https://gtztest.com/api/v1/getonePdf/:template/:filename
+    // this.basewebjif = 'https://jif.bergenrisk.com/api/';
+
+     this.baseweb = 'https://backend.brmflow.com/api/';//cloudflare https://backend.brmflow.com/api/v1/inmate
+    
+
+     this.basewebjif = 'https://jif.brmflow.com/api/';
+
+
+
+
+
   }
   getUserJwt(username, pass) {
     var token = {};
