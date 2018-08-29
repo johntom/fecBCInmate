@@ -5,7 +5,8 @@ const RUNTIME_ORIGINS = [
 ];
 const NO_CACHE_ORIGINS = [
   'https://api.mlab.com',
-  'https://gtztest.com'
+  // 'https://gtztest.com',
+   'https:///backend.brmflow.com'
 ];
 
 // The install handler takes care of precaching the resources we always need.
