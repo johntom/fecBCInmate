@@ -100,7 +100,7 @@ updateInmates(rec) {
 
   getInmates() {
     var url = this.baseweb + 'v1/inmate/'
-    console.log('url inmate ', url)
+    console.log('url inmate cache? ', url)
     return this.http.fetch(url, {
       method: 'get',
       mode: 'cors'
