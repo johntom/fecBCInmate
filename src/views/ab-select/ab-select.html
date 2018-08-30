@@ -7,27 +7,86 @@
 	<require from="../../resources/value-converters/stringify"></require>
 
 	<h3>Aurelia Bootstrap Select </h3>
-  
+
 	<div class="col-md-12">
 		<div class="form-group">
-      <div>
-	<label class="control-label">Basic - Simple String Collection with Search </label>
-	<abp-select empty-on-null="true" picker-options.bind="{ liveSearch: true ,liveSearchPlaceholder:'search',actionsBox:true}"
-   collection.bind="allCondimentsbase"></abp-select>
-	</div>
-	<div >
-		<abp-select  multiple="true" picker-options.bind="{ actionsBox: true, width:'400px' }" collection.bind="allCondimentsbase"></abp-select>
+			<!-- <div> -->
+			<!-- <abp-select element.bind="mypicker" selected-item.bind="condimentSelection.selectedCondimentItem"
+         selected-value.bind="condimentSelection.selectedCondimentValue"
+				 collection.bind="allCampingStuff">
+				</abp-select>
+			</div> -->
+			<label class="control-label">Object Collection</label>
+			<div>Value: ${condimentSelection.selectedCondimentValue} <br /> Item: ${condimentSelection.selectedCondimentItem | stringify}</div>
+			<div>
+				<abp-select element.bind="mypicker"
+         selected-item.bind="condimentSelection.selectedCondimentItem" 
+         selected-value.bind="condimentSelection.selectedCondimentValue"
+				 collection.bind="allCampingStuffObject" 
+         data-mapping-structure.bind="mappingDataStructure" object-key="id">
+				</abp-select>
+			</div>
 
-	</div>
+			<hr>
+			<label class="control-label">Object Collection2</label>
+			<div>Value: ${condimentSelection2.selectedCondimentValue} <br /> Item: ${condimentSelection2.selectedCondimentItem | stringify}</div>
+			<div>
+        <!-- condimentItem2 -->
+				<abp-select element.bind="mypicker2" 
+        selected-item.bind="condimentSelection2.selectedCondimentItem" 
+        selected-value.bind="condimentSelection2.selectedCondimentValue"
+				collection.bind="allCampingStuffObject"
+        data-mapping-structure.bind="mappingDataStructure" object-key="id">
+				</abp-select>
+			</div>
+       <p><button class="btn btn-default" click.delegate="checkValue()">Show Selected Values</button></p>
+         
 
-	<div >
-		<abp-select  multiple="true" picker-options.bind="{ actionsBox: true,size:'auto' }" collection.bind="allCondimentsbase"></abp-select>
+			<!-- <label class="control-label">Object Collection - 1 sl mappingDataStructure</label>
+								<div>Value: ${SaveListValue} <br /> Item: ${name.InventoryCodes | stringify}</div>
+								<div>
+									<abp-select picker-options.bind="selectOptions" empty-on-null="true" 
+                  selected-item.bind="name" selected-value.bind="SaveListValue"
+									 disabled="false" collection.bind="appService.savedlists" 
+                   data-mapping-structure.bind="mappingDataStructure" object-key="id"
+									 element.bind="selectSaveList"></abp-select>
+								</div> -->
 
-	</div>
-			<label class="control-label">Basic - String Collection</label>
+			<!-- 
+      selected-item.bind="condimenteSelection.selectedCondimentItem"
+         selected-value.bind="condimenteSelection.selectedCondimentValue"
+		  	selected-item.bind="name"
+        selected-value.bind="condimentValue" 
+        -->
+			<!-- <label class="control-label">Object Collection</label>
+			<div>Value: ${condimentValue} <br /> Item: ${name | stringify}</div>
+			<div>
+				<abp-select picker-options.bind="condimenteSelection" empty-on-null="true" selected-item.bind="name" selected-value.bind="condimentValue"
+				 disabled="false" collection.bind="allCampingStuffObject" data-mapping-structure.bind="mappingDataStructure" object-key="id"
+				 element.bind="selectCondiment"></abp-select>
+			</div>
+			<hr> -->
+
+
+			<div>
+				<label class="control-label">Basic - Simple String Collection with Search </label>
+				<abp-select empty-on-null="true" picker-options.bind="{ liveSearch: true ,liveSearchPlaceholder:'search',actionsBox:true}"
+				 collection.bind="allCondimentsbase"></abp-select>
+			</div>
+			<div>
+				<abp-select multiple="true" picker-options.bind="{ actionsBox: true, width:'400px' }" collection.bind="allCondimentsbase"></abp-select>
+
+			</div>
+
+			<div>
+				<abp-select multiple="true" picker-options.bind="{ actionsBox: true,size:'auto' }" collection.bind="allCondimentsbase"></abp-select>
+
+			</div>
+			<label class="control-label">Basic - String Collection </label>
 			<div>Value: ${camping}<br /> Item: ${campingValue}</div>
 			<div>
-				<abp-select collection.bind="allCampingStuff" selected-value.bind="camping" selected-item.bind="campingValue"></abp-select>
+				<abp-select name="selValue" ref="selValue" class="selectpicker" collection.bind="allCampingStuff" selected-value.bind="camping"
+				 selected-item.bind="campingValue"></abp-select>
 			</div>
 
 			<label class="control-label">Object Collection - Empty on Null, Change Title, Class Styling, Alternate Title (on Relish)</label>
